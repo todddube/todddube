@@ -10,9 +10,7 @@
 
 ### GitHub Stats
 
-
-
-<p align="left"><img src="https://raw.githubusercontent.com/todddube/todddube/main/github-metrics.svg" /></p>
+[![Todd's GitHub stats](https://github-readme-stats.vercel.app/api?username=todddube)](https://github.com/todddube/github-readme-stats)
 <!--
 **todddube/todddube** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
