@@ -9,10 +9,11 @@
 
 
 ### GitHub Stats
-
-[![Todd's GitHub stats](https://github-readme-stats.vercel.app/api?username=todddube)](https://github.com/todddube/github-readme-stats)
+![Todd's GitHub stats](https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=radical))
 <!--
 **todddube/todddube** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+- Adding GitHub Stats : https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file
 
 Here are some ideas to get you started:
 
