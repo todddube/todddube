@@ -1,4 +1,4 @@
-## Hi there 👋
+# 👋 Hey All - I'm just here trying to learn and building my knowledge
 
 <!--
 **todddube/todddube** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
