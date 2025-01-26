@@ -1,4 +1,5 @@
-<p align="center"><img src="https://raw.githubusercontent.com/ChrisTitusTech/ChrisTitusTech/main/ctt-600px-github.png" /></p>
+<p align="center"><img src="https://github.com/todddube/todddube/blob/main/images/ToddDube_Logo.png?raw=true" width=150 height=100/></p>
+
 # 👋 Hey All - I'm just here trying to learn and building my knowledge 📲
 
 * 💭 Learning Python AI/ML/GenAI things
