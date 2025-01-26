@@ -1,3 +1,4 @@
+<p align="center"><img src="https://raw.githubusercontent.com/ChrisTitusTech/ChrisTitusTech/main/ctt-600px-github.png" /></p>
 # 👋 Hey All - I'm just here trying to learn and building my knowledge 📲
 
 * 💭 Learning Python AI/ML/GenAI things
