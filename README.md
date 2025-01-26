@@ -6,7 +6,7 @@
 * 💻 Swift MacOS games, graphics
 * 🎮Retro - C64 Assmebler for 6502 - games graphics etc
 * 📫 How to reach me: [LinkedIn-Todd](https://www.linkedin.com/in/tdube/)
-* Using GitHub from: [https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file)
+* Using GitHub Stats from: [https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file)
 
 ### GitHub Stats
 
