@@ -8,9 +8,13 @@
 * 💻 Swift MacOS games, graphics
 * 🎮Retro - C64 Assmebler for 6502 - games graphics etc
 * 📫 How to reach me: [LinkedIn-Todd](https://www.linkedin.com/in/tdube/)
-* Using GitHub Stats from: [https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file)
+* 🧮Using GitHub Stats from: [https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file)
 
 ### GitHub Stats
 
-![Todd's GitHub stats](https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=radical&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
-
+<picture>
+  <source srcset="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=dark" media=(prefers-color-scheme: dark)"/>
+  <source srcset="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true" media=(prefers-color-scheme: light), (prefers-color-scheme:no-preference)"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true" />
+</picture>
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=todddube&layout=compact)
