@@ -1,5 +1,3 @@
-<p align="center"><img src="https://github.com/todddube/todddube/blob/main/images/ToddDube_Logo.png?raw=true" width=150 height=100/></p>
-
 # 👋 Hey All - I'm just here trying to learn and building my knowledge 📲
 
 * 💭 Learning Python AI/ML/GenAI things
@@ -10,7 +8,7 @@
 * 📫 How to reach me: [LinkedIn-Todd](https://www.linkedin.com/in/tdube/)
 * 🧮Using GitHub Stats from: [https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file)
 
-### GitHub Stats
+## GitHub Stats
 
 <picture>
   <source srcset="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=dark" media=(prefers-color-scheme: dark)"/>
