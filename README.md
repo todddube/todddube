@@ -1,15 +1,5 @@
 <div align="center">
-  
 <img src="https://raw.githubusercontent.com/todddube/todddube/main/images/profile_banner.svg" alt="Todd Dube - Developer" width="800"/>
-
-```
- _____    _     _   ____       _       _          
-|_   _|__| | __| | |  _ \ _  _| |__   ___ 
-  | |/ _ \ |/ _` | | | | | || | '_ \ / _ \
-  | | (_) | | (_| | | |_| | || | |_) |  __/
-  |_|\___/|_|\__,_| |____/ \__,_|_.__/ \___|
-```
-
 <img src="https://raw.githubusercontent.com/todddube/todddube/main/images/ToddDube_Logo.svg" alt="Todd Dube Logo" width="300"/>
 
 </div>
