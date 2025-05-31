@@ -1,5 +1,3 @@
-<p align="center"><img src="https://github.com/todddube/todddube/blob/main/images/ToddDube_Logo.png?raw=true" width=200 height=130/></p>
-
 # 👋 Hey All! I'm Todd Dube - Tech Explorer & Developer 🚀
 
 <div align="center">
