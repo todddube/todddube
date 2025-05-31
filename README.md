@@ -1,9 +1,3 @@
-<div align="center">
-  
-<img src="https://raw.githubusercontent.com/todddube/todddube/main/images/profile_banner.svg" alt="Todd Dube - Developer" width="400"/>
-
-</div>
-
 # 👋 Hey All! I'm Todd Dube - Tech Explorer & Developer 🚀
 
 <div align="center">
