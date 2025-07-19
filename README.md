@@ -48,6 +48,14 @@ Here are some of my featured projects:
   <table>
     <tr>
       <td align="center">
+        <a href="https://github.com/todddube/spacerunner">
+          <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/csharp/csharp.png" width="60" height="60"/><br />
+          <b>🌟 SpaceRunner</b>
+        </a>
+        <p>🚀 Featured C# Space Adventure Game</p>
+        <img src="https://img.shields.io/badge/C%23-Featured-purple?style=flat-square" alt="C# Featured Game"/>
+      </td>
+      <td align="center">
         <a href="https://github.com/todddube/2048-In-Python">
           <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" width="60" height="60"/><br />
           <b>2048 Game</b>
@@ -60,19 +68,19 @@ Here are some of my featured projects:
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/C64_startup_animiert.gif/100px-C64_startup_animiert.gif" width="60" height="60"/><br />
           <b>C64 Projects</b>
         </a>
-        <p>👾 Retro computing adventures</p>
+        <p>� Retro computing adventures</p>
         <img src="https://img.shields.io/badge/Assembly-6502-yellow?style=flat-square" alt="6502 Assembly"/>
       </td>
+    </tr>
+    <tr>
       <td align="center">
         <a href="https://github.com/todddube/City-Bomber-C64-Asm">
           <img src="https://raw.githubusercontent.com/github/explore/85cceaeeaf993ca35664dc37ea24f9237fbbfc14/topics/game-development/game-development.png" width="60" height="60"/><br />
           <b>City Bomber</b>
         </a>
-        <p>💣 C64 Assembly Game</p>
+        <p>� C64 Assembly Game</p>
         <img src="https://img.shields.io/badge/Game-Retro-red?style=flat-square" alt="Retro Game"/>
       </td>
-    </tr>
-    <tr>
       <td align="center">
         <a href="https://github.com/todddube/Flappy-bird-python">
           <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" width="60" height="60"/><br />
@@ -89,6 +97,8 @@ Here are some of my featured projects:
         <p>⚙️ Automation toolkit</p>
         <img src="https://img.shields.io/badge/PowerShell-Automation-blue?style=flat-square" alt="PowerShell"/>
       </td>
+    </tr>
+    <tr>
       <td align="center">
         <a href="https://github.com/todddube/python">
           <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" width="60" height="60"/><br />
@@ -97,6 +107,7 @@ Here are some of my featured projects:
         <p>🐍 Various Python code</p>
         <img src="https://img.shields.io/badge/Python-Code-informational?style=flat-square" alt="Python"/>
       </td>
+      <td colspan="2"></td>
     </tr>
   </table>
 </div>
