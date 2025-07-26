@@ -49,11 +49,11 @@ Here are some of my featured projects:
     <tr>
       <td align="center">
         <a href="https://github.com/todddube/spacerunner">
-          <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/csharp/csharp.png" width="60" height="60"/><br />
+          <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/swift/swift.png" width="60" height="60"/><br />
           <b>🌟 SpaceRunner</b>
         </a>
-        <p>🚀 Featured C# Space Adventure Game</p>
-        <img src="https://img.shields.io/badge/C%23-Featured-purple?style=flat-square" alt="C# Featured Game"/>
+        <p>🚀 Featured Swift Space Adventure Game</p>
+        <img src="https://img.shields.io/badge/Swift-Featured-orange?style=flat-square" alt="Swift Featured Game"/>
       </td>
       <td align="center">
         <a href="https://github.com/todddube/2048-In-Python">
