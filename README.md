@@ -5,9 +5,9 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=header&animation=twinkling" />
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
-[![GitHub followers](https://img.shields.io/github/followers/todddube?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube)
-[![Profile Views](https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=brightgreen)](https://github.com/todddube)
-[![Years Badge](https://badges.pufler.dev/years/todddube?style=for-the-badge&color=blue&logo=github)](https://github.com/todddube)
+[![GitHub followers](https://img.shields.io/github/followers/todddube?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/todddube)
+[![Profile Views](https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=brightgreen)](https://github.com/todddube/todddube)
+[![Years Badge](https://badges.pufler.dev/years/todddube?style=for-the-badge&color=blue&logo=github)](https://github.com/todddube/todddube)
   
 </div>
 
@@ -203,7 +203,7 @@ I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **ret
 
 ### 🌐 **Find Me Online**
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Professional_Network-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow_My_Journey-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow_My_Journey-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/todddube)
 [![Profile](https://img.shields.io/badge/Portfolio-Visit_My_Profile-FF6B6B?style=for-the-badge&logo=web&logoColor=white)](#)
 
 ### 💬 **Let's Talk About:**
