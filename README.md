@@ -61,11 +61,29 @@ I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **ret
   </picture>
 </div>
 
-## 📊 GitHub Projects
+## 🏆 Featured Projects & Adventures
 
-Here are some of my featured projects:
+<div align="center">
 
-<div class="project-grid">
+### 🌟 **SPOTLIGHT PROJECT** 🌟
+[![SpaceRunner](https://img.shields.io/badge/🚀_SPACERUNNER-FEATURED_SWIFT_GAME-FF6B6B?style=for-the-badge&labelColor=000000)](https://github.com/todddube/spacerunner)
+
+</div>
+
+---
+
+<div align="center">
+
+| 🎮 **GAME DEVELOPMENT** | 💻 **RETRO COMPUTING** | ⚡ **AUTOMATION & AI** |
+|:---:|:---:|:---:|
+| [![SpaceRunner](https://img.shields.io/badge/🚀_SpaceRunner-Swift_Adventure-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/todddube/spacerunner) <br/> *Epic space adventure built with Swift & SpriteKit* | [![C64 Projects](https://img.shields.io/badge/💾_C64_Projects-6502_Assembly-FF6B6B?style=for-the-badge&logo=mega&logoColor=white)](https://github.com/todddube/C64-Projects) <br/> *Nostalgic retro computing adventures* | [![PowerShell](https://img.shields.io/badge/⚙️_PowerShell-Automation_Suite-5391FE?style=for-the-badge&logo=powershell&logoColor=white)](https://github.com/todddube/powershell) <br/> *Powerful automation toolkit* |
+| [![2048](https://img.shields.io/badge/🎯_2048_Game-Python_Classic-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/2048-In-Python) <br/> *Smart implementation of the addictive puzzle* | [![City Bomber](https://img.shields.io/badge/💥_City_Bomber-C64_Assembly-FFD93D?style=for-the-badge&logo=game-development&logoColor=black)](https://github.com/todddube/City-Bomber-C64-Asm) <br/> *Explosive retro arcade action* | [![Python AI](https://img.shields.io/badge/🤖_Python_AI-ML_Projects-00D4AA?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/python) <br/> *AI/ML experiments & innovations* |
+| [![Flappy Bird](https://img.shields.io/badge/🐦_Flappy_Bird-Python_Clone-4CAF50?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/Flappy-bird-python) <br/> *Classic mobile game recreation* | | |
+
+</div>
+
+### 🚀 **Project Highlights:**
+
   <table>
     <tr>
       <td align="center">
@@ -131,7 +149,34 @@ Here are some of my featured projects:
       <td colspan="2"></td>
     </tr>
   </table>
-</div>
+
+<details>
+<summary><b>🌟 SpaceRunner - My Flagship Game</b></summary>
+
+> **The Ultimate Swift Space Adventure!** 🚀
+> - Built with **SwiftUI & SpriteKit** for native macOS performance
+> - Features dynamic gameplay, stunning visuals, and immersive sound
+> - Showcases advanced game development techniques
+> - **Current Status:** Active development with regular updates
+</details>
+
+<details>
+<summary><b>💾 Retro Computing Journey</b></summary>
+
+> **From Assembly to AI - A Developer's Timeline** 🕹️
+> - **C64 Projects**: Pure 6502 Assembly programming nostalgia
+> - **City Bomber**: Action-packed retro arcade experience
+> - **Bridge to Modern**: Applying low-level insights to high-level projects
+</details>
+
+<details>
+<summary><b>🤖 Python & AI Innovation</b></summary>
+
+> **Where Classic Algorithms Meet Modern AI** 🧠
+> - **2048 Game**: Intelligent game mechanics with Python
+> - **AI/ML Projects**: Exploring GenAI and machine learning frontiers
+> - **Cross-Platform**: From desktop games to AI experiments
+</details>
 
 
 ## 📈 GitHub Stats
@@ -152,15 +197,24 @@ Here are some of my featured projects:
   <img src="https://github-profile-trophy.vercel.app/?username=todddube&theme=darkhub&no-frame=true&row=1&column=7" alt="Trophy" />
 </div>
 
-## 📫 Let's Connect!
+## 🤝 Let's Connect & Collaborate!
 
 <div align="center">
-  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/tdube/)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/todddube)
-  
+
+### 🌐 **Find Me Online**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Professional_Network-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow_My_Journey-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube)
+[![Profile](https://img.shields.io/badge/Portfolio-Visit_My_Profile-FF6B6B?style=for-the-badge&logo=web&logoColor=white)](#)
+
+### 💬 **Let's Talk About:**
+🚀 **Game Development** • 🤖 **AI/ML Projects** • 💾 **Retro Computing** • ⚙️ **Automation** • 🎯 **Tech Innovation**
+
+---
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" />
+
 </div>
 
 <p align="center">
-  <i>Credits: Stats provided by <a href="https://github.com/anuraghazra/github-readme-stats">github-readme-stats</a></i>
+  <sub>🙏 <i>Credits: GitHub stats powered by <a href="https://github.com/anuraghazra/github-readme-stats">github-readme-stats</a> • Animated elements by <a href="https://github.com/DenverCoder1/readme-typing-svg">readme-typing-svg</a></i></sub>
 </p>
