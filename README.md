@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=F75C7E&center=true&vCenter=true&width=600&lines=👋+Hey+All!+I'm+Todd+Dube;🚀+Tech+Explorer+%26+Developer;🎮+Game+Creator+%26+AI+Enthusiast;⚡+From+Assembly+to+AI" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=F75C7E&center=true&vCenter=true&width=600&lines=Hey+All!+I'm+Todd+Dube;Tech+Explorer+and+Developer;Game+Creator+and+AI+Enthusiast;From+Assembly+to+AI" alt="Typing SVG" />
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=header&animation=twinkling" />
 
