@@ -1,34 +1,55 @@
-# 👋 Hey All! I'm Todd Dube - Tech Explorer & Developer 🚀
-
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/tdube/)
-[![GitHub followers](https://img.shields.io/github/followers/todddube?style=for-the-badge&logo=github)](https://github.com/todddube)
+# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=F75C7E&center=true&vCenter=true&width=600&lines=👋+Hey+All!+I'm+Todd+Dube;🚀+Tech+Explorer+%26+Developer;🎮+Game+Creator+%26+AI+Enthusiast;⚡+From+Assembly+to+AI" alt="Typing SVG" />
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=header&animation=twinkling" />
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
+[![GitHub followers](https://img.shields.io/github/followers/todddube?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube)
 [![Profile Views](https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=brightgreen)](https://github.com/todddube)
+[![Years Badge](https://badges.pufler.dev/years/todddube?style=for-the-badge&color=blue&logo=github)](https://github.com/todddube)
   
 </div>
 
-## 🔭 About Me
+## 🚀 About Me
 
-I'm passionate about exploring new technologies and continuously expanding my development skills across multiple domains.
+<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
 
-- 💭 Diving into **Python AI/ML/GenAI** ecosystems
-- 🤓 Building **C# Projects**, graphics and games
-- 🐚 Mastering **PowerShell** automation
-- 💻 Developing **Swift** applications for MacOS
-- 🎮 Exploring **Retro Computing** with C64 Assembler (6502)
-- 🌱 Always learning and sharing knowledge
+I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **retro computing nostalgia** and **cutting-edge AI technologies**! From the classic 6502 assembly of the Commodore 64 to modern machine learning, I believe in understanding technology from the ground up.
 
-## 🛠️ Tech Stack
+### 🎯 Currently Focused On:
+- 🤖 **AI/ML/GenAI** - Building intelligent Python applications
+- 🎮 **Game Development** - Creating immersive experiences in Swift & C#
+- ⚙️ **PowerShell Mastery** - Automating everything under the sun
+- 🕹️ **Retro Computing** - Keeping the 8-bit spirit alive with C64 Assembly
+- 🔬 **Continuous Learning** - Because tech never stops evolving!
+
+### 💡 Fun Facts:
+- 🎯 I can code in 6502 Assembly AND Python AI frameworks
+- 🚀 My projects range from space adventures to retro bombers
+- 🔥 I turn coffee into code across multiple decades of computing!
+
+## 🛠️ Tech Stack & Arsenal
 
 <div align="center">
-  
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![Retro](https://img.shields.io/badge/Retro-6502-yellow?style=for-the-badge)
-![ML/AI](https://img.shields.io/badge/ML%2FAI-OpenAI-green?style=for-the-badge)
+
+### 🎯 Primary Languages
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=3776AB)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white&labelColor=239120)
+![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white&labelColor=FA7343)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white&labelColor=5391FE)
+![Assembly](https://img.shields.io/badge/Assembly-6502-FF6B6B?style=for-the-badge&logo=mega&logoColor=white)
+
+### 🤖 AI & Machine Learning
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+
+### 🎮 Game Development
+![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=white)
+![Pygame](https://img.shields.io/badge/Pygame-00599C?style=for-the-badge&logo=python&logoColor=white)
+![SpriteKit](https://img.shields.io/badge/SpriteKit-FA7343?style=for-the-badge&logo=swift&logoColor=white)
 
 </div>
 
