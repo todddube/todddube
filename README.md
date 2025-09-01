@@ -1,13 +1,15 @@
 <div align="center">
 
-# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=F75C7E&center=true&vCenter=true&width=600&lines=Hey+All!+I'm+Todd+Dube;Tech+Explorer+and+Developer;Game+Creator+and+AI+Enthusiast;From+Assembly+to+AI" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=36&pause=1000&color=00D4AA&center=true&vCenter=true&width=650&lines=Hey+All!+I'm+Todd+Dube;🚀+Tech+Explorer+%26+Developer;🎮+Game+Creator+%26+AI+Enthusiast;💡+From+Assembly+to+AI;⚡+Building+the+Future" alt="Typing SVG" />
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=header&animation=twinkling" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4AA,20:30A3DC,40:FF6B6B,60:FFD93D,80:9B59B6,100:00D4AA&height=120&section=header&animation=twinkling&fontColor=FFFFFF" />
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
-[![GitHub followers](https://img.shields.io/github/followers/todddube?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/todddube)
-[![Profile Views](https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=brightgreen)](https://github.com/todddube/todddube)
-[![GitHub Stats](https://img.shields.io/badge/GitHub-Stats-blue?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/todddube)
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=2000&color=30A3DC&center=true&vCenter=true&width=500&lines=Senior+Technology+Professional;Full-Stack+Developer;AI%2FML+Enthusiast;Retro+Computing+Fan" alt="Professional Title" />
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0077B5)](https://www.linkedin.com/in/tdube/)
+[![GitHub followers](https://img.shields.io/badge/GitHub-Follow_Me-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=181717)](https://github.com/todddube/todddube)
+[![Profile Views](https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=00D4AA&labelColor=000000)](https://github.com/todddube/todddube)
+[![GitHub Stats](https://img.shields.io/badge/GitHub-View_Stats-FF6B6B?style=for-the-badge&logo=github&logoColor=white&labelColor=FF6B6B)](https://github.com/todddube/todddube)
   
 </div>
 
