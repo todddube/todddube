@@ -13,21 +13,31 @@
 
 ## 🚀 About Me
 
-<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
+<img align="right" alt="Coding" width="350" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
 
-I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **retro computing nostalgia** and **cutting-edge AI technologies**! From the classic 6502 assembly of the Commodore 64 to modern machine learning, I believe in understanding technology from the ground up.
+I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extensive experience bridging traditional computing foundations with cutting-edge innovations. From classic 6502 assembly to modern AI/ML frameworks, I believe in understanding technology from the ground up.
 
-### 🎯 Currently Focused On:
-- 🤖 **AI/ML/GenAI** - Building intelligent Python applications
-- 🎮 **Game Development** - Creating immersive experiences in Swift & C#
-- ⚙️ **PowerShell Mastery** - Automating everything under the sun
-- 🕹️ **Retro Computing** - Keeping the 8-bit spirit alive with C64 Assembly
-- 🔬 **Continuous Learning** - Because tech never stops evolving!
+### 🎯 Professional Focus:
+- 💻 **Full-Stack Development** - Python, C#, Swift, and PowerShell expertise
+- 🤖 **AI/ML Integration** - Building intelligent applications and automation
+- �️ **System Architecture** - Designing scalable and maintainable solutions  
+- 🔧 **DevOps & Automation** - Streamlining development workflows
+- 🎮 **Creative Projects** - Game development and interactive experiences
+
+### 💼 Current Projects & Interests:
+- 🌐 **IoT Development** - Smart home automation with Philips Hue integration
+- 🌤️ **Weather Applications** - Real-time data visualization and C++ development
+- 🤖 **AI Agents** - Building conversational and autonomous systems
+- � **Retro Computing** - Preserving computing history with C64 Assembly
+- � **Data Visualization** - Creating meaningful insights from complex data
 
 ### 💡 Fun Facts:
 - 🎯 I can code in 6502 Assembly AND Python AI frameworks
-- 🚀 My projects range from space adventures to retro bombers
+- 🚀 My projects range from IoT solutions to retro games
 - 🔥 I turn coffee into code across multiple decades of computing!
+
+### 🤝 Professional Network:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
 
 ## 🛠️ Tech Stack & Arsenal
 
@@ -61,12 +71,11 @@ I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **ret
   </picture>
 </div>
 
-## 🏆 Featured Projects & Adventures
+## 🏆 Recent Projects & Innovations
 
 <div align="center">
 
-### 🌟 **SPOTLIGHT PROJECT** 🌟
-[![SpaceRunner](https://img.shields.io/badge/🚀_SPACERUNNER-FEATURED_SWIFT_GAME-FF6B6B?style=for-the-badge&labelColor=000000)](https://github.com/todddube/spacerunner)
+### 🌟 **TOP 5 CURRENT PROJECTS** 🌟
 
 </div>
 
@@ -74,11 +83,10 @@ I'm a **passionate tech explorer** 🌟 who loves bridging the gap between **ret
 
 <div align="center">
 
-| 🎮 **GAME DEVELOPMENT** | 💻 **RETRO COMPUTING** | ⚡ **AUTOMATION & AI** |
+| � **IoT & AUTOMATION** | 🌤️ **SYSTEM APPS** | 🤖 **AI & ML** |
 |:---:|:---:|:---:|
-| [![SpaceRunner](https://img.shields.io/badge/🚀_SpaceRunner-Swift_Adventure-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/todddube/spacerunner) <br/> *Epic space adventure built with Swift & SpriteKit* | [![C64 Projects](https://img.shields.io/badge/💾_C64_Projects-6502_Assembly-FF6B6B?style=for-the-badge&logo=mega&logoColor=white)](https://github.com/todddube/C64-Projects) <br/> *Nostalgic retro computing adventures* | [![PowerShell](https://img.shields.io/badge/⚙️_PowerShell-Automation_Suite-5391FE?style=for-the-badge&logo=powershell&logoColor=white)](https://github.com/todddube/powershell) <br/> *Powerful automation toolkit* |
-| [![2048](https://img.shields.io/badge/🎯_2048_Game-Python_Classic-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/2048-In-Python) <br/> *Smart implementation of the addictive puzzle* | [![City Bomber](https://img.shields.io/badge/💥_City_Bomber-C64_Assembly-FFD93D?style=for-the-badge&logo=game-development&logoColor=black)](https://github.com/todddube/City-Bomber-C64-Asm) <br/> *Explosive retro arcade action* | [![Python AI](https://img.shields.io/badge/🤖_Python_AI-ML_Projects-00D4AA?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/python) <br/> *AI/ML experiments & innovations* |
-| [![Flappy Bird](https://img.shields.io/badge/🐦_Flappy_Bird-Python_Clone-4CAF50?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/Flappy-bird-python) <br/> *Classic mobile game recreation* | | |
+| [![Hue Lights](https://img.shields.io/badge/�_HueLights-IoT_SDK-FF6B6B?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/huelights) <br/> *Smart home automation with Philips Hue SDK* | [![Weather App](https://img.shields.io/badge/🌤️_Wthrr-C++_Weather_App-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://github.com/todddube/wthrr) <br/> *Real-time weather visualization in C++* | [![Claude Projects](https://img.shields.io/badge/🧠_Claude-AI_Experiments-412991?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/claude) <br/> *Claude AI projects and fun experiments* |
+| [![Python Utils](https://img.shields.io/badge/🐍_Python-Dev_Toolkit-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/python) <br/> *Comprehensive Python development tools* | [![Rain Project](https://img.shields.io/badge/🌧️_RainProject-Desktop_ASMR-00D4AA?style=for-the-badge&logo=cplusplus&logoColor=white)](https://github.com/todddube/RainProject) <br/> *Relaxing rain sounds for Windows desktop* | [![Agentic Demo](https://img.shields.io/badge/🤖_Agentic-AI_Agent_Demo-FF9800?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/agentic_demo) <br/> *AI agent development demonstrations* |
 
 </div>
 
