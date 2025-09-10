@@ -39,6 +39,12 @@ I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extens
 ### 🤝 Professional Network:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Todd_Dube-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tdube/)
 
+
+### 📊 Quick Stats:
+- 📂 **17** Public Repositories
+- 👥 **4** GitHub Followers  
+- 🔗 **13** Following
+
 ## 🛠️ Tech Stack & Arsenal
 
 <div align="center">
@@ -187,6 +193,13 @@ I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extens
 </details>
 
 
+
+### 🔥 Recent Activity:
+- 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
+- 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
+- ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
+
+
 ## 📈 GitHub Stats
 
 <div align="center">
@@ -225,4 +238,8 @@ I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extens
 
 <p align="center">
   <sub>🙏 <i>Credits: GitHub stats powered by <a href="https://github.com/anuraghazra/github-readme-stats">github-readme-stats</a> • Animated elements by <a href="https://github.com/DenverCoder1/readme-typing-svg">readme-typing-svg</a></i></sub>
+</p>
+
+<p align="center">
+  <sub>🕐 *Last updated: September 10, 2025 at 06:24 PM EST*</sub>
 </p>
