@@ -123,14 +123,18 @@ jobs:
               if re.search(stats_section_pattern, content):
                   content = re.sub(stats_section_pattern, f'\n\n{activity_replacement}\n\\1', content)
           
-          # Add/update last updated timestamp
-          footer_pattern = r'(<p align="center">.*?</p>)\s*$'
+          # Add/update timestamp after "About Me" section
+          about_me_pattern = r'(## 🚀 About Me\n)'
           updated_timestamp = update_date_section()
+          timestamp_line = f'<sub>🕐 {updated_timestamp}</sub>\n\n'
           
-          if re.search(footer_pattern, content, re.DOTALL):
-              content = re.sub(footer_pattern, f'\\1\n\n<p align="center">\n  <sub>🕐 {updated_timestamp}</sub>\n</p>', content, flags=re.DOTALL)
-          else:
-              content += f'\n\n<p align="center">\n  <sub>🕐 {updated_timestamp}</sub>\n</p>'
+          # Remove any existing timestamp first
+          existing_timestamp_pattern = r'<sub>🕐 \*Last updated:.*?\*</sub>\n\n'
+          content = re.sub(existing_timestamp_pattern, '', content)
+          
+          # Add new timestamp after "About Me" 
+          if re.search(about_me_pattern, content):
+              content = re.sub(about_me_pattern, f'\\1{timestamp_line}', content)
           
           # Write updated content
           with open('README.md', 'w', encoding='utf-8') as f:
