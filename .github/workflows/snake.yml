@@ -2,8 +2,8 @@ name: Generate Snake Animation
 
 on:
   schedule:
-    # Runs at 12am UTC
-    - cron: "0 0 * * *"
+    # Runs every Sunday at 12:00 UTC (adjust timezone as needed)
+    - cron: "0 12 * * 0"
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
