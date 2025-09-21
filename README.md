@@ -12,7 +12,7 @@
 </div>
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: September 14, 2025 at 08:09 AM EST*</sub>
+<sub>🕐 *Last updated: September 21, 2025 at 08:10 AM EST*</sub>
 
 
 <img align="right" alt="Coding" width="350" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif">
@@ -43,8 +43,8 @@ I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extens
 
 
 ### 📊 Quick Stats:
-- 📂 **17** Public Repositories
-- 👥 **4** GitHub Followers  
+- 📂 **18** Public Repositories
+- 👥 **6** GitHub Followers  
 - 🔗 **13** Following
 ## 🛠️ Tech Stack & Arsenal
 
@@ -196,9 +196,9 @@ I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extens
 
 
 ### 🔥 Recent Activity:
+- 🐍 **[agentic_demo](https://github.com/todddube/agentic_demo)** - None
 - 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
 - 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
-- ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
 
 ## 📈 GitHub Stats
 
