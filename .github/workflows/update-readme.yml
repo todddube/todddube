@@ -21,7 +21,6 @@ on:
 # Enhanced permissions for better API access
 permissions:
   contents: write
-  metadata: read
   pull-requests: read
 
 env:
