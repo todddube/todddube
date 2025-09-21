@@ -4,7 +4,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=200&section=header&text=Todd%20Dube&fontSize=50&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35" />
 
 <!-- Enhanced Typing Animation with Modern Styling -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=600&height=80&lines=🚀+Senior+Technology+Professional;💻+Full-Stack+Developer+%26+AI+Enthusiast;🎮+Game+Developer+%26+Retro+Computing+Fan;⚡+Building+the+Future+with+Code" alt="Professional Title Animation" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=600&height=80&lines=%F0%9F%9A%80+Senior+Technology+Professional;%F0%9F%92%BB+Full-Stack+Developer+%26+AI+Enthusiast;%F0%9F%8E%AE+Game+Developer+%26+Retro+Computing+Fan;%E2%9A%A1+Building+the+Future+with+Code" alt="Professional Title Animation" />
 
 <!-- Modern Social Links with Hover Effects -->
 <p align="center">
