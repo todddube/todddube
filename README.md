@@ -28,7 +28,7 @@
 </div>
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: September 21, 2025 at 08:10 AM EST*</sub>
+<sub>🕐 *Last updated: September 22, 2025 at 08:32 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
@@ -124,10 +124,6 @@ timeline
 - 📂 **18** Public Repositories
 - 👥 **6** GitHub Followers
 - 🔗 **13** Following
-
-<!-- Fun Facts Section with Modern Design -->
-<div align="center">
-
 ### 💡 Fun Facts About Me
 
 <table>
@@ -351,9 +347,9 @@ timeline
 
 
 ### 🔥 Recent Activity:
-- 🐍 **[agentic_demo](https://github.com/todddube/agentic_demo)** - None
 - 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
 - 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
+- ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
 
 ## 📊 GitHub Analytics & Achievements
 
