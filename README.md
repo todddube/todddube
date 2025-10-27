@@ -28,7 +28,7 @@
 </div>
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: October 23, 2025 at 04:02 AM EST*</sub>
+<sub>🕐 *Last updated: October 27, 2025 at 04:02 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
@@ -348,8 +348,8 @@ timeline
 
 ### 🔥 Recent Activity:
 - 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
-- 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
 - ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
+- 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
 
 ## 📊 GitHub Analytics & Achievements
 
