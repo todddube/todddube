@@ -104,26 +104,21 @@ jobs:
               section = '## ⭐ Key Projects\n\n---\n\n'
 
               if top_project:
-                  section += f'''### {top_project['emoji']} **{top_project['title']}** ⭐ Featured Project
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="{top_project['name']}"/>
-</p>
-
-**{top_project['description']}**
-
-<p align="center">
-  <a href="{top_project['url']}">
-    <img src="https://img.shields.io/badge/{top_project['emoji']}_View_{top_project['name']}-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View {top_project['name']}"/>
-  </a>
-  <a href="{top_project['url']}">
-    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-  </a>
-</p>
-
----
-
-'''
+                  # Build featured project section with safe string formatting
+                  section += '### ' + top_project['emoji'] + ' **' + top_project['title'] + '** ⭐ Featured Project\n\n'
+                  section += '<p align="center">\n'
+                  section += '  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="' + top_project['name'] + '"/>\n'
+                  section += '</p>\n\n'
+                  section += '**' + top_project['description'] + '**\n\n'
+                  section += '<p align="center">\n'
+                  section += '  <a href="' + top_project['url'] + '">\n'
+                  section += '    <img src="https://img.shields.io/badge/' + top_project['emoji'] + '_View_' + top_project['name'] + '-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View ' + top_project['name'] + '"/>\n'
+                  section += '  </a>\n'
+                  section += '  <a href="' + top_project['url'] + '">\n'
+                  section += '    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>\n'
+                  section += '  </a>\n'
+                  section += '</p>\n\n'
+                  section += '---\n\n'
 
               # Add other key projects in a vertical list
               if len(projects) > 1:
@@ -132,21 +127,15 @@ jobs:
                   other_projects = projects[1:5]  # Show up to 4 more projects
                   for proj in other_projects:
                       category_name = proj['category'].replace('_', ' ').title()
-                      section += f'''#### {proj['emoji']} **{category_name}**
-[![{proj['name']}](https://img.shields.io/badge/{proj['emoji']}_{proj['name']}-Project-FF9800?style=for-the-badge&logoColor=white)]({proj['url']})
-*{proj['description']}*
+                      section += '#### ' + proj['emoji'] + ' **' + category_name + '**\n'
+                      section += '[![' + proj['name'] + '](https://img.shields.io/badge/' + proj['emoji'] + '_' + proj['name'] + '-Project-FF9800?style=for-the-badge&logoColor=white)](' + proj['url'] + ')\n'
+                      section += '*' + proj['description'] + '*\n\n'
 
-'''
-
-              section += '''---
-
-<p align="center">
-  <sub>💡 <em>Projects are maintained and regularly updated • More projects available in the <a href="#featured-projects--digital-creations">Complete Portfolio</a> section below</em></sub>
-</p>
-
----
-
-'''
+              section += '---\n\n'
+              section += '<p align="center">\n'
+              section += '  <sub>💡 <em>Projects are maintained and regularly updated • More projects available in the <a href="#featured-projects--digital-creations">Complete Portfolio</a> section below</em></sub>\n'
+              section += '</p>\n\n'
+              section += '---\n\n'
 
               return section
 
