@@ -32,73 +32,50 @@
 
 ## ⭐ Key Projects
 
-<div align="center">
+---
 
-<!-- Featured Project Spotlight: VStat -->
-<table>
-<tr>
-<td align="center" width="100%">
+### 📊 **VStat - Visual Statistics Dashboard** ⭐ Featured Project
 
-### 📊 **VStat - Visual Statistics Dashboard** (Featured Project)
-
-<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="80" alt="VStat"/>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="VStat"/>
+</p>
 
 **Real-time visual statistics and monitoring dashboard for comprehensive system insights**
 
-[![View VStat](https://img.shields.io/badge/📊_View_VStat-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white)](https://github.com/todddube/vstat)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/vstat)
+<p align="center">
+  <a href="https://github.com/todddube/vstat">
+    <img src="https://img.shields.io/badge/📊_View_VStat-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View VStat"/>
+  </a>
+  <a href="https://github.com/todddube/vstat">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+</p>
 
-</td>
-</tr>
-</table>
+---
 
-<!-- Additional Key Projects Grid -->
-<table>
-<tr>
-<td width="50%" align="center">
+### 🎯 Additional Key Projects
 
-### 🤖 AI & Machine Learning
-
+#### 🤖 **AI & Machine Learning**
 [![Agentic Demo](https://img.shields.io/badge/🤖_Agentic_Demo-AI_Agents-FF9800?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/agentic_demo)
-
 *Building intelligent conversational AI systems*
 
-</td>
-<td width="50%" align="center">
-
-### 🌐 IoT & Smart Systems
-
+#### 🌐 **IoT & Smart Systems**
 [![HueLights](https://img.shields.io/badge/💡_HueLights-Smart_Home-FF6B6B?style=for-the-badge&logo=philipshue&logoColor=white)](https://github.com/todddube/huelights)
-
 *Philips Hue smart lighting automation*
 
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-
-### 🚀 Game Development
-
+#### 🚀 **Game Development**
 [![SpaceRunner](https://img.shields.io/badge/🚀_SpaceRunner-Swift_Game-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/todddube/spacerunner)
-
 *macOS space adventure with SpriteKit*
 
-</td>
-<td width="50%" align="center">
-
-### 💾 Retro Computing
-
+#### 💾 **Retro Computing**
 [![C64 Projects](https://img.shields.io/badge/💾_C64_Projects-Assembly-9B59B6?style=for-the-badge&logo=commodore&logoColor=white)](https://github.com/todddube/C64-Projects)
-
 *6502 Assembly on Commodore 64*
 
-</td>
-</tr>
-</table>
+---
 
-<sub>💡 *Projects are maintained and regularly updated • More projects available in the [Complete Portfolio](#featured-projects--digital-creations) section below*</sub>
-
-</div>
+<p align="center">
+  <sub>💡 <em>Projects are maintained and regularly updated • More projects available in the <a href="#featured-projects--digital-creations">Complete Portfolio</a> section below</em></sub>
+</p>
 
 ---
 

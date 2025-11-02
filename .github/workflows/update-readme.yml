@@ -101,56 +101,52 @@ jobs:
               # Build the section with the top project featured prominently
               top_project = projects[0] if projects else None
 
-              section = '## ⭐ Key Projects\n\n<div align="center">\n\n'
+              section = '## ⭐ Key Projects\n\n---\n\n'
 
               if top_project:
-                  section += f'''<!-- Featured Project Spotlight: {top_project['name']} -->
-<table>
-<tr>
-<td align="center" width="100%">
+                  section += f'''### {top_project['emoji']} **{top_project['title']}** ⭐ Featured Project
 
-### {top_project['emoji']} **{top_project['title']}** (Featured Project)
-
-<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="80" alt="{top_project['name']}"/>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="{top_project['name']}"/>
+</p>
 
 **{top_project['description']}**
 
-[![View {top_project['name']}](https://img.shields.io/badge/{top_project['emoji']}_View_{top_project['name']}-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white)]({top_project['url']})
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)]({top_project['url']})
+<p align="center">
+  <a href="{top_project['url']}">
+    <img src="https://img.shields.io/badge/{top_project['emoji']}_View_{top_project['name']}-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View {top_project['name']}"/>
+  </a>
+  <a href="{top_project['url']}">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+</p>
 
-</td>
-</tr>
-</table>
+---
 
 '''
 
-              # Add other key projects in a grid
+              # Add other key projects in a vertical list
               if len(projects) > 1:
-                  section += '<!-- Additional Key Projects Grid -->\n<table>\n'
+                  section += '### 🎯 Additional Key Projects\n\n'
 
                   other_projects = projects[1:5]  # Show up to 4 more projects
-                  for i in range(0, len(other_projects), 2):
-                      section += '<tr>\n'
-
-                      for j in range(2):
-                          if i + j < len(other_projects):
-                              proj = other_projects[i + j]
-                              section += f'''<td width="50%" align="center">
-
-### {proj['emoji']} {proj['category'].replace('_', ' ').title()}
-
+                  for proj in other_projects:
+                      category_name = proj['category'].replace('_', ' ').title()
+                      section += f'''#### {proj['emoji']} **{category_name}**
 [![{proj['name']}](https://img.shields.io/badge/{proj['emoji']}_{proj['name']}-Project-FF9800?style=for-the-badge&logoColor=white)]({proj['url']})
+*{proj['description']}*
 
-*{proj['description'][:50]}...*
-
-</td>
 '''
 
-                      section += '</tr>\n'
+              section += '''---
 
-                  section += '</table>\n\n'
+<p align="center">
+  <sub>💡 <em>Projects are maintained and regularly updated • More projects available in the <a href="#featured-projects--digital-creations">Complete Portfolio</a> section below</em></sub>
+</p>
 
-              section += '<sub>💡 *Projects are maintained and regularly updated • More projects available in the [Complete Portfolio](#featured-projects--digital-creations) section below*</sub>\n\n</div>\n\n---\n\n'
+---
+
+'''
 
               return section
 
