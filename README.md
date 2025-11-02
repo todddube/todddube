@@ -1,13 +1,16 @@
 <div align="center">
 
-<!-- Dynamic Header with Modern Animation -->
+<!-- Professional Header with Brand Identity -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=200&section=header&text=Todd%20Dube&fontSize=50&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35" />
 
-<!-- Enhanced Typing Animation with Modern Styling -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=600&height=80&lines=%F0%9F%9A%80+Senior+Technology+Professional;%F0%9F%92%BB+Full-Stack+Developer+%26+AI+Enthusiast;%F0%9F%8E%AE+Game+Developer+%26+Retro+Computing+Fan;%E2%9A%A1+Building+the+Future+with+Code" alt="Professional Title Animation" />
+<!-- Enhanced Typing Animation with Professional Branding -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=700&height=100&lines=%F0%9F%8C%90+www.thedubes.com;%F0%9F%9A%80+Senior+Technology+Professional;%F0%9F%92%BB+Full-Stack+Developer+%26+AI+Enthusiast;%F0%9F%8E%AE+From+6502+Assembly+to+Modern+AI;%E2%9A%A1+Building+the+Future+with+Code" alt="Professional Title Animation" />
 
-<!-- Modern Social Links with Hover Effects -->
+<!-- Professional Links and Contact -->
 <p align="center">
+  <a href="https://www.thedubes.com">
+    <img src="https://img.shields.io/badge/🌐_Website-www.thedubes.com-00D4AA?style=for-the-badge&logoColor=white" alt="Website"/>
+  </a>
   <a href="https://www.linkedin.com/in/tdube/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0077B5" alt="LinkedIn"/>
   </a>
@@ -17,15 +20,87 @@
   <img src="https://komarev.com/ghpvc/?username=todddube&style=for-the-badge&color=00D4AA&labelColor=000000" alt="Profile Views"/>
 </p>
 
-<!-- Modern Interactive Elements -->
+<!-- Expertise Highlights -->
 <p align="center">
-  <img src="https://img.shields.io/badge/💬-Ask%20me%20about-1f425f.svg?style=for-the-badge" alt="Ask me about"/>
   <img src="https://img.shields.io/badge/🎯-Game%20Development-FF6B6B?style=for-the-badge" alt="Game Development"/>
   <img src="https://img.shields.io/badge/🤖-AI%2FML-30A3DC?style=for-the-badge" alt="AI/ML"/>
   <img src="https://img.shields.io/badge/💾-Retro%20Computing-9B59B6?style=for-the-badge" alt="Retro Computing"/>
+  <img src="https://img.shields.io/badge/🌐-IoT%20Solutions-00D4AA?style=for-the-badge" alt="IoT"/>
 </p>
 
 </div>
+
+## ⭐ Key Projects
+
+<div align="center">
+
+<!-- Featured Project Spotlight: VStat -->
+<table>
+<tr>
+<td align="center" width="100%">
+
+### 📊 **VStat - Visual Statistics Dashboard** (Featured Project)
+
+<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="80" alt="VStat"/>
+
+**Real-time visual statistics and monitoring dashboard for comprehensive system insights**
+
+[![View VStat](https://img.shields.io/badge/📊_View_VStat-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white)](https://github.com/todddube/vstat)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/todddube/vstat)
+
+</td>
+</tr>
+</table>
+
+<!-- Additional Key Projects Grid -->
+<table>
+<tr>
+<td width="50%" align="center">
+
+### 🤖 AI & Machine Learning
+
+[![Agentic Demo](https://img.shields.io/badge/🤖_Agentic_Demo-AI_Agents-FF9800?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/agentic_demo)
+
+*Building intelligent conversational AI systems*
+
+</td>
+<td width="50%" align="center">
+
+### 🌐 IoT & Smart Systems
+
+[![HueLights](https://img.shields.io/badge/💡_HueLights-Smart_Home-FF6B6B?style=for-the-badge&logo=philipshue&logoColor=white)](https://github.com/todddube/huelights)
+
+*Philips Hue smart lighting automation*
+
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+
+### 🚀 Game Development
+
+[![SpaceRunner](https://img.shields.io/badge/🚀_SpaceRunner-Swift_Game-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/todddube/spacerunner)
+
+*macOS space adventure with SpriteKit*
+
+</td>
+<td width="50%" align="center">
+
+### 💾 Retro Computing
+
+[![C64 Projects](https://img.shields.io/badge/💾_C64_Projects-Assembly-9B59B6?style=for-the-badge&logo=commodore&logoColor=white)](https://github.com/todddube/C64-Projects)
+
+*6502 Assembly on Commodore 64*
+
+</td>
+</tr>
+</table>
+
+<sub>💡 *Projects are maintained and regularly updated • More projects available in the [Complete Portfolio](#featured-projects--digital-creations) section below*</sub>
+
+</div>
+
+---
 
 ## 🚀 About Me
 <sub>🕐 *Last updated: October 30, 2025 at 04:02 AM EST*</sub>
@@ -443,6 +518,13 @@ timeline
 <blockquote>
 💡 <em>"From 6502 Assembly to AI - I bridge the gap between computing's past and future. Let's build something incredible together!"</em>
 </blockquote>
+
+<!-- Website Banner -->
+<p align="center">
+  <a href="https://www.thedubes.com">
+    <img src="https://img.shields.io/badge/🌐_Visit-www.thedubes.com-00D4AA?style=for-the-badge&logoColor=white" alt="Website"/>
+  </a>
+</p>
 
 ---
 

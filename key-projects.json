@@ -1,0 +1,167 @@
+{
+  "featured_projects": [
+    {
+      "name": "vstat",
+      "title": "VStat - Visual Statistics Dashboard",
+      "description": "Real-time visual statistics and monitoring dashboard",
+      "url": "https://github.com/todddube/vstat",
+      "category": "featured",
+      "priority": 1,
+      "emoji": "📊",
+      "tags": ["dashboard", "statistics", "visualization", "monitoring"],
+      "status": "active",
+      "highlight": true
+    },
+    {
+      "name": "agentic_demo",
+      "title": "Agentic Demo - AI Agent Development",
+      "description": "Building intelligent conversational systems and autonomous AI agents",
+      "url": "https://github.com/todddube/agentic_demo",
+      "category": "ai",
+      "priority": 2,
+      "emoji": "🤖",
+      "tags": ["ai", "agents", "python", "ml"],
+      "status": "active",
+      "highlight": true
+    },
+    {
+      "name": "huelights",
+      "title": "HueLights - Smart Home Integration",
+      "description": "Philips Hue SDK integration for smart lighting automation",
+      "url": "https://github.com/todddube/huelights",
+      "category": "iot",
+      "priority": 3,
+      "emoji": "💡",
+      "tags": ["iot", "smart-home", "philips-hue", "automation"],
+      "status": "active",
+      "highlight": true
+    },
+    {
+      "name": "spacerunner",
+      "title": "SpaceRunner - Swift Space Adventure",
+      "description": "Featured macOS space adventure game built with Swift and SpriteKit",
+      "url": "https://github.com/todddube/spacerunner",
+      "category": "gaming",
+      "priority": 4,
+      "emoji": "🚀",
+      "tags": ["swift", "game", "spritekit", "macos"],
+      "status": "active",
+      "highlight": true
+    },
+    {
+      "name": "wthrr",
+      "title": "Wthrr - Weather Application",
+      "description": "Real-time weather data visualization in C++",
+      "url": "https://github.com/todddube/wthrr",
+      "category": "utilities",
+      "priority": 5,
+      "emoji": "🌤️",
+      "tags": ["cpp", "weather", "desktop"],
+      "status": "active",
+      "highlight": false
+    },
+    {
+      "name": "C64-Projects",
+      "title": "C64 Assembly Projects",
+      "description": "Retro computing with 6502 Assembly on Commodore 64",
+      "url": "https://github.com/todddube/C64-Projects",
+      "category": "retro",
+      "priority": 6,
+      "emoji": "💾",
+      "tags": ["assembly", "retro", "c64", "6502"],
+      "status": "active",
+      "highlight": true
+    },
+    {
+      "name": "claude",
+      "title": "Claude AI Experiments",
+      "description": "Advanced AI experiments and integrations with Claude AI",
+      "url": "https://github.com/todddube/claude",
+      "category": "ai",
+      "priority": 7,
+      "emoji": "🧠",
+      "tags": ["ai", "claude", "experiments"],
+      "status": "active",
+      "highlight": false
+    },
+    {
+      "name": "2048-In-Python",
+      "title": "2048 Game in Python",
+      "description": "Python implementation of the popular 2048 puzzle game with AI solver",
+      "url": "https://github.com/todddube/2048-In-Python",
+      "category": "gaming",
+      "priority": 8,
+      "emoji": "🎮",
+      "tags": ["python", "game", "ai"],
+      "status": "active",
+      "highlight": false
+    },
+    {
+      "name": "Flappy-bird-python",
+      "title": "Flappy Bird Clone",
+      "description": "Classic game recreation in Python with Pygame",
+      "url": "https://github.com/todddube/Flappy-bird-python",
+      "category": "gaming",
+      "priority": 9,
+      "emoji": "🐦",
+      "tags": ["python", "game", "pygame"],
+      "status": "active",
+      "highlight": false
+    },
+    {
+      "name": "powershell",
+      "title": "PowerShell Toolkit",
+      "description": "System automation scripts and DevOps utilities",
+      "url": "https://github.com/todddube/powershell",
+      "category": "automation",
+      "priority": 10,
+      "emoji": "⚡",
+      "tags": ["powershell", "automation", "devops"],
+      "status": "active",
+      "highlight": false
+    }
+  ],
+  "categories": {
+    "featured": {
+      "name": "Featured",
+      "icon": "⭐",
+      "description": "Highlighted projects showcasing key work"
+    },
+    "ai": {
+      "name": "AI & Machine Learning",
+      "icon": "🤖",
+      "description": "Artificial intelligence and machine learning projects"
+    },
+    "iot": {
+      "name": "IoT & Smart Systems",
+      "icon": "🌐",
+      "description": "Internet of Things and smart home solutions"
+    },
+    "gaming": {
+      "name": "Game Development",
+      "icon": "🎮",
+      "description": "Gaming projects from retro to modern"
+    },
+    "retro": {
+      "name": "Retro Computing",
+      "icon": "💾",
+      "description": "Classic computing and assembly programming"
+    },
+    "utilities": {
+      "name": "Utilities & Tools",
+      "icon": "🔧",
+      "description": "Useful applications and tools"
+    },
+    "automation": {
+      "name": "Automation",
+      "icon": "⚡",
+      "description": "Scripts and automation solutions"
+    }
+  },
+  "metadata": {
+    "last_updated": "2025-11-02",
+    "version": "1.0.0",
+    "maintained_by": "Todd Dube",
+    "website": "www.thedubes.com"
+  }
+}

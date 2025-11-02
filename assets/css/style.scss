@@ -1,0 +1,277 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Custom Styles for Todd Dube's GitHub Pages - www.thedubes.com */
+
+/* Modern Color Palette */
+:root {
+  --primary-color: #00D4AA;
+  --secondary-color: #30A3DC;
+  --accent-color: #FF6B6B;
+  --dark-bg: #0D1117;
+  --light-bg: #ffffff;
+  --text-dark: #24292e;
+  --text-light: #ffffff;
+  --gradient-start: #00D4AA;
+  --gradient-end: #30A3DC;
+}
+
+/* Global Styles */
+body {
+  font-family: 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--light-bg) 0%, #f6f8fa 100%);
+}
+
+/* Header Styling */
+header {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-light);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+/* Navigation */
+nav {
+  background: var(--dark-bg);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Key Projects Section */
+.key-projects {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.featured-project {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 212, 170, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.featured-project:hover {
+  transform: translateY(-5px);
+}
+
+/* Project Cards */
+.project-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--primary-color);
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+}
+
+/* Badges and Links */
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  margin: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Stats Section */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+/* Skills and Tech Stack */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.tech-item {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  background: var(--dark-bg);
+  color: var(--text-light);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+  }
+
+  .project-card,
+  .stat-card,
+  .tech-item,
+  .key-projects {
+    background: #161b22;
+    color: var(--text-light);
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Website Banner */
+.website-banner {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+.website-banner a {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.website-banner a:hover {
+  transform: scale(1.05);
+}

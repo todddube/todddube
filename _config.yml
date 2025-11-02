@@ -1,0 +1,69 @@
+# GitHub Pages Configuration for Todd Dube
+# Website: www.thedubes.com
+
+# Theme and appearance
+theme: jekyll-theme-minimal
+title: Todd Dube - Senior Technology Professional
+description: Full-Stack Developer | AI Enthusiast | Game Developer | From 6502 Assembly to Modern AI
+url: "https://www.thedubes.com"
+baseurl: ""
+
+# Author information
+author:
+  name: Todd Dube
+  email: todd@thedubes.com
+  linkedin: https://www.linkedin.com/in/tdube/
+  github: https://github.com/todddube
+
+# Social links
+social:
+  name: Todd Dube
+  links:
+    - https://www.linkedin.com/in/tdube/
+    - https://github.com/todddube
+
+# SEO and metadata
+logo: /images/ToddDube_Logo.svg
+twitter:
+  card: summary_large_image
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Projects
+    url: /#featured-projects
+  - title: About
+    url: /#about-me
+  - title: Contact
+    url: /#connect
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude files from processing
+exclude:
+  - .github
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
