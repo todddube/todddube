@@ -37,14 +37,14 @@
 ### 📊 **VStat - Visual Statistics Dashboard** ⭐ Featured Project
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="VStat"/>
+  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="vstat"/>
 </p>
 
-**Real-time visual statistics and monitoring dashboard for comprehensive system insights**
+**Real-time visual statistics and monitoring dashboard**
 
 <p align="center">
   <a href="https://github.com/todddube/vstat">
-    <img src="https://img.shields.io/badge/📊_View_VStat-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View VStat"/>
+    <img src="https://img.shields.io/badge/📊_View_vstat-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View vstat"/>
   </a>
   <a href="https://github.com/todddube/vstat">
     <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
@@ -55,21 +55,21 @@
 
 ### 🎯 Additional Key Projects
 
-#### 🤖 **AI & Machine Learning**
-[![Agentic Demo](https://img.shields.io/badge/🤖_Agentic_Demo-AI_Agents-FF9800?style=for-the-badge&logo=python&logoColor=white)](https://github.com/todddube/agentic_demo)
-*Building intelligent conversational AI systems*
+#### 🤖 **Ai**
+[![agentic_demo](https://img.shields.io/badge/🤖_agentic_demo-Project-FF9800?style=for-the-badge&logoColor=white)](https://github.com/todddube/agentic_demo)
+*Building intelligent conversational systems and autonomous AI agents*
 
-#### 🌐 **IoT & Smart Systems**
-[![HueLights](https://img.shields.io/badge/💡_HueLights-Smart_Home-FF6B6B?style=for-the-badge&logo=philipshue&logoColor=white)](https://github.com/todddube/huelights)
-*Philips Hue smart lighting automation*
+#### 💡 **Iot**
+[![huelights](https://img.shields.io/badge/💡_huelights-Project-FF9800?style=for-the-badge&logoColor=white)](https://github.com/todddube/huelights)
+*Philips Hue SDK integration for smart lighting automation*
 
-#### 🚀 **Game Development**
-[![SpaceRunner](https://img.shields.io/badge/🚀_SpaceRunner-Swift_Game-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/todddube/spacerunner)
-*macOS space adventure with SpriteKit*
+#### 🚀 **Gaming**
+[![spacerunner](https://img.shields.io/badge/🚀_spacerunner-Project-FF9800?style=for-the-badge&logoColor=white)](https://github.com/todddube/spacerunner)
+*Featured macOS space adventure game built with Swift and SpriteKit*
 
-#### 💾 **Retro Computing**
-[![C64 Projects](https://img.shields.io/badge/💾_C64_Projects-Assembly-9B59B6?style=for-the-badge&logo=commodore&logoColor=white)](https://github.com/todddube/C64-Projects)
-*6502 Assembly on Commodore 64*
+#### 💾 **Retro**
+[![C64-Projects](https://img.shields.io/badge/💾_C64-Projects-Project-FF9800?style=for-the-badge&logoColor=white)](https://github.com/todddube/C64-Projects)
+*Retro computing with 6502 Assembly on Commodore 64*
 
 ---
 
@@ -80,7 +80,7 @@
 ---
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: October 30, 2025 at 04:02 AM EST*</sub>
+<sub>🕐 *Last updated: November 03, 2025 at 03:04 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
