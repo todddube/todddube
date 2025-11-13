@@ -80,7 +80,7 @@
 ---
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: November 10, 2025 at 03:04 AM EST*</sub>
+<sub>🕐 *Last updated: November 13, 2025 at 03:04 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
