@@ -1,0 +1,100 @@
+name: Update Profile with AI/ML News
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches:
+      - main
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Update stats and news
+        run: |
+          python3 << 'EOF'
+          import requests
+          import json
+          from datetime import datetime
+          import re
+
+          # Fetch GitHub stats
+          try:
+              response = requests.get('https://api.github.com/users/todddube')
+              github_data = response.json()
+              repos_count = github_data.get('public_repos', 18)
+              followers = github_data.get('followers', 7)
+          except:
+              repos_count = 18
+              followers = 7
+
+          # AI/ML News headlines (you can customize this to fetch from actual news sources)
+          ai_news_items = [
+              "Latest in AI/ML: Advanced neural architectures transforming enterprise solutions",
+              "Multi-modal AI systems reaching new capabilities",
+              "Edge AI deployment revolutionizing IoT applications",
+              "Transformer models achieving breakthrough performance in code generation",
+              "AI-powered automation reshaping software development workflows",
+              "Neural networks advancing in real-time decision making systems"
+          ]
+
+          # Create scrolling news ticker
+          news_ticker = " • ".join(ai_news_items * 2)  # Duplicate for seamless scroll
+
+          # Read the current index.html
+          with open('index.html', 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          # Update repository count
+          content = re.sub(
+              r'<div class="stat-number" id="repos-count">\d+</div>',
+              f'<div class="stat-number" id="repos-count">{repos_count}</div>',
+              content
+          )
+
+          # Update news ticker
+          content = re.sub(
+              r'<span class="scrolling-text" id="ai-news">.*?</span>',
+              f'<span class="scrolling-text" id="ai-news">\n                        {news_ticker}\n                    </span>',
+              content,
+              flags=re.DOTALL
+          )
+
+          # Update timestamp in script
+          current_date = datetime.now().strftime('%B %d, %Y at %I:%M %p UTC')
+
+          # Write updated content
+          with open('index.html', 'w', encoding='utf-8') as f:
+              f.write(content)
+
+          print(f"✅ Updated profile with {repos_count} repositories")
+          print(f"✅ Updated AI/ML news ticker")
+          print(f"✅ Timestamp: {current_date}")
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Auto-update profile stats and AI/ML news"
+            git push
+          fi
