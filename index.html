@@ -643,34 +643,69 @@
             font-weight: 600;
         }
 
-        /* News Ticker */
-        .news-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 25px 35px;
-            margin: 60px auto;
-            max-width: 1200px;
-            overflow: hidden;
+        /* News Ticker - Top of Page */
+        .news-section-top {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(48, 163, 220, 0.08));
+            border-bottom: 1px solid var(--border);
+            padding: 18px 0;
+            margin-top: 60px;
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-section-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
         }
 
         .news-header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
         }
 
         .news-badge {
             background: linear-gradient(135deg, var(--accent), #ff8e53);
             color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .news-live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-live 2s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        @keyframes pulse-live {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
         }
 
         .news-ticker {
@@ -681,8 +716,12 @@
         .news-content {
             display: flex;
             gap: 40px;
-            animation: scroll-news 40s linear infinite;
+            animation: scroll-news 45s linear infinite;
             white-space: nowrap;
+        }
+
+        .news-content:hover {
+            animation-play-state: paused;
         }
 
         @keyframes scroll-news {
@@ -692,7 +731,8 @@
 
         .news-item {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         /* Footer */
@@ -806,6 +846,24 @@
         </div>
     </nav>
 
+    <!-- AI/ML News Ticker - Top of Page -->
+    <div class="news-section-top">
+        <div class="container">
+            <div class="news-header">
+                <span class="news-badge">🔥 AI/ML Industry Updates</span>
+                <span class="news-live">
+                    <span class="live-dot"></span>
+                    Updated Daily
+                </span>
+            </div>
+            <div class="news-ticker">
+                <div class="news-content" id="news-content">
+                    <span class="news-item">Latest in AI/ML: Advanced neural architectures transforming enterprise solutions • Multi-modal AI systems reaching new capabilities • Edge AI deployment revolutionizing IoT applications • Transformer models achieving breakthrough performance in code generation • AI-powered automation reshaping software development workflows • Neural networks advancing in real-time decision making systems • Latest in AI/ML: Advanced neural architectures transforming enterprise solutions • Multi-modal AI systems reaching new capabilities • Edge AI deployment revolutionizing IoT applications • Transformer models achieving breakthrough performance in code generation • AI-powered automation reshaping software development workflows • Neural networks advancing in real-time decision making systems</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <header>
         <div class="hero-content">
@@ -849,20 +907,6 @@
             </div>
         </div>
     </header>
-
-    <!-- AI/ML News Ticker -->
-    <div class="container">
-        <div class="news-section">
-            <div class="news-header">
-                <span class="news-badge">🔥 AI/ML Latest</span>
-            </div>
-            <div class="news-ticker">
-                <div class="news-content" id="news-content">
-                    <span class="news-item">Latest in AI/ML: Advanced neural architectures transforming enterprise solutions • Multi-modal AI systems reaching new capabilities • Edge AI deployment revolutionizing IoT applications • Transformer models achieving breakthrough performance in code generation • AI-powered automation reshaping software development workflows • Neural networks advancing in real-time decision making systems • Latest in AI/ML: Advanced neural architectures transforming enterprise solutions • Multi-modal AI systems reaching new capabilities • Edge AI deployment revolutionizing IoT applications • Transformer models achieving breakthrough performance in code generation • AI-powered automation reshaping software development workflows • Neural networks advancing in real-time decision making systems</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Expertise Section -->
     <section id="expertise">
