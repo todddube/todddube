@@ -2,7 +2,7 @@ name: Update Profile with AI/ML News
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Run every 6 hours
+    - cron: '0 9 * * *'  # Run daily at 9:00 AM UTC (5:00 AM ET during DST, 4:00 AM ET otherwise)
   workflow_dispatch:  # Allow manual trigger
   push:
     branches:
