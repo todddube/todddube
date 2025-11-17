@@ -80,7 +80,7 @@
 ---
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: November 13, 2025 at 03:04 AM EST*</sub>
+<sub>🕐 *Last updated: November 17, 2025 at 03:04 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
@@ -173,7 +173,7 @@ timeline
 </div>
 
 ### 📊 Quick Stats:
-- 📂 **18** Public Repositories
+- 📂 **19** Public Repositories
 - 👥 **7** GitHub Followers
 - 🔗 **13** Following
 ### 💡 Fun Facts About Me
@@ -400,8 +400,8 @@ timeline
 
 ### 🔥 Recent Activity:
 - 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
+- 💙 **[tailergater](https://github.com/todddube/tailergater)** - Tail Gate Planner
 - ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
-- 🐍 **[huelights](https://github.com/todddube/huelights)** - Hue lights sdk stuff
 
 ## 📊 GitHub Analytics & Achievements
 
