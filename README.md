@@ -80,7 +80,7 @@
 ---
 
 ## 🚀 About Me
-<sub>🕐 *Last updated: November 17, 2025 at 03:04 AM EST*</sub>
+<sub>🕐 *Last updated: November 20, 2025 at 03:04 AM EST*</sub>
 
 <div align="center">
   <table style="border: none;">
@@ -400,7 +400,7 @@ timeline
 
 ### 🔥 Recent Activity:
 - 📁 **[todddube](https://github.com/todddube/todddube)** - Todd Dube
-- 💙 **[tailergater](https://github.com/todddube/tailergater)** - Tail Gate Planner
+- 💙 **[tailergater](https://github.com/todddube/tailergater)** ⭐ 1 - Tail Gate Planner
 - ⚡ **[wthrr](https://github.com/todddube/wthrr)** - wthrr app
 
 ## 📊 GitHub Analytics & Achievements
