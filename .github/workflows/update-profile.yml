@@ -1,8 +1,9 @@
-name: Update Profile with AI/ML News
+name: Update Profile with AI/ML News & LinkedIn Posts
 
 # This workflow updates the portfolio with:
 # - Live GitHub repository statistics
 # - Curated AI/ML industry news from multiple categories
+# - LinkedIn-style professional posts with dynamic content
 # - Professional enterprise-focused headlines
 # - Runs daily at 5 AM ET to keep content fresh
 
@@ -13,6 +14,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'index.html'
+      - '.github/workflows/update-profile.yml'
 
 jobs:
   update-profile:
@@ -35,12 +39,12 @@ jobs:
         run: |
           pip install requests beautifulsoup4 feedparser
 
-      - name: Update stats and news
+      - name: Update stats, news, and LinkedIn posts
         run: |
           python3 << 'EOF'
           import requests
           import json
-          from datetime import datetime
+          from datetime import datetime, timedelta
           import re
           import feedparser
           import random
@@ -111,6 +115,61 @@ jobs:
               }
           ]
 
+          # LinkedIn-style posts content (rotating)
+          linkedin_posts = [
+              {
+                  "category": "AI/ML Architecture",
+                  "content": "🚀 The evolution of AI agents is transforming enterprise architecture. From simple chatbots to autonomous systems capable of complex reasoning - we're witnessing a paradigm shift in how businesses leverage AI. Key considerations for implementation: context management, safety guardrails, and seamless integration with existing workflows.",
+                  "tags": ["#AI", "#MachineLearning", "#EnterpriseArchitecture"],
+                  "likes": random.randint(100, 200),
+                  "comments": random.randint(10, 30),
+                  "reposts": random.randint(20, 50)
+              },
+              {
+                  "category": "Cloud & DevOps",
+                  "content": "💡 MLOps best practices I've learned deploying models at scale: 1) Version everything - data, models, and configs. 2) Implement robust monitoring from day one. 3) Automate retraining pipelines. 4) Build in human-in-the-loop checkpoints. The gap between a working notebook and production ML is where most projects fail.",
+                  "tags": ["#MLOps", "#DevOps", "#CloudArchitecture"],
+                  "likes": random.randint(70, 150),
+                  "comments": random.randint(8, 25),
+                  "reposts": random.randint(15, 40)
+              },
+              {
+                  "category": "Tech Journey",
+                  "content": "💾➡️🤖 From 6502 Assembly on Commodore 64 to designing AI systems - my tech journey spans 4 decades. The fundamentals remain the same: understand the problem deeply, write clean code, and always keep learning. Today's AI engineers could benefit from understanding systems at the lowest level - it gives invaluable perspective on optimization.",
+                  "tags": ["#TechJourney", "#RetroComputing", "#CareerAdvice"],
+                  "likes": random.randint(120, 200),
+                  "comments": random.randint(15, 35),
+                  "reposts": random.randint(30, 60)
+              },
+              {
+                  "category": "AI Innovation",
+                  "content": "🔮 The next frontier in enterprise AI isn't just about smarter models - it's about seamless human-AI collaboration. We're building systems where AI augments human decision-making rather than replacing it. The most successful AI implementations I've seen focus on transparency and user trust.",
+                  "tags": ["#AIInnovation", "#HumanAI", "#EnterpriseTech"],
+                  "likes": random.randint(80, 160),
+                  "comments": random.randint(10, 28),
+                  "reposts": random.randint(18, 45)
+              },
+              {
+                  "category": "Developer Tips",
+                  "content": "⚡ Pro tip for AI developers: Your model's context window is precious real estate. Optimize prompts ruthlessly, use RAG strategically, and always measure token usage. I've seen 40% cost reductions just from smarter context management. Efficiency isn't just about performance - it's about sustainability.",
+                  "tags": ["#AI", "#DeveloperTips", "#Optimization"],
+                  "likes": random.randint(90, 170),
+                  "comments": random.randint(12, 30),
+                  "reposts": random.randint(25, 55)
+              },
+              {
+                  "category": "IoT & Edge AI",
+                  "content": "🌐 Edge AI is finally hitting its stride. Running ML models on IoT devices means lower latency, better privacy, and reduced cloud costs. My smart home setup runs local inference for most tasks - it's faster and works offline. The future is distributed intelligence.",
+                  "tags": ["#EdgeAI", "#IoT", "#SmartHome"],
+                  "likes": random.randint(75, 140),
+                  "comments": random.randint(8, 22),
+                  "reposts": random.randint(12, 35)
+              }
+          ]
+
+          # Select 3 random posts for display
+          selected_posts = random.sample(linkedin_posts, 3)
+
           # Select diverse news items from different categories
           for source in news_sources:
               selected = random.sample(source['items'], min(3, len(source['items'])))
@@ -142,12 +201,50 @@ jobs:
               flags=re.DOTALL
           )
 
+          # Update LinkedIn posts dynamically
+          for i, post in enumerate(selected_posts, 1):
+              post_id = f'linkedin-post-{i}'
+
+              # Update post category/date
+              content = re.sub(
+                  rf'(<div class="post-card" id="{post_id}">.*?<div class="post-date">).*?(</div>)',
+                  rf'\g<1>{post["category"]}\g<2>',
+                  content,
+                  flags=re.DOTALL
+              )
+
+              # Update post content
+              content = re.sub(
+                  rf'(<div class="post-card" id="{post_id}">.*?<p class="post-content">)\s*.*?\s*(</p>)',
+                  rf'\g<1>\n                            {post["content"]}\n                        \g<2>',
+                  content,
+                  flags=re.DOTALL
+              )
+
+              # Update tags
+              tags_html = '\n                            '.join([f'<span class="post-tag">{tag}</span>' for tag in post["tags"]])
+              content = re.sub(
+                  rf'(<div class="post-card" id="{post_id}">.*?<div class="post-tags">)\s*.*?\s*(</div>\s*<div class="post-engagement">)',
+                  rf'\g<1>\n                            {tags_html}\n                        \g<2>',
+                  content,
+                  flags=re.DOTALL
+              )
+
+              # Update engagement numbers
+              content = re.sub(
+                  rf'(<div class="post-card" id="{post_id}">.*?<div class="post-engagement">)\s*.*?\s*(</div>\s*</div>\s*(?:<div class="post-card"|</div>\s*</div>\s*</div>))',
+                  rf'\g<1>\n                            <span>👍 {post["likes"]} likes</span>\n                            <span>💬 {post["comments"]} comments</span>\n                            <span>🔄 {post["reposts"]} reposts</span>\n                        \g<2>',
+                  content,
+                  flags=re.DOTALL
+              )
+
           # Write updated content
           with open('index.html', 'w', encoding='utf-8') as f:
               f.write(content)
 
           print(f"✅ Updated profile with {repos_count} repositories")
           print(f"✅ Updated AI/ML news ticker with {len(ai_news_items)} fresh headlines")
+          print(f"✅ Updated 3 LinkedIn-style posts with fresh content")
           print(f"✅ News categories: Enterprise AI, Research, Developer Tools, Industry Trends")
           current_date = datetime.now().strftime('%B %d, %Y at %I:%M %p UTC')
           print(f"✅ Timestamp: {current_date}")
@@ -156,6 +253,10 @@ jobs:
           print("\n📰 Sample headlines:")
           for i, headline in enumerate(ai_news_items[:5], 1):
               print(f"  {i}. {headline[:80]}...")
+
+          print("\n📝 Selected LinkedIn posts:")
+          for i, post in enumerate(selected_posts, 1):
+              print(f"  {i}. [{post['category']}] {post['content'][:60]}...")
           EOF
 
       - name: Commit and push if changed
