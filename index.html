@@ -340,6 +340,56 @@
             letter-spacing: 0.5px;
         }
 
+        /* Visitor Stats */
+        .visitor-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            animation: fadeInUp 0.6s ease-out 0.7s both;
+        }
+
+        .visitor-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 25px;
+            font-size: 0.85rem;
+        }
+
+        .visitor-stat-icon {
+            font-size: 1rem;
+        }
+
+        .visitor-stat-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .visitor-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .live-indicator {
+            width: 6px;
+            height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 968px) {
+            .visitor-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
         .hero-snake-preview {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -1484,6 +1534,26 @@
                         <span>→</span>
                     </a>
                 </div>
+
+                <!-- Visitor Stats -->
+                <div class="visitor-stats">
+                    <div class="visitor-stat">
+                        <span class="live-indicator"></span>
+                        <span class="visitor-stat-icon">👁️</span>
+                        <span class="visitor-stat-value" id="total-visits">--</span>
+                        <span class="visitor-stat-label">Total Visits</span>
+                    </div>
+                    <div class="visitor-stat">
+                        <span class="visitor-stat-icon">👤</span>
+                        <span class="visitor-stat-value" id="unique-visitors">--</span>
+                        <span class="visitor-stat-label">Unique Visitors</span>
+                    </div>
+                    <div class="visitor-stat">
+                        <span class="visitor-stat-icon">📅</span>
+                        <span class="visitor-stat-value" id="today-visits">--</span>
+                        <span class="visitor-stat-label">Today</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -2090,11 +2160,144 @@
             }
         }
 
+        // Visitor Tracking with device exclusion
+        const VisitorTracker = {
+            // Your devices to exclude (add your IP patterns or device identifiers)
+            excludedDevices: [
+                // Add patterns to identify your devices
+                // These will be checked against localStorage marker
+            ],
+
+            storageKeys: {
+                visitorId: 'td_visitor_id',
+                totalVisits: 'td_total_visits',
+                uniqueVisitors: 'td_unique_visitors',
+                todayVisits: 'td_today_visits',
+                lastVisitDate: 'td_last_visit_date',
+                isOwner: 'td_is_owner'
+            },
+
+            init() {
+                // Check if this is the site owner
+                if (this.isExcludedDevice()) {
+                    this.displayStats();
+                    return;
+                }
+
+                this.trackVisit();
+                this.displayStats();
+            },
+
+            isExcludedDevice() {
+                // Check for owner marker in localStorage
+                const isOwner = localStorage.getItem(this.storageKeys.isOwner);
+                if (isOwner === 'true') return true;
+
+                // Check URL parameter to set owner status: ?owner=true
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('owner') === 'true') {
+                    localStorage.setItem(this.storageKeys.isOwner, 'true');
+                    console.log('🔒 Owner mode activated - visits will not be tracked');
+                    return true;
+                }
+
+                return false;
+            },
+
+            generateVisitorId() {
+                return 'v_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+            },
+
+            getTodayKey() {
+                return new Date().toISOString().split('T')[0];
+            },
+
+            trackVisit() {
+                const today = this.getTodayKey();
+                let visitorId = localStorage.getItem(this.storageKeys.visitorId);
+                let isNewVisitor = false;
+
+                // Generate visitor ID if not exists
+                if (!visitorId) {
+                    visitorId = this.generateVisitorId();
+                    localStorage.setItem(this.storageKeys.visitorId, visitorId);
+                    isNewVisitor = true;
+                }
+
+                // Get current stats
+                let totalVisits = parseInt(localStorage.getItem(this.storageKeys.totalVisits) || '0');
+                let uniqueVisitors = parseInt(localStorage.getItem(this.storageKeys.uniqueVisitors) || '0');
+                let todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayVisits) || '0');
+                let lastVisitDate = localStorage.getItem(this.storageKeys.lastVisitDate);
+
+                // Reset today's count if it's a new day
+                if (lastVisitDate !== today) {
+                    todayVisits = 0;
+                    localStorage.setItem(this.storageKeys.lastVisitDate, today);
+                }
+
+                // Increment counters
+                totalVisits++;
+                todayVisits++;
+
+                if (isNewVisitor) {
+                    uniqueVisitors++;
+                }
+
+                // Save updated stats
+                localStorage.setItem(this.storageKeys.totalVisits, totalVisits.toString());
+                localStorage.setItem(this.storageKeys.uniqueVisitors, uniqueVisitors.toString());
+                localStorage.setItem(this.storageKeys.todayVisits, todayVisits.toString());
+            },
+
+            displayStats() {
+                const totalVisits = parseInt(localStorage.getItem(this.storageKeys.totalVisits) || '0');
+                const uniqueVisitors = parseInt(localStorage.getItem(this.storageKeys.uniqueVisitors) || '0');
+                const todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayVisits) || '0');
+
+                // Format numbers with commas
+                const formatNumber = (num) => num.toLocaleString();
+
+                const totalEl = document.getElementById('total-visits');
+                const uniqueEl = document.getElementById('unique-visitors');
+                const todayEl = document.getElementById('today-visits');
+
+                if (totalEl) totalEl.textContent = formatNumber(totalVisits);
+                if (uniqueEl) uniqueEl.textContent = formatNumber(uniqueVisitors);
+                if (todayEl) todayEl.textContent = formatNumber(todayVisits);
+            },
+
+            // Admin function to reset stats (call from console)
+            resetStats() {
+                Object.values(this.storageKeys).forEach(key => {
+                    if (key !== this.storageKeys.isOwner) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                console.log('📊 Stats reset');
+                this.displayStats();
+            },
+
+            // Set initial stats (call from console)
+            setInitialStats(total, unique, today) {
+                localStorage.setItem(this.storageKeys.totalVisits, total.toString());
+                localStorage.setItem(this.storageKeys.uniqueVisitors, unique.toString());
+                localStorage.setItem(this.storageKeys.todayVisits, today.toString());
+                localStorage.setItem(this.storageKeys.lastVisitDate, this.getTodayKey());
+                console.log('📊 Stats set:', { total, unique, today });
+                this.displayStats();
+            }
+        };
+
         // Initialize
         window.addEventListener('load', () => {
             updateTimestamp();
             fetchGitHubStats();
+            VisitorTracker.init();
         });
+
+        // Expose tracker for admin use
+        window.VisitorTracker = VisitorTracker;
     </script>
 </body>
 </html>
