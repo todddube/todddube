@@ -29,6 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -55,10 +56,12 @@ jobs:
               github_data = response.json()
               repos_count = github_data.get('public_repos', 19)
               followers = github_data.get('followers', 7)
+              following = github_data.get('following', 5)
           except Exception as e:
               print(f"GitHub API error: {e}")
               repos_count = 19
               followers = 7
+              following = 5
 
           # Curated AI/ML News Sources
           ai_news_items = []
@@ -186,12 +189,15 @@ jobs:
           with open('index.html', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          # Update repository count
+          # Update repository count in footer stats
           content = re.sub(
-              r'<div class="stat-number" id="repos-count">\d+</div>',
-              f'<div class="stat-number" id="repos-count">{repos_count}</div>',
+              r'(<div class="stat-number" id="repos-count">)\d+(</div>)',
+              rf'\g<1>{repos_count}\g<2>',
               content
           )
+
+          # Note: Hero and metrics section stats are now populated via JavaScript
+          # from the GitHub API directly in the browser for real-time accuracy
 
           # Update news ticker - find the news-item span
           content = re.sub(
@@ -242,7 +248,7 @@ jobs:
           with open('index.html', 'w', encoding='utf-8') as f:
               f.write(content)
 
-          print(f"✅ Updated profile with {repos_count} repositories")
+          print(f"✅ Updated profile stats: {repos_count} repos, {followers} followers, {following} following")
           print(f"✅ Updated AI/ML news ticker with {len(ai_news_items)} fresh headlines")
           print(f"✅ Updated 3 LinkedIn-style posts with fresh content")
           print(f"✅ News categories: Enterprise AI, Research, Developer Tools, Industry Trends")
@@ -257,6 +263,9 @@ jobs:
           print("\n📝 Selected LinkedIn posts:")
           for i, post in enumerate(selected_posts, 1):
               print(f"  {i}. [{post['category']}] {post['content'][:60]}...")
+
+          print("\n📊 GitHub Stats (for JavaScript fallback):")
+          print(f"  Repos: {repos_count}, Followers: {followers}, Following: {following}")
           EOF
 
       - name: Commit and push if changed
