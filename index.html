@@ -231,6 +231,115 @@
             border-radius: 8px;
         }
 
+        /* Stats Fallback Styles */
+        .stats-fallback {
+            padding: 10px 0;
+        }
+
+        .stats-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .stats-row:last-child {
+            border-bottom: none;
+        }
+
+        .stats-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .stats-row span:last-child {
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        /* Language Bar */
+        .lang-bar {
+            display: flex;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 15px 0;
+            background: var(--border);
+        }
+
+        .lang-segment {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .lang-segment:hover {
+            filter: brightness(1.2);
+        }
+
+        .lang-segment.python { background: #3572A5; }
+        .lang-segment.swift { background: #F05138; }
+        .lang-segment.assembly { background: #6E4C13; }
+        .lang-segment.powershell { background: #012456; }
+        .lang-segment.other { background: #64748B; }
+
+        .lang-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-legend span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.python { background: #3572A5; }
+        .dot.swift { background: #F05138; }
+        .dot.assembly { background: #6E4C13; }
+        .dot.powershell { background: #012456; }
+
+        /* Streak Display */
+        .streak-display {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+
+        .streak-item {
+            text-align: center;
+        }
+
+        .streak-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .streak-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .hero-snake-preview {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -1003,10 +1112,23 @@
         }
 
         .linkedin-header {
-            background: linear-gradient(135deg, var(--linkedin), #0077B5);
-            padding: 30px;
+            background-image: url('https://media.licdn.com/dms/image/v2/D4E16AQGRUcC5JbXxGA/profile-displaybackgroundimage-shrink_200_800/B4EZqHgVv0HUAU-/0/1763209993999?e=2147483647&v=beta&t=Uf2WBCxdf2gSbz2HB6nN7V-V-UAb5Lso5xlQKTmYzIA');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 30px;
             text-align: center;
             position: relative;
+            min-height: 100px;
+        }
+
+        .linkedin-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 102, 194, 0.7), rgba(0, 119, 181, 0.7));
         }
 
         .linkedin-header::after {
@@ -1026,13 +1148,16 @@
             border-radius: 50%;
             border: 4px solid var(--light);
             background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .linkedin-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .linkedin-body {
@@ -1290,12 +1415,32 @@
 
                 <!-- GitHub Stats Card -->
                 <div class="hero-github-card">
-                    <img src="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=dark&hide_border=true&title_color=10B981&icon_color=3B82F6&text_color=F8FAFC&bg_color=1e293b" alt="GitHub Stats" loading="lazy" />
+                    <div class="stats-fallback" id="hero-stats">
+                        <div class="stats-title">📊 GitHub Stats</div>
+                        <div class="stats-row"><span>Public Repos:</span><span id="hero-repos">--</span></div>
+                        <div class="stats-row"><span>Followers:</span><span id="hero-followers">--</span></div>
+                        <div class="stats-row"><span>Following:</span><span id="hero-following">--</span></div>
+                    </div>
                 </div>
 
                 <!-- Top Languages -->
                 <div class="hero-github-card">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=todddube&layout=compact&theme=dark&hide_border=true&title_color=10B981&text_color=F8FAFC&bg_color=1e293b" alt="Top Languages" loading="lazy" />
+                    <div class="stats-fallback">
+                        <div class="stats-title">💻 Top Languages</div>
+                        <div class="lang-bar">
+                            <div class="lang-segment python" style="width: 35%;" title="Python 35%"></div>
+                            <div class="lang-segment swift" style="width: 25%;" title="Swift 25%"></div>
+                            <div class="lang-segment assembly" style="width: 20%;" title="Assembly 20%"></div>
+                            <div class="lang-segment powershell" style="width: 12%;" title="PowerShell 12%"></div>
+                            <div class="lang-segment other" style="width: 8%;" title="Other 8%"></div>
+                        </div>
+                        <div class="lang-legend">
+                            <span><span class="dot python"></span>Python</span>
+                            <span><span class="dot swift"></span>Swift</span>
+                            <span><span class="dot assembly"></span>Assembly</span>
+                            <span><span class="dot powershell"></span>PowerShell</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1575,19 +1720,47 @@
                 <!-- GitHub Stats Cards -->
                 <div class="metrics-grid">
                     <div class="metric-card reveal">
-                        <img src="https://github-readme-stats.vercel.app/api?username=todddube&show_icons=true&theme=dark&hide_border=true&title_color=10B981&icon_color=3B82F6&text_color=F8FAFC&bg_color=1e293b" alt="GitHub Stats" loading="lazy" />
+                        <div class="stats-fallback">
+                            <div class="stats-title">📊 GitHub Stats</div>
+                            <div class="stats-row"><span>Public Repos:</span><span id="metrics-repos">--</span></div>
+                            <div class="stats-row"><span>Followers:</span><span id="metrics-followers">--</span></div>
+                            <div class="stats-row"><span>Following:</span><span id="metrics-following">--</span></div>
+                            <div class="stats-row"><span>Total Stars:</span><span id="metrics-stars">⭐ Earned</span></div>
+                        </div>
                     </div>
                     <div class="metric-card reveal">
-                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=todddube&layout=compact&theme=dark&hide_border=true&title_color=10B981&text_color=F8FAFC&bg_color=1e293b" alt="Top Languages" loading="lazy" />
+                        <div class="stats-fallback">
+                            <div class="stats-title">💻 Top Languages</div>
+                            <div class="lang-bar">
+                                <div class="lang-segment python" style="width: 35%;" title="Python 35%"></div>
+                                <div class="lang-segment swift" style="width: 25%;" title="Swift 25%"></div>
+                                <div class="lang-segment assembly" style="width: 20%;" title="Assembly 20%"></div>
+                                <div class="lang-segment powershell" style="width: 12%;" title="PowerShell 12%"></div>
+                                <div class="lang-segment other" style="width: 8%;" title="Other 8%"></div>
+                            </div>
+                            <div class="lang-legend">
+                                <span><span class="dot python"></span>Python</span>
+                                <span><span class="dot swift"></span>Swift</span>
+                                <span><span class="dot assembly"></span>Assembly</span>
+                                <span><span class="dot powershell"></span>PowerShell</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="metric-card reveal">
-                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=todddube&theme=transparent&hide_border=true&ring=10B981&fire=F59E0B&currStreakLabel=10B981&sideLabels=94A3B8&dates=64748B&background=00000000" alt="GitHub Streak" />
+                        <div class="stats-fallback">
+                            <div class="stats-title">🔥 Contribution Streak</div>
+                            <div class="streak-display">
+                                <div class="streak-item">
+                                    <span class="streak-number" id="current-streak">Active</span>
+                                    <span class="streak-label">Current Streak</span>
+                                </div>
+                                <div class="streak-item">
+                                    <span class="streak-number" style="color: var(--accent);">4+</span>
+                                    <span class="streak-label">Decades Coding</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Activity Graph -->
-                <div class="snake-animation reveal" style="max-width: 1100px;">
-                    <img src="https://github-readme-activity-graph.vercel.app/graph?username=todddube&theme=react-dark&bg_color=0f172a&color=10B981&line=3B82F6&point=F59E0B&area=true&hide_border=true" alt="Contribution Graph" />
                 </div>
             </div>
         </div>
@@ -1608,7 +1781,9 @@
                 <!-- Profile Card -->
                 <div class="linkedin-profile-card">
                     <div class="linkedin-header">
-                        <div class="linkedin-avatar">TD</div>
+                        <div class="linkedin-avatar">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQHb9Qqmm4t-9Q/profile-displayphoto-scale_200_200/B4EZpLHaNJHUAc-/0/1762196825837?e=2147483647&v=beta&t=TKDiOggaq5ljRn2-1PcQu3dw_ce2hBERre4oi-Qm5MY" alt="Todd Dube" />
+                        </div>
                     </div>
                     <div class="linkedin-body">
                         <h3 class="linkedin-name">Todd Dube</h3>
@@ -1877,13 +2052,41 @@
 
         // Fetch GitHub Stats
         async function fetchGitHubStats() {
+            const updateElements = (reposCount, followers, following) => {
+                // Update footer stats
+                const reposEl = document.getElementById('repos-count');
+                if (reposEl) reposEl.textContent = reposCount;
+
+                // Update hero stats
+                const heroRepos = document.getElementById('hero-repos');
+                const heroFollowers = document.getElementById('hero-followers');
+                const heroFollowing = document.getElementById('hero-following');
+
+                if (heroRepos) heroRepos.textContent = reposCount;
+                if (heroFollowers) heroFollowers.textContent = followers;
+                if (heroFollowing) heroFollowing.textContent = following;
+
+                // Update metrics section
+                const metricsRepos = document.getElementById('metrics-repos');
+                const metricsFollowers = document.getElementById('metrics-followers');
+                const metricsFollowing = document.getElementById('metrics-following');
+
+                if (metricsRepos) metricsRepos.textContent = reposCount;
+                if (metricsFollowers) metricsFollowers.textContent = followers;
+                if (metricsFollowing) metricsFollowing.textContent = following;
+            };
+
             try {
                 const response = await fetch('https://api.github.com/users/todddube');
                 const data = await response.json();
                 const reposCount = data.public_repos || 19;
-                document.getElementById('repos-count').textContent = reposCount;
+                const followers = data.followers || 7;
+                const following = data.following || 5;
+
+                updateElements(reposCount, followers, following);
             } catch (error) {
                 console.log('Using cached stats');
+                updateElements('19', '7', '5');
             }
         }
 
