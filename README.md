@@ -83,26 +83,19 @@
 <sub>🕐 *Last updated: December 04, 2025 at 03:04 AM EST*</sub>
 
 <div align="center">
-  <table style="border: none;">
-    <tr>
-      <td width="50%" style="border: none;">
-        <h3>👨‍💻 Who Am I?</h3>
-        <p>I'm a <strong>Senior Technology Professional & Full-Stack Developer</strong> 🌟 with extensive experience bridging traditional computing foundations with cutting-edge innovations. From classic 6502 assembly to modern AI/ML frameworks, I believe in understanding technology from the ground up.</p>
-
-        <h4>🎯 Currently Working On:</h4>
-        <ul>
-          <li>🤖 <strong>AI Agent Development</strong> - Building intelligent conversational systems</li>
-          <li>🌐 <strong>IoT Integration</strong> - Smart home automation with Philips Hue</li>
-          <li>🎮 <strong>Game Development</strong> - Swift & Python gaming projects</li>
-          <li>💾 <strong>Retro Computing</strong> - C64 Assembly programming</li>
-        </ul>
-      </td>
-      <td width="50%" style="border: none;">
-        <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="100%" alt="Coding Animation"/>
-      </td>
-    </tr>
-  </table>
+<img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="400" alt="Coding Animation"/>
 </div>
+
+### 👨‍💻 Who Am I?
+
+I'm a **Senior Technology Professional & Full-Stack Developer** 🌟 with extensive experience bridging traditional computing foundations with cutting-edge innovations. From classic 6502 assembly to modern AI/ML frameworks, I believe in understanding technology from the ground up.
+
+### 🎯 Currently Working On:
+
+- 🤖 **AI Agent Development** - Building intelligent conversational systems
+- 🌐 **IoT Integration** - Smart home automation with Philips Hue
+- 🎮 **Game Development** - Swift & Python gaming projects
+- 💾 **Retro Computing** - C64 Assembly programming
 
 <!-- Professional Journey Timeline -->
 <details>

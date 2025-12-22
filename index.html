@@ -21,21 +21,29 @@
         }
 
         :root {
-            /* Modern readable color palette */
-            --primary: #10B981;        /* Emerald green - vibrant but readable */
-            --secondary: #3B82F6;      /* Blue - professional */
-            --accent: #F59E0B;         /* Amber - warm accent */
-            --purple: #8B5CF6;         /* Purple - creative touch */
-            --gold: #FBBF24;           /* Gold - highlights */
-            --dark: #0F172A;           /* Slate dark - easier on eyes */
-            --darker: #020617;         /* Slate darker */
-            --card-bg: rgba(30, 41, 59, 0.85);  /* Slate card background */
-            --border: rgba(71, 85, 105, 0.5);   /* Slate border */
-            --light: #F8FAFC;          /* Slate light - softer white */
-            --text-secondary: #94A3B8; /* Slate text - better readability */
-            --text-muted: #64748B;     /* Muted text */
-            --success: #22C55E;        /* Success green */
+            /* Todd Dube - Modern Tech Professional Color Palette */
+            /* Inspired by cutting-edge tech, AI/ML innovation, and decades of coding */
+            --primary: #06B6D4;        /* Cyan - AI/tech innovation */
+            --primary-light: #22D3EE;  /* Light cyan */
+            --secondary: #8B5CF6;      /* Violet - creativity & innovation */
+            --accent: #F97316;         /* Orange - energy & passion */
+            --accent-warm: #FB923C;    /* Warm orange */
+            --electric: #00F5FF;       /* Electric cyan - futuristic */
+            --gold: #FFD700;           /* Gold - excellence & achievement */
+            --dark: #0A0F1C;           /* Deep navy - professional depth */
+            --darker: #050810;         /* Darker navy */
+            --card-bg: rgba(15, 23, 42, 0.9);   /* Rich dark cards */
+            --card-hover: rgba(22, 33, 62, 0.95); /* Card hover state */
+            --border: rgba(56, 189, 248, 0.2);  /* Subtle cyan border */
+            --border-hover: rgba(56, 189, 248, 0.4);
+            --light: #F1F5F9;          /* Clean white */
+            --text-secondary: #A5B4C8; /* Refined secondary text */
+            --text-muted: #6B7A90;     /* Muted text */
+            --success: #10B981;        /* Success emerald */
             --linkedin: #0A66C2;       /* LinkedIn blue */
+            --gradient-primary: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            --gradient-accent: linear-gradient(135deg, #F97316, #FB923C);
+            --gradient-hero: linear-gradient(135deg, #06B6D4 0%, #8B5CF6 50%, #F97316 100%);
         }
 
         body {
@@ -58,8 +66,8 @@
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             z-index: -2;
             animation: gridMove 30s linear infinite;
@@ -151,12 +159,45 @@
         }
 
         .nav-brand {
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-brand-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-brand-updated {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-brand-updated .update-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        .nav-brand-updated span {
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .nav-links {
@@ -287,7 +328,7 @@
         .lang-segment.swift { background: #F05138; }
         .lang-segment.assembly { background: #6E4C13; }
         .lang-segment.powershell { background: #012456; }
-        .lang-segment.other { background: #64748B; }
+        .lang-segment.other { background: var(--text-muted); }
 
         .lang-legend {
             display: flex;
@@ -355,8 +396,8 @@
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.2);
             border-radius: 25px;
             font-size: 0.85rem;
         }
@@ -473,7 +514,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -587,14 +628,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
         }
 
         .btn-secondary {
@@ -605,7 +646,7 @@
 
         .btn-secondary:hover {
             border-color: var(--primary);
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(6, 182, 212, 0.1);
             transform: translateY(-2px);
         }
 
@@ -1416,7 +1457,13 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="nav-brand">TD</div>
+            <div class="nav-brand">
+                <span class="nav-brand-logo">TD</span>
+                <div class="nav-brand-updated">
+                    <div class="update-dot"></div>
+                    Updated: <span id="last-updated">Dec 22, 2024</span>
+                </div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#top">Home</a></li>
                 <li><a href="#expertise">Expertise</a></li>
