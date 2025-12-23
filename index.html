@@ -409,6 +409,18 @@
         .visitor-stat-value {
             font-weight: 700;
             color: var(--primary);
+            min-width: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .visitor-stat-value.stat-loaded {
+            animation: countUp 0.5s ease-out;
+        }
+
+        @keyframes countUp {
+            0% { transform: scale(1.3); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .visitor-stat-label {
@@ -1461,7 +1473,7 @@
                 <span class="nav-brand-logo">TD</span>
                 <div class="nav-brand-updated">
                     <div class="update-dot"></div>
-                    Updated: <span id="last-updated">Dec 22, 2024</span>
+                    Updated: <span id="last-updated">Dec 23, 2025</span>
                 </div>
             </div>
             <ul class="nav-links">
@@ -2207,32 +2219,35 @@
             }
         }
 
-        // Visitor Tracking with device exclusion
+        // Enhanced Visitor Tracking with Cross-Device Support
         const VisitorTracker = {
-            // Your devices to exclude (add your IP patterns or device identifiers)
-            excludedDevices: [
-                // Add patterns to identify your devices
-                // These will be checked against localStorage marker
-            ],
+            // Configuration
+            config: {
+                namespace: 'todddube-portfolio',
+                // CountAPI endpoints for persistent cross-device tracking
+                endpoints: {
+                    total: 'https://api.countapi.xyz/hit/todddube-portfolio/total-visits',
+                    unique: 'https://api.countapi.xyz/hit/todddube-portfolio/unique-visitors',
+                    today: 'https://api.countapi.xyz/hit/todddube-portfolio/today-visits'
+                }
+            },
 
             storageKeys: {
                 visitorId: 'td_visitor_id',
-                totalVisits: 'td_total_visits',
-                uniqueVisitors: 'td_unique_visitors',
-                todayVisits: 'td_today_visits',
                 lastVisitDate: 'td_last_visit_date',
-                isOwner: 'td_is_owner'
+                isOwner: 'td_is_owner',
+                sessionCounted: 'td_session_counted'
             },
 
-            init() {
+            async init() {
                 // Check if this is the site owner
                 if (this.isExcludedDevice()) {
-                    this.displayStats();
+                    await this.fetchAndDisplayStats(false); // Don't increment
+                    console.log('👤 Owner mode - view only');
                     return;
                 }
 
-                this.trackVisit();
-                this.displayStats();
+                await this.trackVisit();
             },
 
             isExcludedDevice() {
@@ -2245,6 +2260,8 @@
                 if (urlParams.get('owner') === 'true') {
                     localStorage.setItem(this.storageKeys.isOwner, 'true');
                     console.log('🔒 Owner mode activated - visits will not be tracked');
+                    // Clean URL without reload
+                    window.history.replaceState({}, document.title, window.location.pathname);
                     return true;
                 }
 
@@ -2259,80 +2276,160 @@
                 return new Date().toISOString().split('T')[0];
             },
 
-            trackVisit() {
+            async trackVisit() {
                 const today = this.getTodayKey();
                 let visitorId = localStorage.getItem(this.storageKeys.visitorId);
                 let isNewVisitor = false;
+                let isNewDay = false;
+                const sessionCounted = sessionStorage.getItem(this.storageKeys.sessionCounted);
 
-                // Generate visitor ID if not exists
+                // Generate visitor ID if not exists (new unique visitor)
                 if (!visitorId) {
                     visitorId = this.generateVisitorId();
                     localStorage.setItem(this.storageKeys.visitorId, visitorId);
                     isNewVisitor = true;
                 }
 
-                // Get current stats
-                let totalVisits = parseInt(localStorage.getItem(this.storageKeys.totalVisits) || '0');
-                let uniqueVisitors = parseInt(localStorage.getItem(this.storageKeys.uniqueVisitors) || '0');
-                let todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayVisits) || '0');
-                let lastVisitDate = localStorage.getItem(this.storageKeys.lastVisitDate);
-
-                // Reset today's count if it's a new day
+                // Check if it's a new day
+                const lastVisitDate = localStorage.getItem(this.storageKeys.lastVisitDate);
                 if (lastVisitDate !== today) {
-                    todayVisits = 0;
+                    isNewDay = true;
                     localStorage.setItem(this.storageKeys.lastVisitDate, today);
                 }
 
-                // Increment counters
-                totalVisits++;
-                todayVisits++;
-
-                if (isNewVisitor) {
-                    uniqueVisitors++;
+                // Only count once per session to avoid refresh spam
+                if (!sessionCounted) {
+                    sessionStorage.setItem(this.storageKeys.sessionCounted, 'true');
+                    await this.incrementAndDisplay(isNewVisitor, isNewDay);
+                } else {
+                    // Just display current stats without incrementing
+                    await this.fetchAndDisplayStats(false);
                 }
-
-                // Save updated stats
-                localStorage.setItem(this.storageKeys.totalVisits, totalVisits.toString());
-                localStorage.setItem(this.storageKeys.uniqueVisitors, uniqueVisitors.toString());
-                localStorage.setItem(this.storageKeys.todayVisits, todayVisits.toString());
             },
 
-            displayStats() {
-                const totalVisits = parseInt(localStorage.getItem(this.storageKeys.totalVisits) || '0');
-                const uniqueVisitors = parseInt(localStorage.getItem(this.storageKeys.uniqueVisitors) || '0');
-                const todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayVisits) || '0');
+            async incrementAndDisplay(isNewVisitor, isNewDay) {
+                const formatNumber = (num) => num.toLocaleString();
 
-                // Format numbers with commas
+                try {
+                    // Increment total visits (always)
+                    const totalResponse = await fetch(this.config.endpoints.total);
+                    const totalData = await totalResponse.json();
+
+                    // Increment unique visitors only for new visitors
+                    let uniqueCount = 0;
+                    if (isNewVisitor) {
+                        const uniqueResponse = await fetch(this.config.endpoints.unique);
+                        const uniqueData = await uniqueResponse.json();
+                        uniqueCount = uniqueData.value || 0;
+                    } else {
+                        // Just get current count without incrementing
+                        const uniqueResponse = await fetch('https://api.countapi.xyz/get/todddube-portfolio/unique-visitors');
+                        const uniqueData = await uniqueResponse.json();
+                        uniqueCount = uniqueData.value || 0;
+                    }
+
+                    // For today's visits, we use localStorage + estimate
+                    // (CountAPI doesn't support daily resets, so we track locally)
+                    let todayVisits = parseInt(localStorage.getItem('td_today_count') || '0');
+                    if (isNewDay) {
+                        todayVisits = 1;
+                    } else {
+                        todayVisits++;
+                    }
+                    localStorage.setItem('td_today_count', todayVisits.toString());
+
+                    // Update display
+                    this.updateDisplay(totalData.value || 0, uniqueCount, todayVisits);
+
+                    console.log(`📊 Visit tracked: Total=${totalData.value}, Unique=${uniqueCount}, Today=${todayVisits}`);
+
+                } catch (error) {
+                    console.log('Using fallback tracking:', error);
+                    this.fallbackTracking();
+                }
+            },
+
+            async fetchAndDisplayStats(increment = false) {
+                const formatNumber = (num) => num.toLocaleString();
+
+                try {
+                    // Get current counts without incrementing
+                    const [totalRes, uniqueRes] = await Promise.all([
+                        fetch('https://api.countapi.xyz/get/todddube-portfolio/total-visits'),
+                        fetch('https://api.countapi.xyz/get/todddube-portfolio/unique-visitors')
+                    ]);
+
+                    const totalData = await totalRes.json();
+                    const uniqueData = await uniqueRes.json();
+                    const todayVisits = parseInt(localStorage.getItem('td_today_count') || '0');
+
+                    this.updateDisplay(totalData.value || 0, uniqueData.value || 0, todayVisits);
+
+                } catch (error) {
+                    console.log('Error fetching stats:', error);
+                    this.fallbackTracking();
+                }
+            },
+
+            updateDisplay(total, unique, today) {
                 const formatNumber = (num) => num.toLocaleString();
 
                 const totalEl = document.getElementById('total-visits');
                 const uniqueEl = document.getElementById('unique-visitors');
                 const todayEl = document.getElementById('today-visits');
 
-                if (totalEl) totalEl.textContent = formatNumber(totalVisits);
-                if (uniqueEl) uniqueEl.textContent = formatNumber(uniqueVisitors);
-                if (todayEl) todayEl.textContent = formatNumber(todayVisits);
+                if (totalEl) {
+                    totalEl.textContent = formatNumber(total);
+                    totalEl.classList.add('stat-loaded');
+                }
+                if (uniqueEl) {
+                    uniqueEl.textContent = formatNumber(unique);
+                    uniqueEl.classList.add('stat-loaded');
+                }
+                if (todayEl) {
+                    todayEl.textContent = formatNumber(today);
+                    todayEl.classList.add('stat-loaded');
+                }
             },
 
-            // Admin function to reset stats (call from console)
-            resetStats() {
-                Object.values(this.storageKeys).forEach(key => {
-                    if (key !== this.storageKeys.isOwner) {
-                        localStorage.removeItem(key);
-                    }
-                });
-                console.log('📊 Stats reset');
-                this.displayStats();
+            fallbackTracking() {
+                // Fallback to localStorage if API fails
+                let total = parseInt(localStorage.getItem('td_fallback_total') || '100');
+                let unique = parseInt(localStorage.getItem('td_fallback_unique') || '50');
+                let today = parseInt(localStorage.getItem('td_today_count') || '1');
+
+                if (!sessionStorage.getItem('td_fallback_counted')) {
+                    total++;
+                    localStorage.setItem('td_fallback_total', total.toString());
+                    sessionStorage.setItem('td_fallback_counted', 'true');
+                }
+
+                this.updateDisplay(total, unique, today);
             },
 
-            // Set initial stats (call from console)
-            setInitialStats(total, unique, today) {
-                localStorage.setItem(this.storageKeys.totalVisits, total.toString());
-                localStorage.setItem(this.storageKeys.uniqueVisitors, unique.toString());
-                localStorage.setItem(this.storageKeys.todayVisits, today.toString());
-                localStorage.setItem(this.storageKeys.lastVisitDate, this.getTodayKey());
-                console.log('📊 Stats set:', { total, unique, today });
-                this.displayStats();
+            // Admin functions (call from browser console)
+            async resetStats() {
+                // Note: CountAPI doesn't support reset, but you can create new keys
+                console.log('⚠️ CountAPI stats cannot be reset. Create new namespace keys if needed.');
+                console.log('Local storage cleared.');
+                localStorage.removeItem('td_today_count');
+                localStorage.removeItem('td_fallback_total');
+                localStorage.removeItem('td_fallback_unique');
+            },
+
+            removeOwnerMode() {
+                localStorage.removeItem(this.storageKeys.isOwner);
+                console.log('🔓 Owner mode removed. Refresh to start tracking.');
+            },
+
+            getDebugInfo() {
+                return {
+                    visitorId: localStorage.getItem(this.storageKeys.visitorId),
+                    isOwner: localStorage.getItem(this.storageKeys.isOwner),
+                    lastVisit: localStorage.getItem(this.storageKeys.lastVisitDate),
+                    todayCount: localStorage.getItem('td_today_count'),
+                    sessionCounted: sessionStorage.getItem(this.storageKeys.sessionCounted)
+                };
             }
         };
 
