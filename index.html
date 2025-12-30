@@ -200,6 +200,43 @@
             font-weight: 600;
         }
 
+        .nav-brand-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 5px;
+        }
+
+        .nav-brand-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-brand-links a.linkedin:hover {
+            background: var(--linkedin);
+            border-color: var(--linkedin);
+        }
+
+        .nav-brand-links svg {
+            width: 14px;
+            height: 14px;
+        }
+
         .nav-links {
             display: flex;
             gap: 30px;
@@ -426,6 +463,184 @@
         .visitor-stat-label {
             color: var(--text-secondary);
             font-size: 0.8rem;
+        }
+
+        /* AI Models Tracker Section */
+        .ai-models-tracker {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(6, 182, 212, 0.08));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-models-tracker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-hero);
+        }
+
+        .ai-tracker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .ai-tracker-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .ai-tracker-title .pulse-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(139, 92, 246, 0.4); }
+        }
+
+        .ai-tracker-live {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--success);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .ai-tracker-live::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        .ai-models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .ai-model-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-model-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .ai-model-card.trending::after {
+            content: '🔥';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .ai-model-card.new::after {
+            content: '✨';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .ai-model-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .ai-model-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ai-model-version {
+            font-size: 0.65rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .ai-model-stats {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+        }
+
+        .ai-model-stat {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .ai-popularity-bar {
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .ai-popularity-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1s ease-out;
+        }
+
+        .ai-popularity-fill.high { background: var(--success); }
+        .ai-popularity-fill.medium { background: var(--accent); }
+        .ai-popularity-fill.growing { background: var(--secondary); }
+
+        @media (max-width: 768px) {
+            .ai-models-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .ai-model-card {
+                padding: 12px 8px;
+            }
         }
 
         .live-indicator {
@@ -1471,6 +1686,14 @@
         <div class="container">
             <div class="nav-brand">
                 <span class="nav-brand-logo">TD</span>
+                <div class="nav-brand-links">
+                    <a href="https://www.linkedin.com/in/tdube/" target="_blank" rel="noopener noreferrer" class="linkedin" title="LinkedIn Profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/todddube" target="_blank" rel="noopener noreferrer" title="GitHub Profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
                 <div class="nav-brand-updated">
                     <div class="update-dot"></div>
                     Updated: <span id="last-updated">Dec 30, 2025</span>
@@ -1611,6 +1834,85 @@
                         <span class="visitor-stat-icon">📅</span>
                         <span class="visitor-stat-value" id="today-visits">--</span>
                         <span class="visitor-stat-label">Today</span>
+                    </div>
+                </div>
+
+                <!-- AI Models Tracker -->
+                <div class="ai-models-tracker" id="ai-models-tracker">
+                    <div class="ai-tracker-header">
+                        <div class="ai-tracker-title">
+                            <span class="pulse-icon">🤖</span>
+                            AI Model Landscape
+                        </div>
+                        <div class="ai-tracker-live">Live Data</div>
+                    </div>
+                    <div class="ai-models-grid">
+                        <div class="ai-model-card trending">
+                            <span class="ai-model-icon">🧠</span>
+                            <div class="ai-model-name">Claude</div>
+                            <div class="ai-model-version">Opus 4.5</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 98%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card trending">
+                            <span class="ai-model-icon">💎</span>
+                            <div class="ai-model-name">GPT-4</div>
+                            <div class="ai-model-version">Turbo</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 95%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card new">
+                            <span class="ai-model-icon">🌟</span>
+                            <div class="ai-model-name">Gemini</div>
+                            <div class="ai-model-version">2.0 Flash</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 92%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card">
+                            <span class="ai-model-icon">🦙</span>
+                            <div class="ai-model-name">Llama</div>
+                            <div class="ai-model-version">3.3 70B</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 88%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill medium" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card new">
+                            <span class="ai-model-icon">🔮</span>
+                            <div class="ai-model-name">Mistral</div>
+                            <div class="ai-model-version">Large 2</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 85%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill medium" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card">
+                            <span class="ai-model-icon">🎨</span>
+                            <div class="ai-model-name">DALL-E</div>
+                            <div class="ai-model-version">3</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 90%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 90%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

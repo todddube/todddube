@@ -252,6 +252,65 @@ jobs:
                   flags=re.DOTALL
               )
 
+          # AI Models Tracker - Latest models with dynamic popularity
+          ai_models = [
+              {"icon": "🧠", "name": "Claude", "version": "Opus 4.5", "popularity": 98, "status": "trending"},
+              {"icon": "💎", "name": "GPT-4", "version": "Turbo", "popularity": 95, "status": "trending"},
+              {"icon": "🌟", "name": "Gemini", "version": "2.0 Flash", "popularity": 92, "status": "new"},
+              {"icon": "🦙", "name": "Llama", "version": "3.3 70B", "popularity": 88, "status": ""},
+              {"icon": "🔮", "name": "Mistral", "version": "Large 2", "popularity": 85, "status": "new"},
+              {"icon": "🎨", "name": "DALL-E", "version": "3", "popularity": 90, "status": ""},
+          ]
+
+          # Add slight random variation to popularity scores to simulate live data
+          for model in ai_models:
+              variation = random.randint(-2, 2)
+              model["popularity"] = max(70, min(99, model["popularity"] + variation))
+
+          # Sort by popularity
+          ai_models.sort(key=lambda x: x["popularity"], reverse=True)
+
+          # Generate AI models HTML
+          def get_popularity_class(pop):
+              if pop >= 90: return "high"
+              elif pop >= 80: return "medium"
+              else: return "growing"
+
+          ai_models_html = ""
+          for model in ai_models:
+              status_class = f' {model["status"]}' if model["status"] else ""
+              pop_class = get_popularity_class(model["popularity"])
+              ai_models_html += f'''<div class="ai-model-card{status_class}">
+                            <span class="ai-model-icon">{model["icon"]}</span>
+                            <div class="ai-model-name">{model["name"]}</div>
+                            <div class="ai-model-version">{model["version"]}</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ {model["popularity"]}%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill {pop_class}" style="width: {model["popularity"]}%;"></div>
+                            </div>
+                        </div>
+                        '''
+
+          # Update AI models grid - use a marker comment for reliable replacement
+          # First, add end marker if not present
+          if '<!-- END AI MODELS GRID -->' not in content:
+              content = content.replace(
+                  '</div>\n                </div>\n            </div>\n        </div>\n    </header>',
+                  '</div>\n                    <!-- END AI MODELS GRID -->\n                </div>\n            </div>\n        </div>\n    </header>'
+              )
+
+          # Update AI models grid content
+          content = re.sub(
+              r'(<div class="ai-models-grid">).*?(<!-- END AI MODELS GRID -->)',
+              rf'\g<1>\n                        {ai_models_html}                    \g<2>',
+              content,
+              flags=re.DOTALL
+          )
+
+          print(f"✅ Updated AI Models Tracker with {len(ai_models)} models")
+
           # Write updated content
           with open('index.html', 'w', encoding='utf-8') as f:
               f.write(content)
@@ -275,6 +334,11 @@ jobs:
 
           print("\n📊 GitHub Stats (for JavaScript fallback):")
           print(f"  Repos: {repos_count}, Followers: {followers}, Following: {following}")
+
+          print("\n🤖 AI Models Tracker:")
+          for model in ai_models:
+              status = f" [{model['status'].upper()}]" if model['status'] else ""
+              print(f"  • {model['icon']} {model['name']} {model['version']} - {model['popularity']}%{status}")
           EOF
 
       - name: Commit and push if changed
