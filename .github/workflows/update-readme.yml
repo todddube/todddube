@@ -1,387 +1,104 @@
-name: 🔄 Auto-Update Profile README
+name: Update README
 
 on:
   schedule:
-    # Runs twice weekly for fresh content
-    - cron: "0 8 * * 1,4"  # Monday and Thursday at 8:00 UTC
+    - cron: "0 8 * * 1"  # Weekly on Monday at 8:00 UTC
   workflow_dispatch:
-    # Manual trigger with options
-    inputs:
-      update_stats:
-        description: 'Update GitHub statistics'
-        required: false
-        default: 'true'
-        type: boolean
-      update_projects:
-        description: 'Refresh recent projects'
-        required: false
-        default: 'true'
-        type: boolean
 
-# Enhanced permissions for better API access
 permissions:
   contents: write
-  pull-requests: read
-
-env:
-  TIMEZONE: 'US/Eastern'
-  MAX_RECENT_REPOS: 5
 
 jobs:
-  update-profile:
-    name: 📝 Update Profile Content
+  update-readme:
+    name: Update README
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
 
     steps:
-      - name: 📂 Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 1
 
-      - name: 🐍 Setup Python Environment
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: 📦 Install Enhanced Dependencies
-        run: |
-          pip install --upgrade pip
-          pip install requests python-dateutil pytz rich click
+      - name: Install dependencies
+        run: pip install requests
 
-      - name: 📊 Cache GitHub API Data
-        uses: actions/cache@v4
-        with:
-          path: ~/.github-cache
-          key: github-api-cache-${{ github.run_id }}
-          restore-keys: |
-            github-api-cache-
-          
-      - name: 🔄 Update Profile Content
+      - name: Update README
         run: |
           python3 << 'EOF'
-          import re
           import requests
-          import json
-          import os
-          from datetime import datetime, timezone
+          import re
           from pathlib import Path
-          import pytz
-          from rich.console import Console
-          from rich.table import Table
 
-          console = Console()
-
-          def load_key_projects():
-              """Load key projects from key-projects.json"""
-              try:
-                  projects_path = Path('key-projects.json')
-                  if projects_path.exists():
-                      with open(projects_path, 'r', encoding='utf-8') as f:
-                          data = json.load(f)
-                          # Sort by priority and filter highlighted projects
-                          projects = sorted(
-                              [p for p in data['featured_projects'] if p.get('highlight', False)],
-                              key=lambda x: x.get('priority', 999)
-                          )
-                          console.print(f"[green]✅ Loaded {len(projects)} key projects[/green]")
-                          return projects
-                  else:
-                      console.print("[yellow]⚠️  key-projects.json not found[/yellow]")
-              except Exception as e:
-                  console.print(f"[red]Error loading key projects: {e}[/red]")
-              return []
-
-          def update_key_projects_section(projects):
-              """Generate key projects section from key-projects.json"""
-              if not projects:
-                  return ""
-
-              # Build the section with the top project featured prominently
-              top_project = projects[0] if projects else None
-
-              section = '## ⭐ Key Projects\n\n---\n\n'
-
-              if top_project:
-                  # Build featured project section with safe string formatting
-                  section += '### ' + top_project['emoji'] + ' **' + top_project['title'] + '** ⭐ Featured Project\n\n'
-                  section += '<p align="center">\n'
-                  section += '  <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="100" alt="' + top_project['name'] + '"/>\n'
-                  section += '</p>\n\n'
-                  section += '**' + top_project['description'] + '**\n\n'
-                  section += '<p align="center">\n'
-                  section += '  <a href="' + top_project['url'] + '">\n'
-                  section += '    <img src="https://img.shields.io/badge/' + top_project['emoji'] + '_View_' + top_project['name'] + '-Featured-FF9800?style=for-the-badge&logo=databricks&logoColor=white" alt="View ' + top_project['name'] + '"/>\n'
-                  section += '  </a>\n'
-                  section += '  <a href="' + top_project['url'] + '">\n'
-                  section += '    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>\n'
-                  section += '  </a>\n'
-                  section += '</p>\n\n'
-                  section += '---\n\n'
-
-              # Add other key projects in a vertical list
-              if len(projects) > 1:
-                  section += '### 🎯 Additional Key Projects\n\n'
-
-                  other_projects = projects[1:5]  # Show up to 4 more projects
-                  for proj in other_projects:
-                      category_name = proj['category'].replace('_', ' ').title()
-                      section += '#### ' + proj['emoji'] + ' **' + category_name + '**\n'
-                      section += '[![' + proj['name'] + '](https://img.shields.io/badge/' + proj['emoji'] + '_' + proj['name'] + '-Project-FF9800?style=for-the-badge&logoColor=white)](' + proj['url'] + ')\n'
-                      section += '*' + proj['description'] + '*\n\n'
-
-              section += '---\n\n'
-              section += '<p align="center">\n'
-              section += '  <sub>💡 <em>Projects are maintained and regularly updated • More projects available in the <a href="#featured-projects--digital-creations">Complete Portfolio</a> section below</em></sub>\n'
-              section += '</p>\n\n'
-              section += '---\n\n'
-
-              return section
-
-          def get_enhanced_github_stats():
-              """Fetch comprehensive GitHub stats from API with error handling"""
-              headers = {
-                  'Accept': 'application/vnd.github.v3+json',
-                  'User-Agent': 'GitHub-Profile-Updater'
-              }
-
-              try:
-                  # User stats
-                  user_response = requests.get('https://api.github.com/users/todddube', headers=headers, timeout=10)
-                  if user_response.status_code == 200:
-                      user_data = user_response.json()
-
-                      # Additional stats from events API
-                      events_response = requests.get('https://api.github.com/users/todddube/events/public', headers=headers, timeout=10)
-                      recent_activity = len(events_response.json()) if events_response.status_code == 200 else 0
-
-                      return {
-                          'public_repos': user_data.get('public_repos', 0),
-                          'followers': user_data.get('followers', 0),
-                          'following': user_data.get('following', 0),
-                          'total_stars': 0,  # Would need to calculate from all repos
-                          'recent_activity': recent_activity,
-                          'account_created': user_data.get('created_at', '')
-                      }
-                  else:
-                      console.print(f"[red]GitHub API error: {user_response.status_code}[/red]")
-              except Exception as e:
-                  console.print(f"[red]Error fetching GitHub stats: {e}[/red]")
-
-              return {'public_repos': 0, 'followers': 0, 'following': 0, 'total_stars': 0, 'recent_activity': 0}
-
-          def get_enhanced_recent_repos():
-              """Fetch recent repositories with enhanced metadata"""
-              headers = {
-                  'Accept': 'application/vnd.github.v3+json',
-                  'User-Agent': 'GitHub-Profile-Updater'
-              }
-
+          def get_top_repos():
+              """Fetch top repositories by recent activity"""
               try:
                   response = requests.get(
-                      'https://api.github.com/users/todddube/repos?sort=pushed&per_page=8&type=public',
-                      headers=headers,
+                      'https://api.github.com/users/todddube/repos?sort=pushed&per_page=10&type=public',
+                      headers={'Accept': 'application/vnd.github.v3+json'},
                       timeout=10
                   )
-
                   if response.status_code == 200:
                       repos = response.json()
-                      filtered_repos = []
-
-                      for repo in repos:
-                          if not repo.get('fork', False) and not repo.get('archived', False):
-                              filtered_repos.append({
-                                  'name': repo['name'],
-                                  'description': repo.get('description', 'No description available') or 'No description available',
-                                  'url': repo['html_url'],
-                                  'language': repo.get('language', 'Unknown'),
-                                  'stars': repo.get('stargazers_count', 0),
-                                  'updated': repo.get('pushed_at', repo.get('updated_at', '')),
-                                  'topics': repo.get('topics', [])
-                              })
-
-                      return filtered_repos[:5]  # Return top 5 active repos
-                  else:
-                      console.print(f"[red]Repos API error: {response.status_code}[/red]")
+                      # Filter and return top 4 non-fork repos
+                      filtered = [r for r in repos if not r.get('fork') and not r.get('archived')]
+                      return filtered[:4]
               except Exception as e:
-                  console.print(f"[red]Error fetching repositories: {e}[/red]")
-
+                  print(f"Error fetching repos: {e}")
               return []
 
-          def update_timestamp():
-              """Generate modern timestamp with timezone"""
-              est = pytz.timezone(os.getenv('TIMEZONE', 'US/Eastern'))
-              now = datetime.now(est)
-              return f"*Last updated: {now.strftime('%B %d, %Y at %I:%M %p EST')}*"
-
-          def update_stats_section(stats):
-              """Create enhanced stats section with modern formatting"""
-              return f"""### 📊 Quick Stats:
-          - 📂 **{stats['public_repos']}** Public Repositories
-          - 👥 **{stats['followers']}** GitHub Followers
-          - 🔗 **{stats['following']}** Following"""
-
-          def update_recent_activity(repos):
-              """Create enhanced recent activity section"""
-              if not repos:
-                  return "### 🔥 Recent Activity:\n*No recent public activity to display.*"
-
-              activity = "### 🔥 Recent Activity:\n"
-
-              # Enhanced language emoji mapping
-              lang_emojis = {
-                  'Python': '🐍', 'Swift': '🍎', 'C++': '⚡', 'JavaScript': '💛',
-                  'TypeScript': '💙', 'PowerShell': '💙', 'Assembly': '🔧',
-                  'C#': '🟦', 'Java': '☕', 'Go': '🐹', 'Rust': '🦀',
-                  'Ruby': '💎', 'PHP': '🐘', 'Shell': '🐚', 'Dockerfile': '🐳'
-              }
-
-              for repo in repos[:3]:  # Show top 3 recent activities
-                  emoji = lang_emojis.get(repo['language'], '📁')
-                  stars_info = f" ⭐ {repo['stars']}" if repo['stars'] > 0 else ""
-                  activity += f"- {emoji} **[{repo['name']}]({repo['url']})**{stars_info} - {repo['description']}\n"
-
-              return activity
-
           def main():
-              console.print("[bold blue]🔄 Starting README update process...[/bold blue]")
-
-              # Read current README
               readme_path = Path('README.md')
               if not readme_path.exists():
-                  console.print("[red]❌ README.md not found![/red]")
+                  print("README.md not found")
                   return
 
               content = readme_path.read_text(encoding='utf-8')
-              console.print("[green]✅ README.md loaded successfully[/green]")
+              original = content
 
-              # Load key projects
-              console.print("[yellow]📁 Loading key projects from key-projects.json...[/yellow]")
-              key_projects = load_key_projects()
+              # Get fresh repo data
+              repos = get_top_repos()
 
-              # Fetch fresh data
-              console.print("[yellow]📊 Fetching GitHub statistics...[/yellow]")
-              stats = get_enhanced_github_stats()
+              if repos:
+                  # Build new project table
+                  table = "### Featured Projects\n\n| Project | Description |\n|---------|-------------|\n"
+                  for repo in repos:
+                      name = repo['name']
+                      desc = repo.get('description') or 'No description'
+                      desc = desc[:40] + '...' if len(desc) > 40 else desc
+                      url = repo['html_url']
+                      table += f"| [{name}]({url}) | {desc} |\n"
 
-              console.print("[yellow]📂 Fetching recent repositories...[/yellow]")
-              recent_repos = get_enhanced_recent_repos()
+                  # Replace the projects section
+                  pattern = r'(### Featured Projects\n\n\| Project \| Description \|\n\|[-]+\|[-]+\|\n)(?:\| .+\n)+'
+                  if re.search(pattern, content):
+                      content = re.sub(pattern, table, content)
+                      print(f"✅ Updated {len(repos)} featured projects")
 
-              # Update sections
-              original_content = content
-
-              # Update key projects section (preserve it at the top)
-              key_projects_pattern = r'(## ⭐ Key Projects.*?)(?=## 🚀 About Me)'
-              if key_projects:
-                  key_projects_replacement = update_key_projects_section(key_projects)
-                  content = re.sub(key_projects_pattern, key_projects_replacement, content, flags=re.DOTALL)
-                  console.print("[green]✅ Key projects section updated[/green]")
-
-              # Update stats section
-              stats_pattern = r'(### 📊 Quick Stats:.*?)(?=\n### |\n## |\Z)'
-              stats_replacement = update_stats_section(stats)
-              content = re.sub(stats_pattern, stats_replacement, content, flags=re.DOTALL)
-
-              # Update recent activity
-              activity_pattern = r'(### 🔥 Recent Activity:.*?)(?=\n### |\n## |\Z)'
-              activity_replacement = update_recent_activity(recent_repos)
-              content = re.sub(activity_pattern, activity_replacement, content, flags=re.DOTALL)
-
-              # Update timestamp
-              timestamp_pattern = r'<sub>🕐 \*Last updated:.*?\*</sub>'
-              new_timestamp = f'<sub>🕐 {update_timestamp()}</sub>'
-              content = re.sub(timestamp_pattern, new_timestamp, content)
-
-              # Write updated content
-              if content != original_content:
+              if content != original:
                   readme_path.write_text(content, encoding='utf-8')
-                  console.print("[bold green]✅ README.md updated successfully![/bold green]")
-
-                  # Create summary table
-                  table = Table(title="📊 Update Summary")
-                  table.add_column("Metric", style="cyan")
-                  table.add_column("Value", style="green")
-
-                  table.add_row("Public Repos", str(stats['public_repos']))
-                  table.add_row("Followers", str(stats['followers']))
-                  table.add_row("Following", str(stats['following']))
-                  table.add_row("Recent Projects", str(len(recent_repos)))
-
-                  console.print(table)
-
-                  if recent_repos:
-                      console.print("\n[bold]📂 Recent Projects:[/bold]")
-                      for repo in recent_repos[:3]:
-                          console.print(f"  • {repo['name']} ({repo['language']})")
+                  print("✅ README.md updated")
               else:
-                  console.print("[yellow]ℹ️  No changes detected in README content[/yellow]")
+                  print("ℹ️ No changes needed")
 
           if __name__ == "__main__":
               main()
           EOF
-          
-      - name: 🔍 Check for Changes
-        id: verify-changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "🔄 Changes detected in README.md"
-            echo "changed=true" >> $GITHUB_OUTPUT
-            git diff --name-only
-          else
-            echo "✅ No changes detected"
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
 
-      - name: 🏷️ Generate Commit Message
-        if: steps.verify-changes.outputs.changed == 'true'
-        id: commit-msg
-        run: |
-          # Generate dynamic commit message based on changes
-          COMMIT_MSG="🤖 Auto-update profile README"
-
-          if [[ "${{ github.event.inputs.update_stats }}" == "true" ]]; then
-            COMMIT_MSG="${COMMIT_MSG} • Stats refreshed"
-          fi
-
-          if [[ "${{ github.event.inputs.update_projects }}" == "true" ]]; then
-            COMMIT_MSG="${COMMIT_MSG} • Projects updated"
-          fi
-
-          COMMIT_MSG="${COMMIT_MSG} - $(date +'%Y-%m-%d %H:%M UTC')"
-          echo "message=${COMMIT_MSG}" >> $GITHUB_OUTPUT
-
-      - name: 🚀 Commit and Push Changes
-        if: steps.verify-changes.outputs.changed == 'true'
+      - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "${{ steps.commit-msg.outputs.message }}"
-          git push
-
-      - name: 📊 Create Job Summary
-        if: always()
-        run: |
-          echo "# 📋 Profile Update Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          if [[ "${{ steps.verify-changes.outputs.changed }}" == "true" ]]; then
-            echo "✅ **Status:** Profile updated successfully" >> $GITHUB_STEP_SUMMARY
-            echo "📝 **Commit:** ${{ steps.commit-msg.outputs.message }}" >> $GITHUB_STEP_SUMMARY
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
           else
-            echo "ℹ️ **Status:** No changes detected" >> $GITHUB_STEP_SUMMARY
+            git commit -m "🤖 Update README featured projects"
+            git push
           fi
-
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🕐 **Completed:** $(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "🔄 **Next Update:** Next scheduled run" >> $GITHUB_STEP_SUMMARY
-
-      - name: ❌ Handle Failure
-        if: failure()
-        run: |
-          echo "# ❌ Profile Update Failed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The automated profile update encountered an error." >> $GITHUB_STEP_SUMMARY
-          echo "Please check the workflow logs for details." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🕐 **Failed at:** $(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
