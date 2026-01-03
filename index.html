@@ -284,7 +284,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
-            align-items: center;
+            align-items: start;
             max-width: 1400px;
             width: 100%;
         }
@@ -702,28 +702,6 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
         }
 
         @keyframes pulse-dot {
@@ -1778,11 +1756,6 @@
 
             <!-- Hero Content on Right -->
             <div class="hero-content">
-                <div class="status-badge">
-                    <span class="status-dot"></span>
-                    Available for Consulting & Collaboration
-                </div>
-
                 <h1>
                     <span class="gradient-text">Todd Dube</span>
                 </h1>
@@ -1792,8 +1765,8 @@
                 </p>
 
                 <p class="hero-description">
-                    Building enterprise-scale AI/ML solutions and architecting intelligent systems that transform business operations.
-                    From low-level assembly to cutting-edge neural networks—bridging four decades of computing evolution.
+                    Building enterprise-scale AI/ML solutions and architecting intelligent systems.
+                    From 6502 assembly to modern neural networks—four decades of innovation.
                 </p>
 
                 <div class="tech-showcase">
@@ -1848,73 +1821,73 @@
                     </div>
                     <div class="ai-models-grid">
                         <div class="ai-model-card trending">
-                  <span class="ai-model-icon">🧠</span>
-                  <div class="ai-model-name">Claude</div>
-                  <div class="ai-model-version">Opus 4.5</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 99%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill high" style="width: 99%;"></div>
-                  </div>
-              </div>
-              <div class="ai-model-card trending">
-                  <span class="ai-model-icon">💎</span>
-                  <div class="ai-model-name">GPT-4</div>
-                  <div class="ai-model-version">Turbo</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 97%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill high" style="width: 97%;"></div>
-                  </div>
-              </div>
-              <div class="ai-model-card new">
-                  <span class="ai-model-icon">🌟</span>
-                  <div class="ai-model-name">Gemini</div>
-                  <div class="ai-model-version">2.0 Flash</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 94%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill high" style="width: 94%;"></div>
-                  </div>
-              </div>
-              <div class="ai-model-card">
-                  <span class="ai-model-icon">🦙</span>
-                  <div class="ai-model-name">Llama</div>
-                  <div class="ai-model-version">3.3 70B</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 89%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill medium" style="width: 89%;"></div>
-                  </div>
-              </div>
-              <div class="ai-model-card">
-                  <span class="ai-model-icon">🎨</span>
-                  <div class="ai-model-name">DALL-E</div>
-                  <div class="ai-model-version">3</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 88%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill medium" style="width: 88%;"></div>
-                  </div>
-              </div>
-              <div class="ai-model-card new">
-                  <span class="ai-model-icon">🔮</span>
-                  <div class="ai-model-name">Mistral</div>
-                  <div class="ai-model-version">Large 2</div>
-                  <div class="ai-model-stats">
-                      <span class="ai-model-stat">⭐ 84%</span>
-                  </div>
-                  <div class="ai-popularity-bar">
-                      <div class="ai-popularity-fill medium" style="width: 84%;"></div>
-                  </div>
-              </div>
-                                  <!-- END AI MODELS GRID -->
-                </div>
+                            <span class="ai-model-icon">🧠</span>
+                            <div class="ai-model-name">Claude</div>
+                            <div class="ai-model-version">Opus 4.5</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 98%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card trending">
+                            <span class="ai-model-icon">💎</span>
+                            <div class="ai-model-name">GPT-4</div>
+                            <div class="ai-model-version">Turbo</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 95%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card new">
+                            <span class="ai-model-icon">🌟</span>
+                            <div class="ai-model-name">Gemini</div>
+                            <div class="ai-model-version">2.0 Flash</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 92%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card">
+                            <span class="ai-model-icon">🦙</span>
+                            <div class="ai-model-name">Llama</div>
+                            <div class="ai-model-version">3.3 70B</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 88%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill medium" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card new">
+                            <span class="ai-model-icon">🔮</span>
+                            <div class="ai-model-name">Mistral</div>
+                            <div class="ai-model-version">Large 2</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 85%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill medium" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="ai-model-card">
+                            <span class="ai-model-icon">🎨</span>
+                            <div class="ai-model-name">DALL-E</div>
+                            <div class="ai-model-version">3</div>
+                            <div class="ai-model-stats">
+                                <span class="ai-model-stat">⭐ 90%</span>
+                            </div>
+                            <div class="ai-popularity-bar">
+                                <div class="ai-popularity-fill high" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    <!-- END AI MODELS GRID -->
+                    </div>
             </div>
         </div>
     </header>

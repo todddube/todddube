@@ -277,21 +277,21 @@ jobs:
               else: return "growing"
 
           ai_models_html = ""
+          indent = "                        "
           for model in ai_models:
               status_class = f' {model["status"]}' if model["status"] else ""
               pop_class = get_popularity_class(model["popularity"])
-              ai_models_html += f'''<div class="ai-model-card{status_class}">
-                            <span class="ai-model-icon">{model["icon"]}</span>
-                            <div class="ai-model-name">{model["name"]}</div>
-                            <div class="ai-model-version">{model["version"]}</div>
-                            <div class="ai-model-stats">
-                                <span class="ai-model-stat">⭐ {model["popularity"]}%</span>
-                            </div>
-                            <div class="ai-popularity-bar">
-                                <div class="ai-popularity-fill {pop_class}" style="width: {model["popularity"]}%;"></div>
-                            </div>
-                        </div>
-                        '''
+              ai_models_html += indent + f'<div class="ai-model-card{status_class}">\n'
+              ai_models_html += indent + f'    <span class="ai-model-icon">{model["icon"]}</span>\n'
+              ai_models_html += indent + f'    <div class="ai-model-name">{model["name"]}</div>\n'
+              ai_models_html += indent + f'    <div class="ai-model-version">{model["version"]}</div>\n'
+              ai_models_html += indent + f'    <div class="ai-model-stats">\n'
+              ai_models_html += indent + f'        <span class="ai-model-stat">⭐ {model["popularity"]}%</span>\n'
+              ai_models_html += indent + f'    </div>\n'
+              ai_models_html += indent + f'    <div class="ai-popularity-bar">\n'
+              ai_models_html += indent + f'        <div class="ai-popularity-fill {pop_class}" style="width: {model["popularity"]}%;"></div>\n'
+              ai_models_html += indent + f'    </div>\n'
+              ai_models_html += indent + f'</div>\n'
 
           # Update AI models grid - use a marker comment for reliable replacement
           # First, add end marker if not present
