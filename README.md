@@ -35,10 +35,10 @@
 
 | Project | Description |
 |---------|-------------|
-| [Agentic Demo](https://github.com/todddube/agentic_demo) | AI Agent Development |
-| [SpaceRunner](https://github.com/todddube/spacerunner) | Swift macOS Game |
-| [HueLights](https://github.com/todddube/huelights) | Philips Hue IoT |
-| [C64 Projects](https://github.com/todddube/C64-Projects) | 6502 Assembly |
+| [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [vstat](https://github.com/todddube/vstat) | Claude Status Extension |
+| [lander](https://github.com/todddube/lander) | lunar lander |
+| [C64-Projects](https://github.com/todddube/C64-Projects) | No description |
 
 <br>
 
