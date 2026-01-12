@@ -36,9 +36,9 @@
 | Project | Description |
 |---------|-------------|
 | [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [wthrr](https://github.com/todddube/wthrr) | wthrr app |
 | [vstat](https://github.com/todddube/vstat) | Claude Status Extension |
 | [lander](https://github.com/todddube/lander) | lunar lander |
-| [C64-Projects](https://github.com/todddube/C64-Projects) | No description |
 
 <br>
 
