@@ -1,11 +1,19 @@
 name: Update Profile with AI/ML News & LinkedIn Posts
 
 # This workflow updates the portfolio with:
-# - Live GitHub repository statistics
-# - Curated AI/ML industry news from multiple categories
+# - Live GitHub repository statistics (repos count in footer)
+# - Last updated date in navigation header
+# - Curated AI/ML industry news ticker from multiple categories
 # - LinkedIn-style professional posts with dynamic content
+# - AI Models Tracker with latest model versions and popularity
 # - Professional enterprise-focused headlines
 # - Runs daily at 5 AM ET to keep content fresh
+#
+# Note: The following are rendered dynamically via JavaScript (not updated here):
+# - Hero section GitHub stats (fetched from GitHub API in browser)
+# - Visitor tracking stats (using CountAPI)
+# - AI background animations (CSS/JS generated)
+# - Neural network visualization (canvas-based)
 
 on:
   schedule:
@@ -315,30 +323,47 @@ jobs:
           with open('index.html', 'w', encoding='utf-8') as f:
               f.write(content)
 
-          print(f"✅ Updated last updated date: {current_date_display}")
-          print(f"✅ Updated profile stats: {repos_count} repos, {followers} followers, {following} following")
+          # Summary output
+          print("\n" + "="*60)
+          print("📊 WORKFLOW UPDATE SUMMARY")
+          print("="*60)
+
+          current_date = datetime.now().strftime('%B %d, %Y at %I:%M %p UTC')
+          print(f"\n⏰ Timestamp: {current_date}")
+
+          print(f"\n✅ Updated last updated date: {current_date_display}")
+          print(f"✅ Updated footer stats: {repos_count} repos")
           print(f"✅ Updated AI/ML news ticker with {len(ai_news_items)} fresh headlines")
           print(f"✅ Updated 3 LinkedIn-style posts with fresh content")
-          print(f"✅ News categories: Enterprise AI, Research, Developer Tools, Industry Trends")
-          current_date = datetime.now().strftime('%B %d, %Y at %I:%M %p UTC')
-          print(f"✅ Timestamp: {current_date}")
+          print(f"✅ Updated AI Models Tracker with {len(ai_models)} models")
 
           # Print sample headlines
-          print("\n📰 Sample headlines:")
+          print("\n📰 News Ticker Headlines (sample):")
           for i, headline in enumerate(ai_news_items[:5], 1):
-              print(f"  {i}. {headline[:80]}...")
+              print(f"  {i}. {headline[:70]}...")
 
-          print("\n📝 Selected LinkedIn posts:")
+          print("\n📝 LinkedIn Posts:")
           for i, post in enumerate(selected_posts, 1):
-              print(f"  {i}. [{post['category']}] {post['content'][:60]}...")
-
-          print("\n📊 GitHub Stats (for JavaScript fallback):")
-          print(f"  Repos: {repos_count}, Followers: {followers}, Following: {following}")
+              print(f"  {i}. [{post['category']}] {post['content'][:50]}...")
 
           print("\n🤖 AI Models Tracker:")
           for model in ai_models:
               status = f" [{model['status'].upper()}]" if model['status'] else ""
               print(f"  • {model['icon']} {model['name']} {model['version']} - {model['popularity']}%{status}")
+
+          print("\n📊 GitHub Stats (cached for JS fallback):")
+          print(f"  Repos: {repos_count}, Followers: {followers}, Following: {following}")
+
+          print("\n🎨 Dynamic Elements (rendered in browser):")
+          print("  • Hero GitHub stats (live API fetch)")
+          print("  • Visitor tracking (CountAPI)")
+          print("  • Neural network animation (canvas)")
+          print("  • AI floating symbols, binary rain, data flow")
+          print("  • Glowing nodes, hex grid, circuit pattern")
+
+          print("\n" + "="*60)
+          print("✅ All updates complete!")
+          print("="*60)
           EOF
 
       - name: Commit and push if changed

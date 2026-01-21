@@ -130,6 +130,250 @@
             66% { transform: translate(-100px, 100px) scale(0.9); }
         }
 
+        /* Additional AI Background Animations */
+
+        /* Neural Network Canvas */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating AI Symbols */
+        .ai-symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .ai-symbol {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: rgba(6, 182, 212, 0.15);
+            animation: float-symbol 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ai-symbol.violet {
+            color: rgba(139, 92, 246, 0.12);
+        }
+
+        .ai-symbol.orange {
+            color: rgba(249, 115, 22, 0.1);
+        }
+
+        @keyframes float-symbol {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Binary Rain Effect */
+        .binary-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .binary-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.2;
+            color: rgba(6, 182, 212, 0.08);
+            animation: binary-fall linear infinite;
+            white-space: pre;
+        }
+
+        @keyframes binary-fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(200vh);
+            }
+        }
+
+        /* Circuit Pattern Overlay */
+        .circuit-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image:
+                radial-gradient(circle at 20% 30%, var(--primary) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, var(--secondary) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, var(--accent) 1px, transparent 1px);
+            background-size: 80px 80px, 120px 120px, 60px 60px;
+            animation: circuit-pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes circuit-pulse {
+            0% {
+                opacity: 0.02;
+            }
+            100% {
+                opacity: 0.05;
+            }
+        }
+
+        /* Data Flow Lines */
+        .data-flow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .data-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: data-stream 8s linear infinite;
+            opacity: 0.15;
+        }
+
+        .data-line.vertical {
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(180deg, transparent, var(--secondary), transparent);
+            animation: data-stream-vertical 10s linear infinite;
+        }
+
+        @keyframes data-stream {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.15;
+            }
+            80% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        @keyframes data-stream-vertical {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.12;
+            }
+            80% {
+                opacity: 0.12;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing Nodes */
+        .glow-nodes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            animation: node-pulse 4s ease-in-out infinite;
+        }
+
+        .glow-node.secondary {
+            background: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+        }
+
+        .glow-node.accent {
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+        }
+
+        @keyframes node-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        /* Hexagon Grid Pattern */
+        .hex-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -4;
+            pointer-events: none;
+            opacity: 0.015;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2306B6D4' fill-opacity='1'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: hex-shift 60s linear infinite;
+        }
+
+        @keyframes hex-shift {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(28px, 49px);
+            }
+        }
+
         /* Navigation Bar */
         nav {
             position: fixed;
@@ -281,12 +525,23 @@
         }
 
         .hero-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
-            align-items: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             max-width: 1400px;
             width: 100%;
+        }
+
+        .hero-header {
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
         }
 
         .hero-github {
@@ -471,10 +726,10 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 25px;
-            margin-top: 30px;
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .ai-models-tracker::before {
@@ -684,21 +939,36 @@
         }
 
         .hero-content {
-            max-width: 600px;
-            text-align: left;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 10px;
+        }
+
+        .hero-content .cta-group {
+            justify-content: center;
+        }
+
+        .hero-content .visitor-stats {
+            justify-content: center;
+        }
+
+        .hero-ai-section {
+            display: flex;
+            flex-direction: column;
         }
 
         @media (max-width: 968px) {
-            .hero-layout {
+            .hero-columns {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            .hero-content {
-                text-align: center;
-                max-width: 100%;
-                order: -1;
-            }
             .hero-github {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .hero-ai-section {
                 max-width: 500px;
                 margin: 0 auto;
             }
@@ -1654,10 +1924,25 @@
 <body id="top">
     <!-- Background Elements -->
     <div class="bg-grid"></div>
+    <div class="hex-grid"></div>
+    <div class="circuit-pattern"></div>
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
     <canvas id="particles-canvas"></canvas>
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- AI Floating Symbols -->
+    <div class="ai-symbols" id="ai-symbols"></div>
+
+    <!-- Binary Rain -->
+    <div class="binary-rain" id="binary-rain"></div>
+
+    <!-- Data Flow Lines -->
+    <div class="data-flow" id="data-flow"></div>
+
+    <!-- Glowing Nodes -->
+    <div class="glow-nodes" id="glow-nodes"></div>
 
     <!-- Navigation -->
     <nav>
@@ -1709,52 +1994,7 @@
     <!-- Hero Section -->
     <header>
         <div class="hero-layout">
-            <!-- GitHub Stats on Left -->
-            <div class="hero-github">
-                <!-- Snake Animation Preview -->
-                <div class="hero-snake-preview">
-                    <div class="snake-label">
-                        <span>🐍</span> Contribution Activity
-                    </div>
-                    <picture>
-                        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake-dark.svg" />
-                        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake.svg" />
-                        <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake.svg" />
-                    </picture>
-                </div>
-
-                <!-- GitHub Stats Card -->
-                <div class="hero-github-card">
-                    <div class="stats-fallback" id="hero-stats">
-                        <div class="stats-title">📊 GitHub Stats</div>
-                        <div class="stats-row"><span>Public Repos:</span><span id="hero-repos">--</span></div>
-                        <div class="stats-row"><span>Followers:</span><span id="hero-followers">--</span></div>
-                        <div class="stats-row"><span>Following:</span><span id="hero-following">--</span></div>
-                    </div>
-                </div>
-
-                <!-- Top Languages -->
-                <div class="hero-github-card">
-                    <div class="stats-fallback">
-                        <div class="stats-title">💻 Top Languages</div>
-                        <div class="lang-bar">
-                            <div class="lang-segment python" style="width: 35%;" title="Python 35%"></div>
-                            <div class="lang-segment swift" style="width: 25%;" title="Swift 25%"></div>
-                            <div class="lang-segment assembly" style="width: 20%;" title="Assembly 20%"></div>
-                            <div class="lang-segment powershell" style="width: 12%;" title="PowerShell 12%"></div>
-                            <div class="lang-segment other" style="width: 8%;" title="Other 8%"></div>
-                        </div>
-                        <div class="lang-legend">
-                            <span><span class="dot python"></span>Python</span>
-                            <span><span class="dot swift"></span>Swift</span>
-                            <span><span class="dot assembly"></span>Assembly</span>
-                            <span><span class="dot powershell"></span>PowerShell</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Content on Right -->
+            <!-- Full Width Header -->
             <div class="hero-content">
                 <h1>
                     <span class="gradient-text">Todd Dube</span>
@@ -1809,8 +2049,58 @@
                         <span class="visitor-stat-label">Today</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- AI Models Tracker -->
+            <!-- Two Column Layout: GitHub Left, AI Models Right -->
+            <div class="hero-columns">
+                <!-- GitHub Stats on Left -->
+                <div class="hero-github">
+                    <!-- Snake Animation Preview -->
+                    <div class="hero-snake-preview">
+                        <div class="snake-label">
+                            <span>🐍</span> Contribution Activity
+                        </div>
+                        <picture>
+                            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake-dark.svg" />
+                            <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake.svg" />
+                            <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/todddube/todddube/output/github-contribution-grid-snake.svg" />
+                        </picture>
+                    </div>
+
+                    <!-- GitHub Stats Card -->
+                    <div class="hero-github-card">
+                        <div class="stats-fallback" id="hero-stats">
+                            <div class="stats-title">📊 GitHub Stats</div>
+                            <div class="stats-row"><span>Public Repos:</span><span id="hero-repos">--</span></div>
+                            <div class="stats-row"><span>Followers:</span><span id="hero-followers">--</span></div>
+                            <div class="stats-row"><span>Following:</span><span id="hero-following">--</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Top Languages -->
+                    <div class="hero-github-card">
+                        <div class="stats-fallback">
+                            <div class="stats-title">💻 Top Languages</div>
+                            <div class="lang-bar">
+                                <div class="lang-segment python" style="width: 35%;" title="Python 35%"></div>
+                                <div class="lang-segment swift" style="width: 25%;" title="Swift 25%"></div>
+                                <div class="lang-segment assembly" style="width: 20%;" title="Assembly 20%"></div>
+                                <div class="lang-segment powershell" style="width: 12%;" title="PowerShell 12%"></div>
+                                <div class="lang-segment other" style="width: 8%;" title="Other 8%"></div>
+                            </div>
+                            <div class="lang-legend">
+                                <span><span class="dot python"></span>Python</span>
+                                <span><span class="dot swift"></span>Swift</span>
+                                <span><span class="dot assembly"></span>Assembly</span>
+                                <span><span class="dot powershell"></span>PowerShell</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Models Tracker on Right -->
+                <div class="hero-ai-section">
+                    <!-- AI Models Tracker -->
                 <div class="ai-models-tracker" id="ai-models-tracker">
                     <div class="ai-tracker-header">
                         <div class="ai-tracker-title">
@@ -1888,6 +2178,8 @@
                         </div>
                     <!-- END AI MODELS GRID -->
                     </div>
+                </div>
+                </div>
             </div>
         </div>
     </header>
@@ -2713,10 +3005,247 @@
             updateTimestamp();
             fetchGitHubStats();
             VisitorTracker.init();
+            initAIBackgroundAnimations();
         });
 
         // Expose tracker for admin use
         window.VisitorTracker = VisitorTracker;
+
+        // AI Background Animations
+        function initAIBackgroundAnimations() {
+            initAISymbols();
+            initBinaryRain();
+            initDataFlow();
+            initGlowNodes();
+            initNeuralNetwork();
+        }
+
+        // Floating AI Symbols
+        function initAISymbols() {
+            const container = document.getElementById('ai-symbols');
+            if (!container) return;
+
+            const symbols = [
+                '{ AI }', '< ML >', '[ NN ]', '( DL )', '>> LLM',
+                'def train():', 'import torch', 'model.fit()',
+                'tensor', 'epoch', 'loss:', 'grad', 'relu',
+                'transformer', 'attention', 'embedding',
+                '0x7F', '0xAI', 'GPU', 'TPU', 'CUDA',
+                'sigmoid', 'softmax', 'backprop', 'weights',
+                'inference', 'deploy', 'pipeline', 'vector'
+            ];
+            const colors = ['', 'violet', 'orange'];
+
+            for (let i = 0; i < 25; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'ai-symbol ' + colors[Math.floor(Math.random() * colors.length)];
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                symbol.style.left = Math.random() * 100 + '%';
+                symbol.style.animationDuration = (15 + Math.random() * 20) + 's';
+                symbol.style.animationDelay = Math.random() * 20 + 's';
+                symbol.style.fontSize = (10 + Math.random() * 8) + 'px';
+                container.appendChild(symbol);
+            }
+        }
+
+        // Binary Rain Effect
+        function initBinaryRain() {
+            const container = document.getElementById('binary-rain');
+            if (!container) return;
+
+            const columnCount = Math.floor(window.innerWidth / 50);
+
+            for (let i = 0; i < columnCount; i++) {
+                const column = document.createElement('div');
+                column.className = 'binary-column';
+                column.style.left = (i * 50 + Math.random() * 30) + 'px';
+                column.style.animationDuration = (15 + Math.random() * 25) + 's';
+                column.style.animationDelay = Math.random() * 15 + 's';
+
+                // Generate binary string
+                let binary = '';
+                const length = 30 + Math.floor(Math.random() * 30);
+                for (let j = 0; j < length; j++) {
+                    binary += Math.random() > 0.5 ? '1' : '0';
+                    binary += '\n';
+                }
+                column.textContent = binary;
+                container.appendChild(column);
+            }
+        }
+
+        // Data Flow Lines
+        function initDataFlow() {
+            const container = document.getElementById('data-flow');
+            if (!container) return;
+
+            // Horizontal lines
+            for (let i = 0; i < 8; i++) {
+                const line = document.createElement('div');
+                line.className = 'data-line';
+                line.style.top = (10 + Math.random() * 80) + '%';
+                line.style.width = (100 + Math.random() * 200) + 'px';
+                line.style.animationDuration = (6 + Math.random() * 8) + 's';
+                line.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(line);
+            }
+
+            // Vertical lines
+            for (let i = 0; i < 6; i++) {
+                const line = document.createElement('div');
+                line.className = 'data-line vertical';
+                line.style.left = (10 + Math.random() * 80) + '%';
+                line.style.height = (80 + Math.random() * 120) + 'px';
+                line.style.animationDuration = (8 + Math.random() * 10) + 's';
+                line.style.animationDelay = Math.random() * 12 + 's';
+                container.appendChild(line);
+            }
+        }
+
+        // Glowing Nodes
+        function initGlowNodes() {
+            const container = document.getElementById('glow-nodes');
+            if (!container) return;
+
+            const nodeTypes = ['', 'secondary', 'accent'];
+
+            for (let i = 0; i < 20; i++) {
+                const node = document.createElement('div');
+                node.className = 'glow-node ' + nodeTypes[Math.floor(Math.random() * nodeTypes.length)];
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDuration = (3 + Math.random() * 4) + 's';
+                node.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(node);
+            }
+        }
+
+        // Neural Network Canvas Animation
+        function initNeuralNetwork() {
+            const canvas = document.getElementById('neural-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            function resizeNeuralCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeNeuralCanvas();
+            window.addEventListener('resize', resizeNeuralCanvas);
+
+            // Neural network nodes
+            const nodes = [];
+            const nodeCount = 40;
+
+            class NeuralNode {
+                constructor() {
+                    this.reset();
+                }
+
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.radius = 2 + Math.random() * 3;
+                    this.vx = (Math.random() - 0.5) * 0.3;
+                    this.vy = (Math.random() - 0.5) * 0.3;
+                    this.pulsePhase = Math.random() * Math.PI * 2;
+                    this.pulseSpeed = 0.02 + Math.random() * 0.02;
+                    // Color variants
+                    const colors = [
+                        { r: 6, g: 182, b: 212 },   // Cyan
+                        { r: 139, g: 92, b: 246 },  // Violet
+                        { r: 249, g: 115, b: 22 }   // Orange
+                    ];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.pulsePhase += this.pulseSpeed;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    const pulse = 0.5 + Math.sin(this.pulsePhase) * 0.3;
+                    const { r, g, b } = this.color;
+
+                    // Glow effect
+                    const gradient = ctx.createRadialGradient(
+                        this.x, this.y, 0,
+                        this.x, this.y, this.radius * 4
+                    );
+                    gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${pulse * 0.4})`);
+                    gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${pulse * 0.1})`);
+                    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * 4, 0, Math.PI * 2);
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+
+                    // Core
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * pulse, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${pulse})`;
+                    ctx.fill();
+                }
+            }
+
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push(new NeuralNode());
+            }
+
+            // Draw connections between close nodes
+            function drawConnections() {
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 200) {
+                            const opacity = (1 - distance / 200) * 0.08;
+                            const { r, g, b } = nodes[i].color;
+
+                            // Create gradient for connection
+                            const gradient = ctx.createLinearGradient(
+                                nodes[i].x, nodes[i].y,
+                                nodes[j].x, nodes[j].y
+                            );
+                            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${opacity})`);
+                            gradient.addColorStop(1, `rgba(${nodes[j].color.r}, ${nodes[j].color.g}, ${nodes[j].color.b}, ${opacity})`);
+
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            // Animation loop
+            function animateNeural() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                drawConnections();
+                nodes.forEach(node => {
+                    node.update();
+                    node.draw();
+                });
+
+                requestAnimationFrame(animateNeural);
+            }
+
+            animateNeural();
+        }
     </script>
 </body>
 </html>
