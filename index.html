@@ -1347,6 +1347,44 @@
             gap: 12px;
         }
 
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .project-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .project-lang .lang-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .project-stars {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .project-updated {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
         /* Stats Section */
         .stats-grid {
             display: grid;
@@ -2280,21 +2318,25 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-label">Portfolio</span>
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title">Top Repositories</h2>
                 <p class="section-description">
-                    A selection of innovative projects showcasing expertise across AI/ML, IoT,
-                    game development, and systems programming.
+                    My most active public repositories on GitHub, automatically updated to showcase the latest work.
                 </p>
             </div>
 
             <div class="projects-grid">
+                <!-- BEGIN TOP REPOS -->
                 <div class="project-card reveal">
-                    <div class="project-image">📊</div>
+                    <div class="project-image">🖥️</div>
                     <div class="project-content">
-                        <p class="project-category">Data Visualization</p>
-                        <h3>VStat Dashboard</h3>
-                        <p>Real-time visual statistics and monitoring dashboard with advanced analytics, beautiful data visualizations, and comprehensive system insights.</p>
-                        <a href="https://github.com/todddube/vstat" class="project-link">
+                        <p class="project-category">C#</p>
+                        <h3>retrosvr</h3>
+                        <div class="project-meta">
+                            <span class="project-lang"><span class="lang-dot" style="background:#178600;"></span> C#</span>
+                            <span class="project-stars">⭐ 0</span>
+                        </div>
+                        <p>Retro Screen Saver for Windows</p>
+                        <a href="https://github.com/todddube/retrosvr" class="project-link">
                             View Project <span>→</span>
                         </a>
                     </div>
@@ -2303,10 +2345,30 @@
                 <div class="project-card reveal">
                     <div class="project-image">🤖</div>
                     <div class="project-content">
-                        <p class="project-category">Artificial Intelligence</p>
-                        <h3>AI Agentic Systems</h3>
-                        <p>Intelligent conversational systems and autonomous AI agents using cutting-edge machine learning frameworks and natural language processing.</p>
-                        <a href="https://github.com/todddube/agentic_demo" class="project-link">
+                        <p class="project-category">Python</p>
+                        <h3>agentic</h3>
+                        <div class="project-meta">
+                            <span class="project-lang"><span class="lang-dot" style="background:#3572A5;"></span> Python</span>
+                            <span class="project-stars">⭐ 1</span>
+                        </div>
+                        <p>agentic things playing around</p>
+                        <a href="https://github.com/todddube/agentic" class="project-link">
+                            View Project <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-image">🎵</div>
+                    <div class="project-content">
+                        <p class="project-category">JavaScript</p>
+                        <h3>audio_spec</h3>
+                        <div class="project-meta">
+                            <span class="project-lang"><span class="lang-dot" style="background:#f1e05a;"></span> JavaScript</span>
+                            <span class="project-stars">⭐ 0</span>
+                        </div>
+                        <p>Audio Spectrum Analyzer</p>
+                        <a href="https://github.com/todddube/audio_spec" class="project-link">
                             View Project <span>→</span>
                         </a>
                     </div>
@@ -2315,50 +2377,35 @@
                 <div class="project-card reveal">
                     <div class="project-image">🚀</div>
                     <div class="project-content">
-                        <p class="project-category">Game Development</p>
-                        <h3>SpaceRunner</h3>
-                        <p>Featured macOS space adventure game built with Swift and SpriteKit. Dynamic gameplay with stunning visuals and immersive sound design.</p>
-                        <a href="https://github.com/todddube/spacerunner" class="project-link">
+                        <p class="project-category">C++</p>
+                        <h3>lander</h3>
+                        <div class="project-meta">
+                            <span class="project-lang"><span class="lang-dot" style="background:#f34b7d;"></span> C++</span>
+                            <span class="project-stars">⭐ 0</span>
+                        </div>
+                        <p>lunar lander</p>
+                        <a href="https://github.com/todddube/lander" class="project-link">
                             View Project <span>→</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="project-card reveal">
-                    <div class="project-image">💡</div>
+                    <div class="project-image">🎮</div>
                     <div class="project-content">
-                        <p class="project-category">Internet of Things</p>
-                        <h3>HueLights IoT</h3>
-                        <p>Philips Hue SDK integration for smart lighting automation and intelligent home control systems with advanced scene management.</p>
-                        <a href="https://github.com/todddube/huelights" class="project-link">
+                        <p class="project-category">Python</p>
+                        <h3>2048-In-Python</h3>
+                        <div class="project-meta">
+                            <span class="project-lang"><span class="lang-dot" style="background:#3572A5;"></span> Python</span>
+                            <span class="project-stars">⭐ 1</span>
+                        </div>
+                        <p>Learn how to code the 2048 game in Python with Pygame!</p>
+                        <a href="https://github.com/todddube/2048-In-Python" class="project-link">
                             View Project <span>→</span>
                         </a>
                     </div>
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">💾</div>
-                    <div class="project-content">
-                        <p class="project-category">Retro Computing</p>
-                        <h3>C64 Assembly Projects</h3>
-                        <p>Retro computing projects with 6502 Assembly on Commodore 64, preserving the art of low-level programming and classic game development.</p>
-                        <a href="https://github.com/todddube/C64-Projects" class="project-link">
-                            View Project <span>→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">🧠</div>
-                    <div class="project-content">
-                        <p class="project-category">AI Research</p>
-                        <h3>Claude AI Experiments</h3>
-                        <p>Advanced AI experiments and integrations exploring the cutting edge of large language models and autonomous agent systems.</p>
-                        <a href="https://github.com/todddube/claude" class="project-link">
-                            View Project <span>→</span>
-                        </a>
-                    </div>
-                </div>
+                <!-- END TOP REPOS -->
             </div>
         </div>
     </section>

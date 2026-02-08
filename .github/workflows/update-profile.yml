@@ -49,6 +49,8 @@ jobs:
           pip install requests beautifulsoup4 feedparser
 
       - name: Update stats, news, and LinkedIn posts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 << 'EOF'
           import requests
@@ -318,6 +320,97 @@ jobs:
           )
 
           print(f"✅ Updated AI Models Tracker with {len(ai_models)} models")
+
+          # --- Top 5 Repos ---
+          try:
+              headers = {}
+              gh_token = None
+              import os
+              gh_token = os.environ.get('GITHUB_TOKEN')
+              if gh_token:
+                  headers['Authorization'] = f'token {gh_token}'
+              repos_resp = requests.get(
+                  'https://api.github.com/users/todddube/repos?per_page=100&type=public',
+                  headers=headers
+              )
+              all_repos = repos_resp.json()
+
+              # Filter out profile repo and forks
+              public_repos = [
+                  r for r in all_repos
+                  if not r.get('fork')
+                  and r['name'] != 'todddube'
+                  and not r.get('archived')
+              ]
+
+              # Score repos: stars*3 + forks*2 + recency bonus
+              from datetime import timezone
+              now = datetime.now(timezone.utc)
+              for r in public_repos:
+                  updated = datetime.fromisoformat(r['updated_at'].replace('Z', '+00:00'))
+                  days_ago = (now - updated).days
+                  recency = max(0, 100 - days_ago)  # bonus for recent activity
+                  r['_score'] = r['stargazers_count'] * 3 + r['forks_count'] * 2 + recency
+
+              public_repos.sort(key=lambda x: x['_score'], reverse=True)
+              top5 = public_repos[:5]
+
+              # Language colors for dots
+              lang_colors = {
+                  'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#3178c6',
+                  'C#': '#178600', 'C++': '#f34b7d', 'C': '#555555', 'Assembly': '#6E4C13',
+                  'HTML': '#e34c26', 'CSS': '#563d7c', 'PowerShell': '#012456',
+                  'Shell': '#89e051', 'Dockerfile': '#384d54', 'Swift': '#F05138',
+                  'Java': '#b07219', 'Go': '#00ADD8', 'Rust': '#dea584',
+              }
+
+              # Emoji map by language/topic
+              lang_emojis = {
+                  'Python': '🐍', 'JavaScript': '🎵', 'TypeScript': '📘', 'C#': '🖥️',
+                  'C++': '🚀', 'C': '⚙️', 'Assembly': '💾', 'HTML': '🌐',
+                  'PowerShell': '⚡', 'Dockerfile': '🐳', 'Swift': '🍎',
+                  'Java': '☕', 'Go': '🔷', 'Rust': '🦀',
+              }
+
+              repos_html = ""
+              indent = "                "
+              for repo in top5:
+                  name = repo['name']
+                  desc = repo.get('description') or name
+                  lang = repo.get('language') or 'Code'
+                  stars = repo['stargazers_count']
+                  url = repo['html_url']
+                  dot_color = lang_colors.get(lang, '#8b949e')
+                  emoji = lang_emojis.get(lang, '📦')
+
+                  repos_html += f'{indent}<div class="project-card reveal">\n'
+                  repos_html += f'{indent}    <div class="project-image">{emoji}</div>\n'
+                  repos_html += f'{indent}    <div class="project-content">\n'
+                  repos_html += f'{indent}        <p class="project-category">{lang}</p>\n'
+                  repos_html += f'{indent}        <h3>{name}</h3>\n'
+                  repos_html += f'{indent}        <div class="project-meta">\n'
+                  repos_html += f'{indent}            <span class="project-lang"><span class="lang-dot" style="background:{dot_color};"></span> {lang}</span>\n'
+                  repos_html += f'{indent}            <span class="project-stars">⭐ {stars}</span>\n'
+                  repos_html += f'{indent}        </div>\n'
+                  repos_html += f'{indent}        <p>{desc}</p>\n'
+                  repos_html += f'{indent}        <a href="{url}" class="project-link">\n'
+                  repos_html += f'{indent}            View Project <span>→</span>\n'
+                  repos_html += f'{indent}        </a>\n'
+                  repos_html += f'{indent}    </div>\n'
+                  repos_html += f'{indent}</div>\n\n'
+
+              content = re.sub(
+                  r'<!-- BEGIN TOP REPOS -->.*?<!-- END TOP REPOS -->',
+                  f'<!-- BEGIN TOP REPOS -->\n{repos_html}{indent}<!-- END TOP REPOS -->',
+                  content,
+                  flags=re.DOTALL
+              )
+
+              print(f"✅ Updated Top 5 Repositories:")
+              for r in top5:
+                  print(f"   • {r['name']} ({r.get('language','?')}) ⭐{r['stargazers_count']} score={r['_score']}")
+          except Exception as e:
+              print(f"⚠️ Top repos update failed: {e}")
 
           # Write updated content
           with open('index.html', 'w', encoding='utf-8') as f:
