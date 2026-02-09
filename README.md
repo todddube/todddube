@@ -36,9 +36,9 @@
 | Project | Description |
 |---------|-------------|
 | [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [retrosvr](https://github.com/todddube/retrosvr) | Retro Screen Saver for Windows |
 | [vstat](https://github.com/todddube/vstat) | Claude Status Extension |
 | [wthrr](https://github.com/todddube/wthrr) | wthrr app |
-| [lander](https://github.com/todddube/lander) | lunar lander |
 
 <br>
 
