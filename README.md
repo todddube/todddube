@@ -1,7 +1,7 @@
 <div align="center">
 
-<!-- Dynamic Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=200&section=header&text=Todd%20Dube&fontSize=56&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Sr%20Solutions%20Architect%20%7C%20AI%2FML%20%7C%20GenAI&descSize=18&descAlignY=58&descColor=FFFFFF" />
+<!-- Retro 8-bit AI/ML Header -->
+<img src="https://raw.githubusercontent.com/todddube/todddube/main/images/header_ai_retro.svg" width="100%" alt="Retro 8-bit AI/ML Header"/>
 
 <!-- Typing Animation -->
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Sr+Solutions+Architect+%40+CarMax;AI%2FML+%26+GenAI+Platform+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
@@ -32,11 +32,6 @@
 
 ## 🚀 About Me
 
-<div align="center">
-<table>
-<tr>
-<td width="55%">
-
 ### 👨‍💻 Who Am I?
 
 **Sr Solutions Architect** specializing in **Data Science, AI/ML, GenAI & Data Analytics Platforms** at [CarMax](https://www.carmax.com) — and a lifelong builder, tinkerer, and game developer.
@@ -48,14 +43,6 @@ I believe in understanding technology from first principles: from hand-crafting 
 - 📊 **Data Analytics Platforms** — enterprise-scale data science at CarMax
 - 🎮 **Games** — iOS space shooters, C++ lunar lander, C64 Assembly titles
 - 💡 **IoT & LED Projects** — NightDriver ESP32 LED displays, smart systems
-
-</td>
-<td width="45%">
-<img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="100%" alt="Coding"/>
-</td>
-</tr>
-</table>
-</div>
 
 <!-- Tech Journey -->
 <details>

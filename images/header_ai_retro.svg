@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <style>
+      .blink { animation: blink 1s step-start infinite; }
+      .pulse  { animation: pulse 2s ease-in-out infinite; }
+      .pulse2 { animation: pulse 2s ease-in-out infinite; animation-delay: 0.66s; }
+      .pulse3 { animation: pulse 2s ease-in-out infinite; animation-delay: 1.33s; }
+      .scanmove { animation: scanmove 5s linear infinite; }
+      @keyframes blink   { 50% { opacity: 0; } }
+      @keyframes pulse   { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+      @keyframes scanmove {
+        from { transform: translateY(-280px); }
+        to   { transform: translateY(560px); }
+      }
+    </style>
+
+    <!-- 8-px pixel grid -->
+    <pattern id="pgrid" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#0b2a1a" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- CRT scanlines -->
+    <pattern id="scan" x="0" y="0" width="1" height="3" patternUnits="userSpaceOnUse">
+      <rect width="1" height="1" y="2" fill="rgba(0,0,0,0.28)"/>
+    </pattern>
+
+    <!-- Glow (normal) -->
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Glow (strong – for big text) -->
+    <filter id="glow2" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Vignette -->
+    <radialGradient id="vig" cx="50%" cy="50%" r="72%">
+      <stop offset="0%"   stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.65)"/>
+    </radialGradient>
+
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#020c06"/>
+      <stop offset="100%" stop-color="#020810"/>
+    </linearGradient>
+
+    <!-- Title bar gradient -->
+    <linearGradient id="tbar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#00aa22"/>
+      <stop offset="100%" stop-color="#0055cc"/>
+    </linearGradient>
+
+    <!-- Moving CRT beam -->
+    <linearGradient id="beam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="transparent"/>
+      <stop offset="48%"  stop-color="transparent"/>
+      <stop offset="50%"  stop-color="rgba(0,255,60,0.06)"/>
+      <stop offset="52%"  stop-color="transparent"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ═══════════════ BACKGROUND ═══════════════ -->
+  <rect width="900" height="280" fill="url(#bg)"/>
+  <rect width="900" height="280" fill="url(#pgrid)"/>
+
+  <!-- Ambient binary text (very dark) -->
+  <text x="0"   y="22"  font-family="monospace" font-size="9" fill="#061a0c" opacity="0.9">01001101 01001100 00100000 01000001 01001001 01001101 01001100 00100000 01000001 01001001 01001101</text>
+  <text x="0"   y="34"  font-family="monospace" font-size="9" fill="#061a0c" opacity="0.8">11001100 10110011 00110011 11100011 01110011 11001100 10110011 00110011 11100011 01110011 11001100</text>
+  <text x="0"   y="247" font-family="monospace" font-size="9" fill="#061a0c" opacity="0.9">0xFF 0xA1 0x4E 0x00 0x3C 0xBB 0x7D 0x91 0x2F 0xC4 0xDE 0xAD 0xBE 0xEF 0x00 0x42 0x4C 0x4D 0x00</text>
+  <text x="0"   y="259" font-family="monospace" font-size="9" fill="#061a0c" opacity="0.8">ADDR: $8000 :: LDA #$01 :: STA $D020 :: JMP ($FFFC) :: NOP :: RTS :: BRK :: JSR $E544 :: RTI</text>
+
+  <!-- ═══════════════ LEFT PANEL — NEURAL NET ═══════════════ -->
+  <rect x="5" y="5" width="278" height="270" fill="#010d05" stroke="#00ee3a" stroke-width="1.2" opacity="0.92"/>
+
+  <!-- Panel header bar -->
+  <rect x="5" y="5" width="278" height="20" fill="#002a0c" stroke="none"/>
+  <text x="14" y="19" font-family="'Courier New',monospace" font-size="9.5" fill="#00ee3a" filter="url(#glow)">▶ NEURAL_NET v2.6  [LIVE]</text>
+
+  <!-- Layer labels -->
+  <text x="42"  y="50" font-family="monospace" font-size="8" fill="#004422" text-anchor="middle">INPUT</text>
+  <text x="112" y="50" font-family="monospace" font-size="8" fill="#004422" text-anchor="middle">H.1</text>
+  <text x="182" y="50" font-family="monospace" font-size="8" fill="#004422" text-anchor="middle">H.2</text>
+  <text x="247" y="50" font-family="monospace" font-size="8" fill="#004422" text-anchor="middle">OUT</text>
+
+  <!-- ── Connections Input → H1 (very faint) ── -->
+  <!-- Input nodes: x=42, y=75 105 135 165 195 -->
+  <!-- H1 nodes:   x=112, y=65 95 125 155 185 215 -->
+  <g stroke="#003318" stroke-width="0.7" opacity="0.55">
+    <line x1="48" y1="75"  x2="106" y2="65"/><line x1="48" y1="75"  x2="106" y2="95"/>
+    <line x1="48" y1="75"  x2="106" y2="125"/><line x1="48" y1="75"  x2="106" y2="155"/>
+    <line x1="48" y1="75"  x2="106" y2="185"/><line x1="48" y1="75"  x2="106" y2="215"/>
+    <line x1="48" y1="105" x2="106" y2="65"/><line x1="48" y1="105" x2="106" y2="95"/>
+    <line x1="48" y1="105" x2="106" y2="125"/><line x1="48" y1="105" x2="106" y2="155"/>
+    <line x1="48" y1="105" x2="106" y2="185"/><line x1="48" y1="105" x2="106" y2="215"/>
+    <line x1="48" y1="135" x2="106" y2="65"/><line x1="48" y1="135" x2="106" y2="95"/>
+    <line x1="48" y1="135" x2="106" y2="125"/><line x1="48" y1="135" x2="106" y2="155"/>
+    <line x1="48" y1="135" x2="106" y2="185"/><line x1="48" y1="135" x2="106" y2="215"/>
+    <line x1="48" y1="165" x2="106" y2="65"/><line x1="48" y1="165" x2="106" y2="95"/>
+    <line x1="48" y1="165" x2="106" y2="125"/><line x1="48" y1="165" x2="106" y2="155"/>
+    <line x1="48" y1="165" x2="106" y2="185"/><line x1="48" y1="165" x2="106" y2="215"/>
+    <line x1="48" y1="195" x2="106" y2="65"/><line x1="48" y1="195" x2="106" y2="95"/>
+    <line x1="48" y1="195" x2="106" y2="125"/><line x1="48" y1="195" x2="106" y2="155"/>
+    <line x1="48" y1="195" x2="106" y2="185"/><line x1="48" y1="195" x2="106" y2="215"/>
+  </g>
+
+  <!-- ── Connections H1 → H2 ── -->
+  <!-- H2 nodes: x=182, y=80 110 140 170 200 -->
+  <g stroke="#003318" stroke-width="0.7" opacity="0.55">
+    <line x1="118" y1="65"  x2="176" y2="80"/><line x1="118" y1="65"  x2="176" y2="110"/>
+    <line x1="118" y1="65"  x2="176" y2="140"/><line x1="118" y1="65"  x2="176" y2="170"/>
+    <line x1="118" y1="65"  x2="176" y2="200"/>
+    <line x1="118" y1="95"  x2="176" y2="80"/><line x1="118" y1="95"  x2="176" y2="110"/>
+    <line x1="118" y1="95"  x2="176" y2="140"/><line x1="118" y1="95"  x2="176" y2="170"/>
+    <line x1="118" y1="95"  x2="176" y2="200"/>
+    <line x1="118" y1="125" x2="176" y2="80"/><line x1="118" y1="125" x2="176" y2="110"/>
+    <line x1="118" y1="125" x2="176" y2="140"/><line x1="118" y1="125" x2="176" y2="170"/>
+    <line x1="118" y1="125" x2="176" y2="200"/>
+    <line x1="118" y1="155" x2="176" y2="80"/><line x1="118" y1="155" x2="176" y2="110"/>
+    <line x1="118" y1="155" x2="176" y2="140"/><line x1="118" y1="155" x2="176" y2="170"/>
+    <line x1="118" y1="155" x2="176" y2="200"/>
+    <line x1="118" y1="185" x2="176" y2="80"/><line x1="118" y1="185" x2="176" y2="110"/>
+    <line x1="118" y1="185" x2="176" y2="140"/><line x1="118" y1="185" x2="176" y2="170"/>
+    <line x1="118" y1="185" x2="176" y2="200"/>
+    <line x1="118" y1="215" x2="176" y2="80"/><line x1="118" y1="215" x2="176" y2="110"/>
+    <line x1="118" y1="215" x2="176" y2="140"/><line x1="118" y1="215" x2="176" y2="170"/>
+    <line x1="118" y1="215" x2="176" y2="200"/>
+  </g>
+
+  <!-- ── Connections H2 → Output ── -->
+  <!-- Output nodes: x=243, y=110 150 190 -->
+  <g stroke="#004422" stroke-width="1" opacity="0.7">
+    <line x1="188" y1="80"  x2="237" y2="110"/><line x1="188" y1="80"  x2="237" y2="150"/><line x1="188" y1="80"  x2="237" y2="190"/>
+    <line x1="188" y1="110" x2="237" y2="110"/><line x1="188" y1="110" x2="237" y2="150"/><line x1="188" y1="110" x2="237" y2="190"/>
+    <line x1="188" y1="140" x2="237" y2="110"/><line x1="188" y1="140" x2="237" y2="150"/><line x1="188" y1="140" x2="237" y2="190"/>
+    <line x1="188" y1="170" x2="237" y2="110"/><line x1="188" y1="170" x2="237" y2="150"/><line x1="188" y1="170" x2="237" y2="190"/>
+    <line x1="188" y1="200" x2="237" y2="110"/><line x1="188" y1="200" x2="237" y2="150"/><line x1="188" y1="200" x2="237" y2="190"/>
+  </g>
+
+  <!-- Input nodes (8×8 pixel squares) -->
+  <g fill="#00ff41" filter="url(#glow)">
+    <rect class="pulse"  x="38" y="71"  width="10" height="10"/>
+    <rect class="pulse2" x="38" y="101" width="10" height="10"/>
+    <rect class="pulse3" x="38" y="131" width="10" height="10"/>
+    <rect class="pulse"  x="38" y="161" width="10" height="10"/>
+    <rect class="pulse2" x="38" y="191" width="10" height="10"/>
+  </g>
+
+  <!-- H1 nodes -->
+  <g fill="#00ddaa" filter="url(#glow)">
+    <rect class="pulse2" x="107" y="61"  width="10" height="10"/>
+    <rect class="pulse3" x="107" y="91"  width="10" height="10"/>
+    <rect class="pulse"  x="107" y="121" width="10" height="10"/>
+    <rect class="pulse2" x="107" y="151" width="10" height="10"/>
+    <rect class="pulse3" x="107" y="181" width="10" height="10"/>
+    <rect class="pulse"  x="107" y="211" width="10" height="10"/>
+  </g>
+
+  <!-- H2 nodes -->
+  <g fill="#00aad4" filter="url(#glow)">
+    <rect class="pulse3" x="177" y="76"  width="10" height="10"/>
+    <rect class="pulse"  x="177" y="106" width="10" height="10"/>
+    <rect class="pulse2" x="177" y="136" width="10" height="10"/>
+    <rect class="pulse3" x="177" y="166" width="10" height="10"/>
+    <rect class="pulse"  x="177" y="196" width="10" height="10"/>
+  </g>
+
+  <!-- Output nodes (larger, brighter) -->
+  <g fill="#00bbff" filter="url(#glow2)">
+    <rect class="pulse"  x="237" y="104" width="12" height="12"/>
+    <rect class="pulse2" x="237" y="144" width="12" height="12"/>
+    <rect class="pulse3" x="237" y="184" width="12" height="12"/>
+  </g>
+
+  <!-- Output labels -->
+  <text x="254" y="113" font-family="monospace" font-size="9" fill="#00bbff" filter="url(#glow)">AI</text>
+  <text x="254" y="153" font-family="monospace" font-size="9" fill="#00bbff" filter="url(#glow)">ML</text>
+  <text x="254" y="193" font-family="monospace" font-size="9" fill="#00bbff" filter="url(#glow)">GEN</text>
+
+  <!-- Neural net status footer -->
+  <text x="14" y="246" font-family="monospace" font-size="8" fill="#005533">EPOCH: 10,247 | LOSS: 0.0012 | ACC: 99.8%</text>
+  <text x="14" y="259" font-family="monospace" font-size="8" fill="#005533">MODEL: TODD_DUBE v1.0 | PARAMS: ∞</text>
+  <text x="14" y="271" font-family="monospace" font-size="8" fill="#005533">STATUS: <tspan fill="#00ff41" filter="url(#glow)">● ACTIVE</tspan>  CARMAX AI PLATFORM</text>
+
+  <!-- ═══════════════ RIGHT PANEL — TERMINAL ═══════════════ -->
+  <rect x="291" y="5" width="604" height="270" fill="#010d05" stroke="#00ee3a" stroke-width="1.2" opacity="0.95"/>
+
+  <!-- Terminal title bar -->
+  <rect x="291" y="5" width="604" height="22" fill="url(#tbar)" opacity="0.88"/>
+  <text x="302" y="19" font-family="'Courier New',monospace" font-size="9.5" fill="#000a04" font-weight="bold">NEURAL_OS v8.1 ── TODD_DUBE ── AI/ML COMMAND CENTER</text>
+
+  <!-- Window control squares (pixel art style) -->
+  <rect x="855" y="9" width="11" height="11" fill="#ff5f56"/>
+  <rect x="870" y="9" width="11" height="11" fill="#ffbd2e"/>
+  <rect x="885" y="9" width="11" height="11" fill="#27c93f"/>
+
+  <!-- ── Terminal content ── -->
+
+  <!-- Command line 1 -->
+  <text x="304" y="51" font-family="'Courier New',monospace" font-size="10.5" fill="#005522">$</text>
+  <text x="318" y="51" font-family="'Courier New',monospace" font-size="10.5" fill="#00ff41" filter="url(#glow)">LOAD PROFILE --user=todd_dube --mode=ai_architect</text>
+
+  <!-- Response -->
+  <text x="304" y="67" font-family="'Courier New',monospace" font-size="10.5" fill="#008833">&gt; Sr Solutions Architect | AI/ML | GenAI | CarMax | Richmond VA</text>
+
+  <!-- BIG "AI/ML" title -->
+  <text x="304" y="120" font-family="'Courier New',monospace" font-size="52" font-weight="bold"
+        fill="#00ff41" filter="url(#glow2)" letter-spacing="6">AI/ML</text>
+
+  <!-- Subtitle line -->
+  <text x="306" y="144" font-family="'Courier New',monospace" font-size="12.5"
+        fill="#00aaff" filter="url(#glow)" letter-spacing="2.5">ARCHITECT :: PLATFORM BUILDER :: GENAI EXPERT</text>
+
+  <!-- Skill / proficiency bars -->
+  <text x="304" y="167" font-family="'Courier New',monospace" font-size="10" fill="#00ff41">GenAI &amp; LLMs    ████████████████████  100%</text>
+  <text x="304" y="184" font-family="'Courier New',monospace" font-size="10" fill="#00dd33">Data Science     ██████████████████░░   90%</text>
+  <text x="304" y="201" font-family="'Courier New',monospace" font-size="10" fill="#00bb44">Game Dev (C64+)  ███████████████░░░░░   75%</text>
+  <text x="304" y="218" font-family="'Courier New',monospace" font-size="10" fill="#009944">6502 Assembly    ████████████░░░░░░░░   60%</text>
+  <text x="304" y="235" font-family="'Courier New',monospace" font-size="10" fill="#007733">IoT / ESP32      ████████████░░░░░░░░   60%</text>
+
+  <!-- Bottom prompt + blinking cursor -->
+  <text x="304" y="258" font-family="'Courier New',monospace" font-size="10.5" fill="#005522">$</text>
+  <rect class="blink" x="318" y="246" width="9" height="14" fill="#00ff41"/>
+
+  <!-- Timestamp / version stamp -->
+  <text x="576" y="270" font-family="'Courier New',monospace" font-size="8.5" fill="#003311">CARMAX :: AI PLATFORM :: 2026 // v8.1</text>
+
+  <!-- ═══════════════ CRT OVERLAYS ═══════════════ -->
+  <!-- Scanlines -->
+  <rect width="900" height="280" fill="url(#scan)" opacity="0.55"/>
+
+  <!-- Moving scan beam -->
+  <rect class="scanmove" x="0" y="-280" width="900" height="280" fill="url(#beam)"/>
+
+  <!-- Vignette -->
+  <rect width="900" height="280" fill="url(#vig)"/>
+
+  <!-- Corner pixel art decorations -->
+  <rect x="0"   y="0"   width="5" height="5" fill="#00ff41" opacity="0.85"/>
+  <rect x="895" y="0"   width="5" height="5" fill="#00ff41" opacity="0.85"/>
+  <rect x="0"   y="275" width="5" height="5" fill="#00ff41" opacity="0.85"/>
+  <rect x="895" y="275" width="5" height="5" fill="#00ff41" opacity="0.85"/>
+
+  <!-- Decorative pixel tick marks along top border -->
+  <g fill="#003311">
+    <rect x="20"  y="0" width="2" height="3"/>
+    <rect x="28"  y="0" width="2" height="3"/>
+    <rect x="36"  y="0" width="2" height="3"/>
+    <rect x="860" y="0" width="2" height="3"/>
+    <rect x="868" y="0" width="2" height="3"/>
+    <rect x="876" y="0" width="2" height="3"/>
+  </g>
+</svg>
