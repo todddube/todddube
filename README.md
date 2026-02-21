@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Retro 8-bit AI/ML Header -->
-<img src="https://raw.githubusercontent.com/todddube/todddube/main/images/header_ai_retro.svg" width="100%" alt="Retro 8-bit AI/ML Header"/>
+<img src="images/header_ai_retro.svg" width="100%" alt="Retro 8-bit AI/ML Header"/>
 
 <!-- Typing Animation -->
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Sr+Solutions+Architect+%40+CarMax;AI%2FML+%26+GenAI+Platform+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
