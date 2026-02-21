@@ -1,6 +1,7 @@
 <div align="center">
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!-- Header -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:06B6D4,50:8B5CF6,100:F97316&height=160&section=header&text=Todd%20Dube&fontSize=45&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38" width="100%" />
 
@@ -51,6 +52,14 @@
 <!-- Typing Animation -->
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Sr+Solutions+Architect+%40+CarMax;AI%2FML+%26+GenAI+Platform+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
 
+=======
+<!-- Dynamic Header -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=200&section=header&text=Todd%20Dube&fontSize=56&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Sr%20Solutions%20Architect%20%7C%20AI%2FML%20%7C%20GenAI&descSize=18&descAlignY=58&descColor=FFFFFF" />
+
+<!-- Typing Animation -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Sr+Solutions+Architect+%40+CarMax;AI%2FML+%26+GenAI+Platform+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
+
+>>>>>>> Stashed changes
 <!-- Social Links -->
 <p align="center">
   <a href="https://www.linkedin.com/in/tdube/">
@@ -435,10 +444,14 @@ Preserving retro computing history, one repo at a time
 - 🔥 [GitHub Readme Streak Stats](https://github.com/DenverCoder1/github-readme-streak-stats)
 - 🌊 [Capsule Render](https://github.com/kyechan99/capsule-render)
 - 🐍 [GitHub Snake Animation](https://github.com/Platane/snk)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 </div>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 ---
 
@@ -458,6 +471,10 @@ Preserving retro computing history, one repo at a time
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:06B6D4,50:8B5CF6,100:F97316&height=80&section=footer" width="100%" />
 
+=======
+<sub>⚡ Profile auto-updated via GitHub Actions</sub>
+
+>>>>>>> Stashed changes
 =======
 <sub>⚡ Profile auto-updated via GitHub Actions</sub>
 
