@@ -30,7 +30,7 @@ session_turns=$(echo "$input" | jq -r '.session.turns // 0')
 [ -z "$cwd" ] && cwd="$PWD"
 
 # ── WEATHER / LOCATION CACHE (10-minute TTL) ─────────────────────────────────
-CACHE_FILE="/tmp/claude_weather_cache"
+CACHE_FILE="/tmp/claude_weather_cache_f"
 CACHE_TTL=600  # seconds
 
 _refresh_cache=0
@@ -51,43 +51,93 @@ if [ "$_refresh_cache" -eq 1 ]; then
   _loc_str="${_city}, ${_country}"
 
   if [ -n "$_city" ]; then
-    _weather_raw=$(curl -s --max-time 3 "wttr.in/${_city}?format=%t+%C" 2>/dev/null)
-    # Strip leading + from temperature (e.g., +18°C → 18°C)
-    _weather=$(echo "$_weather_raw" | sed 's/^+//')
-  else
-    _weather="N/A"
-    _loc_str="Unknown"
-  fi
+    # Fetch full JSON from wttr.in for current + forecast data
+    _wttr_json=$(curl -s --max-time 5 "wttr.in/${_city}?format=j1" 2>/dev/null)
 
-  printf '%s\n%s\n' "$_loc_str" "$_weather" > "$CACHE_FILE"
+    if [ -n "$_wttr_json" ] && echo "$_wttr_json" | jq -e '.current_condition' >/dev/null 2>&1; then
+      # Current conditions
+      _cur_temp=$(echo "$_wttr_json" | jq -r '.current_condition[0].temp_F // empty' 2>/dev/null)
+      _cur_desc=$(echo "$_wttr_json" | jq -r '.current_condition[0].weatherDesc[0].value // empty' 2>/dev/null)
+
+      # 60-minute forecast: find the next hourly slot at or after the current hour
+      _cur_hour=$(date +%H | sed 's/^0*//')
+      [ -z "$_cur_hour" ] && _cur_hour=0
+      _target_time=$(( (_cur_hour + 1) * 100 ))
+
+      # Select the first hourly entry where (time/100) >= current hour
+      _fc_temp=$(echo "$_wttr_json" | jq -r \
+        --argjson tgt "$_target_time" \
+        '.weather[0].hourly | map(select((.time | tonumber) >= $tgt)) | .[0].tempF // empty' \
+        2>/dev/null)
+      _fc_desc=$(echo "$_wttr_json" | jq -r \
+        --argjson tgt "$_target_time" \
+        '.weather[0].hourly | map(select((.time | tonumber) >= $tgt)) | .[0].weatherDesc[0].value // empty' \
+        2>/dev/null)
+
+      # Write 5-line cache: loc / cur_temp / cur_desc / fc_temp / fc_desc
+      printf '%s\n%s\n%s\n%s\n%s\n' \
+        "$_loc_str" "$_cur_temp" "$_cur_desc" "$_fc_temp" "$_fc_desc" > "$CACHE_FILE"
+    else
+      # JSON fetch failed — fall back to simple format, no forecast
+      _weather_raw=$(curl -s --max-time 3 "wttr.in/${_city}?format=%t+%C&u" 2>/dev/null)
+      _weather=$(echo "$_weather_raw" | sed 's/^+//')
+      _cur_temp=$(echo "$_weather" | grep -oE '[+-]?[0-9]+' | head -1)
+      _cur_desc=$(echo "$_weather" | sed 's/^[+-]*[0-9]*°[CF] *//')
+      printf '%s\n%s\n%s\n\n\n' "$_loc_str" "$_cur_temp" "$_cur_desc" > "$CACHE_FILE"
+    fi
+  else
+    printf '%s\n\nN/A\n\n\n' "Unknown" > "$CACHE_FILE"
+  fi
 fi
 
-# Read from cache
+# Read from cache (5-line format)
 _cache_loc=$(sed -n '1p' "$CACHE_FILE" 2>/dev/null || echo "Unknown")
-_cache_weather=$(sed -n '2p' "$CACHE_FILE" 2>/dev/null || echo "N/A")
+_cache_cur_temp=$(sed -n '2p' "$CACHE_FILE" 2>/dev/null || echo "")
+_cache_cur_desc=$(sed -n '3p' "$CACHE_FILE" 2>/dev/null || echo "N/A")
+_cache_fc_temp=$(sed -n '4p' "$CACHE_FILE" 2>/dev/null || echo "")
+_cache_fc_desc=$(sed -n '5p' "$CACHE_FILE" 2>/dev/null || echo "")
+
+# Build display strings
+if [ -n "$_cache_cur_temp" ]; then
+  _cache_weather="${_cache_cur_temp}°F ${_cache_cur_desc}"
+else
+  _cache_weather="$_cache_cur_desc"
+fi
 
 # ── LINE 1: HEADER ────────────────────────────────────────────────────────────
 _time=$(date +%H:%M)
 
-# Pick a weather emoji based on the condition string
-_weather_lower=$(echo "$_cache_weather" | tr '[:upper:]' '[:lower:]')
-if echo "$_weather_lower" | grep -qE 'thunder|storm|lightning'; then
-  _wx_emoji="⛈️"
-elif echo "$_weather_lower" | grep -qE 'snow|blizzard|sleet'; then
-  _wx_emoji="❄️"
-elif echo "$_weather_lower" | grep -qE 'rain|drizzle|shower'; then
-  _wx_emoji="🌧️"
-elif echo "$_weather_lower" | grep -qE 'cloud|overcast|fog|mist|haze'; then
-  _wx_emoji="⛅"
-elif echo "$_weather_lower" | grep -qE 'sunny|clear|sun'; then
-  _wx_emoji="☀️"
-elif echo "$_weather_lower" | grep -qE 'partly'; then
-  _wx_emoji="🌤️"
-else
-  _wx_emoji="🌤️"
+# Helper function: pick weather emoji from a condition string
+_wx_emoji_for() {
+  local _desc_lower
+  _desc_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+  if echo "$_desc_lower" | grep -qE 'thunder|storm|lightning'; then
+    echo "⛈️"
+  elif echo "$_desc_lower" | grep -qE 'snow|blizzard|sleet'; then
+    echo "❄️"
+  elif echo "$_desc_lower" | grep -qE 'rain|drizzle|shower'; then
+    echo "🌧️"
+  elif echo "$_desc_lower" | grep -qE 'cloud|overcast|fog|mist|haze'; then
+    echo "⛅"
+  elif echo "$_desc_lower" | grep -qE 'sunny|clear|sun'; then
+    echo "☀️"
+  elif echo "$_desc_lower" | grep -qE 'partly'; then
+    echo "🌤️"
+  else
+    echo "🌤️"
+  fi
+}
+
+_wx_emoji=$(_wx_emoji_for "$_cache_cur_desc")
+
+# Build the 60-minute forecast segment (only if forecast data is available)
+_fc_segment=""
+if [ -n "$_cache_fc_temp" ] && [ -n "$_cache_fc_desc" ]; then
+  _fc_emoji=$(_wx_emoji_for "$_cache_fc_desc")
+  _fc_segment="${GRAY}  →60m: ${DIM}${_fc_emoji} ${_cache_fc_temp}°F ${_cache_fc_desc}${RESET}"
 fi
 
-printf "${BOLD}${BRIGHT_CYAN}▶ AI STATUSLINE${RESET}${CYAN} | 🌍 ${YELLOW}${_cache_loc}${CYAN} | 🕐 ${YELLOW}${_time}${CYAN} | ${_wx_emoji} ${YELLOW}${_cache_weather}${RESET}\n"
+printf "${BOLD}${BRIGHT_CYAN}▶ AI STATUSLINE${RESET}${CYAN} | 🌍 ${YELLOW}${_cache_loc}${CYAN} | 🕐 ${YELLOW}${_time}${CYAN} | ${_wx_emoji} ${YELLOW}${_cache_weather}${RESET}${_fc_segment}\n"
 
 # ── LINE 2: ENV ───────────────────────────────────────────────────────────────
 _cc_ver=$(claude --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
