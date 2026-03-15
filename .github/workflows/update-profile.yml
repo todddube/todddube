@@ -19,12 +19,6 @@ on:
   schedule:
     - cron: '0 9 * * *'  # Run daily at 9:00 AM UTC (5:00 AM ET during DST, 4:00 AM ET otherwise)
   workflow_dispatch:  # Allow manual trigger
-  push:
-    branches:
-      - main
-    paths:
-      - 'index.html'
-      - '.github/workflows/update-profile.yml'
 
 jobs:
   update-profile:
@@ -40,9 +34,9 @@ jobs:
           fetch-depth: 1
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -79,27 +73,27 @@ jobs:
           # Try to fetch from various AI/ML news sources
           news_sources = [
               {
-                  'name': 'TechCrunch AI',
+                  'name': 'AI Frontier',
                   'items': [
-                      "Enterprise AI adoption accelerating with 73% of organizations deploying ML systems",
-                      "Breakthrough in neural architecture search reduces training time by 60%",
-                      "Multi-modal foundation models achieving human-level performance on complex reasoning tasks",
-                      "Edge AI deployments grow 156% year-over-year in IoT applications",
-                      "AI-powered code generation tools reducing development cycles by 40%",
+                      "Agentic AI systems autonomously completing multi-step enterprise workflows",
+                      "Claude Opus 4.6 sets new benchmarks in code generation and reasoning",
+                      "Multi-modal foundation models achieving human-level performance on complex tasks",
+                      "AI-powered code generation tools reducing development cycles by 50%",
                       "Real-time ML inference achieving sub-millisecond latency at scale",
-                      "Automated ML operations (MLOps) becoming standard practice for Fortune 500 companies"
+                      "Automated ML operations (MLOps) becoming standard for Fortune 500 companies",
+                      "AI coding agents now handling full feature development autonomously"
                   ]
               },
               {
                   'name': 'AI Research',
                   'items': [
-                      "Transformer models achieving 95% accuracy in specialized domain applications",
+                      "Mixture of Experts models delivering 10x efficiency gains",
                       "Federated learning enabling privacy-preserving AI across distributed systems",
-                      "Neural networks optimizing cloud infrastructure costs by 45%",
-                      "AutoML platforms democratizing AI development for non-technical teams",
-                      "Reinforcement learning agents mastering complex optimization problems",
-                      "Vision transformers surpassing CNNs in medical imaging diagnostics",
-                      "Large language models enabling breakthrough natural language understanding"
+                      "Chain-of-thought reasoning improving LLM accuracy by 40%",
+                      "Retrieval-Augmented Generation reducing hallucinations by 80%",
+                      "Reinforcement learning from human feedback advancing model alignment",
+                      "Vision-language models unifying understanding across modalities",
+                      "Context windows expanding to millions of tokens for enterprise use"
                   ]
               },
               {
@@ -107,23 +101,23 @@ jobs:
                   'items': [
                       "AI governance frameworks becoming critical for enterprise deployment",
                       "Hybrid cloud AI architectures enabling flexible ML workload distribution",
-                      "Automated feature engineering reducing ML development time by 50%",
                       "AI-driven predictive maintenance saving enterprises millions in downtime",
                       "Custom AI chips delivering 10x performance improvements for inference",
                       "Explainable AI (XAI) meeting regulatory requirements in financial services",
-                      "AI-powered cybersecurity detecting threats 3x faster than traditional methods"
+                      "AI-powered cybersecurity detecting threats 3x faster than traditional methods",
+                      "Enterprise AI platforms consolidating fragmented tool landscapes"
                   ]
               },
               {
                   'name': 'Developer Tools',
                   'items': [
                       "Vector databases revolutionizing similarity search at billion-scale",
-                      "Kubernetes-native ML platforms simplifying model deployment",
-                      "Real-time model monitoring preventing degradation in production",
+                      "AI-native IDEs integrating real-time code assistance and review",
+                      "Model Context Protocol (MCP) standardizing AI tool integrations",
                       "AI-assisted DevOps reducing incident response time by 65%",
                       "Serverless ML inference enabling cost-effective scaling",
                       "MLOps tools achieving 99.9% uptime for critical AI services",
-                      "Automated hyperparameter tuning improving model accuracy by 15%"
+                      "Open-source AI frameworks democratizing enterprise-grade development"
                   ]
               }
           ]
@@ -264,12 +258,12 @@ jobs:
 
           # AI Models Tracker - Latest models with dynamic popularity
           ai_models = [
-              {"icon": "🧠", "name": "Claude", "version": "Opus 4.5", "popularity": 98, "status": "trending"},
-              {"icon": "💎", "name": "GPT-4", "version": "Turbo", "popularity": 95, "status": "trending"},
-              {"icon": "🌟", "name": "Gemini", "version": "2.0 Flash", "popularity": 92, "status": "new"},
-              {"icon": "🦙", "name": "Llama", "version": "3.3 70B", "popularity": 88, "status": ""},
-              {"icon": "🔮", "name": "Mistral", "version": "Large 2", "popularity": 85, "status": "new"},
-              {"icon": "🎨", "name": "DALL-E", "version": "3", "popularity": 90, "status": ""},
+              {"icon": "🧠", "name": "Claude", "version": "Opus 4.6", "popularity": 98, "status": "trending"},
+              {"icon": "💎", "name": "GPT-4.5", "version": "Turbo", "popularity": 95, "status": "trending"},
+              {"icon": "🌟", "name": "Gemini", "version": "2.5 Pro", "popularity": 93, "status": "new"},
+              {"icon": "🦙", "name": "Llama", "version": "4 Scout", "popularity": 89, "status": "new"},
+              {"icon": "🔮", "name": "Mistral", "version": "Large 3", "popularity": 86, "status": ""},
+              {"icon": "🎨", "name": "Grok", "version": "3", "popularity": 88, "status": "new"},
           ]
 
           # Add slight random variation to popularity scores to simulate live data

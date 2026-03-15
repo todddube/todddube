@@ -380,6 +380,6 @@ Preserving retro computing history, one repo at a time
 
 </details>
 
-<sub>⚡ Profile auto-updated via GitHub Actions</sub>
+<sub>⚡ Profile auto-updated via GitHub Actions | 🌐 <a href="https://www.thedubes.com">www.thedubes.com</a></sub>
 
 </div>

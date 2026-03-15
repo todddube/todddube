@@ -4,40 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is Todd Dube's personal GitHub profile repository, primarily serving as a profile README showcase. The repository is minimal and focused on presentation rather than development.
+This is Todd Dube's personal GitHub profile repository, serving as both a profile README showcase and a GitHub Pages portfolio website at www.thedubes.com.
 
 ## Repository Structure
 
-- `README.md` - Main profile page with personal bio, tech stack, and project showcases
-- `images/` - Contains SVG assets for profile branding
-  - `ToddDube_Logo.svg` - Personal logo
-  - `profile_banner.svg` - Profile banner graphic
+- `README.md` - Main GitHub profile page with bio, tech stack, and project showcases
+- `index.html` - Full portfolio website (GitHub Pages), supports light/dark themes
+- `_config.yml` - Jekyll/GitHub Pages configuration
+- `CNAME` - Custom domain (www.thedubes.com)
+- `key-projects.json` - Featured projects data used by workflows
+- `.nojekyll` - Bypasses Jekyll processing for index.html
+- `images/` - SVG assets for profile branding
+- `assets/css/style.scss` - Custom SCSS for Jekyll theme overrides
+- `.github/workflows/` - Automated workflows:
+  - `update-profile.yml` - Daily: updates index.html with stats, news ticker, AI models, LinkedIn posts
+  - `update-readme.yml` - Weekly: updates README featured projects from GitHub API
+  - `snake.yml` - Daily: generates contribution snake SVG animations
+  - `claude.yml` - Claude Code integration for issues/PRs
+  - `claude-code-review.yml` - Automated PR code review
 
 ## Key Information
 
 - **Repository Type**: GitHub profile repository (same name as username)
-- **Primary Purpose**: Profile showcase and personal branding
-- **Content Focus**: Personal introduction, featured projects, GitHub stats, and contact information
-- **No Build System**: This repository contains no package.json, build scripts, or development dependencies
-- **No Testing Framework**: No test configuration or test files present
-- **Static Content**: Primarily markdown and SVG assets
-
-## Featured Projects Referenced
-
-The README showcases several external repositories:
-- SpaceRunner (Swift space adventure game)
-- 2048-In-Python (Python game implementation)
-- C64-Projects (Retro computing with 6502 Assembly)
-- City-Bomber-C64-Asm (C64 Assembly game)
-- Flappy-bird-python (Python game clone)
-- PowerShell automation scripts
-- General Python projects
+- **Website**: www.thedubes.com (GitHub Pages with custom domain)
+- **Theme System**: index.html supports light/dark mode via CSS custom properties with system preference detection and manual toggle
+- **No Build System**: No package.json, build scripts, or development dependencies
+- **No Testing Framework**: No test configuration or test files
+- **Static Content**: HTML, markdown, and SVG assets
 
 ## Repository Maintenance
 
-Since this is a profile repository, changes would typically involve:
 - Updating personal information in README.md
-- Modifying project showcases and links
-- Updating GitHub stats and badges
-- Refreshing the tech stack section
-- Adding or updating profile images
+- Modifying project showcases and links in README.md or key-projects.json
+- Updating the portfolio website (index.html)
+- Theme/styling changes via CSS custom properties in index.html `:root`
+- Workflow updates in .github/workflows/

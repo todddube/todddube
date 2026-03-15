@@ -9,7 +9,8 @@
       "Bash(gh api:*)",
       "Bash(git push:*)",
       "Bash(chmod +x:*)",
-      "Bash(./backup-statusline.sh:*)"
+      "Bash(./backup-statusline.sh:*)",
+      "Bash(open:*)"
     ],
     "deny": [],
     "ask": []
