@@ -1,242 +1,189 @@
 #!/bin/bash
-# Claude Code statusLine command
-# Multi-line AI STATUSLINE display with ANSI colors
+# Claude Code multi-line statusLine
+# Displays: header, context, git, weather, memory
 
-# ── ANSI color codes ─────────────────────────────────────────────────────────
-RESET='\033[0m'
-BOLD='\033[1m'
+# ── ANSI ────────────────────────────────────────────────────────────────────
+RST='\033[0m'
+B='\033[1m'
 DIM='\033[2m'
-CYAN='\033[36m'
-BRIGHT_CYAN='\033[96m'
-YELLOW='\033[33m'
-BRIGHT_YELLOW='\033[93m'
-MAGENTA='\033[35m'
-BRIGHT_MAGENTA='\033[95m'
-GREEN='\033[32m'
-BRIGHT_GREEN='\033[92m'
-RED='\033[31m'
-WHITE='\033[97m'
-GRAY='\033[90m'
-BLUE='\033[34m'
+CY='\033[36m'
+BCY='\033[96m'
+YL='\033[33m'
+BYL='\033[93m'
+MG='\033[35m'
+GR='\033[32m'
+RD='\033[31m'
+WH='\033[97m'
+GY='\033[90m'
+BL='\033[34m'
 
-# ── Read JSON input from stdin ────────────────────────────────────────────────
+# ── Read JSON from stdin ────────────────────────────────────────────────────
 input=$(cat)
-
-cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
-model=$(echo "$input" | jq -r '.model.display_name // empty')
-used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
-session_turns=$(echo "$input" | jq -r '.session.turns // 0')
-
+cwd=$(echo "$input" | jq -r '.workspace.current_dir // empty')
+model=$(echo "$input" | jq -r '.model.display_name // "—"')
+used=$(echo "$input" | jq -r '.context_window.used_percentage // "0"')
+turns=$(echo "$input" | jq -r '.session.turns // "0"')
 [ -z "$cwd" ] && cwd="$PWD"
 
-# ── WEATHER / LOCATION CACHE (10-minute TTL) ─────────────────────────────────
-CACHE_FILE="/tmp/claude_weather_cache_f"
-CACHE_TTL=600  # seconds
+# ── Weather cache (10-min TTL) ──────────────────────────────────────────────
+CACHE="/tmp/claude_statusline_weather"
+TTL=600
 
-_refresh_cache=0
-if [ ! -f "$CACHE_FILE" ]; then
-  _refresh_cache=1
+_stale=0
+if [ ! -f "$CACHE" ]; then
+  _stale=1
 else
-  _now=$(date +%s)
-  _mtime=$(stat -f %m "$CACHE_FILE" 2>/dev/null || stat -c %Y "$CACHE_FILE" 2>/dev/null || echo 0)
-  _age=$(( _now - _mtime ))
-  [ "$_age" -gt "$CACHE_TTL" ] && _refresh_cache=1
+  _age=$(( $(date +%s) - $(stat -f %m "$CACHE" 2>/dev/null || echo 0) ))
+  [ "$_age" -gt "$TTL" ] && _stale=1
 fi
 
-if [ "$_refresh_cache" -eq 1 ]; then
-  # Fetch location and weather in background-friendly manner (with short timeout)
-  _ip_json=$(curl -s --max-time 3 ipinfo.io/json 2>/dev/null)
-  _city=$(echo "$_ip_json" | jq -r '.city // empty' 2>/dev/null)
-  _country=$(echo "$_ip_json" | jq -r '.country // empty' 2>/dev/null)
-  _loc_str="${_city}, ${_country}"
+if [ "$_stale" -eq 1 ]; then
+  _ip=$(curl -s --max-time 3 ipinfo.io/json 2>/dev/null)
+  _city=$(echo "$_ip" | jq -r '.city // empty' 2>/dev/null)
+  _region=$(echo "$_ip" | jq -r '.region // empty' 2>/dev/null)
 
   if [ -n "$_city" ]; then
-    # Fetch full JSON from wttr.in for current + forecast data
-    _wttr_json=$(curl -s --max-time 5 "wttr.in/${_city}?format=j1" 2>/dev/null)
-
-    if [ -n "$_wttr_json" ] && echo "$_wttr_json" | jq -e '.current_condition' >/dev/null 2>&1; then
-      # Current conditions
-      _cur_temp=$(echo "$_wttr_json" | jq -r '.current_condition[0].temp_F // empty' 2>/dev/null)
-      _cur_desc=$(echo "$_wttr_json" | jq -r '.current_condition[0].weatherDesc[0].value // empty' 2>/dev/null)
-
-      # 60-minute forecast: find the next hourly slot at or after the current hour
-      _cur_hour=$(date +%H | sed 's/^0*//')
-      [ -z "$_cur_hour" ] && _cur_hour=0
-      _target_time=$(( (_cur_hour + 1) * 100 ))
-
-      # Select the first hourly entry where (time/100) >= current hour
-      _fc_temp=$(echo "$_wttr_json" | jq -r \
-        --argjson tgt "$_target_time" \
-        '.weather[0].hourly | map(select((.time | tonumber) >= $tgt)) | .[0].tempF // empty' \
-        2>/dev/null)
-      _fc_desc=$(echo "$_wttr_json" | jq -r \
-        --argjson tgt "$_target_time" \
-        '.weather[0].hourly | map(select((.time | tonumber) >= $tgt)) | .[0].weatherDesc[0].value // empty' \
-        2>/dev/null)
-
-      # Write 5-line cache: loc / cur_temp / cur_desc / fc_temp / fc_desc
-      printf '%s\n%s\n%s\n%s\n%s\n' \
-        "$_loc_str" "$_cur_temp" "$_cur_desc" "$_fc_temp" "$_fc_desc" > "$CACHE_FILE"
+    _wj=$(curl -s --max-time 5 "wttr.in/${_city}?format=j1" 2>/dev/null)
+    if echo "$_wj" | jq -e '.current_condition' >/dev/null 2>&1; then
+      _ct=$(echo "$_wj" | jq -r '.current_condition[0].temp_F // empty')
+      _cd=$(echo "$_wj" | jq -r '.current_condition[0].weatherDesc[0].value // empty')
+      _hi=$(echo "$_wj" | jq -r '.weather[0].maxtempF // empty')
+      _lo=$(echo "$_wj" | jq -r '.weather[0].mintempF // empty')
+      printf '%s\n%s\n%s\n%s\n%s\n%s\n' "$_city" "$_region" "$_ct" "$_cd" "$_hi" "$_lo" > "$CACHE"
     else
-      # JSON fetch failed — fall back to simple format, no forecast
-      _weather_raw=$(curl -s --max-time 3 "wttr.in/${_city}?format=%t+%C&u" 2>/dev/null)
-      _weather=$(echo "$_weather_raw" | sed 's/^+//')
-      _cur_temp=$(echo "$_weather" | grep -oE '[+-]?[0-9]+' | head -1)
-      _cur_desc=$(echo "$_weather" | sed 's/^[+-]*[0-9]*°[CF] *//')
-      printf '%s\n%s\n%s\n\n\n' "$_loc_str" "$_cur_temp" "$_cur_desc" > "$CACHE_FILE"
+      printf '%s\n%s\n\nN/A\n\n\n' "$_city" "$_region" > "$CACHE"
     fi
   else
-    printf '%s\n\nN/A\n\n\n' "Unknown" > "$CACHE_FILE"
+    printf '\n\n\nN/A\n\n\n' > "$CACHE"
   fi
 fi
 
-# Read from cache (5-line format)
-_cache_loc=$(sed -n '1p' "$CACHE_FILE" 2>/dev/null || echo "Unknown")
-_cache_cur_temp=$(sed -n '2p' "$CACHE_FILE" 2>/dev/null || echo "")
-_cache_cur_desc=$(sed -n '3p' "$CACHE_FILE" 2>/dev/null || echo "N/A")
-_cache_fc_temp=$(sed -n '4p' "$CACHE_FILE" 2>/dev/null || echo "")
-_cache_fc_desc=$(sed -n '5p' "$CACHE_FILE" 2>/dev/null || echo "")
+_w_city=$(sed -n '1p' "$CACHE" 2>/dev/null)
+_w_region=$(sed -n '2p' "$CACHE" 2>/dev/null)
+_w_temp=$(sed -n '3p' "$CACHE" 2>/dev/null)
+_w_desc=$(sed -n '4p' "$CACHE" 2>/dev/null)
+_w_hi=$(sed -n '5p' "$CACHE" 2>/dev/null)
+_w_lo=$(sed -n '6p' "$CACHE" 2>/dev/null)
 
-# Build display strings
-if [ -n "$_cache_cur_temp" ]; then
-  _cache_weather="${_cache_cur_temp}°F ${_cache_cur_desc}"
-else
-  _cache_weather="$_cache_cur_desc"
-fi
-
-# ── LINE 1: HEADER ────────────────────────────────────────────────────────────
-_time=$(date +%H:%M)
-
-# Helper function: pick weather emoji from a condition string
-_wx_emoji_for() {
-  local _desc_lower
-  _desc_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-  if echo "$_desc_lower" | grep -qE 'thunder|storm|lightning'; then
-    echo "⛈️"
-  elif echo "$_desc_lower" | grep -qE 'snow|blizzard|sleet'; then
-    echo "❄️"
-  elif echo "$_desc_lower" | grep -qE 'rain|drizzle|shower'; then
-    echo "🌧️"
-  elif echo "$_desc_lower" | grep -qE 'cloud|overcast|fog|mist|haze'; then
-    echo "⛅"
-  elif echo "$_desc_lower" | grep -qE 'sunny|clear|sun'; then
-    echo "☀️"
-  elif echo "$_desc_lower" | grep -qE 'partly'; then
-    echo "🌤️"
-  else
-    echo "🌤️"
-  fi
+# Weather emoji
+_wx_emoji() {
+  local d=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+  case "$d" in
+    *thunder*|*storm*|*lightning*) echo "⛈️ " ;;
+    *snow*|*blizzard*|*sleet*)     echo "❄️ " ;;
+    *rain*|*drizzle*|*shower*)     echo "🌧️" ;;
+    *cloud*|*overcast*)            echo "☁️ " ;;
+    *fog*|*mist*|*haze*)           echo "🌫️" ;;
+    *sunny*|*clear*)               echo "☀️ " ;;
+    *partly*)                      echo "⛅" ;;
+    *)                             echo "🌤️" ;;
+  esac
 }
 
-_wx_emoji=$(_wx_emoji_for "$_cache_cur_desc")
-
-# Build the 60-minute forecast segment (only if forecast data is available)
-_fc_segment=""
-if [ -n "$_cache_fc_temp" ] && [ -n "$_cache_fc_desc" ]; then
-  _fc_emoji=$(_wx_emoji_for "$_cache_fc_desc")
-  _fc_segment="${GRAY}  →60m: ${DIM}${_fc_emoji} ${_cache_fc_temp}°F ${_cache_fc_desc}${RESET}"
-fi
-
-printf "${BOLD}${BRIGHT_CYAN}▶ AI STATUSLINE${RESET}${CYAN} | 🌍 ${YELLOW}${_cache_loc}${CYAN} | 🕐 ${YELLOW}${_time}${CYAN} | ${_wx_emoji} ${YELLOW}${_cache_weather}${RESET}${_fc_segment}\n"
-
-# ── LINE 2: ENV ───────────────────────────────────────────────────────────────
-_cc_ver=$(claude --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-[ -z "$_cc_ver" ] && _cc_ver="—"
-_pai_ver="v3.0"
-_alg_ver="v1.2.0"
-_sk_count=$(find ~/.claude -maxdepth 2 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-_wf_count=$(cat ~/.claude/projects/-Users-todddube-Documents-Github-todddube/memory/*.md 2>/dev/null | wc -l | tr -d ' ')
-_hooks_count=$(jq '[.hooks // {} | to_entries[] | .value | length] | add // 0' ~/.claude/settings.json 2>/dev/null || echo 0)
-
-printf "${GRAY}ENV:${RESET} 🤖 ${DIM}CC:${RESET} ${CYAN}${_cc_ver}${RESET} ${GRAY}|${RESET} 🧠 ${DIM}PAI:${RESET} ${CYAN}${_pai_ver}${RESET} ${GRAY}|${RESET} ⚙️  ${DIM}ALG:${RESET} ${CYAN}${_alg_ver}${RESET} ${GRAY}|${RESET} 🎯 ${DIM}SK:${RESET} ${CYAN}${_sk_count}${RESET} ${GRAY}|${RESET} 🔄 ${DIM}WF:${RESET} ${CYAN}${_wf_count}${RESET} ${GRAY}|${RESET} 🪝 ${DIM}Hooks:${RESET} ${CYAN}${_hooks_count}${RESET}\n"
-
-# ── LINE 3: CONTEXT PROGRESS BAR ─────────────────────────────────────────────
-BAR_WIDTH=40
-_used_pct=0
-if [ -n "$used" ] && [ "$used" != "null" ]; then
-  _used_pct=$(printf "%.0f" "$used" 2>/dev/null || echo 0)
-fi
-
-_filled=$(( BAR_WIDTH * _used_pct / 100 ))
-[ "$_filled" -gt "$BAR_WIDTH" ] && _filled=$BAR_WIDTH
-_empty=$(( BAR_WIDTH - _filled ))
-
-# Choose bar color based on percentage
-if [ "$_used_pct" -lt 50 ]; then
-  _bar_color="${GREEN}"
-elif [ "$_used_pct" -lt 80 ]; then
-  _bar_color="${YELLOW}"
-else
-  _bar_color="${RED}"
-fi
-
-_bar_filled=$(printf '%0.s█' $(seq 1 $_filled 2>/dev/null) 2>/dev/null || python3 -c "print('█' * $_filled, end='')")
-_bar_empty=$(printf '%0.s░' $(seq 1 $_empty 2>/dev/null) 2>/dev/null || python3 -c "print('░' * $_empty, end='')")
-
-printf "📊 ${CYAN}• CONTEXT:${RESET} ${_bar_color}[${_bar_filled}${GRAY}${_bar_empty}${_bar_color}]${RESET} ${BRIGHT_YELLOW}${_used_pct}%%${RESET}\n"
-
-# ── LINE 4: USAGE ─────────────────────────────────────────────────────────────
-_now_ts=$(date +%H:%M)
-printf "⚡ ${CYAN}▪ USAGE:${RESET} ${DIM}5H:${RESET} ${YELLOW}${_used_pct}%%${RESET} ${GRAY}↑${RESET}${WHITE}${_now_ts}${RESET} ${GRAY}|${RESET} ${DIM}WK:${RESET} ${YELLOW}—${RESET} ${GRAY}↓${RESET}${WHITE}—${RESET}\n"
-
-# ── LINE 5: PWD / GIT ─────────────────────────────────────────────────────────
-_dirname=$(basename "$cwd")
-
+# ── Git info ────────────────────────────────────────────────────────────────
 _branch="—"
-_age="—"
-_mod_count=0
+_commit_age="—"
+_mod=0
+_untracked=0
 _ahead=0
+_behind=0
+_staged=0
 
 if git -C "$cwd" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  _branch=$(git -C "$cwd" -c gc.auto=0 symbolic-ref --short HEAD 2>/dev/null || echo "detached")
+  _branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || echo "detached")
 
-  # Parse "X minutes ago" / "X hours ago" / "X days ago" into compact form
-  _age_raw=$(git -C "$cwd" -c gc.auto=0 log -1 --format="%cr" 2>/dev/null)
-  if [ -n "$_age_raw" ]; then
-    _age=$(echo "$_age_raw" \
-      | sed 's/ seconds\? ago/s/' \
-      | sed 's/ minutes\? ago/m/' \
-      | sed 's/ hours\? ago/h/' \
-      | sed 's/ days\? ago/d/' \
-      | sed 's/ weeks\? ago/w/' \
-      | sed 's/ months\? ago/mo/' \
-      | sed 's/ years\? ago/y/' \
-      | sed 's/^\([0-9]*\) \([smhdwy][a-z]*\)$/\1\2/')
-  fi
+  _raw_age=$(git -C "$cwd" log -1 --format="%cr" 2>/dev/null)
+  _commit_age=$(echo "$_raw_age" | sed \
+    -e 's/ seconds\{0,1\} ago/s/' \
+    -e 's/ minutes\{0,1\} ago/m/' \
+    -e 's/ hours\{0,1\} ago/h/' \
+    -e 's/ days\{0,1\} ago/d/' \
+    -e 's/ weeks\{0,1\} ago/w/' \
+    -e 's/ months\{0,1\} ago/mo/' \
+    -e 's/ years\{0,1\} ago/y/')
 
-  _mod_count=$(git -C "$cwd" -c gc.auto=0 diff --name-only 2>/dev/null | wc -l | tr -d ' ')
-  _ahead=$(git -C "$cwd" -c gc.auto=0 rev-list --count HEAD@{upstream}..HEAD 2>/dev/null || echo 0)
+  _mod=$(git -C "$cwd" diff --name-only 2>/dev/null | wc -l | tr -d ' ')
+  _staged=$(git -C "$cwd" diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
+  _untracked=$(git -C "$cwd" ls-files --others --exclude-standard "$cwd" 2>/dev/null | wc -l | tr -d ' ')
+  _ahead=$(git -C "$cwd" rev-list --count HEAD@{upstream}..HEAD 2>/dev/null || echo 0)
+  _behind=$(git -C "$cwd" rev-list --count HEAD..HEAD@{upstream} 2>/dev/null || echo 0)
 fi
 
-printf "📁 ${BRIGHT_YELLOW}▲ PWD:${RESET} ${YELLOW}${_dirname}${RESET} ${GRAY}|${RESET} 🌿 ${DIM}Branch:${RESET} ${MAGENTA}${_branch}${RESET} ${GRAY}|${RESET} ⏱️  ${DIM}Age:${RESET} ${WHITE}${_age}${RESET} ${GRAY}|${RESET} ✏️  ${DIM}Mod:${RESET} ${WHITE}${_mod_count}${RESET} ${GRAY}|${RESET} 🔄 ${DIM}Sync:${RESET} ${GREEN}↑${_ahead}${RESET}\n"
+# ── Context bar ─────────────────────────────────────────────────────────────
+_pct=0
+[ -n "$used" ] && [ "$used" != "null" ] && _pct=$(printf "%.0f" "$used" 2>/dev/null || echo 0)
 
-# ── LINE 6: MEMORY ────────────────────────────────────────────────────────────
-_mem_dir="$HOME/.claude/projects/-Users-todddube-Documents-Github-todddube/memory"
-_mem_work=0
-_mem_ratings=0
-_mem_sessions=0
-_mem_research=0
+BAR_W=30
+_filled=$(( BAR_W * _pct / 100 ))
+[ "$_filled" -gt "$BAR_W" ] && _filled=$BAR_W
+_empty=$(( BAR_W - _filled ))
+
+if [ "$_pct" -lt 50 ]; then
+  _bc="${GR}"
+elif [ "$_pct" -lt 80 ]; then
+  _bc="${YL}"
+else
+  _bc="${RD}"
+fi
+
+_bar_f=""
+_bar_e=""
+[ "$_filled" -gt 0 ] && _bar_f=$(printf '%0.s█' $(seq 1 "$_filled"))
+[ "$_empty" -gt 0 ] && _bar_e=$(printf '%0.s░' $(seq 1 "$_empty"))
+
+# ── Memory stats ────────────────────────────────────────────────────────────
+_mem_dir="$HOME/.claude/projects/-Users-todddube-Documents-Github-macOSMCP/memory"
+_mem_files=0
+_mem_lines=0
 
 if [ -d "$_mem_dir" ]; then
-  # Work: lines in MEMORY.md
-  [ -f "$_mem_dir/MEMORY.md" ] && _mem_work=$(wc -l < "$_mem_dir/MEMORY.md" 2>/dev/null | tr -d ' ')
-
-  # Ratings: total lines across all .md files
-  _mem_total=$(cat "$_mem_dir"/*.md 2>/dev/null | wc -l | tr -d ' ')
-  _mem_ratings=$_mem_total
-
-  # Sessions: use session turns from JSON input, or count project .jsonl files
-  if [ "$session_turns" != "0" ] && [ "$session_turns" != "null" ] && [ -n "$session_turns" ]; then
-    _mem_sessions=$session_turns
-  else
-    _mem_sessions=$(find "$HOME/.claude/projects/-Users-todddube-Documents-Github-todddube" -maxdepth 1 -name "*.jsonl" 2>/dev/null | wc -l | tr -d ' ')
-  fi
-
-  # Research: lines in any file containing "research" in the name
-  _mem_research=$(find "$_mem_dir" -iname "*research*" -exec wc -l {} \; 2>/dev/null | awk '{sum+=$1} END{print sum+0}')
+  _mem_files=$(find "$_mem_dir" -name "*.md" -maxdepth 1 2>/dev/null | wc -l | tr -d ' ')
+  _mem_lines=$(cat "$_mem_dir"/*.md 2>/dev/null | wc -l | tr -d ' ')
 fi
 
-printf "🧠 ${CYAN}○ MEMORY:${RESET} 📂 ${WHITE}${_mem_work}${RESET} ${DIM}Work${RESET} ${GRAY}|${RESET} ⭐ ${WHITE}${_mem_ratings}${RESET} ${DIM}Ratings${RESET} ${GRAY}|${RESET} 💬 ${WHITE}${_mem_sessions}${RESET} ${DIM}Sessions${RESET} ${GRAY}|${RESET} 🔬 ${WHITE}${_mem_research}${RESET} ${DIM}Research${RESET}\n"
+# CC version
+_cc_ver=$(claude --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+[ -z "$_cc_ver" ] && _cc_ver="—"
 
-# ── LINE 7: LEARNING ─────────────────────────────────────────────────────────
-printf "📚 ${CYAN}○ LEARNING:${RESET} ${WHITE}0${RESET}${DIM}IMP${RESET} ${GRAY}|${RESET} ${DIM}15m:${RESET} ${GRAY}—${RESET} ${DIM}60m:${RESET} ${WHITE}0${RESET} ${DIM}1d:${RESET} ${WHITE}0${RESET} ${DIM}1w:${RESET} ${WHITE}0${RESET} ${DIM}1mo:${RESET} ${WHITE}0${RESET}\n"
+# ── LINE 1 ─ Header ────────────────────────────────────────────────────────
+_time=$(date "+%a %b %-d · %H:%M")
+_emoji=$(_wx_emoji "$_w_desc")
+
+_loc=""
+[ -n "$_w_city" ] && _loc="${_w_city}"
+[ -n "$_w_region" ] && _loc="${_loc}, ${_w_region}"
+
+_wx_str=""
+if [ -n "$_w_temp" ]; then
+  _wx_str="${_w_temp}°F ${_w_desc}"
+  [ -n "$_w_hi" ] && [ -n "$_w_lo" ] && _wx_str="${_wx_str}  ↑${_w_hi}° ↓${_w_lo}°"
+fi
+
+printf "${B}${BCY}━━━ CLAUDE CODE ━━━${RST}  ${GY}${_time}${RST}\n"
+
+# ── LINE 2 ─ Model + Context ───────────────────────────────────────────────
+printf "  ${CY}🤖 ${WH}${model}${RST}  ${GY}·${RST}  ${CY}🔧 ${WH}CC ${_cc_ver}${RST}  ${GY}·${RST}  ${CY}💬 ${WH}${turns} turns${RST}  ${GY}·${RST}  📊 ${_bc}${_bar_f}${GY}${_bar_e}${RST} ${BYL}${_pct}%%${RST}\n"
+
+# ── LINE 3 ─ Weather + Location ────────────────────────────────────────────
+if [ -n "$_w_temp" ]; then
+  printf "  ${_emoji}${YL}${_wx_str}${RST}  ${GY}·${RST}  ${BL}📍 ${WH}${_loc}${RST}\n"
+fi
+
+# ── LINE 4 ─ Git ───────────────────────────────────────────────────────────
+_dir=$(basename "$cwd")
+
+_sync=""
+[ "$_ahead" -gt 0 ] && _sync="${GR}↑${_ahead}${RST}"
+[ "$_behind" -gt 0 ] && _sync="${_sync}${RD}↓${_behind}${RST}"
+[ -z "$_sync" ] && _sync="${GR}✓${RST}"
+
+_changes=""
+[ "$_mod" -gt 0 ] && _changes="${YL}~${_mod}${RST}"
+[ "$_staged" -gt 0 ] && _changes="${_changes} ${GR}+${_staged}${RST}"
+[ "$_untracked" -gt 0 ] && _changes="${_changes} ${GY}?${_untracked}${RST}"
+[ -z "$_changes" ] && _changes="${GR}clean${RST}"
+
+printf "  ${BYL}📁 ${WH}${_dir}${RST}  ${GY}·${RST}  ${MG}🌿 ${_branch}${RST}  ${GY}·${RST}  ⏱️  ${WH}${_commit_age}${RST}  ${GY}·${RST}  ${_changes}  ${GY}·${RST}  🔄 ${_sync}\n"
+
+# ── LINE 5 ─ Memory ───────────────────────────────────────────────────────
+printf "  ${CY}🧠 ${DIM}Memory:${RST} ${WH}${_mem_files}${RST}${DIM} files${RST} ${GY}/${RST} ${WH}${_mem_lines}${RST}${DIM} lines${RST}\n"
