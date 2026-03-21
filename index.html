@@ -2089,6 +2089,236 @@
                 padding: 15px;
             }
         }
+
+        /* ===== wthrr Coming Soon Section ===== */
+        .wthrr-banner {
+            position: relative;
+            margin-top: 28px;
+            padding: 24px 28px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                rgba(6, 182, 212, 0.07) 0%,
+                rgba(139, 92, 246, 0.09) 50%,
+                rgba(249, 115, 22, 0.05) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+        }
+
+        .wthrr-banner::before {
+            content: none;
+        }
+
+        .wthrr-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .wthrr-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .wthrr-top-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .wthrr-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            animation: pulse-badge 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+            50% { box-shadow: 0 0 0 8px rgba(6, 182, 212, 0); }
+        }
+
+        .wthrr-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff;
+            animation: blink 1.2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .wthrr-platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(6, 182, 212, 0.08);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            letter-spacing: 0.04em;
+        }
+
+        .wthrr-title-row {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+        }
+
+        .wthrr-appname {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, #06B6D4 20%, #8B5CF6 60%, #F97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .wthrr-tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .wthrr-desc {
+            font-size: 0.97rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.6;
+        }
+
+        .wthrr-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 4px;
+        }
+
+        .wthrr-feat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 13px;
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .wthrr-feat:hover {
+            border-color: rgba(6, 182, 212, 0.45);
+            color: var(--primary-light);
+        }
+
+        .wthrr-feat-icon {
+            font-size: 1em;
+        }
+
+        .wthrr-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .wthrr-modes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .wthrr-mode {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            min-width: 70px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .wthrr-mode:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .wthrr-mode-icon {
+            font-size: 1.4em;
+        }
+
+        .wthrr-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--primary-light);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .wthrr-cta-link:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(139, 92, 246, 0.25));
+            border-color: rgba(56, 189, 248, 0.55);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 900px) {
+            .wthrr-inner {
+                grid-template-columns: 1fr;
+            }
+            .wthrr-right {
+                align-items: flex-start;
+            }
+            .wthrr-modes {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .wthrr-appname { font-size: 1.5rem; }
+            .wthrr-modes { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        [data-theme="light"] .wthrr-feat {
+            background: rgba(248, 250, 252, 0.85);
+            border-color: rgba(100, 116, 139, 0.22);
+        }
+
+        [data-theme="light"] .wthrr-mode {
+            background: rgba(255, 255, 255, 0.92);
+        }
     </style>
 </head>
 <body id="top">
@@ -2223,6 +2453,56 @@
                         <span class="visitor-stat-icon">📅</span>
                         <span class="visitor-stat-value" id="today-visits">--</span>
                         <span class="visitor-stat-label">Today</span>
+                    </div>
+                </div>
+
+                <!-- wthrr macOS App - Coming Soon Banner -->
+                <div class="wthrr-banner">
+                    <div class="wthrr-inner">
+                        <div class="wthrr-left">
+                            <div class="wthrr-top-row">
+                                <span class="wthrr-badge">
+                                    <span class="wthrr-badge-dot"></span>
+                                    Coming Soon
+                                </span>
+                                <span class="wthrr-platform-badge">
+                                    🍎 macOS 26.4+ &nbsp;·&nbsp; Swift 6
+                                </span>
+                                <span class="wthrr-platform-badge" style="border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.07);color:#FB923C;">
+                                    $4.99 one-time
+                                </span>
+                            </div>
+                            <div class="wthrr-title-row">
+                                <span class="wthrr-appname">wthrr</span>
+                                <span class="wthrr-tagline">animated weather effects for your desktop</span>
+                            </div>
+                            <p class="wthrr-desc">
+                                Snow, rain, thunderstorms, fog, aurora borealis, and AI glitch storms rendered across all your displays — controlled from the menu bar. Live weather integration, 9 built-in presets, seasonal auto-switching, and a fully customizable settings panel.
+                            </p>
+                            <div class="wthrr-features">
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">🖥️</span> Multi-display overlay</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">🌤️</span> Live weather (Open-Meteo)</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">🎨</span> Color theming &amp; presets</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">⌨️</span> Global hotkey pause/resume</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">🗓️</span> Seasonal auto-switch</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">⚡</span> Low Power Mode</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">📦</span> Import/export presets</span>
+                                <span class="wthrr-feat"><span class="wthrr-feat-icon">🌙</span> Night dimming</span>
+                            </div>
+                        </div>
+                        <div class="wthrr-right">
+                            <div class="wthrr-modes">
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">❄️</span>Snow</div>
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">🌧️</span>Rain</div>
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">⛈️</span>Storm</div>
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">🌫️</span>Fog</div>
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">🌌</span>Aurora</div>
+                                <div class="wthrr-mode"><span class="wthrr-mode-icon">🤖</span>AI Storm</div>
+                            </div>
+                            <a href="https://github.com/todddube/wthrr_mac" class="wthrr-cta-link" target="_blank" rel="noopener">
+                                View on GitHub <span>→</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

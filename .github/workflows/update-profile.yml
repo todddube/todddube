@@ -9,6 +9,10 @@ name: Update Profile with AI/ML News & LinkedIn Posts
 # - Professional enterprise-focused headlines
 # - Runs daily at 5 AM ET to keep content fresh
 #
+# Static sections NOT modified by this workflow (intentionally preserved):
+# - wthrr macOS "Coming Soon" banner (below hero header) — static until app launches
+# - Hero section copy and layout
+#
 # Note: The following are rendered dynamically via JavaScript (not updated here):
 # - Hero section GitHub stats (fetched from GitHub API in browser)
 # - Visitor tracking stats (using CountAPI)
