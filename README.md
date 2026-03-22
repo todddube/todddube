@@ -4,7 +4,7 @@
 <img src="images/header_ai_retro.svg" width="100%" alt="Retro 8-bit AI/ML Header"/>
 
 <!-- Typing Animation -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Sr+Solutions+Architect+%40+CarMax;AI%2FML+%26+GenAI+Platform+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Senior+AI%2FML+Architect+%40+CarMax;GenAI+Platform+%26+AI+Agent+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
 
 <!-- Social Links -->
 <p align="center">
@@ -34,15 +34,21 @@
 
 ### 👨‍💻 Who Am I?
 
-**Sr Solutions Architect** specializing in **Data Science, AI/ML, GenAI & Data Analytics Platforms** at [CarMax](https://www.carmax.com) — and a lifelong builder, tinkerer, and game developer.
+**Senior AI/ML Architect** at [CarMax](https://www.carmax.com) — pioneering enterprise AI/ML and GenAI platforms, and a lifelong builder, tinkerer, and game developer.
 
 I believe in understanding technology from first principles: from hand-crafting 6502 Assembly on a Commodore 64 to architecting enterprise-scale GenAI platforms. Richmond, VA.
 
 #### 🎯 Currently Building:
-- 🤖 **GenAI & AI Agent Systems** — autonomous agents, LLM workflows, Claude integrations
-- 📊 **Data Analytics Platforms** — enterprise-scale data science at CarMax
-- 🎮 **Games** — iOS space shooters, C++ lunar lander, C64 Assembly titles
-- 💡 **IoT & LED Projects** — NightDriver ESP32 LED displays, smart systems
+- 🤖 **GenAI & AI Agent Systems** — autonomous agents, LLM orchestration, Claude integrations, agentic workflows
+- 🌤️ **wthrr** — real-time C++ weather display with live data visualization
+- 📺 **retrosvr** — C# retro screensaver celebrating classic computing aesthetics
+- 🚀 **SpaceQuest iOS** — Swift/SpriteKit space shooter game
+- 💡 **vstat** — Claude AI status browser extension
+
+#### 🏛️ Community & Leadership:
+- 🎤 **Co-Chair, Data/AI Summit** — Richmond Technology Council (2019–Present)
+- 📊 **Steering Committee, Data** — Richmond Technology Council (2021–Present)
+- 🏈 **President & Board Member** — Kanawha Youth Football Association (2016–Present)
 
 <!-- Tech Journey -->
 <details>
@@ -60,8 +66,8 @@ timeline
                  : Cloud & DevOps adoption
     2020s        : Python, AI/ML, and Data Science
                  : IoT, ESP32, and smart systems
-    2025-2026    : GenAI platform architecture at CarMax
-                 : AI agents, LLMs, and autonomous systems
+    2025-2026    : Senior AI/ML Architect at CarMax
+                 : Enterprise GenAI platforms, AI agents, and LLM orchestration
 ```
 
 </details>
@@ -260,19 +266,19 @@ IoT & Hardware    ████████████░░░░░░░░  
 <br>
 
 🎯 **Multi-Era Coder**
-Hand-crafts 6502 Assembly AND builds enterprise GenAI platforms
+Hand-crafts 6502 Assembly AND architects enterprise GenAI platforms
+
+🤖 **AI Community Leader**
+Co-chairs the Data/AI Summit at Richmond Technology Council
 
 🚀 **Project Range**
-From ESP32 LED strips to enterprise-scale data analytics
+From retro screensavers to enterprise AI/ML platform architecture
 
 ☕ **Coffee → Code**
 Converting caffeine into commits since 2011
 
 🎮 **Gaming Legacy**
 Games on 8-bit C64 *and* modern Swift & C++
-
-💾 **Digital Archaeology**
-Preserving retro computing history, one repo at a time
 
 </td>
 </tr>

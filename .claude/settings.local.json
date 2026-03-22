@@ -10,7 +10,10 @@
       "Bash(git push:*)",
       "Bash(chmod +x:*)",
       "Bash(./backup-statusline.sh:*)",
-      "Bash(open:*)"
+      "Bash(open:*)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(curl -s \"https://api.github.com/users/todddube/repos?sort=updated&per_page=30\")"
     ],
     "deny": [],
     "ask": []
