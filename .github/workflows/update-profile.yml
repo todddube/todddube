@@ -178,8 +178,8 @@ jobs:
               }
           ]
 
-          # Select 3 random posts for display
-          selected_posts = random.sample(linkedin_posts, 3)
+          # Select 2 random posts for display (post-3 removed from page)
+          selected_posts = random.sample(linkedin_posts, 2)
 
           # Select diverse news items from different categories
           for source in news_sources:
@@ -196,16 +196,6 @@ jobs:
           # Read the current index.html
           with open('index.html', 'r', encoding='utf-8') as f:
               content = f.read()
-
-          # Update repository count in footer stats
-          content = re.sub(
-              r'(<div class="stat-number" id="repos-count">)\d+(</div>)',
-              rf'\g<1>{repos_count}\g<2>',
-              content
-          )
-
-          # Note: Hero and metrics section stats are now populated via JavaScript
-          # from the GitHub API directly in the browser for real-time accuracy
 
           # Update the last updated date in the header
           current_date_display = datetime.now().strftime('%b %d, %Y')
@@ -423,9 +413,8 @@ jobs:
           print(f"\n⏰ Timestamp: {current_date}")
 
           print(f"\n✅ Updated last updated date: {current_date_display}")
-          print(f"✅ Updated footer stats: {repos_count} repos")
           print(f"✅ Updated AI/ML news ticker with {len(ai_news_items)} fresh headlines")
-          print(f"✅ Updated 3 LinkedIn-style posts with fresh content")
+          print(f"✅ Updated 2 LinkedIn-style posts with fresh content")
           print(f"✅ Updated AI Models Tracker with {len(ai_models)} models")
 
           # Print sample headlines
