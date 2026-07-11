@@ -11,10 +11,10 @@
     <meta property="og:type" content="website">
     <title>Todd Dube | Sr Architect AI/ML & Developer Engineer</title>
     <script>
-        // Prevent flash of wrong theme
+        // Prevent flash of wrong theme - defaults to dark
         (function() {
             var t = localStorage.getItem('td-theme');
-            if (t) document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
         })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,23 +72,8 @@
             --particle-color: 6, 182, 212;
         }
 
-        /* System preference: light mode when no explicit theme is set */
-        @media (prefers-color-scheme: light) {
-            :root:not([data-theme="dark"]) {
-                --dark: #F8FAFC;
-                --darker: #F1F5F9;
-                --card-bg: rgba(255, 255, 255, 0.92);
-                --card-hover: rgba(248, 250, 252, 0.95);
-                --border: rgba(100, 116, 139, 0.2);
-                --border-hover: rgba(100, 116, 139, 0.35);
-                --light: #0F172A;
-                --text-secondary: #475569;
-                --text-muted: #94A3B8;
-                --nav-bg: rgba(255, 255, 255, 0.85);
-                --footer-bg: rgba(241, 245, 249, 0.95);
-                --particle-color: 6, 182, 212;
-            }
-        }
+        /* Site defaults to dark theme regardless of system preference;
+           users can still opt into light mode via the toggle (persisted in localStorage). */
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -1322,6 +1307,41 @@
             box-shadow: 0 20px 60px rgba(48, 163, 220, 0.15);
         }
 
+        .project-card.project-pinned {
+            order: -1;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.3), 0 20px 60px rgba(249, 115, 22, 0.12);
+        }
+
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .project-badge-pinned {
+            color: var(--accent-warm);
+            background: rgba(249, 115, 22, 0.12);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .project-badge-recent {
+            color: var(--success);
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
         .project-image {
             height: 200px;
             background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(48, 163, 220, 0.1));
@@ -1665,43 +1685,10 @@
         }
 
         /* Light theme specific overrides */
-        [data-theme="light"] .bg-grid,
-        :root:not([data-theme="dark"]) .bg-grid {
+        [data-theme="light"] .bg-grid {
             background-image:
                 linear-gradient(rgba(100, 116, 139, 0.06) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root:not([data-theme="dark"]) .bg-grid {
-                background-image:
-                    linear-gradient(rgba(100, 116, 139, 0.06) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
-            }
-
-            :root:not([data-theme="dark"]) .orb {
-                opacity: 0.08;
-            }
-
-            :root:not([data-theme="dark"]) .ai-symbol {
-                color: rgba(6, 182, 212, 0.12);
-            }
-
-            :root:not([data-theme="dark"]) .binary-column {
-                color: rgba(100, 116, 139, 0.06);
-            }
-
-            :root:not([data-theme="dark"]) .ai-model-card {
-                background: rgba(241, 245, 249, 0.8);
-            }
-
-            :root:not([data-theme="dark"]) .linkedin-header::before {
-                background: linear-gradient(135deg, rgba(10, 102, 194, 0.8), rgba(0, 119, 181, 0.8));
-            }
-
-            :root:not([data-theme="dark"]) .linkedin-header::after {
-                background: var(--card-bg);
-            }
         }
 
         [data-theme="light"] .orb {
@@ -2904,31 +2891,15 @@
         // Theme Management
         const ThemeManager = {
             init() {
+                // Defaults to dark theme unless the visitor explicitly chose light before.
                 const saved = localStorage.getItem('td-theme');
-                if (saved === 'dark' || saved === 'light') {
-                    this.apply(saved);
-                } else {
-                    // System default - no data-theme attribute, CSS handles it
-                    this.updateToggleUI(this.getSystemTheme());
-                }
+                this.apply(saved === 'light' ? 'light' : 'dark');
 
                 document.getElementById('theme-toggle').addEventListener('click', () => this.toggle());
-
-                // Listen for system theme changes
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                    if (!localStorage.getItem('td-theme')) {
-                        this.updateToggleUI(e.matches ? 'dark' : 'light');
-                    }
-                });
-            },
-
-            getSystemTheme() {
-                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             },
 
             getEffectiveTheme() {
-                const saved = localStorage.getItem('td-theme');
-                return saved || this.getSystemTheme();
+                return localStorage.getItem('td-theme') === 'light' ? 'light' : 'dark';
             },
 
             apply(theme) {
@@ -3117,48 +3088,36 @@
             }
         }
 
-        // Enhanced Visitor Tracking with Cross-Device Support
+        // Visitor Tracking backed by visitor-stats.json (populated daily by the
+        // update-profile workflow from the GitHub repo Traffic API - real,
+        // authoritative numbers instead of a third-party counter service).
         const VisitorTracker = {
-            // Configuration
-            config: {
-                namespace: 'todddube-portfolio',
-                // CountAPI endpoints for persistent cross-device tracking
-                endpoints: {
-                    total: 'https://api.countapi.xyz/hit/todddube-portfolio/total-visits',
-                    unique: 'https://api.countapi.xyz/hit/todddube-portfolio/unique-visitors',
-                    today: 'https://api.countapi.xyz/hit/todddube-portfolio/today-visits'
-                }
-            },
+            statsUrl: './visitor-stats.json',
 
             storageKeys: {
                 visitorId: 'td_visitor_id',
                 lastVisitDate: 'td_last_visit_date',
                 isOwner: 'td_is_owner',
-                sessionCounted: 'td_session_counted'
+                todayCount: 'td_today_count'
             },
 
             async init() {
-                // Check if this is the site owner
-                if (this.isExcludedDevice()) {
-                    await this.fetchAndDisplayStats(false); // Don't increment
-                    console.log('👤 Owner mode - view only');
-                    return;
-                }
+                const owner = this.isExcludedDevice();
+                if (owner) console.log('👤 Owner mode - view only');
 
-                await this.trackVisit();
+                if (!owner) this.trackLocalVisit();
+
+                await this.loadAndDisplayStats();
             },
 
             isExcludedDevice() {
-                // Check for owner marker in localStorage
                 const isOwner = localStorage.getItem(this.storageKeys.isOwner);
                 if (isOwner === 'true') return true;
 
-                // Check URL parameter to set owner status: ?owner=true
                 const urlParams = new URLSearchParams(window.location.search);
                 if (urlParams.get('owner') === 'true') {
                     localStorage.setItem(this.storageKeys.isOwner, 'true');
                     console.log('🔒 Owner mode activated - visits will not be tracked');
-                    // Clean URL without reload
                     window.history.replaceState({}, document.title, window.location.pathname);
                     return true;
                 }
@@ -3174,103 +3133,45 @@
                 return new Date().toISOString().split('T')[0];
             },
 
-            async trackVisit() {
+            // Tracks this browser's own visit locally so "Today" feels live even
+            // though visitor-stats.json only refreshes once a day via the workflow.
+            trackLocalVisit() {
                 const today = this.getTodayKey();
-                let visitorId = localStorage.getItem(this.storageKeys.visitorId);
-                let isNewVisitor = false;
-                let isNewDay = false;
-                const sessionCounted = sessionStorage.getItem(this.storageKeys.sessionCounted);
 
-                // Generate visitor ID if not exists (new unique visitor)
-                if (!visitorId) {
-                    visitorId = this.generateVisitorId();
-                    localStorage.setItem(this.storageKeys.visitorId, visitorId);
-                    isNewVisitor = true;
+                if (!localStorage.getItem(this.storageKeys.visitorId)) {
+                    localStorage.setItem(this.storageKeys.visitorId, this.generateVisitorId());
                 }
 
-                // Check if it's a new day
                 const lastVisitDate = localStorage.getItem(this.storageKeys.lastVisitDate);
+                let todayCount = parseInt(localStorage.getItem(this.storageKeys.todayCount) || '0', 10);
+
                 if (lastVisitDate !== today) {
-                    isNewDay = true;
+                    todayCount = 1;
                     localStorage.setItem(this.storageKeys.lastVisitDate, today);
+                    localStorage.setItem(this.storageKeys.todayCount, todayCount.toString());
+                } else if (!sessionStorage.getItem('td_session_counted')) {
+                    todayCount++;
+                    localStorage.setItem(this.storageKeys.todayCount, todayCount.toString());
                 }
-
-                // Only count once per session to avoid refresh spam
-                if (!sessionCounted) {
-                    sessionStorage.setItem(this.storageKeys.sessionCounted, 'true');
-                    await this.incrementAndDisplay(isNewVisitor, isNewDay);
-                } else {
-                    // Just display current stats without incrementing
-                    await this.fetchAndDisplayStats(false);
-                }
+                sessionStorage.setItem('td_session_counted', 'true');
             },
 
-            async incrementAndDisplay(isNewVisitor, isNewDay) {
-                const formatNumber = (num) => num.toLocaleString();
+            async loadAndDisplayStats() {
+                const todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayCount) || '1', 10);
 
                 try {
-                    // Increment total visits (always)
-                    const totalResponse = await fetch(this.config.endpoints.total);
-                    const totalData = await totalResponse.json();
-
-                    // Increment unique visitors only for new visitors
-                    let uniqueCount = 0;
-                    if (isNewVisitor) {
-                        const uniqueResponse = await fetch(this.config.endpoints.unique);
-                        const uniqueData = await uniqueResponse.json();
-                        uniqueCount = uniqueData.value || 0;
-                    } else {
-                        // Just get current count without incrementing
-                        const uniqueResponse = await fetch('https://api.countapi.xyz/get/todddube-portfolio/unique-visitors');
-                        const uniqueData = await uniqueResponse.json();
-                        uniqueCount = uniqueData.value || 0;
-                    }
-
-                    // For today's visits, we use localStorage + estimate
-                    // (CountAPI doesn't support daily resets, so we track locally)
-                    let todayVisits = parseInt(localStorage.getItem('td_today_count') || '0');
-                    if (isNewDay) {
-                        todayVisits = 1;
-                    } else {
-                        todayVisits++;
-                    }
-                    localStorage.setItem('td_today_count', todayVisits.toString());
-
-                    // Update display
-                    this.updateDisplay(totalData.value || 0, uniqueCount, todayVisits);
-
-                    console.log(`📊 Visit tracked: Total=${totalData.value}, Unique=${uniqueCount}, Today=${todayVisits}`);
-
+                    const res = await fetch(this.statsUrl, { cache: 'no-store' });
+                    if (!res.ok) throw new Error(`stats fetch failed: ${res.status}`);
+                    const stats = await res.json();
+                    this.updateDisplay(stats.total_views || 0, stats.total_unique || 0, todayVisits);
                 } catch (error) {
-                    console.log('Using fallback tracking:', error);
-                    this.fallbackTracking();
-                }
-            },
-
-            async fetchAndDisplayStats(increment = false) {
-                const formatNumber = (num) => num.toLocaleString();
-
-                try {
-                    // Get current counts without incrementing
-                    const [totalRes, uniqueRes] = await Promise.all([
-                        fetch('https://api.countapi.xyz/get/todddube-portfolio/total-visits'),
-                        fetch('https://api.countapi.xyz/get/todddube-portfolio/unique-visitors')
-                    ]);
-
-                    const totalData = await totalRes.json();
-                    const uniqueData = await uniqueRes.json();
-                    const todayVisits = parseInt(localStorage.getItem('td_today_count') || '0');
-
-                    this.updateDisplay(totalData.value || 0, uniqueData.value || 0, todayVisits);
-
-                } catch (error) {
-                    console.log('Error fetching stats:', error);
-                    this.fallbackTracking();
+                    console.log('Falling back to local-only visitor stats:', error);
+                    this.updateDisplay(null, null, todayVisits);
                 }
             },
 
             updateDisplay(total, unique, today) {
-                const formatNumber = (num) => num.toLocaleString();
+                const formatNumber = (num) => num === null ? '—' : num.toLocaleString();
 
                 const totalEl = document.getElementById('total-visits');
                 const uniqueEl = document.getElementById('unique-visitors');
@@ -3290,29 +3191,11 @@
                 }
             },
 
-            fallbackTracking() {
-                // Fallback to localStorage if API fails
-                let total = parseInt(localStorage.getItem('td_fallback_total') || '100');
-                let unique = parseInt(localStorage.getItem('td_fallback_unique') || '50');
-                let today = parseInt(localStorage.getItem('td_today_count') || '1');
-
-                if (!sessionStorage.getItem('td_fallback_counted')) {
-                    total++;
-                    localStorage.setItem('td_fallback_total', total.toString());
-                    sessionStorage.setItem('td_fallback_counted', 'true');
-                }
-
-                this.updateDisplay(total, unique, today);
-            },
-
             // Admin functions (call from browser console)
-            async resetStats() {
-                // Note: CountAPI doesn't support reset, but you can create new keys
-                console.log('⚠️ CountAPI stats cannot be reset. Create new namespace keys if needed.');
-                console.log('Local storage cleared.');
-                localStorage.removeItem('td_today_count');
-                localStorage.removeItem('td_fallback_total');
-                localStorage.removeItem('td_fallback_unique');
+            resetStats() {
+                localStorage.removeItem(this.storageKeys.todayCount);
+                localStorage.removeItem(this.storageKeys.lastVisitDate);
+                console.log('Local visitor stats cleared.');
             },
 
             removeOwnerMode() {
@@ -3325,8 +3208,7 @@
                     visitorId: localStorage.getItem(this.storageKeys.visitorId),
                     isOwner: localStorage.getItem(this.storageKeys.isOwner),
                     lastVisit: localStorage.getItem(this.storageKeys.lastVisitDate),
-                    todayCount: localStorage.getItem('td_today_count'),
-                    sessionCounted: sessionStorage.getItem(this.storageKeys.sessionCounted)
+                    todayCount: localStorage.getItem(this.storageKeys.todayCount)
                 };
             }
         };

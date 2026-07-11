@@ -7,6 +7,12 @@ name: Update Profile with AI/ML News & LinkedIn Posts
 # - LinkedIn-style professional posts with dynamic content
 # - AI Models Tracker with latest model versions and popularity
 # - Professional enterprise-focused headlines
+# - Top Repositories section: wthrr_mac is always pinned first (flagship
+#   in-progress project), remaining slots filled by stars/forks/recency score;
+#   cards updated within the last 14 days get a "Recently Updated" badge
+# - visitor-stats.json: pulls real traffic from the GitHub repo Traffic API
+#   (api.github.com/.../traffic/views) and accumulates it into a committed
+#   JSON file, replacing the discontinued CountAPI third-party counter
 # - Runs daily at 5 AM ET to keep content fresh
 #
 # Static sections NOT modified by this workflow (intentionally preserved):
@@ -15,7 +21,7 @@ name: Update Profile with AI/ML News & LinkedIn Posts
 #
 # Note: The following are rendered dynamically via JavaScript (not updated here):
 # - Hero section GitHub stats (fetched from GitHub API in browser)
-# - Visitor tracking stats (using CountAPI)
+# - Visitor tracking stats (reads committed visitor-stats.json + local session count)
 # - AI background animations (CSS/JS generated)
 # - Neural network visualization (canvas-based)
 
@@ -341,7 +347,13 @@ jobs:
                   r['_score'] = r['stargazers_count'] * 3 + r['forks_count'] * 2 + recency
 
               public_repos.sort(key=lambda x: x['_score'], reverse=True)
-              top5 = public_repos[:5]
+
+              # Pin wthrr_mac first (flagship in-progress project), then fill
+              # remaining slots by score with the rest of the repos.
+              PINNED_REPO = 'wthrr_mac'
+              pinned = [r for r in public_repos if r['name'] == PINNED_REPO]
+              rest = [r for r in public_repos if r['name'] != PINNED_REPO]
+              top5 = (pinned + rest)[:5]
 
               # Language colors for dots
               lang_colors = {
@@ -360,6 +372,8 @@ jobs:
                   'Java': '☕', 'Go': '🔷', 'Rust': '🦀',
               }
 
+              RECENT_DAYS = 14
+
               repos_html = ""
               indent = "                "
               for repo in top5:
@@ -370,12 +384,27 @@ jobs:
                   url = repo['html_url']
                   dot_color = lang_colors.get(lang, '#8b949e')
                   emoji = lang_emojis.get(lang, '📦')
+                  is_pinned = name == PINNED_REPO
+                  updated = datetime.fromisoformat(repo['updated_at'].replace('Z', '+00:00'))
+                  is_recent = (now - updated).days <= RECENT_DAYS
 
-                  repos_html += f'{indent}<div class="project-card reveal">\n'
+                  card_classes = 'project-card reveal'
+                  if is_pinned:
+                      card_classes += ' project-pinned'
+
+                  badges_html = ''
+                  if is_pinned:
+                      badges_html += f'{indent}        <span class="project-badge project-badge-pinned">📌 Featured</span>\n'
+                  if is_recent:
+                      badges_html += f'{indent}        <span class="project-badge project-badge-recent">🔥 Recently Updated</span>\n'
+
+                  repos_html += f'{indent}<div class="{card_classes}">\n'
                   repos_html += f'{indent}    <div class="project-image">{emoji}</div>\n'
                   repos_html += f'{indent}    <div class="project-content">\n'
                   repos_html += f'{indent}        <p class="project-category">{lang}</p>\n'
                   repos_html += f'{indent}        <h3>{name}</h3>\n'
+                  if badges_html:
+                      repos_html += f'{indent}        <div class="project-badges">\n{badges_html}{indent}        </div>\n'
                   repos_html += f'{indent}        <div class="project-meta">\n'
                   repos_html += f'{indent}            <span class="project-lang"><span class="lang-dot" style="background:{dot_color};"></span> {lang}</span>\n'
                   repos_html += f'{indent}            <span class="project-stars">⭐ {stars}</span>\n'
@@ -399,6 +428,39 @@ jobs:
                   print(f"   • {r['name']} ({r.get('language','?')}) ⭐{r['stargazers_count']} score={r['_score']}")
           except Exception as e:
               print(f"⚠️ Top repos update failed: {e}")
+
+          # --- Visitor Stats (real GitHub traffic data, replaces dead CountAPI) ---
+          try:
+              gh_token = os.environ.get('GITHUB_TOKEN')
+              headers = {'Authorization': f'token {gh_token}'} if gh_token else {}
+
+              traffic_resp = requests.get(
+                  'https://api.github.com/repos/todddube/todddube/traffic/views',
+                  headers=headers
+              )
+              traffic_data = traffic_resp.json()
+
+              with open('visitor-stats.json', 'r', encoding='utf-8') as f:
+                  visitor_stats = json.load(f)
+
+              daily = visitor_stats.get('daily', {})
+              for day in traffic_data.get('views', []):
+                  date_key = day['timestamp'][:10]  # YYYY-MM-DD
+                  daily[date_key] = {'views': day['count'], 'unique': day['uniques']}
+
+              visitor_stats['daily'] = daily
+              visitor_stats['total_views'] = sum(d['views'] for d in daily.values())
+              visitor_stats['total_unique'] = sum(d['unique'] for d in daily.values())
+              visitor_stats['last_updated'] = datetime.utcnow().isoformat() + 'Z'
+
+              with open('visitor-stats.json', 'w', encoding='utf-8') as f:
+                  json.dump(visitor_stats, f, indent=2)
+                  f.write('\n')
+
+              print(f"✅ Updated visitor-stats.json: {visitor_stats['total_views']} total views, "
+                    f"{visitor_stats['total_unique']} total unique across {len(daily)} recorded days")
+          except Exception as e:
+              print(f"⚠️ Visitor stats update failed: {e}")
 
           # Write updated content
           with open('index.html', 'w', encoding='utf-8') as f:
@@ -436,7 +498,7 @@ jobs:
 
           print("\n🎨 Dynamic Elements (rendered in browser):")
           print("  • Hero GitHub stats (live API fetch)")
-          print("  • Visitor tracking (CountAPI)")
+          print("  • Visitor tracking (reads committed visitor-stats.json)")
           print("  • Neural network animation (canvas)")
           print("  • AI floating symbols, binary rain, data flow")
           print("  • Glowing nodes, hex grid, circuit pattern")
@@ -450,7 +512,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add index.html
+          git add index.html visitor-stats.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
