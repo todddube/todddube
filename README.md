@@ -1,7 +1,15 @@
 <div align="center">
 
-<!-- Retro 8-bit AI/ML Header -->
-<img src="images/header_ai_retro.svg" width="100%" alt="Retro 8-bit AI/ML Header"/>
+<!-- ASCII Header -->
+```
+▀█▀ █▀█ █▀▄ █▀▄   █▀▄ █░█ █▄▄ █▀▀
+░█░ █▄█ █▄▀ █▄▀   █▄▀ █▄█ █▄█ ██▄
+
+  6502 ASM ───────────────► LLMs
+  ┌────┐   ┌────┐   ┌────┐   ┌────┐
+  │ C64│─▶│ .NET│─▶│ iOS │─▶│GenAI│
+  └────┘   └────┘   └────┘   └────┘
+```
 
 <!-- Typing Animation -->
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&multiline=true&width=650&height=90&lines=Senior+AI%2FML+Architect+%40+CarMax;GenAI+Platform+%26+AI+Agent+Builder;Full-Stack+Dev+%26+Game+Developer;From+6502+Assembly+to+Large+Language+Models" alt="Typing Animation" />
