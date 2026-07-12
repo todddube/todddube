@@ -292,6 +292,12 @@ Games on 8-bit C64 *and* modern Swift & C++
 </tr>
 </table>
 
+### 🕒 Recently Active
+<!-- RECENT-PROJECTS:START -->
+| Project | Description |
+|---------|-------------|
+<!-- RECENT-PROJECTS:END -->
+
 </div>
 
 ---
@@ -325,14 +331,8 @@ Games on 8-bit C64 *and* modern Swift & C++
 </tr>
 </table>
 
-### 🏆 GitHub Achievements
-<img src="https://github-profile-trophy.vercel.app/?username=todddube&theme=algolia&no-frame=true&row=1&column=7&margin-w=10" alt="GitHub Trophies"/>
-
 ### 🔥 Contribution Streak
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=todddube&theme=radical&border=30A3DC&ring=00D4AA&fire=FF6B6B&currStreakLabel=00D4AA" alt="GitHub Streak"/>
-
-### 📊 Contribution Activity
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=todddube&theme=react-dark&bg_color=0D1117&color=00D4AA&line=30A3DC&point=FF6B6B&area=true&hide_border=true" alt="Activity Graph"/>
 
 </div>
 

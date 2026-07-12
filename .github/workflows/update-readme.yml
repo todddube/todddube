@@ -67,7 +67,7 @@ jobs:
 
               if repos:
                   # Build new project table
-                  table = "### Featured Projects\n\n| Project | Description |\n|---------|-------------|\n"
+                  table = "| Project | Description |\n|---------|-------------|\n"
                   for repo in repos:
                       name = repo['name']
                       desc = repo.get('description') or 'No description'
@@ -75,11 +75,13 @@ jobs:
                       url = repo['html_url']
                       table += f"| [{name}]({url}) | {desc} |\n"
 
-                  # Replace the projects section
-                  pattern = r'(### Featured Projects\n\n\| Project \| Description \|\n\|[-]+\|[-]+\|\n)(?:\| .+\n)+'
-                  if re.search(pattern, content):
-                      content = re.sub(pattern, table, content)
+                  # Replace content between the recent-projects markers
+                  pattern = r'(<!-- RECENT-PROJECTS:START -->\n).*?(\n<!-- RECENT-PROJECTS:END -->)'
+                  if re.search(pattern, content, flags=re.DOTALL):
+                      content = re.sub(pattern, lambda m: m.group(1) + table.rstrip('\n') + m.group(2), content, flags=re.DOTALL)
                       print(f"✅ Updated {len(repos)} featured projects")
+                  else:
+                      print("⚠️ RECENT-PROJECTS markers not found in README.md")
 
               if content != original:
                   readme_path.write_text(content, encoding='utf-8')
