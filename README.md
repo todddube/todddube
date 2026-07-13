@@ -296,6 +296,10 @@ Games on 8-bit C64 *and* modern Swift & C++
 <!-- RECENT-PROJECTS:START -->
 | Project | Description |
 |---------|-------------|
+| [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [spacerunner](https://github.com/todddube/spacerunner) | Space Runner iOS App |
+| [wthrr_mac](https://github.com/todddube/wthrr_mac) | wthrrr for macOS |
+| [python](https://github.com/todddube/python) | No description |
 <!-- RECENT-PROJECTS:END -->
 
 </div>
