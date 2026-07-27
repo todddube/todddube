@@ -297,9 +297,9 @@ Games on 8-bit C64 *and* modern Swift & C++
 | Project | Description |
 |---------|-------------|
 | [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [lander](https://github.com/todddube/lander) | lunar lander |
+| [reviewAppPerms](https://github.com/todddube/reviewAppPerms) | Native macOS utility to inspect, audit, ... |
 | [spacerunner](https://github.com/todddube/spacerunner) | Space Runner iOS App |
-| [wthrr_mac](https://github.com/todddube/wthrr_mac) | wthrrr for macOS |
-| [python](https://github.com/todddube/python) | No description |
 <!-- RECENT-PROJECTS:END -->
 
 </div>
