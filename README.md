@@ -297,9 +297,9 @@ Games on 8-bit C64 *and* modern Swift & C++
 | Project | Description |
 |---------|-------------|
 | [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [vstat_mac](https://github.com/todddube/vstat_mac) | Vibing AI Status |
+| [vstat](https://github.com/todddube/vstat) | Claude Status Extension |
 | [wthrr_mac](https://github.com/todddube/wthrr_mac) | wthrrr for macOS |
-| [lander](https://github.com/todddube/lander) | lunar lander |
-| [reviewAppPerms](https://github.com/todddube/reviewAppPerms) | Native macOS utility to inspect, audit, ... |
 <!-- RECENT-PROJECTS:END -->
 
 </div>
