@@ -297,9 +297,9 @@ Games on 8-bit C64 *and* modern Swift & C++
 | Project | Description |
 |---------|-------------|
 | [todddube](https://github.com/todddube/todddube) | Todd Dube |
+| [C64-Projects](https://github.com/todddube/C64-Projects) | No description |
 | [vstat_mac](https://github.com/todddube/vstat_mac) | Vibing AI Status |
 | [vstat](https://github.com/todddube/vstat) | Claude Status Extension |
-| [wthrr_mac](https://github.com/todddube/wthrr_mac) | wthrrr for macOS |
 <!-- RECENT-PROJECTS:END -->
 
 </div>
