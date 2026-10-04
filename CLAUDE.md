@@ -24,4 +24,4 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
 
 - No build system or tests. Run the generator locally with `GITHUB_TOKEN=$(gh auth token) python3 .github/scripts/update_projects.py`, then serve with `python3 -m http.server`.
 - To change what's featured, edit `key-projects.json` rather than the README or HTML.
-- Keep the focus on projects; personal bio, employer and job-title content was intentionally removed.
+- Keep the focus on projects. The only personal content is a short intro paragraph (`.hero-about` in index.html, the blockquote in README.md); don't expand it into a bio.

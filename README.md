@@ -7,6 +7,8 @@
 
 macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on AI services. Everything here is open source, and most of it is pair-programmed with [Claude Code](https://claude.com/claude-code). Browse the live version at **[thedubes.com](https://www.thedubes.com)**.
 
+> I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
+
 <!-- UPDATED:START -->
 <sub>Updated Oct 4, 2026 from the GitHub API · 2 projects active in the last 30 days</sub>
 <!-- UPDATED:END -->
