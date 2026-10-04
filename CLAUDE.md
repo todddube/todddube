@@ -4,38 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is Todd Dube's personal GitHub profile repository, serving as both a profile README showcase and a GitHub Pages portfolio website at www.thedubes.com.
+Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.com. Both showcase his current open-source projects (not a personal bio): what's being built, recent commits, and activity, generated daily from the GitHub API.
 
 ## Repository Structure
 
-- `README.md` - Main GitHub profile page with bio, tech stack, and project showcases
-- `index.html` - Full portfolio website (GitHub Pages), supports light/dark themes
-- `_config.yml` - Jekyll/GitHub Pages configuration
-- `CNAME` - Custom domain (www.thedubes.com)
-- `key-projects.json` - Featured projects data used by workflows
-- `.nojekyll` - Bypasses Jekyll processing for index.html
-- `images/` - SVG assets for profile branding
-- `assets/css/style.scss` - Custom SCSS for Jekyll theme overrides
-- `.github/workflows/` - Automated workflows:
-  - `update-profile.yml` - Daily: updates index.html with stats, news ticker, AI models, LinkedIn posts
-  - `update-readme.yml` - Weekly: updates README featured projects from GitHub API
-  - `snake.yml` - Daily: generates contribution snake SVG animations
-  - `claude.yml` - Claude Code integration for issues/PRs
-  - `claude-code-review.yml` - Automated PR code review
+- `key-projects.json` - Curation: which repos are featured (in order), their taglines/platform/screenshot, and exclusions
+- `.github/scripts/update_projects.py` - Pulls repo data from the GitHub API, writes `projects.json`, and rewrites README sections between `<!-- NAME:START/END -->` markers
+- `projects.json` - Generated data; do not hand-edit
+- `README.md` - Profile README; FEATURED / ACTIVITY / MORE / UPDATED sections are generated
+- `index.html` - Single-file site that fetches `projects.json` client-side; light/dark via `data-theme` and CSS custom properties on `:root`
+- `CNAME`, `.nojekyll` - Custom domain; serve `index.html` as-is
+- `SETUP.md` - How the data flow and curation work
+- `.github/workflows/`:
+  - `update-projects.yml` - Daily: runs the script and commits `projects.json` + `README.md`
+  - `snake.yml` - Daily: contribution snake SVGs on the `output` branch
+  - `claude.yml`, `claude-code-review.yml` - Claude Code for issues/PRs
 
-## Key Information
+## Working in this repo
 
-- **Repository Type**: GitHub profile repository (same name as username)
-- **Website**: www.thedubes.com (GitHub Pages with custom domain)
-- **Theme System**: index.html supports light/dark mode via CSS custom properties with system preference detection and manual toggle
-- **No Build System**: No package.json, build scripts, or development dependencies
-- **No Testing Framework**: No test configuration or test files
-- **Static Content**: HTML, markdown, and SVG assets
-
-## Repository Maintenance
-
-- Updating personal information in README.md
-- Modifying project showcases and links in README.md or key-projects.json
-- Updating the portfolio website (index.html)
-- Theme/styling changes via CSS custom properties in index.html `:root`
-- Workflow updates in .github/workflows/
+- No build system or tests. Run the generator locally with `GITHUB_TOKEN=$(gh auth token) python3 .github/scripts/update_projects.py`, then serve with `python3 -m http.server`.
+- To change what's featured, edit `key-projects.json` rather than the README or HTML.
+- Keep the focus on projects; personal bio, employer and job-title content was intentionally removed.

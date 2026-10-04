@@ -1,167 +1,61 @@
 {
-  "featured_projects": [
+  "owner": "todddube",
+  "_comment": "Curation for projects.json, the README, and www.thedubes.com. Featured repos appear first, in this order; every other public, non-fork repo is listed automatically under 'Everything else'. Taglines and images are optional - the repo description is used when tagline is missing.",
+  "featured": [
     {
-      "name": "vstat",
-      "title": "VStat - Visual Statistics Dashboard",
-      "description": "Real-time visual statistics and monitoring dashboard",
-      "url": "https://github.com/todddube/vstat",
-      "category": "featured",
-      "priority": 1,
-      "emoji": "📊",
-      "tags": ["dashboard", "statistics", "visualization", "monitoring"],
-      "status": "active",
-      "highlight": true
+      "repo": "wthrr_mac",
+      "title": "wthrr",
+      "tagline": "Animated weather on your macOS desktop: snow, rain, storms, fog and aurora across every display, driven by live weather and controlled from the menu bar.",
+      "platform": "macOS",
+      "image": "images/Rain.png"
     },
     {
-      "name": "agentic_demo",
-      "title": "Agentic Demo - AI Agent Development",
-      "description": "Building intelligent conversational systems and autonomous AI agents",
-      "url": "https://github.com/todddube/agentic_demo",
-      "category": "ai",
-      "priority": 2,
-      "emoji": "🤖",
-      "tags": ["ai", "agents", "python", "ml"],
-      "status": "active",
-      "highlight": true
+      "repo": "vstat_mac",
+      "title": "Vibe Stats for macOS",
+      "tagline": "Menu bar app that tracks Claude, GitHub Copilot, OpenAI and Gemini health per component, so one vendor's bad day doesn't look like an outage of the tool you use.",
+      "platform": "macOS"
     },
     {
-      "name": "huelights",
-      "title": "HueLights - Smart Home Integration",
-      "description": "Philips Hue SDK integration for smart lighting automation",
-      "url": "https://github.com/todddube/huelights",
-      "category": "iot",
-      "priority": 3,
-      "emoji": "💡",
-      "tags": ["iot", "smart-home", "philips-hue", "automation"],
-      "status": "active",
-      "highlight": true
+      "repo": "C64-Projects",
+      "title": "C64 Projects",
+      "tagline": "6502 assembly demos and experiments for the Commodore 64, like multiplexing 16 sprites through the VIC-II's eight hardware slots.",
+      "platform": "Commodore 64"
     },
     {
-      "name": "spacerunner",
-      "title": "SpaceRunner - Swift Space Adventure",
-      "description": "Featured macOS space adventure game built with Swift and SpriteKit",
-      "url": "https://github.com/todddube/spacerunner",
-      "category": "gaming",
-      "priority": 4,
-      "emoji": "🚀",
-      "tags": ["swift", "game", "spritekit", "macos"],
-      "status": "active",
-      "highlight": true
+      "repo": "reviewAppPerms",
+      "title": "ReviewAppPerms",
+      "tagline": "Inspect, audit and revoke macOS privacy permissions. Reads both TCC databases and shows which apps can use your camera, microphone, files and screen.",
+      "platform": "macOS"
     },
     {
-      "name": "wthrr",
-      "title": "Wthrr - Weather Application",
-      "description": "Real-time weather data visualization in C++",
-      "url": "https://github.com/todddube/wthrr",
-      "category": "utilities",
-      "priority": 5,
-      "emoji": "🌤️",
-      "tags": ["cpp", "weather", "desktop"],
-      "status": "active",
-      "highlight": false
+      "repo": "spacerunner",
+      "title": "SpaceRunner",
+      "tagline": "Fast-paced endless runner in space, built with SpriteKit for iOS 26.",
+      "platform": "iOS",
+      "image": "screenshots/gameplay.jpeg"
     },
     {
-      "name": "C64-Projects",
-      "title": "C64 Assembly Projects",
-      "description": "Retro computing with 6502 Assembly on Commodore 64",
-      "url": "https://github.com/todddube/C64-Projects",
-      "category": "retro",
-      "priority": 6,
-      "emoji": "💾",
-      "tags": ["assembly", "retro", "c64", "6502"],
-      "status": "active",
-      "highlight": true
+      "repo": "lander",
+      "title": "Lunar Lander",
+      "tagline": "The classic lander in C++17 for Windows and macOS: gravity, thrust and a fuel gauge between you and the surface.",
+      "platform": "Windows · macOS"
     },
     {
-      "name": "claude",
-      "title": "Claude AI Experiments",
-      "description": "Advanced AI experiments and integrations with Claude AI",
-      "url": "https://github.com/todddube/claude",
-      "category": "ai",
-      "priority": 7,
-      "emoji": "🧠",
-      "tags": ["ai", "claude", "experiments"],
-      "status": "active",
-      "highlight": false
+      "repo": "vstat",
+      "title": "Vibe Stats",
+      "tagline": "Browser extension for Chrome, Edge and Safari showing component-level status for the AI dev tools you rely on.",
+      "platform": "Browser",
+      "image": "dist/Screenshot_1.jpg"
     },
     {
-      "name": "2048-In-Python",
-      "title": "2048 Game in Python",
-      "description": "Python implementation of the popular 2048 puzzle game with AI solver",
-      "url": "https://github.com/todddube/2048-In-Python",
-      "category": "gaming",
-      "priority": 8,
-      "emoji": "🎮",
-      "tags": ["python", "game", "ai"],
-      "status": "active",
-      "highlight": false
-    },
-    {
-      "name": "Flappy-bird-python",
-      "title": "Flappy Bird Clone",
-      "description": "Classic game recreation in Python with Pygame",
-      "url": "https://github.com/todddube/Flappy-bird-python",
-      "category": "gaming",
-      "priority": 9,
-      "emoji": "🐦",
-      "tags": ["python", "game", "pygame"],
-      "status": "active",
-      "highlight": false
-    },
-    {
-      "name": "powershell",
-      "title": "PowerShell Toolkit",
-      "description": "System automation scripts and DevOps utilities",
-      "url": "https://github.com/todddube/powershell",
-      "category": "automation",
-      "priority": 10,
-      "emoji": "⚡",
-      "tags": ["powershell", "automation", "devops"],
-      "status": "active",
-      "highlight": false
+      "repo": "retrosvr",
+      "title": "RetroSVR",
+      "tagline": "Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.",
+      "platform": "Windows"
     }
   ],
-  "categories": {
-    "featured": {
-      "name": "Featured",
-      "icon": "⭐",
-      "description": "Highlighted projects showcasing key work"
-    },
-    "ai": {
-      "name": "AI & Machine Learning",
-      "icon": "🤖",
-      "description": "Artificial intelligence and machine learning projects"
-    },
-    "iot": {
-      "name": "IoT & Smart Systems",
-      "icon": "🌐",
-      "description": "Internet of Things and smart home solutions"
-    },
-    "gaming": {
-      "name": "Game Development",
-      "icon": "🎮",
-      "description": "Gaming projects from retro to modern"
-    },
-    "retro": {
-      "name": "Retro Computing",
-      "icon": "💾",
-      "description": "Classic computing and assembly programming"
-    },
-    "utilities": {
-      "name": "Utilities & Tools",
-      "icon": "🔧",
-      "description": "Useful applications and tools"
-    },
-    "automation": {
-      "name": "Automation",
-      "icon": "⚡",
-      "description": "Scripts and automation solutions"
-    }
-  },
-  "metadata": {
-    "last_updated": "2025-11-02",
-    "version": "1.0.0",
-    "maintained_by": "Todd Dube",
-    "website": "www.thedubes.com"
-  }
+  "include_forks": [],
+  "exclude": ["todddube", "agentic_demo"],
+  "activity_items": 8,
+  "activity_weeks": 12
 }

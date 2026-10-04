@@ -1,0 +1,54 @@
+name: Update Projects
+
+# Pulls live data for every public repo (recent commits, 12-week activity,
+# latest release, Claude Code usage) and writes:
+#   - projects.json  -> rendered by index.html at www.thedubes.com
+#   - README.md      -> the FEATURED / ACTIVITY / MORE / UPDATED sections
+# Which repos are featured, and their taglines, live in key-projects.json.
+
+on:
+  schedule:
+    - cron: "0 9 * * *"  # Daily at 9:00 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - key-projects.json
+      - .github/scripts/update_projects.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-projects
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Build projects.json and README sections
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/update_projects.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add projects.json README.md
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "🤖 Update project data"
+            git push
+          fi

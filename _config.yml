@@ -3,8 +3,8 @@
 
 # Theme and appearance
 theme: jekyll-theme-minimal
-title: Todd Dube - Senior Technology Professional
-description: Full-Stack Developer | AI Enthusiast | Game Developer | From 6502 Assembly to Modern AI
+title: Todd Dube - Projects
+description: Open-source side projects - macOS apps, Commodore 64 assembly, games and AI status tools
 url: "https://www.thedubes.com"
 baseurl: ""
 
@@ -31,12 +31,10 @@ twitter:
 navigation:
   - title: Home
     url: /
-  - title: Projects
-    url: /#featured-projects
-  - title: About
-    url: /#about-me
-  - title: Contact
-    url: /#connect
+  - title: Now building
+    url: /#building
+  - title: Everything else
+    url: /#more
 
 # Build settings
 markdown: GFM
