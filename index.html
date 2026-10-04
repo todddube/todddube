@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,13 @@
     <meta property="og:url" content="https://www.thedubes.com">
     <meta property="og:type" content="website">
     <script>
-        try {
-            document.documentElement.setAttribute('data-theme', localStorage.getItem('td-theme') === 'light' ? 'light' : 'dark');
-        } catch (e) {}
+        // Follow the system light/dark setting unless the visitor picked one with the toggle
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('td-theme-choice'); } catch (e) {}
+            var system = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', saved === 'light' || saved === 'dark' ? saved : system);
+        })();
     </script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23352C8A'/><rect x='7' y='9' width='18' height='4' fill='%23A79CF5'/><rect x='14' y='13' width='4' height='11' fill='%23A79CF5'/><rect x='18' y='20' width='6' height='4' fill='%23D9E38A'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +54,24 @@
             --tile: #DCD8FA;
             --shadow: #C9C4EE;
             color-scheme: light;
+        }
+        /* No-JS fallback: same light tokens when the system prefers light */
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme]) {
+                --bg: #EEEFFA;
+                --surface: #FFFFFF;
+                --surface-2: #F5F5FD;
+                --ink: #1F1A4D;
+                --ink-soft: #4B4583;
+                --ink-faint: #7B76A8;
+                --rule: #D6D4EE;
+                --accent: #4C3FB8;
+                --fresh: #6E7A12;
+                --bar-idle: #DCDAF0;
+                --tile: #DCD8FA;
+                --shadow: #C9C4EE;
+                color-scheme: light;
+            }
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -347,10 +369,15 @@
             themeBtn.setAttribute('aria-label', `Switch to ${t === 'dark' ? 'light' : 'dark'} theme`);
         }
         applyTheme(document.documentElement.getAttribute('data-theme'));
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+            let saved = null;
+            try { saved = localStorage.getItem('td-theme-choice'); } catch (err) {}
+            if (!saved) applyTheme(e.matches ? 'light' : 'dark');
+        });
         themeBtn.addEventListener('click', () => {
             const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             applyTheme(next);
-            try { localStorage.setItem('td-theme', next); } catch (e) {}
+            try { localStorage.setItem('td-theme-choice', next); } catch (e) {}
         });
 
         const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

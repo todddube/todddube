@@ -12,7 +12,7 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
 - `.github/scripts/update_projects.py` - Pulls repo data from the GitHub API, writes `projects.json`, and rewrites README sections between `<!-- NAME:START/END -->` markers
 - `projects.json` - Generated data; do not hand-edit
 - `README.md` - Profile README; FEATURED / ACTIVITY / MORE / UPDATED sections are generated
-- `index.html` - Single-file site that fetches `projects.json` client-side; light/dark via `data-theme` and CSS custom properties on `:root`
+- `index.html` - Single-file site that fetches `projects.json` client-side; follows the system light/dark setting by default; the toggle saves an override in localStorage (`td-theme-choice`)
 - `CNAME`, `.nojekyll` - Custom domain; serve `index.html` as-is
 - `SETUP.md` - How the data flow and curation work
 - `.github/workflows/`:
