@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T15:00:16+00:00",
+  "generated_at": "2026-10-05T17:58:51+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 15,
@@ -95,15 +95,15 @@
         "sha": "34a050b",
         "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
       },
-      "days_since_commit": 55,
+      "days_since_commit": 56,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
         0,
         0,
         0,
-        4,
-        1,
+        5,
+        0,
         0,
         0,
         0,
@@ -141,7 +141,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 0,
+      "days_since_commit": 1,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -150,8 +150,8 @@
         0,
         0,
         0,
-        0,
-        10,
+        7,
+        3,
         0,
         0,
         0,
@@ -182,7 +182,7 @@
         "sha": "f1200c0",
         "url": "https://github.com/todddube/C64-Projects/commit/f1200c07f5b6389cee0dc8ac864a07e15c35c104"
       },
-      "days_since_commit": 5,
+      "days_since_commit": 6,
       "status": "active",
       "commits_30d": 10,
       "activity": [
@@ -195,8 +195,8 @@
         0,
         0,
         0,
-        0,
-        6,
+        2,
+        4,
         4
       ],
       "release": null,
@@ -229,7 +229,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 71,
+      "days_since_commit": 72,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -275,7 +275,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 72,
+      "days_since_commit": 73,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -316,13 +316,13 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 69,
+      "days_since_commit": 70,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
         0,
-        1,
-        1,
+        2,
+        0,
         0,
         0,
         0,
@@ -362,7 +362,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 46,
+      "days_since_commit": 47,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -408,7 +408,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 237,
+      "days_since_commit": 238,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -451,7 +451,7 @@
         "sha": "af653f5",
         "url": "https://github.com/todddube/python/commit/af653f5e5215df1098669e49c8ede074e1367263"
       },
-      "days_since_commit": 118,
+      "days_since_commit": 119,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -492,7 +492,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 196,
+      "days_since_commit": 198,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -538,7 +538,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 323,
+      "days_since_commit": 324,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -579,7 +579,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 364,
+      "days_since_commit": 365,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -620,7 +620,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 461,
+      "days_since_commit": 463,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -661,7 +661,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 595,
+      "days_since_commit": 597,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -702,7 +702,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 881,
+      "days_since_commit": 882,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
