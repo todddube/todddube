@@ -10,7 +10,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 > I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
 
 <!-- UPDATED:START -->
-<sub>Updated Oct 5, 2026 from the GitHub API · 2 projects active in the last 30 days</sub>
+<sub>Updated Oct 6, 2026 from the GitHub API · 2 projects active in the last 30 days</sub>
 <!-- UPDATED:END -->
 
 ## Now building
@@ -19,8 +19,8 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 | Project | What it is | Latest | Last 12 weeks |
 |---|---|---|---|
 | **[wthrr](https://github.com/todddube/wthrr_mac)**<br><sub>macOS · Swift · built with Claude Code</sub> | Animated weather on your macOS desktop: snow, rain, storms, fog and aurora across every display, driven by live weather and controlled from the menu bar. | [v1.1](https://github.com/todddube/wthrr_mac/releases/tag/v1.1)<br><sub>committed 1 mo ago</sub> | `▁▁▁█▁▁▁▁▁▁▁▁` |
-| **[Vibe Stats for macOS](https://github.com/todddube/vstat_mac)**<br><sub>macOS · Swift · built with Claude Code</sub> | Menu bar app that tracks Claude, GitHub Copilot, OpenAI and Gemini health per component, so one vendor's bad day doesn't look like an outage of the tool you use. | <sub>committed yesterday</sub> | `▁▁▁▁▁█▄▁▁▁▁▃`<br><sub>2 commits this month</sub> |
-| **[C64 Projects](https://github.com/todddube/C64-Projects)**<br><sub>Commodore 64 · Assembly · built with Claude Code</sub> | 6502 assembly demos and experiments for the Commodore 64, like multiplexing 16 sprites through the VIC-II's eight hardware slots. | <sub>committed 6 days ago</sub> | `▁▁▁▁▁▁▁▁▁▅██`<br><sub>10 commits this month</sub> |
+| **[Vibe Stats for macOS](https://github.com/todddube/vstat_mac)**<br><sub>macOS · Swift · built with Claude Code</sub> | Menu bar app that tracks Claude, GitHub Copilot, OpenAI and Gemini health per component, so one vendor's bad day doesn't look like an outage of the tool you use. | <sub>committed 2 days ago</sub> | `▁▁▁▁▁█▄▁▁▁▁▃`<br><sub>2 commits this month</sub> |
+| **[C64 Projects](https://github.com/todddube/C64-Projects)**<br><sub>Commodore 64 · Assembly · built with Claude Code</sub> | 6502 assembly demos and experiments for the Commodore 64, like multiplexing 16 sprites through the VIC-II's eight hardware slots. | <sub>committed today</sub> | `▁▁▁▁▁▁▁▁▁▃█▅`<br><sub>15 commits this month</sub> |
 | **[ReviewAppPerms](https://github.com/todddube/reviewAppPerms)**<br><sub>macOS · Swift · built with Claude Code</sub> | Inspect, audit and revoke macOS privacy permissions. Reads both TCC databases and shows which apps can use your camera, microphone, files and screen. | [v1.0b](https://github.com/todddube/reviewAppPerms/releases/tag/v1.0b)<br><sub>committed 2 mo ago</sub> | `▁█▁▁▁▁▁▁▁▁▁▁` |
 | **[SpaceRunner](https://github.com/todddube/spacerunner)**<br><sub>iOS · Swift · built with Claude Code</sub> | Fast-paced endless runner in space, built with SpriteKit for iOS 26. | <sub>committed 2 mo ago</sub> | `▁█▁▁▁▁▁▁▁▁▁▁` |
 | **[Lunar Lander](https://github.com/todddube/lander)**<br><sub>Windows · macOS · C++ · built with Claude Code</sub> | The classic lander in C++17 for Windows and macOS: gravity, thrust and a fuel gauge between you and the surface. | [v1.0.2](https://github.com/todddube/lander/releases/tag/v1.0.2)<br><sub>committed 2 mo ago</sub> | `▁█▁▁▁▁▁▁▁▁▁▁` |
@@ -31,9 +31,9 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 ## Latest commits
 
 <!-- ACTIVITY:START -->
-- **Vibe Stats for macOS** · [`98bb7cd`](https://github.com/todddube/vstat_mac/commit/98bb7cd28cf694532d891799d5b1537198a56aa3) merging branches and work <sub>yesterday</sub>
-- **C64 Projects** · [`f1200c0`](https://github.com/todddube/C64-Projects/commit/f1200c07f5b6389cee0dc8ac864a07e15c35c104) spritemove: multiplex 16 balls across the VIC's 8 sprites, fix Main Code overflow <sub>6 days ago</sub>
-- **C64 Projects** · [`40bfe42`](https://github.com/todddube/C64-Projects/commit/40bfe421cd4d2c5762af3a6cc7fdca750e2c9391) Add 6502 skill links and simplify spritemove <sub>6 days ago</sub>
+- **C64 Projects** · [`e40f065`](https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30) spritemove: README for the labels-on-black + vertical bars intro <sub>today</sub>
+- **C64 Projects** · [`1181580`](https://github.com/todddube/C64-Projects/commit/11815808d6a26a2a4c8250e0d168ce1332017699) spritemove: title labels on black, then vertical raster bars <sub>today</sub>
+- **Vibe Stats for macOS** · [`98bb7cd`](https://github.com/todddube/vstat_mac/commit/98bb7cd28cf694532d891799d5b1537198a56aa3) merging branches and work <sub>2 days ago</sub>
 - **Vibe Stats for macOS** · [`7a7e6dc`](https://github.com/todddube/vstat_mac/commit/7a7e6dcb773c2d52544495431ee4b1a9828ec04b) Track the generated .xcodeproj deliberately, and fix the rule that never worked <sub>1 mo ago</sub>
 - **Vibe Stats** · [`c134d88`](https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9) Remove GitHub Actions release workflow <sub>1 mo ago</sub>
 - **Vibe Stats** · [`356f699`](https://github.com/todddube/vstat/commit/356f6998afff50e1e8a4a412f4b2780922e6dc9a) remove store and add safari ext work <sub>1 mo ago</sub>
@@ -46,7 +46,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 <!-- MORE:START -->
 | Project | Description | Language | Last commit |
 |---|---|---|---|
-| [python](https://github.com/todddube/python) | — | Python | 3 mo ago |
+| [python](https://github.com/todddube/python) | — | Python | 4 mo ago |
 | [wthrr_windows](https://github.com/todddube/wthrr_windows) | Windows implementation of wthrr weather simulation | C++ | 6 mo ago |
 | [audio_spec](https://github.com/todddube/audio_spec) | Audio Spectrum Analyzer | JavaScript | 10 mo ago |
 | [agentic](https://github.com/todddube/agentic) | agentic things playing around | Python | 1 yr ago |

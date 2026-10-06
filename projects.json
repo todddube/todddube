@@ -1,13 +1,29 @@
 {
-  "generated_at": "2026-10-05T17:58:51+00:00",
+  "generated_at": "2026-10-06T15:43:06+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 15,
     "active": 2,
-    "commits_30d": 12,
+    "commits_30d": 17,
     "built_with_claude": 9
   },
   "activity": [
+    {
+      "repo": "C64-Projects",
+      "title": "C64 Projects",
+      "message": "spritemove: README for the labels-on-black + vertical bars intro",
+      "sha": "e40f065",
+      "url": "https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30",
+      "date": "2026-10-05T23:53:44Z"
+    },
+    {
+      "repo": "C64-Projects",
+      "title": "C64 Projects",
+      "message": "spritemove: title labels on black, then vertical raster bars",
+      "sha": "1181580",
+      "url": "https://github.com/todddube/C64-Projects/commit/11815808d6a26a2a4c8250e0d168ce1332017699",
+      "date": "2026-10-05T23:51:29Z"
+    },
     {
       "repo": "vstat_mac",
       "title": "Vibe Stats for macOS",
@@ -15,22 +31,6 @@
       "sha": "98bb7cd",
       "url": "https://github.com/todddube/vstat_mac/commit/98bb7cd28cf694532d891799d5b1537198a56aa3",
       "date": "2026-10-04T14:35:51Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 Projects",
-      "message": "spritemove: multiplex 16 balls across the VIC's 8 sprites, fix Main Code overflow",
-      "sha": "f1200c0",
-      "url": "https://github.com/todddube/C64-Projects/commit/f1200c07f5b6389cee0dc8ac864a07e15c35c104",
-      "date": "2026-09-28T23:30:04Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 Projects",
-      "message": "Add 6502 skill links and simplify spritemove",
-      "sha": "40bfe42",
-      "url": "https://github.com/todddube/C64-Projects/commit/40bfe421cd4d2c5762af3a6cc7fdca750e2c9391",
-      "date": "2026-09-28T23:13:31Z"
     },
     {
       "repo": "vstat_mac",
@@ -95,7 +95,7 @@
         "sha": "34a050b",
         "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
       },
-      "days_since_commit": 56,
+      "days_since_commit": 57,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -141,7 +141,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 1,
+      "days_since_commit": 2,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -177,14 +177,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-09-28T23:30:04+00:00",
-        "message": "spritemove: multiplex 16 balls across the VIC's 8 sprites, fix Main Code overflow",
-        "sha": "f1200c0",
-        "url": "https://github.com/todddube/C64-Projects/commit/f1200c07f5b6389cee0dc8ac864a07e15c35c104"
+        "date": "2026-10-05T23:53:44+00:00",
+        "message": "spritemove: README for the labels-on-black + vertical bars intro",
+        "sha": "e40f065",
+        "url": "https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 10,
+      "commits_30d": 15,
       "activity": [
         0,
         0,
@@ -196,8 +196,8 @@
         0,
         0,
         2,
-        4,
-        4
+        8,
+        5
       ],
       "release": null,
       "built_with_claude": true
@@ -229,7 +229,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 72,
+      "days_since_commit": 73,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -275,7 +275,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 73,
+      "days_since_commit": 74,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -316,7 +316,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 70,
+      "days_since_commit": 71,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -362,7 +362,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 47,
+      "days_since_commit": 48,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -408,7 +408,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 238,
+      "days_since_commit": 239,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -451,7 +451,7 @@
         "sha": "af653f5",
         "url": "https://github.com/todddube/python/commit/af653f5e5215df1098669e49c8ede074e1367263"
       },
-      "days_since_commit": 119,
+      "days_since_commit": 120,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -538,7 +538,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 324,
+      "days_since_commit": 325,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -579,7 +579,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 365,
+      "days_since_commit": 366,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -702,7 +702,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 882,
+      "days_since_commit": 883,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
