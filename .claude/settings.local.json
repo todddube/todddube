@@ -17,7 +17,8 @@
       "Bash(python3 *)",
       "Bash(git *)",
       "Bash(gh workflow *)",
-      "Bash(gh run *)"
+      "Bash(gh run *)",
+      "Bash(pkill -f \"http.server 8791\")"
     ],
     "deny": [],
     "ask": []

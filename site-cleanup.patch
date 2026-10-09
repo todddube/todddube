@@ -1,0 +1,1028 @@
+From a79cdef0da004de38f75d657981a33f8a667b77b Mon Sep 17 00:00:00 2001
+From: Todd Dube <todd@thedubes.com>
+Date: Fri, 9 Oct 2026 17:32:56 +0000
+Subject: [PATCH 1/3] Clean up site repo: drop dead Jekyll files, harden
+ generator, trim snake workflow, add meta tags and docs
+
+---
+ .claude/settings.local.json                   |  25 --
+ .github/scripts/update_projects.py            |  24 +-
+ .github/workflows/snake.yml                   |  56 +---
+ .gitignore                                    |   2 +
+ CLAUDE.md                                     |   3 +
+ SETUP.md                                      |  14 +
+ _config.yml                                   |  72 -----
+ assets/css/style.scss                         | 277 ------------------
+ index.html                                    |  11 +-
+ .../backup-statusline.sh                      |   4 +-
+ 10 files changed, 64 insertions(+), 424 deletions(-)
+ delete mode 100644 .claude/settings.local.json
+ delete mode 100644 _config.yml
+ delete mode 100644 assets/css/style.scss
+ rename backup-statusline.sh => statusline/backup-statusline.sh (97%)
+
+diff --git a/.claude/settings.local.json b/.claude/settings.local.json
+deleted file mode 100644
+index 7663646..0000000
+--- a/.claude/settings.local.json
++++ /dev/null
+@@ -1,25 +0,0 @@
+-{
+-  "permissions": {
+-    "allow": [
+-      "Bash(cat:*)",
+-      "Bash(git add:*)",
+-      "Bash(git commit:*)",
+-      "Bash(git push)",
+-      "Bash(git pull:*)",
+-      "Bash(gh api:*)",
+-      "Bash(git push:*)",
+-      "Bash(chmod +x:*)",
+-      "Bash(./backup-statusline.sh:*)",
+-      "Bash(open:*)",
+-      "WebFetch(domain:www.linkedin.com)",
+-      "WebFetch(domain:api.github.com)",
+-      "Bash(curl -s \"https://api.github.com/users/todddube/repos?sort=updated&per_page=30\")",
+-      "Bash(python3 *)",
+-      "Bash(git *)",
+-      "Bash(gh workflow *)",
+-      "Bash(gh run *)"
+-    ],
+-    "deny": [],
+-    "ask": []
+-  }
+-}
+diff --git a/.github/scripts/update_projects.py b/.github/scripts/update_projects.py
+index 6a23281..55d3307 100644
+--- a/.github/scripts/update_projects.py
++++ b/.github/scripts/update_projects.py
+@@ -17,6 +17,8 @@ from datetime import datetime, timedelta, timezone
+ from pathlib import Path
+ 
+ import requests
++from requests.adapters import HTTPAdapter
++from urllib3.util.retry import Retry
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ API = "https://api.github.com"
+@@ -26,6 +28,10 @@ session = requests.Session()
+ session.headers["Accept"] = "application/vnd.github+json"
+ if os.environ.get("GITHUB_TOKEN"):
+     session.headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
++# Retry transient GitHub errors so one blip doesn't fail the whole daily run
++session.mount("https://", HTTPAdapter(max_retries=Retry(
++    total=4, backoff_factor=2, status_forcelist=(500, 502, 503, 504), allowed_methods=("GET",),
++)))
+ 
+ 
+ def get(path, **params):
+@@ -37,6 +43,17 @@ def get(path, **params):
+     return r.json()
+ 
+ 
++def all_repos(owner):
++    """Every public repo for the owner, following pagination."""
++    repos, page = [], 1
++    while True:
++        batch = get(f"/users/{owner}/repos", type="owner", per_page=100, page=page) or []
++        repos += batch
++        if len(batch) < 100:
++            return repos
++        page += 1
++
++
+ def parse_date(s):
+     return datetime.fromisoformat(s.replace("Z", "+00:00"))
+ 
+@@ -220,9 +237,8 @@ def main():
+     exclude = set(cfg.get("exclude", []))
+     include_forks = set(cfg.get("include_forks", []))
+ 
+-    repos = get(f"/users/{owner}/repos", type="owner", per_page=100) or []
+     repos = [
+-        r for r in repos
++        r for r in all_repos(owner)
+         if not r["private"] and not r["archived"] and r["name"] not in exclude
+         and (not r["fork"] or r["name"] in include_forks)
+     ]
+@@ -236,6 +252,10 @@ def main():
+ 
+     by_name = {p["name"]: p for p in projects}
+     featured = [by_name[f["repo"]] for f in cfg.get("featured", []) if f["repo"] in by_name]
++    for f in cfg.get("featured", []):
++        if f["repo"] not in by_name:
++            # Renamed, made private, archived or a fork: surfaces as an annotation on the Actions run
++            print(f"::warning::Featured repo '{f['repo']}' in key-projects.json was not found among public repos")
+     others = sorted(
+         (p for p in projects if p["name"] not in curation),
+         key=lambda p: p["last_commit"]["date"], reverse=True,
+diff --git a/.github/workflows/snake.yml b/.github/workflows/snake.yml
+index 07b6901..2d36ca2 100644
+--- a/.github/workflows/snake.yml
++++ b/.github/workflows/snake.yml
+@@ -1,71 +1,39 @@
+-name: 🐍 Generate Snake Animation
++name: Generate Snake Animation
++
++# Builds the contribution-snake SVGs that README.md embeds, and publishes them
++# to the `output` branch (raw.githubusercontent.com/todddube/todddube/output/).
+ 
+ on:
+   schedule:
+-    # Runs daily at 6:00 UTC for fresh animations
+-    - cron: "0 6 * * *"
++    - cron: "0 6 * * *"  # Daily at 6:00 UTC
+   workflow_dispatch:
+-    # Manual trigger with custom inputs
+-    inputs:
+-      force_update:
+-        description: 'Force regenerate all animations'
+-        required: false
+-        default: 'false'
+-        type: boolean
+ 
+-# Enhanced permissions for modern GitHub Pages deployment
+ permissions:
+   contents: write
+-  pages: write
+-  id-token: write
+-  actions: read
+ 
+ jobs:
+   generate-snake:
+-    name: 🎨 Generate Contribution Snake
+     runs-on: ubuntu-latest
+     timeout-minutes: 10
+-
+     steps:
+-      - name: 📂 Checkout Repository
+-        uses: actions/checkout@v4
+-        with:
+-          fetch-depth: 0  # Full history for better contribution data
++      - uses: actions/checkout@v4
+ 
+-      - name: 🐍 Generate Enhanced Snake Animations
++      - name: Generate snake SVGs
+         uses: Platane/snk@v3
+-        id: snake-animations
+         with:
+           github_user_name: todddube
+           outputs: |
+             dist/github-contribution-grid-snake.svg
+-            dist/github-contribution-grid-snake.gif
+             dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=%23FF6B6B&color_dots=%23FF6B6B,%23FFE66D,%23FF8E53,%23C8E6C9,%234ECDC4
+-            dist/github-contribution-grid-snake-light.svg?palette=github&color_snake=%2330A3DC&color_dots=%2330A3DC,%23FF6B6B,%23FFE66D,%23FF8E53,%234ECDC4
+-            dist/github-contribution-grid-snake-ocean.svg?palette=github-dark&color_snake=%2300D4AA&color_dots=%2300D4AA,%23FF6B6B,%23FFE66D,%23FF8E53,%234ECDC4&background=%23161B22&snake_length=8
+ 
+-      - name: 🚀 Deploy to GitHub Pages
+-        uses: peaceiris/actions-gh-pages@v3
++      - name: Publish to output branch
+         if: github.ref == 'refs/heads/main'
++        uses: peaceiris/actions-gh-pages@v4
+         with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./dist
+           publish_branch: output
+           force_orphan: true
+-          user_name: 'github-actions[bot]'
+-          user_email: 'github-actions[bot]@users.noreply.github.com'
+-          commit_message: '🐍 Update snake animations - ${{ github.sha }}'
+-
+-      - name: 📊 Upload Artifacts
+-        uses: actions/upload-artifact@v4
+-        with:
+-          name: snake-animations
+-          path: dist/
+-          retention-days: 30
+-
+-      - name: ✅ Deployment Summary
+-        run: |
+-          echo "🎉 Snake animations generated successfully!"
+-          echo "📊 Generated files:"
+-          ls -la dist/
+-          echo "🌐 Animations will be available at: https://raw.githubusercontent.com/todddube/todddube/output/"
++          user_name: github-actions[bot]
++          user_email: github-actions[bot]@users.noreply.github.com
++          commit_message: "Update snake animations"
+diff --git a/.gitignore b/.gitignore
+index 09ff66d..b20264d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,2 +1,4 @@
+ images/.DS_Store
+ .DS_Store
++.claude/settings.local.json
++__pycache__/
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 53f11b6..ebd0a05 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -19,9 +19,12 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
+   - `update-projects.yml` - Daily: runs the script and commits `projects.json` + `README.md`
+   - `snake.yml` - Daily: contribution snake SVGs on the `output` branch
+   - `claude.yml`, `claude-code-review.yml` - Claude Code for issues/PRs
++- `statusline/` - Backup/restore of the author's Claude Code statusline (not part of the site). `./statusline/backup-statusline.sh` refreshes it.
++- `.claude/settings.local.json` - Local-only, gitignored
+ 
+ ## Working in this repo
+ 
++- No Jekyll: `.nojekyll` is set, so `index.html` is served as-is. Don't add `_config.yml` or SCSS.
+ - No build system or tests. Run the generator locally with `GITHUB_TOKEN=$(gh auth token) python3 .github/scripts/update_projects.py`, then serve with `python3 -m http.server`.
+ - To change what's featured, edit `key-projects.json` rather than the README or HTML.
+ - Keep the focus on projects. The only personal content is a short intro paragraph (`.hero-about` in index.html, the blockquote in README.md); don't expand it into a bio.
+diff --git a/SETUP.md b/SETUP.md
+index e77a3d0..a1c12bc 100644
+--- a/SETUP.md
++++ b/SETUP.md
+@@ -22,6 +22,19 @@ For each public, non-fork repo the script collects:
+ 
+ It also builds the "Latest commits" feed: newest first, at most 2 per project, merge commits skipped.
+ 
++## Where do I edit...?
++
++| I want to change | Edit |
++|---|---|
++| Which projects are featured, their order, taglines, screenshots | `key-projects.json` |
++| A project's description in "Everything else" | The repo's description on GitHub |
++| The intro paragraph | `.hero-about` in `index.html` and the blockquote in `README.md` (keep them in sync) |
++| Layout, colors, copy around the lists | `index.html` |
++| What data is collected or how the README tables look | `.github/scripts/update_projects.py` |
++| Update schedule | `.github/workflows/update-projects.yml` |
++
++Never hand-edit `projects.json` or the content between `<!-- NAME:START/END -->` markers in `README.md`; the daily run overwrites them. A featured repo that was renamed, made private or archived is dropped from the site, and the run logs a warning annotation naming it.
++
+ ## Choosing what's featured
+ 
+ Edit `key-projects.json`:
+@@ -47,4 +60,5 @@ python3 -m http.server 8000   # then open http://localhost:8000
+ ## Other workflows
+ 
+ - `snake.yml` builds the contribution-snake SVGs into the `output` branch (used in the README).
++- `statusline/` is an unrelated backup of the Claude Code statusline config.
+ - `claude.yml` and `claude-code-review.yml` hook Claude Code into issues and PRs.
+diff --git a/_config.yml b/_config.yml
+deleted file mode 100644
+index ae8eeb8..0000000
+--- a/_config.yml
++++ /dev/null
+@@ -1,72 +0,0 @@
+-# GitHub Pages Configuration for Todd Dube
+-# Website: www.thedubes.com
+-
+-# Theme and appearance
+-theme: jekyll-theme-minimal
+-title: Todd Dube - Projects
+-description: Open-source side projects - macOS apps, Commodore 64 assembly, games and AI status tools
+-url: "https://www.thedubes.com"
+-baseurl: ""
+-
+-# Author information
+-author:
+-  name: Todd Dube
+-  email: todd@thedubes.com
+-  linkedin: https://www.linkedin.com/in/tdube/
+-  github: https://github.com/todddube
+-
+-# Social links
+-social:
+-  name: Todd Dube
+-  links:
+-    - https://www.linkedin.com/in/tdube/
+-    - https://github.com/todddube
+-
+-# SEO and metadata
+-logo: /images/ToddDube_Logo.svg
+-twitter:
+-  card: summary_large_image
+-
+-# Navigation
+-navigation:
+-  - title: Home
+-    url: /
+-  - title: Now building
+-    url: /#building
+-  - title: Everything else
+-    url: /#more
+-
+-# Build settings
+-markdown: GFM
+-kramdown:
+-  input: GFM
+-  hard_wrap: false
+-  parse_block_html: true
+-  parse_span_html: true
+-plugins:
+-  - jekyll-seo-tag
+-  - jekyll-sitemap
+-  - jekyll-feed
+-
+-# Exclude files from processing
+-exclude:
+-  - .github
+-  - CLAUDE.md
+-  - Gemfile
+-  - Gemfile.lock
+-  - node_modules
+-  - vendor
+-
+-# Collections
+-collections:
+-  projects:
+-    output: true
+-    permalink: /projects/:name/
+-
+-# Defaults
+-defaults:
+-  - scope:
+-      path: ""
+-      type: "projects"
+-    values:
+-      layout: "project"
+diff --git a/assets/css/style.scss b/assets/css/style.scss
+deleted file mode 100644
+index 2535150..0000000
+--- a/assets/css/style.scss
++++ /dev/null
+@@ -1,277 +0,0 @@
+----
+----
+-
+-@import "{{ site.theme }}";
+-
+-/* Custom Styles for Todd Dube's GitHub Pages - www.thedubes.com */
+-
+-/* Modern Color Palette */
+-:root {
+-  --primary-color: #00D4AA;
+-  --secondary-color: #30A3DC;
+-  --accent-color: #FF6B6B;
+-  --dark-bg: #0D1117;
+-  --light-bg: #ffffff;
+-  --text-dark: #24292e;
+-  --text-light: #ffffff;
+-  --gradient-start: #00D4AA;
+-  --gradient-end: #30A3DC;
+-}
+-
+-/* Global Styles */
+-body {
+-  font-family: 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+-  line-height: 1.6;
+-  color: var(--text-dark);
+-  background: linear-gradient(135deg, var(--light-bg) 0%, #f6f8fa 100%);
+-}
+-
+-/* Header Styling */
+-header {
+-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+-  padding: 2rem 0;
+-  text-align: center;
+-  color: var(--text-light);
+-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+-}
+-
+-header h1 {
+-  font-size: 3rem;
+-  font-weight: 700;
+-  margin-bottom: 0.5rem;
+-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+-}
+-
+-header p {
+-  font-size: 1.2rem;
+-  opacity: 0.95;
+-}
+-
+-/* Navigation */
+-nav {
+-  background: var(--dark-bg);
+-  padding: 1rem 0;
+-  position: sticky;
+-  top: 0;
+-  z-index: 1000;
+-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+-}
+-
+-nav ul {
+-  list-style: none;
+-  padding: 0;
+-  margin: 0;
+-  display: flex;
+-  justify-content: center;
+-  gap: 2rem;
+-}
+-
+-nav a {
+-  color: var(--text-light);
+-  text-decoration: none;
+-  padding: 0.5rem 1rem;
+-  border-radius: 4px;
+-  transition: all 0.3s ease;
+-}
+-
+-nav a:hover {
+-  background: var(--primary-color);
+-  transform: translateY(-2px);
+-}
+-
+-/* Key Projects Section */
+-.key-projects {
+-  margin: 3rem 0;
+-  padding: 2rem;
+-  background: white;
+-  border-radius: 12px;
+-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+-}
+-
+-.featured-project {
+-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+-  padding: 2rem;
+-  border-radius: 12px;
+-  color: white;
+-  margin-bottom: 2rem;
+-  box-shadow: 0 6px 20px rgba(0, 212, 170, 0.3);
+-  transition: transform 0.3s ease;
+-}
+-
+-.featured-project:hover {
+-  transform: translateY(-5px);
+-}
+-
+-/* Project Cards */
+-.project-card {
+-  background: white;
+-  border-radius: 8px;
+-  padding: 1.5rem;
+-  margin: 1rem 0;
+-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+-  transition: all 0.3s ease;
+-  border-left: 4px solid var(--primary-color);
+-}
+-
+-.project-card:hover {
+-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+-  transform: translateX(5px);
+-}
+-
+-/* Badges and Links */
+-.badge {
+-  display: inline-block;
+-  padding: 0.5rem 1rem;
+-  border-radius: 20px;
+-  background: var(--primary-color);
+-  color: white;
+-  text-decoration: none;
+-  margin: 0.25rem;
+-  font-size: 0.9rem;
+-  font-weight: 600;
+-  transition: all 0.3s ease;
+-}
+-
+-.badge:hover {
+-  background: var(--secondary-color);
+-  transform: scale(1.05);
+-}
+-
+-/* Stats Section */
+-.stats-container {
+-  display: grid;
+-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+-  gap: 1.5rem;
+-  margin: 2rem 0;
+-}
+-
+-.stat-card {
+-  background: white;
+-  padding: 1.5rem;
+-  border-radius: 8px;
+-  text-align: center;
+-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+-  transition: transform 0.3s ease;
+-}
+-
+-.stat-card:hover {
+-  transform: translateY(-5px);
+-}
+-
+-.stat-card h3 {
+-  color: var(--primary-color);
+-  font-size: 2.5rem;
+-  margin: 0.5rem 0;
+-}
+-
+-/* Skills and Tech Stack */
+-.tech-stack {
+-  display: flex;
+-  flex-wrap: wrap;
+-  gap: 1rem;
+-  justify-content: center;
+-  margin: 2rem 0;
+-}
+-
+-.tech-item {
+-  background: white;
+-  padding: 1rem 1.5rem;
+-  border-radius: 8px;
+-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+-  transition: all 0.3s ease;
+-}
+-
+-.tech-item:hover {
+-  background: var(--primary-color);
+-  color: white;
+-  transform: scale(1.1);
+-}
+-
+-/* Footer */
+-footer {
+-  background: var(--dark-bg);
+-  color: var(--text-light);
+-  padding: 2rem 0;
+-  text-align: center;
+-  margin-top: 4rem;
+-}
+-
+-footer a {
+-  color: var(--primary-color);
+-  text-decoration: none;
+-}
+-
+-footer a:hover {
+-  color: var(--secondary-color);
+-}
+-
+-/* Responsive Design */
+-@media (max-width: 768px) {
+-  header h1 {
+-    font-size: 2rem;
+-  }
+-
+-  nav ul {
+-    flex-direction: column;
+-    gap: 0.5rem;
+-  }
+-
+-  .stats-container {
+-    grid-template-columns: 1fr;
+-  }
+-}
+-
+-/* Dark Mode Support */
+-@media (prefers-color-scheme: dark) {
+-  body {
+-    background: var(--dark-bg);
+-    color: var(--text-light);
+-  }
+-
+-  .project-card,
+-  .stat-card,
+-  .tech-item,
+-  .key-projects {
+-    background: #161b22;
+-    color: var(--text-light);
+-  }
+-}
+-
+-/* Animation Classes */
+-.fade-in {
+-  animation: fadeIn 0.6s ease-in;
+-}
+-
+-@keyframes fadeIn {
+-  from {
+-    opacity: 0;
+-    transform: translateY(20px);
+-  }
+-  to {
+-    opacity: 1;
+-    transform: translateY(0);
+-  }
+-}
+-
+-/* Website Banner */
+-.website-banner {
+-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+-  padding: 1rem 2rem;
+-  border-radius: 8px;
+-  text-align: center;
+-  margin: 2rem 0;
+-  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+-}
+-
+-.website-banner a {
+-  color: white;
+-  font-size: 1.3rem;
+-  font-weight: 700;
+-  text-decoration: none;
+-  display: inline-block;
+-  transition: transform 0.3s ease;
+-}
+-
+-.website-banner a:hover {
+-  transform: scale(1.05);
+-}
+diff --git a/index.html b/index.html
+index e938ec9..0041c21 100644
+--- a/index.html
++++ b/index.html
+@@ -9,6 +9,11 @@
+     <meta property="og:description" content="macOS apps, Commodore 64 assembly, small games and AI status tools. Updated daily from GitHub.">
+     <meta property="og:url" content="https://www.thedubes.com">
+     <meta property="og:type" content="website">
++    <meta property="og:site_name" content="Todd Dube">
++    <meta name="twitter:card" content="summary">
++    <link rel="canonical" href="https://www.thedubes.com/">
++    <meta name="theme-color" content="#1D1846" media="(prefers-color-scheme: dark)">
++    <meta name="theme-color" content="#EEEFFA" media="(prefers-color-scheme: light)">
+     <script>
+         // Follow the system light/dark setting unless the visitor picked one with the toggle
+         (function () {
+@@ -430,9 +435,11 @@
+                 const last = p.last_commit && p.last_commit.message
+                     ? `<p class="last">Last commit ${ago(p.last_commit.date)}: <a href="${esc(p.last_commit.url)}">${esc(p.last_commit.message)}</a></p>`
+                     : '';
++                const lastDate = p.last_commit && p.last_commit.date;
++                const quiet = lastDate ? ago(lastDate).replace(' ago', '') : '';
+                 const cap = p.commits_30d > 0
+                     ? `<strong>${p.commits_30d} commit${p.commits_30d === 1 ? '' : 's'}</strong> in the last 30 days`
+-                    : `Quiet for ${ago(p.last_commit.date).replace(' ago', '')}`;
++                    : (quiet && quiet !== 'today' && quiet !== 'yesterday' ? `Quiet for ${quiet}` : 'No commits in the last 30 days');
+                 return `
+                 <article class="project">
+                     <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${media}</a>
+@@ -456,7 +463,7 @@
+                     <td><a href="${esc(p.url)}">${esc(p.name)}</a></td>
+                     <td class="desc">${esc(p.description) || '—'}</td>
+                     <td class="col-lang">${p.language ? `<span${langStyle(p.language)}><span class="dot"></span>${esc(p.language)}</span>` : '—'}</td>
+-                    <td class="when">${ago(p.last_commit.date)}</td>
++                    <td class="when">${p.last_commit && p.last_commit.date ? ago(p.last_commit.date) : '—'}</td>
+                 </tr>`).join('');
+         }
+ 
+diff --git a/backup-statusline.sh b/statusline/backup-statusline.sh
+similarity index 97%
+rename from backup-statusline.sh
+rename to statusline/backup-statusline.sh
+index 01636df..a549bd2 100755
+--- a/backup-statusline.sh
++++ b/statusline/backup-statusline.sh
+@@ -1,11 +1,11 @@
+ #!/bin/bash
+ # backup-statusline.sh
+ # Backs up Claude Code statusline config into this repo's statusline/ directory.
+-# Run from the repo root: ./backup-statusline.sh
++# Run from anywhere: ./statusline/backup-statusline.sh
+ 
+ set -e
+ 
+-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
++REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ BACKUP_DIR="$REPO_DIR/statusline"
+ CLAUDE_DIR="$HOME/.claude"
+ SETTINGS="$CLAUDE_DIR/settings.json"
+-- 
+2.43.0
+
+
+From 6ba41613d79b6c9eed8f57268a1e03395d5afcfe Mon Sep 17 00:00:00 2001
+From: Todd Dube <todd@thedubes.com>
+Date: Fri, 9 Oct 2026 17:38:13 +0000
+Subject: [PATCH 2/3] Add Spotlight section: spritemove, SpaceRunner, Vibe
+ Stats for macOS, wthrr
+
+---
+ .github/scripts/update_projects.py |   5 +-
+ SETUP.md                           |   6 +-
+ index.html                         | 110 ++++++++++++++++++++++-------
+ key-projects.json                  |  41 ++++++-----
+ 4 files changed, 118 insertions(+), 44 deletions(-)
+
+diff --git a/.github/scripts/update_projects.py b/.github/scripts/update_projects.py
+index 55d3307..9c090e4 100644
+--- a/.github/scripts/update_projects.py
++++ b/.github/scripts/update_projects.py
+@@ -118,8 +118,11 @@ def build_project(r, cfg, curation):
+         "tagline": curation.get("tagline") or r.get("description") or "",
+         "description": r.get("description") or "",
+         "platform": curation.get("platform"),
++        "spotlight": bool(curation.get("spotlight")),
++        "why": curation.get("why"),
+         "image": image,
+-        "url": r["html_url"],
++        # `path` in key-projects.json deep-links to a folder (e.g. one demo inside a multi-project repo)
++        "url": r["html_url"] + (f"/tree/{branch}/{curation['path']}" if curation.get("path") else ""),
+         "homepage": r.get("homepage") or None,
+         "language": r.get("language"),
+         "topics": r.get("topics", []),
+diff --git a/SETUP.md b/SETUP.md
+index a1c12bc..875d24f 100644
+--- a/SETUP.md
++++ b/SETUP.md
+@@ -26,7 +26,7 @@ It also builds the "Latest commits" feed: newest first, at most 2 per project, m
+ 
+ | I want to change | Edit |
+ |---|---|
+-| Which projects are featured, their order, taglines, screenshots | `key-projects.json` |
++| Which projects are spotlighted or featured, their order, taglines, screenshots | `key-projects.json` |
+ | A project's description in "Everything else" | The repo's description on GitHub |
+ | The intro paragraph | `.hero-about` in `index.html` and the blockquote in `README.md` (keep them in sync) |
+ | Layout, colors, copy around the lists | `index.html` |
+@@ -41,7 +41,9 @@ Edit `key-projects.json`:
+ 
+ | Field | Purpose |
+ |---|---|
+-| `featured` | Repos shown under "Now building", in this order. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
++| `featured` | Repos shown above "Everything else", in this order. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
++| `featured[].spotlight` / `why` | `"spotlight": true` shows the repo as a large card in the Spotlight grid (in `featured` order); `why` is its one-line pitch. Unflagged repos appear under "More projects". |
++| `featured[].path` | Optional folder inside the repo (e.g. `spritemove`). The card links to that folder instead of the repo root. |
+ | `exclude` | Repos never shown. |
+ | `include_forks` | Forks to treat as your own work (forks are hidden by default). |
+ | `activity_items` / `activity_weeks` | Length of the commit feed and the activity strip. |
+diff --git a/index.html b/index.html
+index 0041c21..8b0b5ae 100644
+--- a/index.html
++++ b/index.html
+@@ -281,6 +281,23 @@
+             @keyframes grow { from { transform: scaleY(0); } }
+         }
+ 
++        /* Spotlight: hand-picked projects as larger cards */
++        .spot-grid { display: grid; grid-template-columns: 1fr; gap: 36px; margin-top: 24px; }
++        @media (min-width: 760px) { .spot-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
++        .spot { display: flex; flex-direction: column; gap: 16px; background: var(--surface); padding: 16px 16px 20px; box-shadow: 8px 8px 0 var(--shadow); }
++        .spot .media { box-shadow: none; }
++        .spot h3 { font-size: 28px; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 8px; font-weight: 700; }
++        .spot h3 a { text-decoration: none; }
++        .spot h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
++        .why { font-size: 18px; line-height: 1.45; color: var(--ink); margin: 0; }
++        .spot .facts { margin: 0; }
++        .spot-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-top: auto; }
++        .spot .activity { width: 210px; max-width: 100%; }
++        .btns { display: flex; gap: 10px; flex-wrap: wrap; }
++        .btn { border: 1px solid var(--rule); padding: 7px 14px; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--ink); }
++        .btn:hover { border-color: var(--accent); }
++        .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
++
+         /* Everything else */
+         .more { width: 100%; border-collapse: collapse; font-size: 15px; }
+         .more th { text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 13px; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+@@ -304,7 +321,8 @@
+         <nav class="top" aria-label="Site">
+             <a class="top-name" href="https://github.com/todddube">todddube <span>/ projects</span></a>
+             <div class="top-links">
+-                <a class="section-link" href="#building">Building</a>
++                <a class="section-link" href="#spotlight-section">Spotlight</a>
++                <a class="section-link" href="#building">More projects</a>
+                 <a class="section-link" href="#more">Everything else</a>
+                 <a href="https://github.com/todddube">GitHub</a>
+                 <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch color theme">Light</button>
+@@ -332,9 +350,17 @@
+         </header>
+ 
+         <main>
+-            <section class="section" id="building" aria-labelledby="building-title">
++            <section class="section" id="spotlight-section" aria-labelledby="spotlight-title" hidden>
++                <div class="section-head">
++                    <h2 id="spotlight-title">Spotlight</h2>
++                    <p class="section-note">Hand-picked. Numbers are live from GitHub.</p>
++                </div>
++                <div class="spot-grid" id="spotlight"></div>
++            </section>
++
++            <section class="section" id="building" aria-labelledby="building-title" hidden>
+                 <div class="section-head">
+-                    <h2 id="building-title">Now building</h2>
++                    <h2 id="building-title">More projects</h2>
+                     <p class="section-note">Bars show commits per week over the last 12 weeks.</p>
+                 </div>
+                 <div id="featured">
+@@ -420,39 +446,67 @@
+             }).join('');
+         }
+ 
++        function mediaHtml(p) {
++            return p.image
++                ? `<img src="${esc(p.image)}" alt="Screenshot of ${esc(p.title)}" loading="lazy">`
++                : `<div class="media-tile"${langStyle(p.language)}><b>${esc(p.platform || p.language || '')}</b><span>${esc(p.platform ? p.language || '' : '')}</span></div>`;
++        }
++
++        function factsHtml(p) {
++            return [
++                p.platform && `<li>${esc(p.platform)}</li>`,
++                p.language && `<li${langStyle(p.language)}><span class="dot"></span>${esc(p.language)}</li>`,
++                p.release && `<li>Latest release <a href="${esc(p.release.url)}">${esc(p.release.tag)}</a></li>`,
++                p.stars > 0 && `<li>${p.stars} star${p.stars === 1 ? '' : 's'}</li>`,
++                p.built_with_claude && `<li class="claude-tag">Built with Claude Code</li>`
++            ].filter(Boolean).join('');
++        }
++
++        function activityHtml(p) {
++            const lastDate = p.last_commit && p.last_commit.date;
++            const quiet = lastDate ? ago(lastDate).replace(' ago', '') : '';
++            const cap = p.commits_30d > 0
++                ? `<strong>${p.commits_30d} commit${p.commits_30d === 1 ? '' : 's'}</strong> in the last 30 days`
++                : (quiet && quiet !== 'today' && quiet !== 'yesterday' ? `Quiet for ${quiet}` : 'No commits in the last 30 days');
++            return `
++                <div class="bars grow" role="img" aria-label="${p.activity.reduce((a, b) => a + b, 0)} commits in the last 12 weeks">${bars(p.activity)}</div>
++                <p class="activity-cap">${cap}</p>`;
++        }
++
++        function renderSpotlight(projects) {
++            document.getElementById('spotlight').innerHTML = projects.map(p => `
++                <article class="spot">
++                    <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${mediaHtml(p)}</a>
++                    <div>
++                        <h3><a href="${esc(p.url)}">${esc(p.title)}</a></h3>
++                        <p class="why">${esc(p.why || p.tagline)}</p>
++                    </div>
++                    <ul class="facts">${factsHtml(p)}</ul>
++                    <div class="spot-foot">
++                        <div class="activity">${activityHtml(p)}</div>
++                        <div class="btns">
++                            ${p.release ? `<a class="btn primary" href="${esc(p.release.url)}">Release ${esc(p.release.tag)}</a>` : ''}
++                            <a class="btn${p.release ? '' : ' primary'}" href="${esc(p.url)}">View on GitHub</a>
++                        </div>
++                    </div>
++                </article>`).join('');
++        }
++
+         function renderFeatured(projects) {
+             document.getElementById('featured').innerHTML = projects.map(p => {
+-                const media = p.image
+-                    ? `<img src="${esc(p.image)}" alt="Screenshot of ${esc(p.title)}" loading="lazy">`
+-                    : `<div class="media-tile"${langStyle(p.language)}><b>${esc(p.platform || p.language || '')}</b><span>${esc(p.platform ? p.language || '' : '')}</span></div>`;
+-                const facts = [
+-                    p.platform && `<li>${esc(p.platform)}</li>`,
+-                    p.language && `<li${langStyle(p.language)}><span class="dot"></span>${esc(p.language)}</li>`,
+-                    p.release && `<li>Latest release <a href="${esc(p.release.url)}">${esc(p.release.tag)}</a></li>`,
+-                    p.stars > 0 && `<li>${p.stars} star${p.stars === 1 ? '' : 's'}</li>`,
+-                    p.built_with_claude && `<li class="claude-tag">Built with Claude Code</li>`
+-                ].filter(Boolean).join('');
+                 const last = p.last_commit && p.last_commit.message
+                     ? `<p class="last">Last commit ${ago(p.last_commit.date)}: <a href="${esc(p.last_commit.url)}">${esc(p.last_commit.message)}</a></p>`
+                     : '';
+-                const lastDate = p.last_commit && p.last_commit.date;
+-                const quiet = lastDate ? ago(lastDate).replace(' ago', '') : '';
+-                const cap = p.commits_30d > 0
+-                    ? `<strong>${p.commits_30d} commit${p.commits_30d === 1 ? '' : 's'}</strong> in the last 30 days`
+-                    : (quiet && quiet !== 'today' && quiet !== 'yesterday' ? `Quiet for ${quiet}` : 'No commits in the last 30 days');
+                 return `
+                 <article class="project">
+-                    <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${media}</a>
++                    <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${mediaHtml(p)}</a>
+                     <div>
+                         <h3><a href="${esc(p.url)}">${esc(p.title)}</a></h3>
+                         <p class="tagline">${esc(p.tagline)}</p>
+-                        <ul class="facts">${facts}</ul>
++                        <ul class="facts">${factsHtml(p)}</ul>
+                         ${last}
+                     </div>
+-                    <div class="activity">
+-                        <div class="bars grow" role="img" aria-label="${p.activity.reduce((a, b) => a + b, 0)} commits in the last 12 weeks">${bars(p.activity)}</div>
+-                        <p class="activity-cap">${cap}</p>
+-                    </div>
++                    <div class="activity">${activityHtml(p)}</div>
+                 </article>`;
+             }).join('');
+         }
+@@ -476,11 +530,17 @@
+                 document.getElementById('log-updated').textContent = `as of ${new Date(data.generated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`;
+                 document.getElementById('generated').textContent = `Project data updated ${new Date(data.generated_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
+                 renderLog(data.activity);
+-                renderFeatured(data.featured);
++                const spot = data.featured.filter(p => p.spotlight);
++                const rest = data.featured.filter(p => !p.spotlight);
++                renderSpotlight(spot);
++                renderFeatured(rest);
++                document.getElementById('spotlight-section').hidden = !spot.length;
++                document.getElementById('building').hidden = !rest.length;
+                 renderOthers(data.others);
+             })
+             .catch(() => {
+                 const msg = `<p class="notice">Project data didn't load. Browse the projects on <a href="https://github.com/todddube?tab=repositories">GitHub</a> instead.</p>`;
++                document.getElementById('building').hidden = false;
+                 document.getElementById('featured').innerHTML = msg;
+                 document.getElementById('log').innerHTML = '';
+             });
+diff --git a/key-projects.json b/key-projects.json
+index 4445250..17b221b 100644
+--- a/key-projects.json
++++ b/key-projects.json
+@@ -3,23 +3,39 @@
+   "_comment": "Curation for projects.json, the README, and www.thedubes.com. Featured repos appear first, in this order; every other public, non-fork repo is listed automatically under 'Everything else'. Taglines and images are optional - the repo description is used when tagline is missing.",
+   "featured": [
+     {
+-      "repo": "wthrr_mac",
+-      "title": "wthrr",
+-      "tagline": "Animated weather on your macOS desktop: snow, rain, storms, fog and aurora across every display, driven by live weather and controlled from the menu bar.",
+-      "platform": "macOS",
+-      "image": "images/Rain.png"
++      "repo": "C64-Projects",
++      "spotlight": true,
++      "title": "C64 spritemove",
++      "why": "Raster-bar overture, then up to 16 rolling Boing balls with real elastic collisions, flying through the open border. A raster IRQ multiplexes them over the VIC-II's eight sprites.",
++      "tagline": "A Commodore 64 demo in 6502 assembly: raster bars, then up to 16 bouncing balls multiplexed through the VIC-II's eight hardware sprites.",
++      "platform": "Commodore 64",
++      "path": "spritemove"
++    },
++    {
++      "repo": "spacerunner",
++      "spotlight": true,
++      "title": "SpaceRunner",
++      "why": "A full endless runner for iOS 26, built from scratch with SpriteKit.",
++      "tagline": "Fast-paced endless runner in space, built with SpriteKit for iOS 26.",
++      "platform": "iOS",
++      "image": "screenshots/gameplay.jpeg"
+     },
+     {
+       "repo": "vstat_mac",
++      "spotlight": true,
+       "title": "Vibe Stats for macOS",
++      "why": "One vendor's bad day shouldn't look like your tools being down. Per-component health for Claude, Copilot, OpenAI and Gemini, in the menu bar.",
+       "tagline": "Menu bar app that tracks Claude, GitHub Copilot, OpenAI and Gemini health per component, so one vendor's bad day doesn't look like an outage of the tool you use.",
+       "platform": "macOS"
+     },
+     {
+-      "repo": "C64-Projects",
+-      "title": "C64 Projects",
+-      "tagline": "6502 assembly demos and experiments for the Commodore 64, like multiplexing 16 sprites through the VIC-II's eight hardware slots.",
+-      "platform": "Commodore 64"
++      "repo": "wthrr_mac",
++      "spotlight": true,
++      "title": "wthrr",
++      "why": "Snow, rain, storms, fog and aurora across every display, driven by live weather. v1.1 added Clear Skies mode and runs 2x faster.",
++      "tagline": "Animated weather on your macOS desktop: snow, rain, storms, fog and aurora across every display, driven by live weather and controlled from the menu bar.",
++      "platform": "macOS",
++      "image": "images/Rain.png"
+     },
+     {
+       "repo": "reviewAppPerms",
+@@ -27,13 +43,6 @@
+       "tagline": "Inspect, audit and revoke macOS privacy permissions. Reads both TCC databases and shows which apps can use your camera, microphone, files and screen.",
+       "platform": "macOS"
+     },
+-    {
+-      "repo": "spacerunner",
+-      "title": "SpaceRunner",
+-      "tagline": "Fast-paced endless runner in space, built with SpriteKit for iOS 26.",
+-      "platform": "iOS",
+-      "image": "screenshots/gameplay.jpeg"
+-    },
+     {
+       "repo": "lander",
+       "title": "Lunar Lander",
+-- 
+2.43.0
+
+
+From b69c0fd38b597cf10060dd8fa6a9743cedfc943a Mon Sep 17 00:00:00 2001
+From: Todd Dube <todd@thedubes.com>
+Date: Fri, 9 Oct 2026 17:41:04 +0000
+Subject: [PATCH 3/3] Spotlight MacBridge (macOSMCP); full-width layout for an
+ odd last card
+
+---
+ index.html        | 7 +++++++
+ key-projects.json | 8 ++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/index.html b/index.html
+index 8b0b5ae..a86febe 100644
+--- a/index.html
++++ b/index.html
+@@ -293,6 +293,13 @@
+         .spot .facts { margin: 0; }
+         .spot-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-top: auto; }
+         .spot .activity { width: 210px; max-width: 100%; }
++        /* An odd last card spans the row: image left, text right */
++        @media (min-width: 760px) {
++            .spot:last-child:nth-child(odd) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; align-content: start; }
++            .spot:last-child:nth-child(odd) .media { grid-column: 1; grid-row: 1 / span 3; align-self: start; }
++            .spot:last-child:nth-child(odd) > :not(.media) { grid-column: 2; }
++            .spot:last-child:nth-child(odd) .spot-foot { align-self: end; }
++        }
+         .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+         .btn { border: 1px solid var(--rule); padding: 7px 14px; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--ink); }
+         .btn:hover { border-color: var(--accent); }
+diff --git a/key-projects.json b/key-projects.json
+index 17b221b..16f2168 100644
+--- a/key-projects.json
++++ b/key-projects.json
+@@ -37,6 +37,14 @@
+       "platform": "macOS",
+       "image": "images/Rain.png"
+     },
++    {
++      "repo": "macOSMCP",
++      "spotlight": true,
++      "title": "MacBridge",
++      "why": "Calendar and Reminders for Claude Code and Claude Desktop. A menu-bar app and MCP server that runs entirely on your Mac, with no network.",
++      "tagline": "Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.",
++      "platform": "macOS"
++    },
+     {
+       "repo": "reviewAppPerms",
+       "title": "ReviewAppPerms",
+-- 
+2.43.0
+
