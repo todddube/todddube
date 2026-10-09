@@ -1,0 +1,113 @@
+{
+  "_comment": "Written by .github/scripts/update_projects.py. One entry per week (Monday start); never edit by hand.",
+  "weeks": {
+    "2026-07-20": {
+      "commits": 5,
+      "projects": 3,
+      "active_days": 3,
+      "claude_commits": 2,
+      "top_project": {
+        "title": "SpaceRunner",
+        "commits": 2
+      }
+    },
+    "2026-07-27": {
+      "commits": 0,
+      "projects": 0,
+      "active_days": 0,
+      "claude_commits": 0,
+      "top_project": null
+    },
+    "2026-08-03": {
+      "commits": 5,
+      "projects": 1,
+      "active_days": 2,
+      "claude_commits": 1,
+      "top_project": {
+        "title": "wthrr",
+        "commits": 5
+      }
+    },
+    "2026-08-10": {
+      "commits": 0,
+      "projects": 0,
+      "active_days": 0,
+      "claude_commits": 0,
+      "top_project": null
+    },
+    "2026-08-17": {
+      "commits": 8,
+      "projects": 2,
+      "active_days": 2,
+      "claude_commits": 1,
+      "top_project": {
+        "title": "Vibe Stats for macOS",
+        "commits": 6
+      }
+    },
+    "2026-08-24": {
+      "commits": 2,
+      "projects": 1,
+      "active_days": 1,
+      "claude_commits": 2,
+      "top_project": {
+        "title": "Vibe Stats for macOS",
+        "commits": 2
+      }
+    },
+    "2026-08-31": {
+      "commits": 0,
+      "projects": 0,
+      "active_days": 0,
+      "claude_commits": 0,
+      "top_project": null
+    },
+    "2026-09-07": {
+      "commits": 0,
+      "projects": 0,
+      "active_days": 0,
+      "claude_commits": 0,
+      "top_project": null
+    },
+    "2026-09-14": {
+      "commits": 2,
+      "projects": 1,
+      "active_days": 1,
+      "claude_commits": 0,
+      "top_project": {
+        "title": "C64 spritemove",
+        "commits": 2
+      }
+    },
+    "2026-09-21": {
+      "commits": 4,
+      "projects": 1,
+      "active_days": 1,
+      "claude_commits": 4,
+      "top_project": {
+        "title": "C64 spritemove",
+        "commits": 4
+      }
+    },
+    "2026-09-28": {
+      "commits": 6,
+      "projects": 2,
+      "active_days": 2,
+      "claude_commits": 4,
+      "top_project": {
+        "title": "C64 spritemove",
+        "commits": 5
+      }
+    },
+    "2026-10-05": {
+      "commits": 9,
+      "projects": 2,
+      "active_days": 2,
+      "claude_commits": 8,
+      "top_project": {
+        "title": "MacBridge",
+        "commits": 5
+      }
+    }
+  }
+}

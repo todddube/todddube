@@ -1,11 +1,108 @@
 {
-  "generated_at": "2026-10-09T20:22:37+00:00",
+  "generated_at": "2026-10-09T20:32:24+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 16,
     "active": 3,
     "commits_30d": 23,
     "built_with_claude": 10
+  },
+  "week": {
+    "timezone": "America/New_York",
+    "label": "WK 41",
+    "start": "2026-10-05",
+    "end": "2026-10-11",
+    "today_index": 4,
+    "score": 9,
+    "projects": 2,
+    "active_days": 2,
+    "claude_commits": 8,
+    "claude_pct": 89,
+    "streak": 1,
+    "top_project": {
+      "title": "MacBridge",
+      "commits": 5
+    },
+    "days": [
+      3,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0
+    ],
+    "languages": [
+      "Assembly",
+      "Swift"
+    ],
+    "last_week": {
+      "label": "WK 40",
+      "start": "2026-09-28",
+      "score": 6,
+      "projects": 2,
+      "active_days": 2,
+      "claude_pct": 67,
+      "top_project": {
+        "title": "C64 spritemove",
+        "commits": 5
+      }
+    },
+    "hi_score": {
+      "score": 9,
+      "start": "2026-10-05",
+      "label": "WK 41"
+    },
+    "trend": [
+      {
+        "start": "2026-07-20",
+        "score": 5
+      },
+      {
+        "start": "2026-07-27",
+        "score": 0
+      },
+      {
+        "start": "2026-08-03",
+        "score": 5
+      },
+      {
+        "start": "2026-08-10",
+        "score": 0
+      },
+      {
+        "start": "2026-08-17",
+        "score": 8
+      },
+      {
+        "start": "2026-08-24",
+        "score": 2
+      },
+      {
+        "start": "2026-08-31",
+        "score": 0
+      },
+      {
+        "start": "2026-09-07",
+        "score": 0
+      },
+      {
+        "start": "2026-09-14",
+        "score": 2
+      },
+      {
+        "start": "2026-09-21",
+        "score": 4
+      },
+      {
+        "start": "2026-09-28",
+        "score": 6
+      },
+      {
+        "start": "2026-10-05",
+        "score": 9
+      }
+    ]
   },
   "activity": [
     {
