@@ -13,12 +13,17 @@ import json
 import os
 import re
 import sys
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+
+# A commit counts as Claude-assisted when Claude Code left its co-author or "generated with" trailer
+CLAUDE_RE = re.compile(r"co-authored-by:\s*claude|generated with \[?claude", re.I)
 
 ROOT = Path(__file__).resolve().parents[2]
 API = "https://api.github.com"
@@ -148,6 +153,17 @@ def build_project(r, cfg, curation):
         } if release else None,
         "built_with_claude": has_claude,
     }
+    records = [
+        {
+            "when": parse_date(c["commit"]["author"]["date"]),
+            "repo": r["name"],
+            "title": project["title"],
+            "language": r.get("language"),
+            "claude": bool(CLAUDE_RE.search(c["commit"]["message"])),
+        }
+        for c in human
+        if len(c.get("parents", [])) < 2  # skip merge commits
+    ]
     feed = [
         {
             "repo": r["name"],
@@ -160,7 +176,106 @@ def build_project(r, cfg, curation):
         for c in human
         if len(c.get("parents", [])) < 2  # skip merge commits
     ]
-    return project, feed
+    return project, feed, records
+
+
+# ---------- Weekly high score ----------
+
+def week_label(start):
+    return f"WK {start.isocalendar().week:02d}"
+
+
+def weekly_stats(records, now, tz, history, window_weeks=12):
+    """Arcade-style weekly numbers from per-commit records (one point per commit).
+
+    Weeks run Monday to Sunday in `tz`. Returns (week, history): `week` is what the
+    site renders; `history` maps week-start dates to that week's result and keeps
+    growing, so the HI-SCORE survives beyond the commit window the API gives us.
+    """
+    today = now.astimezone(tz).date()
+    this_start = today - timedelta(days=today.weekday())
+
+    by_day = {}
+    for rec in records:
+        by_day.setdefault(rec["when"].astimezone(tz).date(), []).append(rec)
+
+    def summarize(start):
+        days = [by_day.get(start + timedelta(days=i), []) for i in range(7)]
+        recs = [x for day in days for x in day]
+        top = Counter(x["title"] for x in recs).most_common(1)
+        return {
+            "commits": len(recs),
+            "projects": len({x["repo"] for x in recs}),
+            "active_days": sum(1 for day in days if day),
+            "claude_commits": sum(1 for x in recs if x["claude"]),
+            "top_project": {"title": top[0][0], "commits": top[0][1]} if top else None,
+            "days": [len(day) for day in days],
+            "languages": sorted({x["language"] for x in recs if x["language"]}),
+        }
+
+    # Only weeks fully inside the fetched commit window are safe to (over)write
+    since_day = (now - timedelta(weeks=window_weeks)).astimezone(tz).date()
+    history = dict(history)
+    start = this_start
+    while start > since_day:
+        s = summarize(start)
+        history[start.isoformat()] = {k: s[k] for k in ("commits", "projects", "active_days", "claude_commits", "top_project")}
+        start -= timedelta(days=7)
+
+    def pct(entry):
+        return round(100 * entry["claude_commits"] / entry["commits"]) if entry["commits"] else None
+
+    cur = summarize(this_start)
+    last_start = this_start - timedelta(days=7)
+    last = history.get(last_start.isoformat()) or {k: v for k, v in summarize(last_start).items() if k != "days"}
+
+    # Best week ever; ties go to the first week to set the score, like an arcade table
+    best = None
+    for key in sorted(history):
+        if history[key]["commits"] > 0 and (best is None or history[key]["commits"] > history[best]["commits"]):
+            best = key
+
+    streak, d = 0, today if by_day.get(today) else today - timedelta(days=1)
+    while by_day.get(d):
+        streak, d = streak + 1, d - timedelta(days=1)
+
+    trend = []
+    for i in range(window_weeks - 1, -1, -1):
+        wk = this_start - timedelta(days=7 * i)
+        trend.append({"start": wk.isoformat(), "score": history.get(wk.isoformat(), {}).get("commits", 0)})
+
+    week = {
+        "timezone": getattr(tz, "key", str(tz)),
+        "label": week_label(this_start),
+        "start": this_start.isoformat(),
+        "end": (this_start + timedelta(days=6)).isoformat(),
+        "today_index": today.weekday(),
+        "score": cur["commits"],
+        "projects": cur["projects"],
+        "active_days": cur["active_days"],
+        "claude_commits": cur["claude_commits"],
+        "claude_pct": pct(cur),
+        "streak": streak,
+        "top_project": cur["top_project"],
+        "days": cur["days"],
+        "languages": cur["languages"],
+        "last_week": {
+            "label": week_label(last_start),
+            "start": last_start.isoformat(),
+            "score": last["commits"],
+            "projects": last["projects"],
+            "active_days": last["active_days"],
+            "claude_pct": pct(last),
+            "top_project": last["top_project"],
+        },
+        "hi_score": {
+            "score": history[best]["commits"],
+            "start": best,
+            "label": week_label(datetime.fromisoformat(best).date()),
+        } if best else None,
+        "trend": trend,
+    }
+    return week, dict(sorted(history.items()))
 
 
 # ---------- README rendering ----------
@@ -246,12 +361,24 @@ def main():
         and (not r["fork"] or r["name"] in include_forks)
     ]
 
-    projects, feed = [], []
+    projects, feed, records = [], [], []
     for r in repos:
         print(f"  {r['name']}")
-        p, f = build_project(r, cfg, curation.get(r["name"], {}))
+        p, f, rec = build_project(r, cfg, curation.get(r["name"], {}))
         projects.append(p)
         feed += f
+        records += rec
+
+    # Weekly high score; weekly.json is the long-term memory behind the HI-SCORE
+    weekly_path = ROOT / "weekly.json"
+    history = json.loads(weekly_path.read_text()).get("weeks", {}) if weekly_path.exists() else {}
+    week, history = weekly_stats(
+        records, NOW, ZoneInfo(cfg.get("timezone", "America/New_York")), history, cfg.get("activity_weeks", 12),
+    )
+    weekly_path.write_text(json.dumps({
+        "_comment": "Written by .github/scripts/update_projects.py. One entry per week (Monday start); never edit by hand.",
+        "weeks": history,
+    }, indent=2, ensure_ascii=False) + "\n")
 
     by_name = {p["name"]: p for p in projects}
     featured = [by_name[f["repo"]] for f in cfg.get("featured", []) if f["repo"] in by_name]
@@ -281,6 +408,7 @@ def main():
             "commits_30d": sum(p["commits_30d"] for p in projects),
             "built_with_claude": sum(1 for p in projects if p["built_with_claude"]),
         },
+        "week": week,
         "activity": feed,
         "featured": featured,
         "others": others,
@@ -293,7 +421,7 @@ def main():
     content = replace_section(content, "FEATURED", render_featured(featured))
     content = replace_section(content, "ACTIVITY", render_activity(feed))
     content = replace_section(content, "MORE", render_more(others))
-    content = replace_section(content, "UPDATED", f"<sub>Updated {NOW:%b %-d, %Y} from the GitHub API · {data['totals']['active']} projects active in the last 30 days</sub>")
+    content = replace_section(content, "UPDATED", f"<sub>Updated {NOW:%b %-d, %Y} from the GitHub API · {data['totals']['active']} projects active in the last 30 days · {week['label']}: {week['score']} commit{'s' if week['score'] != 1 else ''}</sub>")
     readme.write_text(content)
 
 

@@ -1,5 +1,6 @@
 {
   "owner": "todddube",
+  "timezone": "America/New_York",
   "_comment": "Curation for projects.json, the README, and www.thedubes.com. Featured repos appear first, in this order; every other public, non-fork repo is listed automatically under 'Everything else'. Taglines and images are optional - the repo description is used when tagline is missing.",
   "featured": [
     {
