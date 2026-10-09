@@ -10,7 +10,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 > I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
 
 <!-- UPDATED:START -->
-<sub>Updated Oct 9, 2026 from the GitHub API · 2 projects active in the last 30 days</sub>
+<sub>Updated Oct 9, 2026 from the GitHub API · 3 projects active in the last 30 days</sub>
 <!-- UPDATED:END -->
 
 ## Now building
@@ -31,14 +31,14 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 ## Latest commits
 
 <!-- ACTIVITY:START -->
+- **macOSMCP** · [`5bb4540`](https://github.com/todddube/macOSMCP/commit/5bb454096fd44e1b521deb714c70def64d43b98f) Downloadable release and one-click client setup <sub>today</sub>
+- **macOSMCP** · [`9def32c`](https://github.com/todddube/macOSMCP/commit/9def32c2e309c8d65b6dc9014f5179603b374aa1) White bridge and green standby dots <sub>today</sub>
 - **C64 Projects** · [`af971be`](https://github.com/todddube/C64-Projects/commit/af971be7529eca6f0e06c8bd20d964890e7445ad) combined c64 65023 skills and docs into this project folder <sub>today</sub>
 - **C64 Projects** · [`e40f065`](https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30) spritemove: README for the labels-on-black + vertical bars intro <sub>3 days ago</sub>
 - **Vibe Stats for macOS** · [`98bb7cd`](https://github.com/todddube/vstat_mac/commit/98bb7cd28cf694532d891799d5b1537198a56aa3) merging branches and work <sub>5 days ago</sub>
 - **Vibe Stats for macOS** · [`7a7e6dc`](https://github.com/todddube/vstat_mac/commit/7a7e6dcb773c2d52544495431ee4b1a9828ec04b) Track the generated .xcodeproj deliberately, and fix the rule that never worked <sub>1 mo ago</sub>
 - **Vibe Stats** · [`c134d88`](https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9) Remove GitHub Actions release workflow <sub>1 mo ago</sub>
 - **Vibe Stats** · [`356f699`](https://github.com/todddube/vstat/commit/356f6998afff50e1e8a4a412f4b2780922e6dc9a) remove store and add safari ext work <sub>1 mo ago</sub>
-- **wthrr** · [`34a050b`](https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3) release: v1.1 — Clear Skies mode, live weather fixes, 2x faster <sub>2 mo ago</sub>
-- **wthrr** · [`1058a09`](https://github.com/todddube/wthrr_mac/commit/1058a09b7dca811de347d04e58af4c2d05e7566b) CPU performance work <sub>2 mo ago</sub>
 <!-- ACTIVITY:END -->
 
 ## Everything else
@@ -46,6 +46,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 <!-- MORE:START -->
 | Project | Description | Language | Last commit |
 |---|---|---|---|
+| [macOSMCP](https://github.com/todddube/macOSMCP) | Macos MCP for Apple Apps | Swift | today |
 | [python](https://github.com/todddube/python) | — | Python | 4 mo ago |
 | [wthrr_windows](https://github.com/todddube/wthrr_windows) | Windows implementation of wthrr weather simulation | C++ | 6 mo ago |
 | [audio_spec](https://github.com/todddube/audio_spec) | Audio Spectrum Analyzer | JavaScript | 10 mo ago |

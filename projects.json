@@ -1,13 +1,29 @@
 {
-  "generated_at": "2026-10-09T15:50:59+00:00",
+  "generated_at": "2026-10-09T17:46:18+00:00",
   "owner": "todddube",
   "totals": {
-    "projects": 15,
-    "active": 2,
-    "commits_30d": 18,
-    "built_with_claude": 9
+    "projects": 16,
+    "active": 3,
+    "commits_30d": 23,
+    "built_with_claude": 10
   },
   "activity": [
+    {
+      "repo": "macOSMCP",
+      "title": "macOSMCP",
+      "message": "Downloadable release and one-click client setup",
+      "sha": "5bb4540",
+      "url": "https://github.com/todddube/macOSMCP/commit/5bb454096fd44e1b521deb714c70def64d43b98f",
+      "date": "2026-10-09T15:12:31Z"
+    },
+    {
+      "repo": "macOSMCP",
+      "title": "macOSMCP",
+      "message": "White bridge and green standby dots",
+      "sha": "9def32c",
+      "url": "https://github.com/todddube/macOSMCP/commit/9def32c2e309c8d65b6dc9014f5179603b374aa1",
+      "date": "2026-10-09T14:47:44Z"
+    },
     {
       "repo": "C64-Projects",
       "title": "C64 Projects",
@@ -55,22 +71,6 @@
       "sha": "356f699",
       "url": "https://github.com/todddube/vstat/commit/356f6998afff50e1e8a4a412f4b2780922e6dc9a",
       "date": "2026-08-18T18:59:57Z"
-    },
-    {
-      "repo": "wthrr_mac",
-      "title": "wthrr",
-      "message": "release: v1.1 — Clear Skies mode, live weather fixes, 2x faster",
-      "sha": "34a050b",
-      "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3",
-      "date": "2026-08-10T00:12:37Z"
-    },
-    {
-      "repo": "wthrr_mac",
-      "title": "wthrr",
-      "message": "CPU performance work",
-      "sha": "1058a09",
-      "url": "https://github.com/todddube/wthrr_mac/commit/1058a09b7dca811de347d04e58af4c2d05e7566b",
-      "date": "2026-08-09T13:41:06Z"
     }
   ],
   "featured": [
@@ -431,6 +431,47 @@
   ],
   "others": [
     {
+      "name": "macOSMCP",
+      "title": "macOSMCP",
+      "tagline": "Macos MCP for Apple Apps",
+      "description": "Macos MCP for Apple Apps",
+      "platform": null,
+      "image": null,
+      "url": "https://github.com/todddube/macOSMCP",
+      "homepage": null,
+      "language": "Swift",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2026-02-28T16:47:13Z",
+      "last_commit": {
+        "date": "2026-10-09T15:12:31+00:00",
+        "message": "Downloadable release and one-click client setup",
+        "sha": "5bb4540",
+        "url": "https://github.com/todddube/macOSMCP/commit/5bb454096fd44e1b521deb714c70def64d43b98f"
+      },
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 5,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5
+      ],
+      "release": null,
+      "built_with_claude": true
+    },
+    {
       "name": "python",
       "title": "python",
       "tagline": "",
@@ -492,7 +533,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 201,
+      "days_since_commit": 202,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -661,7 +702,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 600,
+      "days_since_commit": 601,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
