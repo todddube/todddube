@@ -17,6 +17,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parents[2]
 API = "https://api.github.com"
@@ -26,6 +28,10 @@ session = requests.Session()
 session.headers["Accept"] = "application/vnd.github+json"
 if os.environ.get("GITHUB_TOKEN"):
     session.headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+# Retry transient GitHub errors so one blip doesn't fail the whole daily run
+session.mount("https://", HTTPAdapter(max_retries=Retry(
+    total=4, backoff_factor=2, status_forcelist=(500, 502, 503, 504), allowed_methods=("GET",),
+)))
 
 
 def get(path, **params):
@@ -35,6 +41,17 @@ def get(path, **params):
         return None
     r.raise_for_status()
     return r.json()
+
+
+def all_repos(owner):
+    """Every public repo for the owner, following pagination."""
+    repos, page = [], 1
+    while True:
+        batch = get(f"/users/{owner}/repos", type="owner", per_page=100, page=page) or []
+        repos += batch
+        if len(batch) < 100:
+            return repos
+        page += 1
 
 
 def parse_date(s):
@@ -220,9 +237,8 @@ def main():
     exclude = set(cfg.get("exclude", []))
     include_forks = set(cfg.get("include_forks", []))
 
-    repos = get(f"/users/{owner}/repos", type="owner", per_page=100) or []
     repos = [
-        r for r in repos
+        r for r in all_repos(owner)
         if not r["private"] and not r["archived"] and r["name"] not in exclude
         and (not r["fork"] or r["name"] in include_forks)
     ]
@@ -236,6 +252,10 @@ def main():
 
     by_name = {p["name"]: p for p in projects}
     featured = [by_name[f["repo"]] for f in cfg.get("featured", []) if f["repo"] in by_name]
+    for f in cfg.get("featured", []):
+        if f["repo"] not in by_name:
+            # Renamed, made private, archived or a fork: surfaces as an annotation on the Actions run
+            print(f"::warning::Featured repo '{f['repo']}' in key-projects.json was not found among public repos")
     others = sorted(
         (p for p in projects if p["name"] not in curation),
         key=lambda p: p["last_commit"]["date"], reverse=True,

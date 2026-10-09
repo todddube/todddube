@@ -1,11 +1,11 @@
 #!/bin/bash
 # backup-statusline.sh
 # Backs up Claude Code statusline config into this repo's statusline/ directory.
-# Run from the repo root: ./backup-statusline.sh
+# Run from anywhere: ./statusline/backup-statusline.sh
 
 set -e
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 BACKUP_DIR="$REPO_DIR/statusline"
 CLAUDE_DIR="$HOME/.claude"
 SETTINGS="$CLAUDE_DIR/settings.json"

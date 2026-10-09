@@ -19,9 +19,12 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
   - `update-projects.yml` - Daily: runs the script and commits `projects.json` + `README.md`
   - `snake.yml` - Daily: contribution snake SVGs on the `output` branch
   - `claude.yml`, `claude-code-review.yml` - Claude Code for issues/PRs
+- `statusline/` - Backup/restore of the author's Claude Code statusline (not part of the site). `./statusline/backup-statusline.sh` refreshes it.
+- `.claude/settings.local.json` - Local-only, gitignored
 
 ## Working in this repo
 
+- No Jekyll: `.nojekyll` is set, so `index.html` is served as-is. Don't add `_config.yml` or SCSS.
 - No build system or tests. Run the generator locally with `GITHUB_TOKEN=$(gh auth token) python3 .github/scripts/update_projects.py`, then serve with `python3 -m http.server`.
 - To change what's featured, edit `key-projects.json` rather than the README or HTML.
 - Keep the focus on projects. The only personal content is a short intro paragraph (`.hero-about` in index.html, the blockquote in README.md); don't expand it into a bio.

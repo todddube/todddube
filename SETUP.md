@@ -22,6 +22,19 @@ For each public, non-fork repo the script collects:
 
 It also builds the "Latest commits" feed: newest first, at most 2 per project, merge commits skipped.
 
+## Where do I edit...?
+
+| I want to change | Edit |
+|---|---|
+| Which projects are featured, their order, taglines, screenshots | `key-projects.json` |
+| A project's description in "Everything else" | The repo's description on GitHub |
+| The intro paragraph | `.hero-about` in `index.html` and the blockquote in `README.md` (keep them in sync) |
+| Layout, colors, copy around the lists | `index.html` |
+| What data is collected or how the README tables look | `.github/scripts/update_projects.py` |
+| Update schedule | `.github/workflows/update-projects.yml` |
+
+Never hand-edit `projects.json` or the content between `<!-- NAME:START/END -->` markers in `README.md`; the daily run overwrites them. A featured repo that was renamed, made private or archived is dropped from the site, and the run logs a warning annotation naming it.
+
 ## Choosing what's featured
 
 Edit `key-projects.json`:
@@ -47,4 +60,5 @@ python3 -m http.server 8000   # then open http://localhost:8000
 ## Other workflows
 
 - `snake.yml` builds the contribution-snake SVGs into the `output` branch (used in the README).
+- `statusline/` is an unrelated backup of the Claude Code statusline config.
 - `claude.yml` and `claude-code-review.yml` hook Claude Code into issues and PRs.

@@ -9,6 +9,11 @@
     <meta property="og:description" content="macOS apps, Commodore 64 assembly, small games and AI status tools. Updated daily from GitHub.">
     <meta property="og:url" content="https://www.thedubes.com">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Todd Dube">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://www.thedubes.com/">
+    <meta name="theme-color" content="#1D1846" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#EEEFFA" media="(prefers-color-scheme: light)">
     <script>
         // Follow the system light/dark setting unless the visitor picked one with the toggle
         (function () {
@@ -430,9 +435,11 @@
                 const last = p.last_commit && p.last_commit.message
                     ? `<p class="last">Last commit ${ago(p.last_commit.date)}: <a href="${esc(p.last_commit.url)}">${esc(p.last_commit.message)}</a></p>`
                     : '';
+                const lastDate = p.last_commit && p.last_commit.date;
+                const quiet = lastDate ? ago(lastDate).replace(' ago', '') : '';
                 const cap = p.commits_30d > 0
                     ? `<strong>${p.commits_30d} commit${p.commits_30d === 1 ? '' : 's'}</strong> in the last 30 days`
-                    : `Quiet for ${ago(p.last_commit.date).replace(' ago', '')}`;
+                    : (quiet && quiet !== 'today' && quiet !== 'yesterday' ? `Quiet for ${quiet}` : 'No commits in the last 30 days');
                 return `
                 <article class="project">
                     <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${media}</a>
@@ -456,7 +463,7 @@
                     <td><a href="${esc(p.url)}">${esc(p.name)}</a></td>
                     <td class="desc">${esc(p.description) || '—'}</td>
                     <td class="col-lang">${p.language ? `<span${langStyle(p.language)}><span class="dot"></span>${esc(p.language)}</span>` : '—'}</td>
-                    <td class="when">${ago(p.last_commit.date)}</td>
+                    <td class="when">${p.last_commit && p.last_commit.date ? ago(p.last_commit.date) : '—'}</td>
                 </tr>`).join('');
         }
 
