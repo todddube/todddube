@@ -1,0 +1,28 @@
+name: Site Health Check
+
+# Every day, after the 9:00 UTC update has had time to land, load the live site and check:
+#   - it's up,
+#   - its projects.json is under 48 hours old (the daily update hasn't silently stopped),
+#   - every project's repo link and screenshot still loads.
+# A failure makes this run red, and GitHub emails you about failed runs.
+
+on:
+  schedule:
+    - cron: "0 15 * * *"  # Daily at 15:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: python3 .github/scripts/health_check.py

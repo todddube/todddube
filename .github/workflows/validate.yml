@@ -1,0 +1,53 @@
+name: Validate
+
+# Catches a typo in key-projects.json, a broken script, or invalid JavaScript in
+# index.html before it can reach main and break the daily update or the live site.
+
+on:
+  pull_request:
+    paths:
+      - key-projects.json
+      - index.html
+      - .github/scripts/**
+      - .github/workflows/**
+      - .github/dependabot.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Validate key-projects.json (including a GitHub API check of every featured repo)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/validate_config.py --online
+
+      - name: Scripts compile and tests pass
+        run: |
+          python3 -m py_compile .github/scripts/*.py
+          python3 -m unittest discover -s .github/scripts/tests -v
+
+      - name: index.html JavaScript has valid syntax
+        run: |
+          python3 - <<'PY'
+          import pathlib, re
+          html = pathlib.Path("index.html").read_text()
+          pathlib.Path("/tmp/site.js").write_text(re.findall(r"<script>(.*?)</script>", html, re.S)[-1])
+          PY
+          node --check /tmp/site.js

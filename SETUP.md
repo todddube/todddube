@@ -22,6 +22,22 @@ For each public, non-fork repo the script collects:
 
 It also builds the "Latest commits" feed: newest first, at most 2 per project, merge commits skipped.
 
+## Automation
+
+Everything runs on GitHub Actions with the built-in `GITHUB_TOKEN`; no extra secrets are needed except `CLAUDE_CODE_OAUTH_TOKEN` for the two Claude workflows. Run any of them by hand from the Actions tab (Run workflow).
+
+| Workflow | When | What it does | A red run means |
+|---|---|---|---|
+| Update Projects | Daily 9:00 UTC, and on pushes that change the config or script | Validates `key-projects.json`, then regenerates `projects.json`, `weekly.json` and the README | The config is invalid (the log names the exact problem), or the GitHub API failed. The site keeps yesterday's data. |
+| Site Health Check | Daily 15:00 UTC | Loads the live site; checks it's up, its data is under 48 hours old, and every repo link and screenshot loads | The site is down, the daily update has silently stopped, or a repo or screenshot link broke. |
+| Weekly Recap | Mondays 12:00 UTC | Posts last week's recap (score, Claude share, top project, releases, 12-week trend) as an issue labelled `weekly-recap`, then closes it. Set `CLOSE_RECAP` to `"false"` in the workflow to leave them open. | Last week's numbers aren't final yet (re-run after the daily update) or `weekly.json` has no entry for that week. |
+| Validate | On pull requests that touch the config, site, scripts or workflows | Checks `key-projects.json` against the GitHub API, runs the tests, and syntax-checks the page's JavaScript | The PR would break the site or the daily run. |
+| Dependabot | Mondays 6:00 Eastern | Opens one grouped pull request bumping the pinned Action versions | Not a workflow; merge its PR when Validate is green. |
+| Snake | Daily 6:00 UTC | Builds the contribution-snake SVGs for the README | |
+| Claude Code, Claude Code Review | `@claude` mentions; pull requests | Claude answers issues and PRs. Review skips Dependabot and fork PRs, which can't read secrets. | |
+
+Scripts live in `.github/scripts/` and their tests in `.github/scripts/tests/`. Run them locally with `python3 -m unittest discover -s .github/scripts/tests`.
+
 ## Weekly high score
 
 The "High score" section is an arcade scoreboard computed by the same daily run from real commit data (no AI-written text, so it can't drift from the facts):
@@ -41,6 +57,8 @@ The "High score" section is an arcade scoreboard computed by the same daily run 
 | The intro paragraph | `.hero-about` in `index.html` and the blockquote in `README.md` (keep them in sync) |
 | Layout, colors, copy around the lists | `index.html` |
 | What data is collected, how the weekly score is computed, or how the README tables look | `.github/scripts/update_projects.py` |
+| The wording and layout of the weekly recap issue | `.github/scripts/weekly_recap.py` |
+| What the health check treats as a failure (for example the 48-hour limit) | `.github/scripts/health_check.py` |
 | Fonts, colors, scanlines | The `<style>` block in `index.html` (palette tokens at the top, font tokens in `:root`) |
 | Timezone for the weekly score | `timezone` in `key-projects.json` |
 | Update schedule | `.github/workflows/update-projects.yml` |

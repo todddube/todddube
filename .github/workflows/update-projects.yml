@@ -36,6 +36,9 @@ jobs:
 
       - run: pip install requests
 
+      - name: Validate key-projects.json
+        run: python3 .github/scripts/validate_config.py
+
       - name: Build projects.json and README sections
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

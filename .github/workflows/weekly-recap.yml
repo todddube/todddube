@@ -1,0 +1,58 @@
+name: Weekly Recap
+
+# Every Monday, three hours after the daily update has finalized last week's numbers,
+# post a recap of that week as a GitHub issue (label: weekly-recap). The text is built
+# from weekly.json by .github/scripts/weekly_recap.py: no generated prose, so it can't
+# drift from the facts. Re-running is safe; a week is only posted once.
+#
+# The issue is closed straight after posting so recaps don't pile up as open work, and
+# you still get the creation notification. Set CLOSE_RECAP to "false" to leave them open.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"  # Mondays at 12:00 UTC (8am Eastern in summer, 7am in winter)
+  workflow_dispatch:
+    inputs:
+      today:
+        description: "Build the recap as if today were this date (YYYY-MM-DD). Leave blank for the real date."
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  CLOSE_RECAP: "true"
+
+jobs:
+  recap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build the recap
+        env:
+          RECAP_TODAY: ${{ inputs.today }}
+        run: python3 .github/scripts/weekly_recap.py recap
+
+      - name: Post it as an issue
+        run: |
+          title="$(cat recap/title.txt)"
+          cat recap/body.md >> "$GITHUB_STEP_SUMMARY"
+          if gh issue list --label weekly-recap --state all --limit 200 --json title --jq '.[].title' | grep -Fxq "$title"; then
+            echo "Already posted: $title"
+            exit 0
+          fi
+          gh label create weekly-recap --color 5319e7 --description "Automated weekly commit recap" 2>/dev/null || true
+          url="$(gh issue create --title "$title" --body-file recap/body.md --label weekly-recap)"
+          echo "Posted $url"
+          if [ "$CLOSE_RECAP" = "true" ]; then
+            gh issue close "$url" --reason completed
+          fi

@@ -1,0 +1,16 @@
+# Keeps the pinned GitHub Actions in .github/workflows/ current (checkout, setup-python,
+# the snake generator, and so on). One grouped pull request a week, Mondays before work.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/New_York
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ["*"]
