@@ -26,7 +26,7 @@ It also builds the "Latest commits" feed: newest first, at most 2 per project, m
 
 | I want to change | Edit |
 |---|---|
-| Which projects are featured, their order, taglines, screenshots | `key-projects.json` |
+| Which projects are spotlighted or featured, their order, taglines, screenshots | `key-projects.json` |
 | A project's description in "Everything else" | The repo's description on GitHub |
 | The intro paragraph | `.hero-about` in `index.html` and the blockquote in `README.md` (keep them in sync) |
 | Layout, colors, copy around the lists | `index.html` |
@@ -41,7 +41,9 @@ Edit `key-projects.json`:
 
 | Field | Purpose |
 |---|---|
-| `featured` | Repos shown under "Now building", in this order. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
+| `featured` | Repos shown above "Everything else", in this order. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
+| `featured[].spotlight` / `why` | `"spotlight": true` shows the repo as a large card in the Spotlight grid (in `featured` order); `why` is its one-line pitch. Unflagged repos appear under "More projects". |
+| `featured[].path` | Optional folder inside the repo (e.g. `spritemove`). The card links to that folder instead of the repo root. |
 | `exclude` | Repos never shown. |
 | `include_forks` | Forks to treat as your own work (forks are hidden by default). |
 | `activity_items` / `activity_weeks` | Length of the commit feed and the activity strip. |

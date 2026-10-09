@@ -118,8 +118,11 @@ def build_project(r, cfg, curation):
         "tagline": curation.get("tagline") or r.get("description") or "",
         "description": r.get("description") or "",
         "platform": curation.get("platform"),
+        "spotlight": bool(curation.get("spotlight")),
+        "why": curation.get("why"),
         "image": image,
-        "url": r["html_url"],
+        # `path` in key-projects.json deep-links to a folder (e.g. one demo inside a multi-project repo)
+        "url": r["html_url"] + (f"/tree/{branch}/{curation['path']}" if curation.get("path") else ""),
         "homepage": r.get("homepage") or None,
         "language": r.get("language"),
         "topics": r.get("topics", []),
