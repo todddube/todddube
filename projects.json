@@ -1,13 +1,21 @@
 {
-  "generated_at": "2026-10-08T16:09:25+00:00",
+  "generated_at": "2026-10-09T15:50:59+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 15,
     "active": 2,
-    "commits_30d": 17,
+    "commits_30d": 18,
     "built_with_claude": 9
   },
   "activity": [
+    {
+      "repo": "C64-Projects",
+      "title": "C64 Projects",
+      "message": "combined c64 65023 skills and docs into this project folder",
+      "sha": "af971be",
+      "url": "https://github.com/todddube/C64-Projects/commit/af971be7529eca6f0e06c8bd20d964890e7445ad",
+      "date": "2026-10-09T13:44:18Z"
+    },
     {
       "repo": "C64-Projects",
       "title": "C64 Projects",
@@ -15,14 +23,6 @@
       "sha": "e40f065",
       "url": "https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30",
       "date": "2026-10-05T23:53:44Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 Projects",
-      "message": "spritemove: title labels on black, then vertical raster bars",
-      "sha": "1181580",
-      "url": "https://github.com/todddube/C64-Projects/commit/11815808d6a26a2a4c8250e0d168ce1332017699",
-      "date": "2026-10-05T23:51:29Z"
     },
     {
       "repo": "vstat_mac",
@@ -95,7 +95,7 @@
         "sha": "34a050b",
         "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
       },
-      "days_since_commit": 59,
+      "days_since_commit": 60,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -141,7 +141,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 4,
+      "days_since_commit": 5,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -177,14 +177,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-10-05T23:53:44+00:00",
-        "message": "spritemove: README for the labels-on-black + vertical bars intro",
-        "sha": "e40f065",
-        "url": "https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30"
+        "date": "2026-10-09T13:44:18+00:00",
+        "message": "combined c64 65023 skills and docs into this project folder",
+        "sha": "af971be",
+        "url": "https://github.com/todddube/C64-Projects/commit/af971be7529eca6f0e06c8bd20d964890e7445ad"
       },
-      "days_since_commit": 2,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 15,
+      "commits_30d": 16,
       "activity": [
         0,
         0,
@@ -197,7 +197,7 @@
         0,
         2,
         8,
-        5
+        6
       ],
       "release": null,
       "built_with_claude": true
@@ -229,7 +229,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 75,
+      "days_since_commit": 76,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -275,12 +275,12 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 76,
+      "days_since_commit": 77,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        0,
         2,
+        0,
         0,
         0,
         0,
@@ -316,7 +316,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 73,
+      "days_since_commit": 74,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -362,7 +362,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 50,
+      "days_since_commit": 51,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -408,7 +408,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 241,
+      "days_since_commit": 242,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -451,7 +451,7 @@
         "sha": "af653f5",
         "url": "https://github.com/todddube/python/commit/af653f5e5215df1098669e49c8ede074e1367263"
       },
-      "days_since_commit": 122,
+      "days_since_commit": 123,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -492,7 +492,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 200,
+      "days_since_commit": 201,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -538,7 +538,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 327,
+      "days_since_commit": 328,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -579,7 +579,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 368,
+      "days_since_commit": 369,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -620,7 +620,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 465,
+      "days_since_commit": 466,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -702,7 +702,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 885,
+      "days_since_commit": 886,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
