@@ -100,13 +100,13 @@
       }
     },
     "2026-10-05": {
-      "commits": 9,
+      "commits": 12,
       "projects": 2,
-      "active_days": 2,
-      "claude_commits": 8,
+      "active_days": 3,
+      "claude_commits": 10,
       "top_project": {
-        "title": "MacBridge",
-        "commits": 5
+        "title": "C64 spritemove",
+        "commits": 7
       }
     }
   }

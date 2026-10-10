@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-09T20:32:24+00:00",
+  "generated_at": "2026-10-10T15:04:36+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 16,
-    "active": 3,
-    "commits_30d": 23,
+    "active": 4,
+    "commits_30d": 27,
     "built_with_claude": 10
   },
   "week": {
@@ -12,24 +12,24 @@
     "label": "WK 41",
     "start": "2026-10-05",
     "end": "2026-10-11",
-    "today_index": 4,
-    "score": 9,
+    "today_index": 5,
+    "score": 12,
     "projects": 2,
-    "active_days": 2,
-    "claude_commits": 8,
-    "claude_pct": 89,
-    "streak": 1,
+    "active_days": 3,
+    "claude_commits": 10,
+    "claude_pct": 83,
+    "streak": 2,
     "top_project": {
-      "title": "MacBridge",
-      "commits": 5
+      "title": "C64 spritemove",
+      "commits": 7
     },
     "days": [
       3,
       0,
       0,
       0,
-      6,
-      0,
+      8,
+      1,
       0
     ],
     "languages": [
@@ -49,7 +49,7 @@
       }
     },
     "hi_score": {
-      "score": 9,
+      "score": 12,
       "start": "2026-10-05",
       "label": "WK 41"
     },
@@ -100,11 +100,27 @@
       },
       {
         "start": "2026-10-05",
-        "score": 9
+        "score": 12
       }
     ]
   },
   "activity": [
+    {
+      "repo": "C64-Projects",
+      "title": "C64 spritemove",
+      "message": "scroller updates to demo",
+      "sha": "81082b1",
+      "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b",
+      "date": "2026-10-10T13:12:09Z"
+    },
+    {
+      "repo": "C64-Projects",
+      "title": "C64 spritemove",
+      "message": "Screenshots for STARDUST and spritemove",
+      "sha": "a8443a7",
+      "url": "https://github.com/todddube/C64-Projects/commit/a8443a789e8a54c8ca238e41edacc15f05ea7e57",
+      "date": "2026-10-09T21:23:10Z"
+    },
     {
       "repo": "macOSMCP",
       "title": "MacBridge",
@@ -120,22 +136,6 @@
       "sha": "9def32c",
       "url": "https://github.com/todddube/macOSMCP/commit/9def32c2e309c8d65b6dc9014f5179603b374aa1",
       "date": "2026-10-09T14:47:44Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 spritemove",
-      "message": "combined c64 65023 skills and docs into this project folder",
-      "sha": "af971be",
-      "url": "https://github.com/todddube/C64-Projects/commit/af971be7529eca6f0e06c8bd20d964890e7445ad",
-      "date": "2026-10-09T13:44:18Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 spritemove",
-      "message": "spritemove: README for the labels-on-black + vertical bars intro",
-      "sha": "e40f065",
-      "url": "https://github.com/todddube/C64-Projects/commit/e40f06549475ffd0bf20b6ba96c1383375ec4e30",
-      "date": "2026-10-05T23:53:44Z"
     },
     {
       "repo": "vstat_mac",
@@ -189,14 +189,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-10-09T13:44:18+00:00",
-        "message": "combined c64 65023 skills and docs into this project folder",
-        "sha": "af971be",
-        "url": "https://github.com/todddube/C64-Projects/commit/af971be7529eca6f0e06c8bd20d964890e7445ad"
+        "date": "2026-10-10T13:12:09+00:00",
+        "message": "scroller updates to demo",
+        "sha": "81082b1",
+        "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b"
       },
       "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 16,
+      "commits_30d": 19,
       "activity": [
         0,
         0,
@@ -209,7 +209,7 @@
         0,
         2,
         8,
-        6
+        9
       ],
       "release": null,
       "built_with_claude": true
@@ -237,7 +237,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 77,
+      "days_since_commit": 78,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -280,7 +280,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 5,
+      "days_since_commit": 6,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -289,8 +289,8 @@
         0,
         0,
         0,
-        7,
-        3,
+        10,
+        0,
         0,
         0,
         0,
@@ -323,14 +323,14 @@
         "sha": "34a050b",
         "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
       },
-      "days_since_commit": 60,
+      "days_since_commit": 61,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
         0,
         0,
-        0,
-        5,
+        1,
+        4,
         0,
         0,
         0,
@@ -420,12 +420,12 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 76,
+      "days_since_commit": 77,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -604,14 +604,14 @@
       "open_issues": 1,
       "created_at": "2024-04-20T21:55:49Z",
       "last_commit": {
-        "date": "2026-06-07T19:40:45+00:00",
-        "message": "Merge pull request #13 from todddube/dependabot/pip/pip-e77947ebdd",
-        "sha": "af653f5",
-        "url": "https://github.com/todddube/python/commit/af653f5e5215df1098669e49c8ede074e1367263"
+        "date": "2026-10-10T11:09:29+00:00",
+        "message": "Merge pull request #16 from todddube/dependabot/pip/pip-4dea8f68e8",
+        "sha": "ecc8341",
+        "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 124,
-      "status": "quiet",
-      "commits_30d": 0,
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 1,
       "activity": [
         0,
         0,
@@ -624,7 +624,7 @@
         0,
         0,
         0,
-        0
+        1
       ],
       "release": null,
       "built_with_claude": false
@@ -700,7 +700,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 328,
+      "days_since_commit": 329,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -743,7 +743,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 369,
+      "days_since_commit": 370,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
