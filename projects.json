@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-10T15:04:36+00:00",
+  "generated_at": "2026-10-11T15:21:27+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 16,
     "active": 4,
-    "commits_30d": 27,
+    "commits_30d": 28,
     "built_with_claude": 10
   },
   "week": {
@@ -12,16 +12,16 @@
     "label": "WK 41",
     "start": "2026-10-05",
     "end": "2026-10-11",
-    "today_index": 5,
-    "score": 12,
+    "today_index": 6,
+    "score": 13,
     "projects": 2,
-    "active_days": 3,
-    "claude_commits": 10,
-    "claude_pct": 83,
-    "streak": 2,
+    "active_days": 4,
+    "claude_commits": 11,
+    "claude_pct": 85,
+    "streak": 3,
     "top_project": {
       "title": "C64 spritemove",
-      "commits": 7
+      "commits": 8
     },
     "days": [
       3,
@@ -30,7 +30,7 @@
       0,
       8,
       1,
-      0
+      1
     ],
     "languages": [
       "Assembly",
@@ -49,7 +49,7 @@
       }
     },
     "hi_score": {
-      "score": 12,
+      "score": 13,
       "start": "2026-10-05",
       "label": "WK 41"
     },
@@ -100,7 +100,7 @@
       },
       {
         "start": "2026-10-05",
-        "score": 12
+        "score": 13
       }
     ]
   },
@@ -108,18 +108,18 @@
     {
       "repo": "C64-Projects",
       "title": "C64 spritemove",
-      "message": "scroller updates to demo",
-      "sha": "81082b1",
-      "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b",
-      "date": "2026-10-10T13:12:09Z"
+      "message": "scroller: ARCADE part and random curtain wipes between parts",
+      "sha": "ccb9d4a",
+      "url": "https://github.com/todddube/C64-Projects/commit/ccb9d4a097d4c65b6856570936360c178fb1317b",
+      "date": "2026-10-11T13:48:58Z"
     },
     {
       "repo": "C64-Projects",
       "title": "C64 spritemove",
-      "message": "Screenshots for STARDUST and spritemove",
-      "sha": "a8443a7",
-      "url": "https://github.com/todddube/C64-Projects/commit/a8443a789e8a54c8ca238e41edacc15f05ea7e57",
-      "date": "2026-10-09T21:23:10Z"
+      "message": "scroller updates to demo",
+      "sha": "81082b1",
+      "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b",
+      "date": "2026-10-10T13:12:09Z"
     },
     {
       "repo": "macOSMCP",
@@ -189,14 +189,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-10-10T13:12:09+00:00",
-        "message": "scroller updates to demo",
-        "sha": "81082b1",
-        "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b"
+        "date": "2026-10-11T13:48:58+00:00",
+        "message": "scroller: ARCADE part and random curtain wipes between parts",
+        "sha": "ccb9d4a",
+        "url": "https://github.com/todddube/C64-Projects/commit/ccb9d4a097d4c65b6856570936360c178fb1317b"
       },
       "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 19,
+      "commits_30d": 20,
       "activity": [
         0,
         0,
@@ -207,9 +207,9 @@
         0,
         0,
         0,
-        2,
-        8,
-        9
+        6,
+        4,
+        10
       ],
       "release": null,
       "built_with_claude": true
@@ -237,7 +237,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 78,
+      "days_since_commit": 79,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -280,7 +280,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 7,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -294,8 +294,8 @@
         0,
         0,
         0,
-        0,
-        2
+        2,
+        0
       ],
       "release": null,
       "built_with_claude": true
@@ -323,14 +323,14 @@
         "sha": "34a050b",
         "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
       },
-      "days_since_commit": 61,
+      "days_since_commit": 62,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
         0,
         0,
-        1,
         4,
+        1,
         0,
         0,
         0,
@@ -371,7 +371,7 @@
         "sha": "5bb4540",
         "url": "https://github.com/todddube/macOSMCP/commit/5bb454096fd44e1b521deb714c70def64d43b98f"
       },
-      "days_since_commit": 0,
+      "days_since_commit": 2,
       "status": "active",
       "commits_30d": 5,
       "activity": [
@@ -420,7 +420,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 77,
+      "days_since_commit": 78,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -468,12 +468,12 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 75,
+      "days_since_commit": 76,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        0,
-        2,
+        1,
+        1,
         0,
         0,
         0,
@@ -516,7 +516,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 52,
+      "days_since_commit": 53,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -564,7 +564,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 243,
+      "days_since_commit": 244,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -609,7 +609,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 0,
+      "days_since_commit": 1,
       "status": "active",
       "commits_30d": 1,
       "activity": [
@@ -652,7 +652,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 202,
+      "days_since_commit": 203,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -700,7 +700,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 329,
+      "days_since_commit": 330,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -743,7 +743,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 370,
+      "days_since_commit": 371,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -786,7 +786,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 467,
+      "days_since_commit": 468,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -829,7 +829,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 601,
+      "days_since_commit": 602,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -872,7 +872,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 887,
+      "days_since_commit": 888,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
