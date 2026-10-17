@@ -110,10 +110,10 @@
       }
     },
     "2026-10-12": {
-      "commits": 2,
-      "projects": 1,
+      "commits": 4,
+      "projects": 2,
       "active_days": 1,
-      "claude_commits": 2,
+      "claude_commits": 4,
       "top_project": {
         "title": "MacBridge",
         "commits": 2

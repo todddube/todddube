@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-16T13:46:13+00:00",
+  "generated_at": "2026-10-17T12:43:34+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 16,
-    "active": 4,
-    "commits_30d": 30,
+    "active": 5,
+    "commits_30d": 32,
     "built_with_claude": 10
   },
   "week": {
@@ -12,11 +12,11 @@
     "label": "WK 42",
     "start": "2026-10-12",
     "end": "2026-10-18",
-    "today_index": 4,
-    "score": 2,
-    "projects": 1,
+    "today_index": 5,
+    "score": 4,
+    "projects": 2,
     "active_days": 1,
-    "claude_commits": 2,
+    "claude_commits": 4,
     "claude_pct": 100,
     "streak": 1,
     "top_project": {
@@ -28,7 +28,7 @@
       0,
       0,
       0,
-      2,
+      4,
       0,
       0
     ],
@@ -99,11 +99,27 @@
       },
       {
         "start": "2026-10-12",
-        "score": 2
+        "score": 4
       }
     ]
   },
   "activity": [
+    {
+      "repo": "wthrr_mac",
+      "title": "wthrr",
+      "message": "release: bump to v1.2 (build 101626) — Retro 8-bit mode",
+      "sha": "1073150",
+      "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59",
+      "date": "2026-10-16T15:50:21Z"
+    },
+    {
+      "repo": "wthrr_mac",
+      "title": "wthrr",
+      "message": "feat: Retro 8-bit mode for every weather type + install script and build agent",
+      "sha": "e7f3b16",
+      "url": "https://github.com/todddube/wthrr_mac/commit/e7f3b1632dab895203f0e0e0ba1425e21f3b8260",
+      "date": "2026-10-16T15:48:04Z"
+    },
     {
       "repo": "macOSMCP",
       "title": "MacBridge",
@@ -151,22 +167,6 @@
       "sha": "7a7e6dc",
       "url": "https://github.com/todddube/vstat_mac/commit/7a7e6dcb773c2d52544495431ee4b1a9828ec04b",
       "date": "2026-08-29T14:30:49Z"
-    },
-    {
-      "repo": "vstat",
-      "title": "Vibe Stats",
-      "message": "Remove GitHub Actions release workflow",
-      "sha": "c134d88",
-      "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9",
-      "date": "2026-08-18T19:20:58Z"
-    },
-    {
-      "repo": "vstat",
-      "title": "Vibe Stats",
-      "message": "remove store and add safari ext work",
-      "sha": "356f699",
-      "url": "https://github.com/todddube/vstat/commit/356f6998afff50e1e8a4a412f4b2780922e6dc9a",
-      "date": "2026-08-18T18:59:57Z"
     }
   ],
   "featured": [
@@ -193,7 +193,7 @@
         "sha": "ccb9d4a",
         "url": "https://github.com/todddube/C64-Projects/commit/ccb9d4a097d4c65b6856570936360c178fb1317b"
       },
-      "days_since_commit": 4,
+      "days_since_commit": 5,
       "status": "active",
       "commits_30d": 20,
       "activity": [
@@ -207,8 +207,8 @@
         0,
         2,
         8,
-        6,
-        4
+        8,
+        2
       ],
       "release": null,
       "built_with_claude": true
@@ -236,7 +236,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 84,
+      "days_since_commit": 85,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -279,7 +279,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 11,
+      "days_since_commit": 12,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -317,14 +317,14 @@
       "open_issues": 0,
       "created_at": "2026-03-15T00:57:02Z",
       "last_commit": {
-        "date": "2026-08-10T00:12:37+00:00",
-        "message": "release: v1.1 — Clear Skies mode, live weather fixes, 2x faster",
-        "sha": "34a050b",
-        "url": "https://github.com/todddube/wthrr_mac/commit/34a050b3ece4b2f7b0232c9f4569a134bc7092e3"
+        "date": "2026-10-16T15:50:21+00:00",
+        "message": "release: bump to v1.2 (build 101626) — Retro 8-bit mode",
+        "sha": "1073150",
+        "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 67,
-      "status": "recent",
-      "commits_30d": 0,
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 2,
       "activity": [
         0,
         0,
@@ -337,13 +337,13 @@
         0,
         0,
         0,
-        0
+        2
       ],
       "release": {
-        "tag": "v1.1",
-        "name": "wthrr v1.1",
-        "date": "2026-08-10T00:16:02Z",
-        "url": "https://github.com/todddube/wthrr_mac/releases/tag/v1.1"
+        "tag": "v1.2",
+        "name": "wthrr v1.2",
+        "date": "2026-10-16T15:52:25Z",
+        "url": "https://github.com/todddube/wthrr_mac/releases/tag/v1.2"
       },
       "built_with_claude": true
     },
@@ -384,8 +384,8 @@
         0,
         0,
         0,
-        1,
-        6
+        5,
+        2
       ],
       "release": null,
       "built_with_claude": true
@@ -419,7 +419,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 82,
+      "days_since_commit": 83,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -467,7 +467,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 81,
+      "days_since_commit": 82,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -515,7 +515,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 58,
+      "days_since_commit": 59,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -563,7 +563,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 249,
+      "days_since_commit": 250,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -608,7 +608,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 7,
       "status": "active",
       "commits_30d": 1,
       "activity": [
@@ -622,8 +622,8 @@
         0,
         0,
         0,
-        0,
-        1
+        1,
+        0
       ],
       "release": null,
       "built_with_claude": false
@@ -651,7 +651,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 208,
+      "days_since_commit": 209,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -699,7 +699,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 335,
+      "days_since_commit": 336,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -742,7 +742,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 376,
+      "days_since_commit": 377,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -785,7 +785,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 473,
+      "days_since_commit": 474,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -828,7 +828,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 607,
+      "days_since_commit": 608,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -871,7 +871,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 893,
+      "days_since_commit": 894,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
