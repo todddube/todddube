@@ -1,62 +1,53 @@
 {
-  "generated_at": "2026-10-18T13:00:07+00:00",
+  "generated_at": "2026-10-19T16:14:23+00:00",
   "owner": "todddube",
   "totals": {
-    "projects": 16,
-    "active": 5,
-    "commits_30d": 32,
-    "built_with_claude": 10
+    "projects": 17,
+    "active": 6,
+    "commits_30d": 43,
+    "built_with_claude": 11
   },
   "week": {
     "timezone": "America/New_York",
-    "label": "WK 42",
-    "start": "2026-10-12",
-    "end": "2026-10-18",
-    "today_index": 6,
-    "score": 4,
-    "projects": 2,
-    "active_days": 1,
-    "claude_commits": 4,
-    "claude_pct": 100,
-    "streak": 0,
-    "top_project": {
-      "title": "MacBridge",
-      "commits": 2
-    },
+    "label": "WK 43",
+    "start": "2026-10-19",
+    "end": "2026-10-25",
+    "today_index": 0,
+    "score": 0,
+    "projects": 0,
+    "active_days": 0,
+    "claude_commits": 0,
+    "claude_pct": null,
+    "streak": 1,
+    "top_project": null,
     "days": [
       0,
       0,
       0,
       0,
-      4,
+      0,
       0,
       0
     ],
-    "languages": [
-      "Swift"
-    ],
+    "languages": [],
     "last_week": {
-      "label": "WK 41",
-      "start": "2026-10-05",
-      "score": 13,
-      "projects": 2,
-      "active_days": 4,
-      "claude_pct": 85,
+      "label": "WK 42",
+      "start": "2026-10-12",
+      "score": 15,
+      "projects": 4,
+      "active_days": 2,
+      "claude_pct": 100,
       "top_project": {
-        "title": "C64 spritemove",
-        "commits": 8
+        "title": "MacBridge",
+        "commits": 7
       }
     },
     "hi_score": {
-      "score": 13,
-      "start": "2026-10-05",
-      "label": "WK 41"
+      "score": 15,
+      "start": "2026-10-12",
+      "label": "WK 42"
     },
     "trend": [
-      {
-        "start": "2026-07-27",
-        "score": 0
-      },
       {
         "start": "2026-08-03",
         "score": 5
@@ -99,11 +90,63 @@
       },
       {
         "start": "2026-10-12",
-        "score": 4
+        "score": 15
+      },
+      {
+        "start": "2026-10-19",
+        "score": 0
       }
     ]
   },
   "activity": [
+    {
+      "repo": "C64-Projects",
+      "title": "C64 spritemove",
+      "message": "CLAUDE.md: 6502 skills now come with c64-agent-kit",
+      "sha": "e411d75",
+      "url": "https://github.com/todddube/C64-Projects/commit/e411d75139abb829e21c9c8fba75cdd8e9d2629d",
+      "date": "2026-10-18T22:10:54Z"
+    },
+    {
+      "repo": "c64-agent-kit",
+      "title": "c64-agent-kit",
+      "message": "Include sunsided/6502-skills as a submodule and install its 6502-* skills",
+      "sha": "cbd0b60",
+      "url": "https://github.com/todddube/c64-agent-kit/commit/cbd0b606448edf3aa39883d14906e2dee9e89daf",
+      "date": "2026-10-18T22:10:06Z"
+    },
+    {
+      "repo": "macOSMCP",
+      "title": "MacBridge",
+      "message": "Permission timeouts, Check for Updates, accessibility, CI, and BUILDING.md",
+      "sha": "5a31bb5",
+      "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5",
+      "date": "2026-10-18T22:09:26Z"
+    },
+    {
+      "repo": "macOSMCP",
+      "title": "MacBridge",
+      "message": "Event details, editing repeats, and holiday-aware free time",
+      "sha": "b3cb925",
+      "url": "https://github.com/todddube/macOSMCP/commit/b3cb92576a02f21892ac52fae45ed0b90a3bd126",
+      "date": "2026-10-18T17:24:13Z"
+    },
+    {
+      "repo": "C64-Projects",
+      "title": "C64 spritemove",
+      "message": "Move C64 tooling to c64-agent-kit; fix spritemove NMI and NTSC detection",
+      "sha": "46d1c16",
+      "url": "https://github.com/todddube/C64-Projects/commit/46d1c169f396e1ae2b9401e9742f8a34856ca7ee",
+      "date": "2026-10-18T13:18:41Z"
+    },
+    {
+      "repo": "c64-agent-kit",
+      "title": "c64-agent-kit",
+      "message": "Template: repair the NMI vector low byte if a freezer cartridge moved it",
+      "sha": "a3f172d",
+      "url": "https://github.com/todddube/c64-agent-kit/commit/a3f172d242013bde3bcdb601985576f63e80c8a2",
+      "date": "2026-10-18T13:18:35Z"
+    },
     {
       "repo": "wthrr_mac",
       "title": "wthrr",
@@ -119,54 +162,6 @@
       "sha": "e7f3b16",
       "url": "https://github.com/todddube/wthrr_mac/commit/e7f3b1632dab895203f0e0e0ba1425e21f3b8260",
       "date": "2026-10-16T15:48:04Z"
-    },
-    {
-      "repo": "macOSMCP",
-      "title": "MacBridge",
-      "message": "Fix Grant appearing to do nothing; warn when signing identity changes",
-      "sha": "2d641f9",
-      "url": "https://github.com/todddube/macOSMCP/commit/2d641f9d2dd8eceeaf6643e329d627c3409be5cc",
-      "date": "2026-10-16T13:38:12Z"
-    },
-    {
-      "repo": "macOSMCP",
-      "title": "MacBridge",
-      "message": "Open at login checkbox; Xcode project builds from a fresh clone",
-      "sha": "999be9e",
-      "url": "https://github.com/todddube/macOSMCP/commit/999be9ee1281bb3642f082c6d556061f948da3ed",
-      "date": "2026-10-16T12:59:11Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 spritemove",
-      "message": "scroller: ARCADE part and random curtain wipes between parts",
-      "sha": "ccb9d4a",
-      "url": "https://github.com/todddube/C64-Projects/commit/ccb9d4a097d4c65b6856570936360c178fb1317b",
-      "date": "2026-10-11T13:48:58Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 spritemove",
-      "message": "scroller updates to demo",
-      "sha": "81082b1",
-      "url": "https://github.com/todddube/C64-Projects/commit/81082b118ba33f484f22166800b5b0ff73b0df5b",
-      "date": "2026-10-10T13:12:09Z"
-    },
-    {
-      "repo": "vstat_mac",
-      "title": "Vibe Stats for macOS",
-      "message": "merging branches and work",
-      "sha": "98bb7cd",
-      "url": "https://github.com/todddube/vstat_mac/commit/98bb7cd28cf694532d891799d5b1537198a56aa3",
-      "date": "2026-10-04T14:35:51Z"
-    },
-    {
-      "repo": "vstat_mac",
-      "title": "Vibe Stats for macOS",
-      "message": "Track the generated .xcodeproj deliberately, and fix the rule that never worked",
-      "sha": "7a7e6dc",
-      "url": "https://github.com/todddube/vstat_mac/commit/7a7e6dcb773c2d52544495431ee4b1a9828ec04b",
-      "date": "2026-08-29T14:30:49Z"
     }
   ],
   "featured": [
@@ -188,14 +183,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-10-11T13:48:58+00:00",
-        "message": "scroller: ARCADE part and random curtain wipes between parts",
-        "sha": "ccb9d4a",
-        "url": "https://github.com/todddube/C64-Projects/commit/ccb9d4a097d4c65b6856570936360c178fb1317b"
+        "date": "2026-10-18T22:10:54+00:00",
+        "message": "CLAUDE.md: 6502 skills now come with c64-agent-kit",
+        "sha": "e411d75",
+        "url": "https://github.com/todddube/C64-Projects/commit/e411d75139abb829e21c9c8fba75cdd8e9d2629d"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 20,
+      "commits_30d": 22,
       "activity": [
         0,
         0,
@@ -204,11 +199,11 @@
         0,
         0,
         0,
-        0,
-        6,
+        2,
         4,
-        9,
-        1
+        7,
+        7,
+        2
       ],
       "release": null,
       "built_with_claude": true
@@ -236,7 +231,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 86,
+      "days_since_commit": 87,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -279,21 +274,21 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 13,
+      "days_since_commit": 15,
       "status": "active",
       "commits_30d": 2,
       "activity": [
         0,
         0,
         0,
-        0,
-        10,
-        0,
+        7,
+        3,
         0,
         0,
         0,
         0,
         2,
+        0,
         0
       ],
       "release": null,
@@ -322,13 +317,13 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 1,
+      "days_since_commit": 3,
       "status": "active",
       "commits_30d": 2,
       "activity": [
         0,
-        3,
-        2,
+        5,
+        0,
         0,
         0,
         0,
@@ -362,17 +357,17 @@
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "open_issues": 0,
+      "open_issues": 1,
       "created_at": "2026-02-28T16:47:13Z",
       "last_commit": {
-        "date": "2026-10-16T13:38:12+00:00",
-        "message": "Fix Grant appearing to do nothing; warn when signing identity changes",
-        "sha": "2d641f9",
-        "url": "https://github.com/todddube/macOSMCP/commit/2d641f9d2dd8eceeaf6643e329d627c3409be5cc"
+        "date": "2026-10-18T22:09:26+00:00",
+        "message": "Permission timeouts, Check for Updates, accessibility, CI, and BUILDING.md",
+        "sha": "5a31bb5",
+        "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
       },
-      "days_since_commit": 1,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 7,
+      "commits_30d": 12,
       "activity": [
         0,
         0,
@@ -385,7 +380,7 @@
         0,
         0,
         5,
-        2
+        7
       ],
       "release": null,
       "built_with_claude": true
@@ -419,7 +414,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 84,
+      "days_since_commit": 86,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -467,11 +462,11 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 83,
+      "days_since_commit": 84,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        1,
+        0,
         0,
         0,
         0,
@@ -515,7 +510,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 60,
+      "days_since_commit": 61,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -563,7 +558,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 251,
+      "days_since_commit": 252,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -585,6 +580,58 @@
     }
   ],
   "others": [
+    {
+      "name": "c64-agent-kit",
+      "title": "c64-agent-kit",
+      "tagline": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot, Gemini CLI.",
+      "description": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot, Gemini CLI.",
+      "platform": null,
+      "spotlight": false,
+      "why": null,
+      "image": null,
+      "url": "https://github.com/todddube/c64-agent-kit",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "6502",
+        "agent-skills",
+        "assembly",
+        "c64",
+        "claude-code",
+        "commodore-64",
+        "kickassembler",
+        "vice-emulator"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2026-10-18T13:12:32Z",
+      "last_commit": {
+        "date": "2026-10-18T22:10:06+00:00",
+        "message": "Include sunsided/6502-skills as a submodule and install its 6502-* skills",
+        "sha": "cbd0b60",
+        "url": "https://github.com/todddube/c64-agent-kit/commit/cbd0b606448edf3aa39883d14906e2dee9e89daf"
+      },
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 4,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      "release": null,
+      "built_with_claude": true
+    },
     {
       "name": "python",
       "title": "python",
@@ -608,7 +655,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 8,
+      "days_since_commit": 9,
       "status": "active",
       "commits_30d": 1,
       "activity": [
@@ -651,7 +698,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 210,
+      "days_since_commit": 211,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -699,7 +746,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 337,
+      "days_since_commit": 338,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -742,7 +789,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 378,
+      "days_since_commit": 379,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -785,7 +832,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 475,
+      "days_since_commit": 476,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -828,7 +875,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 609,
+      "days_since_commit": 611,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -871,7 +918,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 895,
+      "days_since_commit": 896,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
