@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-23T14:05:16+00:00",
+  "generated_at": "2026-10-24T13:08:03+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 17,
     "active": 6,
-    "commits_30d": 41,
+    "commits_30d": 50,
     "built_with_claude": 11
   },
   "week": {
@@ -12,24 +12,30 @@
     "label": "WK 43",
     "start": "2026-10-19",
     "end": "2026-10-25",
-    "today_index": 4,
-    "score": 0,
-    "projects": 0,
-    "active_days": 0,
-    "claude_commits": 0,
-    "claude_pct": null,
-    "streak": 0,
-    "top_project": null,
+    "today_index": 5,
+    "score": 9,
+    "projects": 2,
+    "active_days": 2,
+    "claude_commits": 9,
+    "claude_pct": 100,
+    "streak": 2,
+    "top_project": {
+      "title": "C64 spritemove",
+      "commits": 8
+    },
     "days": [
       0,
       0,
       0,
       0,
-      0,
-      0,
+      7,
+      2,
       0
     ],
-    "languages": [],
+    "languages": [
+      "Assembly",
+      "Python"
+    ],
     "last_week": {
       "label": "WK 42",
       "start": "2026-10-12",
@@ -94,7 +100,7 @@
       },
       {
         "start": "2026-10-19",
-        "score": 0
+        "score": 9
       }
     ]
   },
@@ -102,10 +108,26 @@
     {
       "repo": "C64-Projects",
       "title": "C64 spritemove",
-      "message": "CLAUDE.md: 6502 skills now come with c64-agent-kit",
-      "sha": "e411d75",
-      "url": "https://github.com/todddube/C64-Projects/commit/e411d75139abb829e21c9c8fba75cdd8e9d2629d",
-      "date": "2026-10-18T22:10:54Z"
+      "message": "demos/Dust Tutorial - Spritro: flame, rockets, asteroids, collisions and SFX",
+      "sha": "da4534d",
+      "url": "https://github.com/todddube/C64-Projects/commit/da4534da5e2e9dacdd489d613198d6bd8f392410",
+      "date": "2026-10-24T11:50:36Z"
+    },
+    {
+      "repo": "C64-Projects",
+      "title": "C64 spritemove",
+      "message": "demos/Dust Tutorial - Spritro: build to dustlayer-spritro.prg as index.asm specifies",
+      "sha": "2d987a9",
+      "url": "https://github.com/todddube/C64-Projects/commit/2d987a9644a2051691ed8c1db5a92af9ae6cacc3",
+      "date": "2026-10-24T11:25:24Z"
+    },
+    {
+      "repo": "c64-agent-kit",
+      "title": "c64-agent-kit",
+      "message": "Document that the .prg is always named after the source file",
+      "sha": "ed57d29",
+      "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d",
+      "date": "2026-10-23T15:19:25Z"
     },
     {
       "repo": "c64-agent-kit",
@@ -130,22 +152,6 @@
       "sha": "b3cb925",
       "url": "https://github.com/todddube/macOSMCP/commit/b3cb92576a02f21892ac52fae45ed0b90a3bd126",
       "date": "2026-10-18T17:24:13Z"
-    },
-    {
-      "repo": "C64-Projects",
-      "title": "C64 spritemove",
-      "message": "Move C64 tooling to c64-agent-kit; fix spritemove NMI and NTSC detection",
-      "sha": "46d1c16",
-      "url": "https://github.com/todddube/C64-Projects/commit/46d1c169f396e1ae2b9401e9742f8a34856ca7ee",
-      "date": "2026-10-18T13:18:41Z"
-    },
-    {
-      "repo": "c64-agent-kit",
-      "title": "c64-agent-kit",
-      "message": "Template: repair the NMI vector low byte if a freezer cartridge moved it",
-      "sha": "a3f172d",
-      "url": "https://github.com/todddube/c64-agent-kit/commit/a3f172d242013bde3bcdb601985576f63e80c8a2",
-      "date": "2026-10-18T13:18:35Z"
     },
     {
       "repo": "wthrr_mac",
@@ -183,14 +189,14 @@
       "open_issues": 0,
       "created_at": "2024-01-28T20:23:46Z",
       "last_commit": {
-        "date": "2026-10-18T22:10:54+00:00",
-        "message": "CLAUDE.md: 6502 skills now come with c64-agent-kit",
-        "sha": "e411d75",
-        "url": "https://github.com/todddube/C64-Projects/commit/e411d75139abb829e21c9c8fba75cdd8e9d2629d"
+        "date": "2026-10-24T11:50:36+00:00",
+        "message": "demos/Dust Tutorial - Spritro: flame, rockets, asteroids, collisions and SFX",
+        "sha": "da4534d",
+        "url": "https://github.com/todddube/C64-Projects/commit/da4534da5e2e9dacdd489d613198d6bd8f392410"
       },
-      "days_since_commit": 4,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 20,
+      "commits_30d": 28,
       "activity": [
         0,
         0,
@@ -201,9 +207,9 @@
         0,
         2,
         8,
-        6,
-        4,
-        2
+        8,
+        2,
+        10
       ],
       "release": null,
       "built_with_claude": true
@@ -231,7 +237,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 91,
+      "days_since_commit": 92,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -274,7 +280,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 18,
+      "days_since_commit": 19,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -317,7 +323,7 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 7,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -331,8 +337,8 @@
         0,
         0,
         0,
-        0,
-        2
+        2,
+        0
       ],
       "release": {
         "tag": "v1.2",
@@ -365,7 +371,7 @@
         "sha": "5a31bb5",
         "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
       },
-      "days_since_commit": 4,
+      "days_since_commit": 5,
       "status": "active",
       "commits_30d": 12,
       "activity": [
@@ -378,8 +384,8 @@
         0,
         0,
         0,
-        2,
         5,
+        2,
         5
       ],
       "release": null,
@@ -462,7 +468,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 88,
+      "days_since_commit": 89,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -510,7 +516,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 65,
+      "days_since_commit": 66,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -558,7 +564,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 256,
+      "days_since_commit": 257,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -607,14 +613,14 @@
       "open_issues": 0,
       "created_at": "2026-10-18T13:12:32Z",
       "last_commit": {
-        "date": "2026-10-18T22:10:06+00:00",
-        "message": "Include sunsided/6502-skills as a submodule and install its 6502-* skills",
-        "sha": "cbd0b60",
-        "url": "https://github.com/todddube/c64-agent-kit/commit/cbd0b606448edf3aa39883d14906e2dee9e89daf"
+        "date": "2026-10-23T15:19:25+00:00",
+        "message": "Document that the .prg is always named after the source file",
+        "sha": "ed57d29",
+        "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d"
       },
-      "days_since_commit": 4,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 4,
+      "commits_30d": 5,
       "activity": [
         0,
         0,
@@ -627,7 +633,7 @@
         0,
         0,
         0,
-        4
+        5
       ],
       "release": null,
       "built_with_claude": true
@@ -655,7 +661,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 13,
+      "days_since_commit": 14,
       "status": "active",
       "commits_30d": 1,
       "activity": [
@@ -668,8 +674,8 @@
         0,
         0,
         0,
-        0,
         1,
+        0,
         0
       ],
       "release": null,
@@ -698,7 +704,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 215,
+      "days_since_commit": 216,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -746,7 +752,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 342,
+      "days_since_commit": 343,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -789,7 +795,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 383,
+      "days_since_commit": 384,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -832,7 +838,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 480,
+      "days_since_commit": 481,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -875,7 +881,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 614,
+      "days_since_commit": 615,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -918,7 +924,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 900,
+      "days_since_commit": 901,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
