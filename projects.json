@@ -1,35 +1,40 @@
 {
-  "generated_at": "2026-10-30T15:36:08+00:00",
+  "generated_at": "2026-10-31T15:06:11+00:00",
   "owner": "todddube",
   "totals": {
-    "projects": 17,
-    "active": 6,
-    "commits_30d": 43,
-    "built_with_claude": 11
+    "projects": 18,
+    "active": 7,
+    "commits_30d": 48,
+    "built_with_claude": 12
   },
   "week": {
     "timezone": "America/New_York",
     "label": "WK 44",
     "start": "2026-10-26",
     "end": "2026-11-01",
-    "today_index": 4,
-    "score": 0,
-    "projects": 0,
-    "active_days": 0,
-    "claude_commits": 0,
-    "claude_pct": null,
-    "streak": 0,
-    "top_project": null,
+    "today_index": 5,
+    "score": 5,
+    "projects": 1,
+    "active_days": 2,
+    "claude_commits": 5,
+    "claude_pct": 100,
+    "streak": 2,
+    "top_project": {
+      "title": "huelights",
+      "commits": 5
+    },
     "days": [
       0,
       0,
       0,
       0,
-      0,
-      0,
+      2,
+      3,
       0
     ],
-    "languages": [],
+    "languages": [
+      "Swift"
+    ],
     "last_week": {
       "label": "WK 43",
       "start": "2026-10-19",
@@ -94,11 +99,27 @@
       },
       {
         "start": "2026-10-26",
-        "score": 0
+        "score": 5
       }
     ]
   },
   "activity": [
+    {
+      "repo": "huelights",
+      "title": "huelights",
+      "message": "Close the popup after a period of inactivity",
+      "sha": "4bcec21",
+      "url": "https://github.com/todddube/huelights/commit/4bcec2120dda4d9189a4ce9be06d0bb913c7b15b",
+      "date": "2026-10-31T09:49:26Z"
+    },
+    {
+      "repo": "huelights",
+      "title": "huelights",
+      "message": "Docs: development guide, README and CLAUDE.md testing notes",
+      "sha": "1dded90",
+      "url": "https://github.com/todddube/huelights/commit/1dded90b0ca5d4f702998239619f589b99609308",
+      "date": "2026-10-31T09:44:38Z"
+    },
     {
       "repo": "C64-Projects",
       "title": "C64 spritemove",
@@ -146,22 +167,6 @@
       "sha": "b3cb925",
       "url": "https://github.com/todddube/macOSMCP/commit/b3cb92576a02f21892ac52fae45ed0b90a3bd126",
       "date": "2026-10-18T17:24:13Z"
-    },
-    {
-      "repo": "wthrr_mac",
-      "title": "wthrr",
-      "message": "release: bump to v1.2 (build 101626) — Retro 8-bit mode",
-      "sha": "1073150",
-      "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59",
-      "date": "2026-10-16T15:50:21Z"
-    },
-    {
-      "repo": "wthrr_mac",
-      "title": "wthrr",
-      "message": "feat: Retro 8-bit mode for every weather type + install script and build agent",
-      "sha": "e7f3b16",
-      "url": "https://github.com/todddube/wthrr_mac/commit/e7f3b1632dab895203f0e0e0ba1425e21f3b8260",
-      "date": "2026-10-16T15:48:04Z"
     }
   ],
   "featured": [
@@ -188,7 +193,7 @@
         "sha": "a1ad75e",
         "url": "https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b"
       },
-      "days_since_commit": 6,
+      "days_since_commit": 7,
       "status": "active",
       "commits_30d": 21,
       "activity": [
@@ -200,10 +205,10 @@
         0,
         2,
         8,
-        6,
-        4,
-        5,
-        6
+        9,
+        1,
+        11,
+        0
       ],
       "release": null,
       "built_with_claude": true
@@ -231,7 +236,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 98,
+      "days_since_commit": 99,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -274,14 +279,14 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 26,
+      "days_since_commit": 27,
       "status": "active",
       "commits_30d": 2,
       "activity": [
         0,
         0,
-        7,
-        3,
+        10,
+        0,
         0,
         0,
         0,
@@ -317,12 +322,11 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 13,
+      "days_since_commit": 14,
       "status": "active",
       "commits_30d": 2,
       "activity": [
-        5,
-        0,
+        4,
         0,
         0,
         0,
@@ -332,6 +336,7 @@
         0,
         0,
         2,
+        0,
         0
       ],
       "release": {
@@ -365,7 +370,7 @@
         "sha": "5a31bb5",
         "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
       },
-      "days_since_commit": 11,
+      "days_since_commit": 12,
       "status": "active",
       "commits_30d": 12,
       "activity": [
@@ -414,7 +419,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 97,
+      "days_since_commit": 98,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -462,7 +467,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 95,
+      "days_since_commit": 96,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -510,7 +515,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 72,
+      "days_since_commit": 73,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -558,7 +563,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 263,
+      "days_since_commit": 264,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -580,6 +585,49 @@
     }
   ],
   "others": [
+    {
+      "name": "huelights",
+      "title": "huelights",
+      "tagline": "HueBar: a native macOS menu bar app for Philips Hue lights and bridge management",
+      "description": "HueBar: a native macOS menu bar app for Philips Hue lights and bridge management",
+      "platform": null,
+      "spotlight": false,
+      "why": null,
+      "image": null,
+      "url": "https://github.com/todddube/huelights",
+      "homepage": null,
+      "language": "Swift",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2026-10-30T20:49:32Z",
+      "last_commit": {
+        "date": "2026-10-31T09:49:26+00:00",
+        "message": "Close the popup after a period of inactivity",
+        "sha": "4bcec21",
+        "url": "https://github.com/todddube/huelights/commit/4bcec2120dda4d9189a4ce9be06d0bb913c7b15b"
+      },
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 5,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5
+      ],
+      "release": null,
+      "built_with_claude": true
+    },
     {
       "name": "c64-agent-kit",
       "title": "c64-agent-kit",
@@ -655,7 +703,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 20,
+      "days_since_commit": 21,
       "status": "active",
       "commits_30d": 1,
       "activity": [
@@ -667,8 +715,8 @@
         0,
         0,
         0,
-        0,
         1,
+        0,
         0,
         0
       ],
@@ -698,7 +746,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 222,
+      "days_since_commit": 223,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -746,7 +794,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 349,
+      "days_since_commit": 350,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -789,7 +837,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 390,
+      "days_since_commit": 391,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -832,7 +880,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 487,
+      "days_since_commit": 488,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -875,7 +923,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 621,
+      "days_since_commit": 622,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -918,7 +966,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 907,
+      "days_since_commit": 908,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
