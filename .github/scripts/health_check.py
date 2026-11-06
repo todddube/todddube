@@ -55,7 +55,7 @@ def check(data, status_fn=http_status, now=None, sleep=time.sleep):
             "The daily 'Update Projects' workflow has stopped producing fresh data; check the Actions tab."
         )
     todo, seen = [], set()
-    for p in data["featured"] + data["others"]:
+    for p in data.get("top", []) + data["featured"] + data["others"]:
         entries = [(f"{p['name']} repo link", p["url"], errors)]
         if p.get("image"):
             entries.append((f"{p['name']} screenshot", p["image"], errors))
@@ -92,7 +92,7 @@ def main():
         print(f"::warning::{w}")
     for e in errors:
         print(f"::error::{e}")
-    total = len(data["featured"]) + len(data["others"]) if data else 0
+    total = len(data.get("top", [])) + len(data["featured"]) + len(data["others"]) if data else 0
     print(f"Checked {SITE}: {total} projects, {len(errors)} error(s), {len(warnings)} warning(s)")
     return 1 if errors else 0
 

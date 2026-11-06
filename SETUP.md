@@ -65,14 +65,21 @@ The "High score" section is an arcade scoreboard computed by the same daily run 
 
 Never hand-edit `projects.json` or the content between `<!-- NAME:START/END -->` markers in `README.md`; the daily run overwrites them. A featured repo that was renamed, made private or archived is dropped from the site, and the run logs a warning annotation naming it.
 
+## The site's extras
+
+- **Most active tiles**: the busiest projects of the last 30 days, ranked, with a 12-week activity strip. Chosen automatically (see `top_count`).
+- **Pac-Man**: runs across the screen at random intervals, either chased by ghosts or chasing scared ones. Skipped for visitors who prefer reduced motion, and in print.
+- **Sound**: off by default because browsers block audio until a visitor interacts. The "Sound" button in the nav turns on chiptune waka-waka and remembers the choice (`td-sound` in localStorage).
+
 ## Choosing what's featured
 
 Edit `key-projects.json`:
 
 | Field | Purpose |
 |---|---|
-| `featured` | Repos shown above "Everything else", in this order. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
-| `featured[].spotlight` / `why` | `"spotlight": true` shows the repo as a large card in the Spotlight grid (in `featured` order); `why` is its one-line pitch. Unflagged repos appear under "More projects". |
+| `featured` | Curated repos (title, tagline, platform, screenshot), listed under "More projects" in this order unless they make the top tiles. `title`, `tagline`, `platform` and `image` (a path inside that repo) are optional. |
+| `top_count` | How many highlight tiles to show at the top (0 to 6, default 4). The daily run picks the repos with the most commits in the last 30 days; a quiet month shows fewer tiles. Nothing to maintain by hand. |
+| `featured[].why` | One-line pitch shown on a repo's highlight tile when it makes the top (falls back to `tagline`). |
 | `featured[].path` | Optional folder inside the repo (e.g. `spritemove`). The card links to that folder instead of the repo root. |
 | `exclude` | Repos never shown. |
 | `include_forks` | Forks to treat as your own work (forks are hidden by default). |
