@@ -1,0 +1,32 @@
+name: Release
+
+# Publishes a GitHub release when a version tag (v1.2.3) is pushed. Tags are made by hand, only when
+# the site, scripts or config change; the daily data update never creates one. The release notes
+# come from versions.json (see .github/scripts/release.py).
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Create the release from versions.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          python3 .github/scripts/release.py notes "$TAG" > notes.md
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --title "$TAG" --notes-file notes.md
+          else
+            gh release create "$TAG" --title "$TAG" --notes-file notes.md --verify-tag
+          fi

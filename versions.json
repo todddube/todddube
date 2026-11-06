@@ -1,0 +1,11 @@
+{
+  "_comment": "Site version history, newest first. Edited only by .github/scripts/release.py when a person (or Claude Code) changes the site by hand. The daily Actions run never touches this file.",
+  "current": "1.0.0",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "date": "2026-11-06",
+      "notes": "Most active tiles for the busiest projects of the last 30 days, a Pac-Man lane under the nav and opt-in arcade sound. Added site versioning."
+    }
+  ]
+}

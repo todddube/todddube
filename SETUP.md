@@ -33,6 +33,7 @@ Everything runs on GitHub Actions with the built-in `GITHUB_TOKEN`; no extra sec
 | Weekly Recap | Mondays 12:00 UTC | Posts last week's recap (score, Claude share, top project, releases, 12-week trend) as an issue labelled `weekly-recap`, then closes it. Set `CLOSE_RECAP` to `"false"` in the workflow to leave them open. | Last week's numbers aren't final yet (re-run after the daily update) or `weekly.json` has no entry for that week. |
 | Validate | On pull requests that touch the config, site, scripts or workflows | Checks `key-projects.json` against the GitHub API, runs the tests, and syntax-checks the page's JavaScript | The PR would break the site or the daily run. |
 | Dependabot | Mondays 6:00 Eastern | Opens one grouped pull request bumping the pinned Action versions | Not a workflow; merge its PR when Validate is green. |
+| Release | When a `vX.Y.Z` tag is pushed | Publishes a GitHub release with the notes from `versions.json` | The tag has no matching entry in `versions.json`. |
 | Snake | Daily 6:00 UTC | Builds the contribution-snake SVGs for the README | |
 | Claude Code, Claude Code Review | `@claude` mentions; pull requests | Claude answers issues and PRs. Review skips Dependabot and fork PRs, which can't read secrets. | |
 
@@ -64,6 +65,18 @@ The "High score" section is an arcade scoreboard computed by the same daily run 
 | Update schedule | `.github/workflows/update-projects.yml` |
 
 Never hand-edit `projects.json` or the content between `<!-- NAME:START/END -->` markers in `README.md`; the daily run overwrites them. A featured repo that was renamed, made private or archived is dropped from the site, and the run logs a warning annotation naming it.
+
+## Versions
+
+The site has a version (shown in the footer, with a brief history) that is separate from the daily data. **Daily runs never change it.** It moves only when the site, scripts or config are changed by hand:
+
+```bash
+python3 .github/scripts/release.py minor "One or two lines on what changed."   # major | minor | patch
+git add -A && git commit -m "..."
+git tag -a v1.1.0 -m v1.1.0 && git push origin main --follow-tags
+```
+
+`release.py` writes the entry to `versions.json`; pushing the tag triggers the Release workflow, which creates the GitHub release from it. Major is a redesign or breaking config change, minor a new feature, patch a fix or copy tweak.
 
 ## The site's extras
 

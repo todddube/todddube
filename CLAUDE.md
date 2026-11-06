@@ -16,11 +16,13 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
 - `README.md` - Profile README; TOP / FEATURED / ACTIVITY / MORE / UPDATED sections are generated
 - `index.html` - Single-file site that fetches `projects.json` client-side; follows the system light/dark setting by default; the toggle saves an override in localStorage (`td-theme-choice`)
 - `CNAME`, `.nojekyll` - Custom domain; serve `index.html` as-is
+- `versions.json` - Site version history (newest first, one or two lines each), shown in the page footer; edited only by `.github/scripts/release.py`
 - `SETUP.md` - How the data flow and curation work
 - `.github/workflows/`:
   - `update-projects.yml` - Daily: validates `key-projects.json`, runs the script, commits `projects.json`, `weekly.json` + `README.md`
   - `health-check.yml` - Daily: checks the live site is up and fresh and its links/screenshots load
   - `weekly-recap.yml` - Mondays: posts last week's recap as a closed issue labelled `weekly-recap`
+  - `release.yml` - On a pushed `vX.Y.Z` tag: creates the GitHub release with notes from `versions.json`
   - `validate.yml` - On pull requests: API-checks the config, runs the tests, syntax-checks the page JavaScript
   - `.github/dependabot.yml` - Weekly grouped PR to bump the pinned Action versions
   - `snake.yml` - Daily: contribution snake SVGs on the `output` branch
@@ -35,4 +37,5 @@ Todd Dube's GitHub profile repository and the GitHub Pages site at www.thedubes.
 - Look and feel is 8-bit on purpose: Sixtyfour (C64 scanlines) for the h1, Press Start 2P for labels, titles and scores, VT323 for all text, plus faint CRT scanlines in dark mode only. Keep square corners and hard offset shadows. VT323 has no bold, so emphasize with color, not weight.
 - To change what's featured, edit `key-projects.json` rather than the README or HTML.
 - The page has a random Pac-Man run (canvas `#pac`) and an opt-in sound toggle (`td-sound`); keep audio opt-in and respect reduced motion.
+- Versioning: the daily Actions run never changes the version. When you change the site, scripts or config by hand here, finish with `python3 .github/scripts/release.py <major|minor|patch> "one or two lines"` (major = redesign or breaking config change, minor = new feature, patch = fix or copy tweak), commit `versions.json` with the change, then `git tag -a vX.Y.Z -m vX.Y.Z` and push with `--follow-tags`. The release workflow publishes the release. Never force-move a tag without asking.
 - Keep the focus on projects. The only personal content is a short intro paragraph (`.hero-about` in index.html, the blockquote in README.md); don't expand it into a bio.
