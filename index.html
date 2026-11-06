@@ -104,7 +104,7 @@
             --font-pixel: 'Press Start 2P', 'VT323', monospace;
             --font-hero: 'Sixtyfour', 'Press Start 2P', monospace;
         }
-        .pixel, .section h2, .log-head h2, .project h3, .spot h3, .media-tile b, .lbl, .num, .stats dt, .day b {
+        .pixel, .section h2, .log-head h2, .project h3, .tile h3, .media-tile b, .lbl, .num, .stats dt, .day b {
             font-family: var(--font-pixel);
             font-weight: 400;
         }
@@ -158,11 +158,13 @@
         .hero {
             display: grid;
             gap: 40px;
-            padding-top: 48px;
-            padding-bottom: 72px;
+            padding-top: 32px;
+            padding-bottom: 40px;
         }
         @media (min-width: 960px) {
-            .hero { grid-template-columns: 1fr 1.05fr; gap: 64px; padding-top: 80px; align-items: start; }
+            .hero { grid-template-columns: 1fr 1.05fr; gap: 56px; padding-top: 40px; align-items: start; }
+            /* Keep the highlight tiles in the top half of the page: the feed shows its five newest */
+            .log li:nth-child(n+6) { display: none; }
         }
         .hero h1 {
             font-size: clamp(26px, 3.3vw, 40px);
@@ -304,25 +306,31 @@
             @keyframes grow { from { transform: scaleY(0); } }
         }
 
-        /* Spotlight: hand-picked projects as larger cards */
-        .spot-grid { display: grid; grid-template-columns: 1fr; gap: 36px; margin-top: 24px; }
-        @media (min-width: 760px) { .spot-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
-        .spot { display: flex; flex-direction: column; gap: 16px; background: var(--surface); padding: 16px 16px 20px; box-shadow: 8px 8px 0 var(--shadow); }
-        .spot .media { box-shadow: none; }
-        .spot h3 { font-size: 16px; letter-spacing: 0; line-height: 1.5; margin: 0 0 10px; }
-        .spot h3 a { text-decoration: none; }
-        .spot h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
-        .why { font-size: 23px; line-height: 1.45; color: var(--ink); margin: 0; }
-        .spot .facts { margin: 0; }
-        .spot-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-top: auto; }
-        .spot .activity { width: 210px; max-width: 100%; }
-        /* An odd last card spans the row: image left, text right */
-        @media (min-width: 760px) {
-            .spot:last-child:nth-child(odd) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; align-content: start; }
-            .spot:last-child:nth-child(odd) .media { grid-column: 1; grid-row: 1 / span 3; align-self: start; }
-            .spot:last-child:nth-child(odd) > :not(.media) { grid-column: 2; }
-            .spot:last-child:nth-child(odd) .spot-foot { align-self: end; }
-        }
+        /* Pac-Man runs across the screen now and then (see the script at the bottom) */
+        #pac { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 99; }
+        @media print, (prefers-reduced-motion: reduce) { #pac { display: none; } }
+
+        /* Most active: the busiest projects of the last 30 days as compact tiles */
+        .tile-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+        @media (min-width: 640px) { .tile-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 1000px) { .tile-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+        .tile { display: flex; flex-direction: column; gap: 12px; background: var(--surface); padding: 12px 12px 16px; box-shadow: 6px 6px 0 var(--shadow); }
+        .tile .media { box-shadow: none; aspect-ratio: 16 / 9; }
+        .tile .media-tile { padding: 10px 12px; }
+        .tile .media-tile b { font-size: 14px; }
+        .tile .media-tile span { font-size: 16px; }
+        .tile-rank { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 18px; color: var(--ink-faint); }
+        .tile-rank .count { color: var(--fresh); }
+        .tile-rank .count b { font-family: var(--font-pixel); font-weight: 400; font-size: 14px; }
+        .tile h3 { font-size: 12px; letter-spacing: 0; line-height: 1.6; margin: 0 0 6px; }
+        .tile h3 a { text-decoration: none; }
+        .tile h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+        .tile .why { font-size: 20px; line-height: 1.3; color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+        .tile .facts { margin: 0; font-size: 17px; gap: 2px 12px; }
+        .tile .bars { height: 33px; gap: 2px; }
+        .tile .bars i { background: repeating-linear-gradient(to top, var(--c) 0 3px, transparent 3px 5px); }
+        .tile-foot { margin-top: auto; display: grid; gap: 8px; }
+        .tile .last { font-size: 16px; }
         .btns { display: flex; gap: 10px; flex-wrap: wrap; }
         .btn { border: 1px solid var(--rule); padding: 7px 14px; font-size: 18px; font-weight: 600; text-decoration: none; color: var(--ink); }
         .btn:hover { border-color: var(--accent); }
@@ -377,15 +385,17 @@
     </style>
 </head>
 <body>
+    <canvas id="pac" aria-hidden="true"></canvas>
     <div class="wrap">
         <nav class="top" aria-label="Site">
             <a class="top-name" href="https://github.com/todddube">todddube <span>/ projects</span></a>
             <div class="top-links">
-                <a class="section-link" href="#spotlight-section">Spotlight</a>
+                <a class="section-link" href="#top-section">Most active</a>
                 <a class="section-link" href="#score-section">High score</a>
                 <a class="section-link" href="#building">More projects</a>
                 <a class="section-link" href="#more">Everything else</a>
                 <a href="https://github.com/todddube">GitHub</a>
+                <button class="theme-btn" id="sound-btn" type="button" aria-pressed="false" aria-label="Turn arcade sound on">Sound: off</button>
                 <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch color theme">Light</button>
             </div>
         </nav>
@@ -411,12 +421,12 @@
         </header>
 
         <main>
-            <section class="section" id="spotlight-section" aria-labelledby="spotlight-title" hidden>
+            <section class="section" id="top-section" aria-labelledby="top-title" hidden>
                 <div class="section-head">
-                    <h2 id="spotlight-title">Spotlight</h2>
-                    <p class="section-note">Hand-picked. Numbers are live from GitHub.</p>
+                    <h2 id="top-title">Most active</h2>
+                    <p class="section-note">What I&rsquo;ve been committing to most in the last 30 days.</p>
                 </div>
-                <div class="spot-grid" id="spotlight"></div>
+                <div class="tile-grid" id="top"></div>
             </section>
 
             <section class="section" id="score-section" aria-labelledby="score-title" hidden>
@@ -505,13 +515,14 @@
                 </li>`).join('') || '<li class="notice">No commits in the last 12 weeks.</li>';
         }
 
-        function bars(activity, freshWeeks = 4) {
+        function bars(activity, freshWeeks = 4, small = false) {
+            const unit = small ? 5 : 7, maxBlocks = small ? 6 : 9;
             const peak = Math.max(1, ...activity);
             const n = activity.length;
             return activity.map((v, i) => {
                 const cls = v === 0 ? 'idle' : (i >= n - freshWeeks ? 'fresh' : '');
-                const blocks = v === 0 ? 1 : Math.max(2, Math.round(v / peak * 9));
-                return `<i class="${cls}" style="height:${blocks * 7 - 2}px;--i:${i}" title="${v} commit${v === 1 ? '' : 's'}, ${n - 1 - i === 0 ? 'this week' : `${n - 1 - i} wk ago`}"></i>`;
+                const blocks = v === 0 ? 1 : Math.max(2, Math.round(v / peak * maxBlocks));
+                return `<i class="${cls}" style="height:${blocks * unit - 2}px;--i:${i}" title="${v} commit${v === 1 ? '' : 's'}, ${n - 1 - i === 0 ? 'this week' : `${n - 1 - i} wk ago`}"></i>`;
             }).join('');
         }
 
@@ -542,21 +553,19 @@
                 <p class="activity-cap">${cap}</p>`;
         }
 
-        function renderSpotlight(projects) {
-            document.getElementById('spotlight').innerHTML = projects.map(p => `
-                <article class="spot">
+        function renderTop(projects) {
+            document.getElementById('top').innerHTML = projects.map((p, i) => `
+                <article class="tile">
                     <a class="media" href="${esc(p.url)}" tabindex="-1" aria-hidden="true">${mediaHtml(p)}</a>
+                    <div class="tile-rank"><span>#${i + 1}</span><span class="count"><b>${p.commits_30d}</b> commit${p.commits_30d === 1 ? '' : 's'} / 30d</span></div>
                     <div>
                         <h3><a href="${esc(p.url)}">${esc(p.title)}</a></h3>
                         <p class="why">${esc(p.why || p.tagline)}</p>
                     </div>
-                    <ul class="facts">${factsHtml(p)}</ul>
-                    <div class="spot-foot">
-                        <div class="activity">${activityHtml(p)}</div>
-                        <div class="btns">
-                            ${p.release ? `<a class="btn primary" href="${esc(p.release.url)}">Release ${esc(p.release.tag)}</a>` : ''}
-                            <a class="btn${p.release ? '' : ' primary'}" href="${esc(p.url)}">View on GitHub</a>
-                        </div>
+                    <div class="tile-foot">
+                        <ul class="facts">${[p.platform && `<li>${esc(p.platform)}</li>`, p.release && `<li><a href="${esc(p.release.url)}">${esc(p.release.tag)}</a></li>`].filter(Boolean).join('')}</ul>
+                        <div class="bars grow" role="img" aria-label="${p.activity.reduce((a, b) => a + b, 0)} commits in the last 12 weeks">${bars(p.activity, 4, true)}</div>
+                        <p class="last">Last commit ${ago(p.last_commit.date)}</p>
                     </div>
                 </article>`).join('');
         }
@@ -635,6 +644,112 @@
                 </tr>`).join('');
         }
 
+
+        // ---- Arcade extras: sound toggle and a randomly timed Pac-Man run ----
+        // Browsers block audio until the visitor interacts, so sound is opt-in and remembered.
+        const soundBtn = document.getElementById('sound-btn');
+        let soundOn = false, audio = null;
+        try { soundOn = localStorage.getItem('td-sound') === 'on'; } catch (e) {}
+        function paintSound() {
+            soundBtn.textContent = soundOn ? 'Sound: on' : 'Sound: off';
+            soundBtn.setAttribute('aria-pressed', String(soundOn));
+            soundBtn.setAttribute('aria-label', `Turn arcade sound ${soundOn ? 'off' : 'on'}`);
+        }
+        paintSound();
+        function blip(freq, ms, delay = 0, type = 'square') {
+            if (!soundOn) return;
+            try {
+                audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+                if (audio.state === 'suspended') audio.resume();
+                const o = audio.createOscillator(), g = audio.createGain(), t = audio.currentTime + delay;
+                o.type = type; o.frequency.setValueAtTime(freq, t);
+                g.gain.setValueAtTime(0.04, t); g.gain.exponentialRampToValueAtTime(0.001, t + ms / 1000);
+                o.connect(g); g.connect(audio.destination); o.start(t); o.stop(t + ms / 1000);
+            } catch (e) {}
+        }
+        soundBtn.addEventListener('click', () => {
+            soundOn = !soundOn;
+            try { localStorage.setItem('td-sound', soundOn ? 'on' : 'off'); } catch (e) {}
+            paintSound();
+            blip(660, 90); blip(990, 120, 0.09);
+        });
+
+        (function pacman() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const cv = document.getElementById('pac'), ctx = cv.getContext('2d');
+            const GHOSTS = ['#FF3B3B', '#FFB8FF', '#3BE6FF', '#FFB852'];
+            let run = null, timer = null, dpr = 1;
+            function size() {
+                dpr = window.devicePixelRatio || 1;
+                cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.imageSmoothingEnabled = false;
+            }
+            addEventListener('resize', size); size();
+
+            function pac(x, y, r, dir, mouth) {
+                ctx.save(); ctx.translate(x, y); if (dir < 0) ctx.scale(-1, 1);
+                ctx.fillStyle = '#FFE000'; ctx.beginPath();
+                ctx.moveTo(0, 0); ctx.arc(0, 0, r, mouth, Math.PI * 2 - mouth); ctx.closePath(); ctx.fill(); ctx.restore();
+            }
+            function ghost(x, y, r, color, frame, scared) {
+                ctx.save(); ctx.translate(x, y);
+                ctx.fillStyle = scared ? '#2121DE' : color;
+                ctx.beginPath(); ctx.arc(0, 0, r, Math.PI, 0); ctx.lineTo(r, r);
+                for (let i = 0; i < 4; i++) ctx.lineTo(r - (i + 0.5) * r / 2, r - (((i + frame) % 2) ? 0 : r * 0.3));
+                ctx.lineTo(-r, r); ctx.closePath(); ctx.fill();
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(-r * 0.6, -r * 0.4, r * 0.45, r * 0.5); ctx.fillRect(r * 0.15, -r * 0.4, r * 0.45, r * 0.5);
+                ctx.fillStyle = scared ? '#fff' : '#1a1a8a';
+                ctx.fillRect(-r * 0.4, -r * 0.2, r * 0.2, r * 0.3); ctx.fillRect(r * 0.35, -r * 0.2, r * 0.2, r * 0.3);
+                ctx.restore();
+            }
+            function start() {
+                // Right-to-left runs are Pac-Man being chased by ghosts; left-to-right he chases scared ghosts
+                const dir = Math.random() < 0.5 ? 1 : -1, r = 18 + Math.floor(Math.random() * 3) * 4;
+                const margin = r * 2 + 40;
+                run = {
+                    dir, r, t0: performance.now(), last: 0, chomp: 0,
+                    y: r + 24 + Math.random() * Math.max(0, innerHeight - 2 * r - 48),
+                    speed: 190 + Math.random() * 130,
+                    x: dir > 0 ? -margin : innerWidth + margin,
+                    ghosts: GHOSTS.slice(0, 2 + Math.floor(Math.random() * 3)),
+                    dots: [],
+                };
+                for (let x = 40; x < innerWidth; x += r * 1.4) run.dots.push(x);
+                requestAnimationFrame(frame);
+            }
+            function frame(now) {
+                if (!run) return;
+                const dt = Math.min(0.05, (now - (run.last || now)) / 1000); run.last = now;
+                run.x += run.dir * run.speed * dt; run.chomp += dt * 9;
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                const f = Math.floor(run.chomp), mouth = Math.abs(Math.sin(run.chomp * Math.PI)) * 0.7 + 0.05;
+                // Dots ahead of Pac-Man; the ones behind are eaten
+                const pellet = getComputedStyle(document.documentElement).getPropertyValue('--ink-soft').trim() || '#aaa';
+                ctx.fillStyle = pellet;
+                run.dots = run.dots.filter(dx => {
+                    const eaten = run.dir > 0 ? dx < run.x : dx > run.x;
+                    if (eaten && Math.abs(dx - run.x) < run.r) { if (!(f % 2)) blip(f % 4 ? 220 : 330, 70, 0, 'triangle'); }
+                    return !eaten;
+                });
+                for (const dx of run.dots) ctx.fillRect(Math.round(dx) - 2, Math.round(run.y) - 2, 4, 4);
+                pac(run.x, run.y, run.r, run.dir, mouth);
+                const scared = run.dir > 0;
+                run.ghosts.forEach((c, i) => {
+                    const gap = (i + 1) * run.r * 2.6;
+                    ghost(run.x + gap, run.y, run.r, c, f, scared);
+                });
+                // Ghosts sit to his right: chasing him when he runs left, fleeing ahead of him when he runs right
+                const off = run.dir > 0 ? run.x - run.r > innerWidth : run.x + (run.ghosts.length + 1) * run.r * 2.6 + run.r < 0;
+                if (off) { run = null; ctx.clearRect(0, 0, innerWidth, innerHeight); schedule(); return; }
+                requestAnimationFrame(frame);
+            }
+            function schedule() { clearTimeout(timer); timer = setTimeout(start, 9000 + Math.random() * 16000); }
+            document.addEventListener('visibilitychange', () => { if (document.hidden) { clearTimeout(timer); run = null; ctx.clearRect(0, 0, innerWidth, innerHeight); } else if (!run) schedule(); });
+            // First appearance soon after load so visitors see it
+            timer = setTimeout(start, 3500);
+        })();
+
         fetch('projects.json', { cache: 'no-cache' })
             .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(data => {
@@ -644,11 +759,11 @@
                 document.getElementById('log-updated').textContent = `as of ${new Date(data.generated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`;
                 document.getElementById('generated').textContent = `Project data updated ${new Date(data.generated_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
                 renderLog(data.activity);
-                const spot = data.featured.filter(p => p.spotlight);
-                const rest = data.featured.filter(p => !p.spotlight);
-                renderSpotlight(spot);
+                const top = data.top || [];
+                const rest = data.featured;
+                renderTop(top);
                 renderFeatured(rest);
-                document.getElementById('spotlight-section').hidden = !spot.length;
+                document.getElementById('top-section').hidden = !top.length;
                 document.getElementById('building').hidden = !rest.length;
                 if (data.week) {
                     renderScore(data.week);

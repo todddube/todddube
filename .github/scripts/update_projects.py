@@ -123,7 +123,6 @@ def build_project(r, cfg, curation):
         "tagline": curation.get("tagline") or r.get("description") or "",
         "description": r.get("description") or "",
         "platform": curation.get("platform"),
-        "spotlight": bool(curation.get("spotlight")),
         "why": curation.get("why"),
         "image": image,
         # `path` in key-projects.json deep-links to a folder (e.g. one demo inside a multi-project repo)
@@ -302,6 +301,26 @@ def md_escape(s):
     return (s or "").replace("|", "\\|")
 
 
+def pick_top(projects, count):
+    """The `count` busiest projects by commits in the last 30 days, ties to the most recent commit.
+    Projects with no commits in that window never qualify, so a quiet month shows fewer tiles."""
+    busy = [p for p in projects if p["commits_30d"] > 0]
+    busy.sort(key=lambda p: (p["commits_30d"], p["last_commit"]["date"]), reverse=True)
+    return busy[:count]
+
+
+def render_top(projects):
+    if not projects:
+        return "_Nothing committed in the last 30 days._"
+    rows = ["| Project | Commits (30 days) | Last 12 weeks |", "|---|---|---|"]
+    for p in projects:
+        rows.append(
+            f"| **[{md_escape(p['title'])}]({p['url']})**<br><sub>{md_escape(p['tagline'])}</sub> "
+            f"| {p['commits_30d']} | `{spark(p['activity'])}` |"
+        )
+    return "\n".join(rows)
+
+
 def render_featured(projects):
     rows = ["| Project | What it is | Latest | Last 12 weeks |", "|---|---|---|---|"]
     for p in projects:
@@ -386,8 +405,12 @@ def main():
         if f["repo"] not in by_name:
             # Renamed, made private, archived or a fork: surfaces as an annotation on the Actions run
             print(f"::warning::Featured repo '{f['repo']}' in key-projects.json was not found among public repos")
+    # The most active projects (commits in the last 30 days) become highlight tiles at the top
+    top = pick_top(projects, cfg.get("top_count", 4))
+    top_names = {p["name"] for p in top}
+    featured = [p for p in featured if p["name"] not in top_names]
     others = sorted(
-        (p for p in projects if p["name"] not in curation),
+        (p for p in projects if p["name"] not in curation and p["name"] not in top_names),
         key=lambda p: p["last_commit"]["date"], reverse=True,
     )
     # Newest first, at most 2 per project so one busy repo doesn't fill the feed
@@ -410,14 +433,16 @@ def main():
         },
         "week": week,
         "activity": feed,
+        "top": top,
         "featured": featured,
         "others": others,
     }
     (ROOT / "projects.json").write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-    print(f"projects.json: {len(featured)} featured, {len(others)} others, {len(feed)} activity items")
+    print(f"projects.json: {len(top)} top, {len(featured)} featured, {len(others)} others, {len(feed)} activity items")
 
     readme = ROOT / "README.md"
     content = readme.read_text()
+    content = replace_section(content, "TOP", render_top(top))
     content = replace_section(content, "FEATURED", render_featured(featured))
     content = replace_section(content, "ACTIVITY", render_activity(feed))
     content = replace_section(content, "MORE", render_more(others))

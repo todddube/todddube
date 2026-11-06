@@ -125,7 +125,7 @@ def main(argv):
               "The daily update hasn't run yet, so last week's numbers might not be final. Re-run this workflow after it does.")
         return 1
     try:
-        title, body = build_recap(weekly, data["featured"] + data["others"], today, tz)
+        title, body = build_recap(weekly, data.get("top", []) + data["featured"] + data["others"], today, tz)
     except LookupError as e:
         print(f"::error::{e}")
         return 1

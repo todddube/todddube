@@ -10,7 +10,7 @@ import validate_config as vc  # noqa: E402
 GOOD = {
     "owner": "todddube", "timezone": "America/New_York", "exclude": ["todddube"], "include_forks": [],
     "featured": [
-        {"repo": "C64-Projects", "spotlight": True, "title": "C64 spritemove", "why": "A demo.", "path": "spritemove"},
+        {"repo": "C64-Projects", "title": "C64 spritemove", "why": "A demo.", "path": "spritemove"},
         {"repo": "vstat", "tagline": "Status checker"},
     ],
 }
@@ -40,8 +40,8 @@ class OfflineChecks(unittest.TestCase):
             "missing repo": lambda c: c["featured"].append({"title": "x"}),
             "duplicate": lambda c: c["featured"].append({"repo": "vstat"}),
             "excluded": lambda c: c["exclude"].append("vstat"),
-            "spotlight without why": lambda c: c["featured"][1].update(spotlight=True),
-            "spotlight not a bool": lambda c: c["featured"][1].update(spotlight="yes"),
+            "top_count too big": lambda c: c.update(top_count=9),
+            "top_count not a number": lambda c: c.update(top_count="four"),
             "bad timezone": lambda c: c.update(timezone="Eastern"),
             "image is a url": lambda c: c["featured"][1].update(image="https://x.com/a.png"),
             "path escapes repo": lambda c: c["featured"][1].update(path="../etc"),
@@ -60,8 +60,6 @@ class OfflineChecks(unittest.TestCase):
         self.assertTrue(any("unknown key" in x for x in w))
         _, w = vc.check_config(mutated(lambda c: c["featured"][0].update(why="x" * 250)))
         self.assertTrue(any("characters" in x for x in w))
-        _, w = vc.check_config(mutated(lambda c: c["featured"][0].update(spotlight=False)))
-        self.assertTrue(any("Spotlight section will be hidden" in x for x in w))
 
     def test_non_object(self):
         self.assertTrue(vc.check_config([])[0])

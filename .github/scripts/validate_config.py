@@ -21,7 +21,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = ROOT / "key-projects.json"
 API = "https://api.github.com"
-FEATURED_KEYS = {"repo", "title", "tagline", "platform", "image", "path", "spotlight", "why"}
+FEATURED_KEYS = {"repo", "title", "tagline", "platform", "image", "path", "why"}
 MAX_WHY = 200
 
 
@@ -44,7 +44,7 @@ def check_config(cfg):
         if key in cfg and not (isinstance(cfg[key], list) and all(isinstance(x, str) for x in cfg[key])):
             errors.append(f"'{key}' must be a list of repo names")
 
-    for key, lo, hi in (("activity_weeks", 4, 26), ("activity_items", 1, 20)):
+    for key, lo, hi in (("activity_weeks", 4, 26), ("activity_items", 1, 20), ("top_count", 0, 6)):
         if key in cfg and not (isinstance(cfg[key], int) and not isinstance(cfg[key], bool) and lo <= cfg[key] <= hi):
             errors.append(f"'{key}' must be a whole number from {lo} to {hi}")
 
@@ -54,7 +54,7 @@ def check_config(cfg):
         return errors, warnings
 
     excluded = set(cfg.get("exclude", [])) if isinstance(cfg.get("exclude"), list) else set()
-    seen, spotlights = set(), 0
+    seen = set()
     for i, f in enumerate(featured):
         if not isinstance(f, dict) or not isinstance(f.get("repo"), str) or not f["repo"].strip():
             errors.append(f"featured[{i}]: needs a 'repo' name")
@@ -71,20 +71,12 @@ def check_config(cfg):
         for key in ("title", "tagline", "platform", "image", "path", "why"):
             if key in f and not (isinstance(f[key], str) and f[key].strip()):
                 errors.append(f"{where}: '{key}' must be a non-empty string")
-        if "spotlight" in f and not isinstance(f["spotlight"], bool):
-            errors.append(f"{where}: 'spotlight' must be true or false")
-        if f.get("spotlight") is True:
-            spotlights += 1
-            if not f.get("why"):
-                errors.append(f"{where}: a spotlight project needs a 'why' line")
         if isinstance(f.get("why"), str) and len(f["why"]) > MAX_WHY:
             warnings.append(f"{where}: 'why' is {len(f['why'])} characters; over {MAX_WHY} it gets long on a card")
         if isinstance(f.get("path"), str) and (f["path"].startswith("/") or ".." in f["path"].split("/")):
             errors.append(f"{where}: 'path' must be a folder inside the repo, like 'spritemove'")
         if isinstance(f.get("image"), str) and f["image"].startswith(("http://", "https://")):
             errors.append(f"{where}: 'image' is a path inside the repo (like 'docs/shot.png'), not a URL")
-    if spotlights == 0:
-        warnings.append("No project has \"spotlight\": true, so the Spotlight section will be hidden")
     return errors, warnings
 
 
