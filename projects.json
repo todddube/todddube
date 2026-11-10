@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-09T19:32:00+00:00",
+  "generated_at": "2026-11-10T16:48:54+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 19,
-    "active": 7,
-    "commits_30d": 37,
+    "active": 6,
+    "commits_30d": 40,
     "built_with_claude": 12
   },
   "week": {
@@ -12,16 +12,19 @@
     "label": "WK 46",
     "start": "2026-11-09",
     "end": "2026-11-15",
-    "today_index": 0,
-    "score": 0,
-    "projects": 0,
-    "active_days": 0,
-    "claude_commits": 0,
-    "claude_pct": null,
-    "streak": 1,
-    "top_project": null,
+    "today_index": 1,
+    "score": 3,
+    "projects": 1,
+    "active_days": 1,
+    "claude_commits": 3,
+    "claude_pct": 100,
+    "streak": 2,
+    "top_project": {
+      "title": "claudeMon",
+      "commits": 3
+    },
     "days": [
-      0,
+      3,
       0,
       0,
       0,
@@ -29,7 +32,9 @@
       0,
       0
     ],
-    "languages": [],
+    "languages": [
+      "Python"
+    ],
     "last_week": {
       "label": "WK 45",
       "start": "2026-11-02",
@@ -94,7 +99,7 @@
       },
       {
         "start": "2026-11-09",
-        "score": 0
+        "score": 3
       }
     ]
   },
@@ -102,18 +107,18 @@
     {
       "repo": "claudeMon",
       "title": "claudeMon",
-      "message": "Add a mini view that resizes its window to fit (z, --mini)",
-      "sha": "0da058b",
-      "url": "https://github.com/todddube/claudeMon/commit/0da058bcbe76b46219c2b7fddc156a8013d19c11",
-      "date": "2026-11-08T16:33:46Z"
+      "message": "Screenshot of the VS Code workspace for the PR",
+      "sha": "d295fbf",
+      "url": "https://github.com/todddube/claudeMon/commit/d295fbf49788506f4fde696e879f96b9947bebaf",
+      "date": "2026-11-09T23:45:17Z"
     },
     {
       "repo": "claudeMon",
       "title": "claudeMon",
-      "message": "Five graph styles, utils/ folder, requirements files, refreshed screenshots",
-      "sha": "a4651cf",
-      "url": "https://github.com/todddube/claudeMon/commit/a4651cf6a6986e426bc152a15f0c48bc6eb241d0",
-      "date": "2026-11-08T13:11:42Z"
+      "message": "Add a VS Code workspace in claudeMon's own colours",
+      "sha": "4f28d23",
+      "url": "https://github.com/todddube/claudeMon/commit/4f28d23a410c611d171183b34448a09d6026dd00",
+      "date": "2026-11-09T23:42:58Z"
     },
     {
       "repo": "huelights",
@@ -187,18 +192,18 @@
         "sha": "a1ad75e",
         "url": "https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b"
       },
-      "days_since_commit": 16,
+      "days_since_commit": 17,
       "status": "active",
-      "commits_30d": 12,
+      "commits_30d": 11,
       "activity": [
         0,
         0,
         0,
         0,
         2,
-        4,
-        7,
-        7,
+        8,
+        5,
+        5,
         2,
         9,
         0,
@@ -206,6 +211,54 @@
       ],
       "release": null,
       "built_with_claude": true
+    },
+    {
+      "name": "claudeMon",
+      "title": "claudeMon",
+      "tagline": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
+      "description": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
+      "platform": null,
+      "why": null,
+      "image": null,
+      "url": "https://github.com/todddube/claudeMon",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "claude-code",
+        "monitoring",
+        "python",
+        "terminal",
+        "tui"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2026-11-08T12:50:20Z",
+      "last_commit": {
+        "date": "2026-11-10T12:54:10+00:00",
+        "message": "Merge pull request #1 from todddube/joe/harden-tap-installer",
+        "sha": "fe82728",
+        "url": "https://github.com/todddube/claudeMon/commit/fe8272892516c9afd26eb378dea18d2f1803f18c"
+      },
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 9,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9
+      ],
+      "release": null,
+      "built_with_claude": false
     },
     {
       "name": "macOSMCP",
@@ -229,7 +282,7 @@
         "sha": "5a31bb5",
         "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
       },
-      "days_since_commit": 21,
+      "days_since_commit": 22,
       "status": "active",
       "commits_30d": 7,
       "activity": [
@@ -271,7 +324,7 @@
         "sha": "9ddb1e8",
         "url": "https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732"
       },
-      "days_since_commit": 8,
+      "days_since_commit": 9,
       "status": "active",
       "commits_30d": 6,
       "activity": [
@@ -290,54 +343,6 @@
       ],
       "release": null,
       "built_with_claude": true
-    },
-    {
-      "name": "claudeMon",
-      "title": "claudeMon",
-      "tagline": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
-      "description": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
-      "platform": null,
-      "why": null,
-      "image": null,
-      "url": "https://github.com/todddube/claudeMon",
-      "homepage": null,
-      "language": "Python",
-      "topics": [
-        "claude-code",
-        "monitoring",
-        "python",
-        "terminal",
-        "tui"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "open_issues": 0,
-      "created_at": "2026-11-08T12:50:20Z",
-      "last_commit": {
-        "date": "2026-11-08T16:33:46+00:00",
-        "message": "Add a mini view that resizes its window to fit (z, --mini)",
-        "sha": "0da058b",
-        "url": "https://github.com/todddube/claudeMon/commit/0da058bcbe76b46219c2b7fddc156a8013d19c11"
-      },
-      "days_since_commit": 1,
-      "status": "active",
-      "commits_30d": 5,
-      "activity": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        5
-      ],
-      "release": null,
-      "built_with_claude": false
     }
   ],
   "featured": [
@@ -363,7 +368,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 108,
+      "days_since_commit": 109,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -405,7 +410,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 36,
+      "days_since_commit": 37,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -447,7 +452,7 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 24,
+      "days_since_commit": 25,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -503,7 +508,7 @@
         "sha": "ed57d29",
         "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d"
       },
-      "days_since_commit": 17,
+      "days_since_commit": 18,
       "status": "active",
       "commits_30d": 5,
       "activity": [
@@ -551,7 +556,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 107,
+      "days_since_commit": 108,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -736,8 +741,8 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 30,
-      "status": "active",
+      "days_since_commit": 31,
+      "status": "recent",
       "commits_30d": 0,
       "activity": [
         0,
@@ -825,7 +830,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 359,
+      "days_since_commit": 360,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -867,7 +872,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 400,
+      "days_since_commit": 401,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -951,7 +956,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 632,
+      "days_since_commit": 633,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
