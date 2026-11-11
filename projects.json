@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-10T16:48:54+00:00",
+  "generated_at": "2026-11-11T16:55:20+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 19,
     "active": 6,
-    "commits_30d": 40,
+    "commits_30d": 42,
     "built_with_claude": 12
   },
   "week": {
@@ -12,20 +12,20 @@
     "label": "WK 46",
     "start": "2026-11-09",
     "end": "2026-11-15",
-    "today_index": 1,
-    "score": 3,
+    "today_index": 2,
+    "score": 4,
     "projects": 1,
-    "active_days": 1,
-    "claude_commits": 3,
+    "active_days": 2,
+    "claude_commits": 4,
     "claude_pct": 100,
-    "streak": 2,
+    "streak": 3,
     "top_project": {
       "title": "claudeMon",
-      "commits": 3
+      "commits": 4
     },
     "days": [
       3,
-      0,
+      1,
       0,
       0,
       0,
@@ -99,7 +99,7 @@
       },
       {
         "start": "2026-11-09",
-        "score": 3
+        "score": 4
       }
     ]
   },
@@ -107,18 +107,18 @@
     {
       "repo": "claudeMon",
       "title": "claudeMon",
-      "message": "Screenshot of the VS Code workspace for the PR",
-      "sha": "d295fbf",
-      "url": "https://github.com/todddube/claudeMon/commit/d295fbf49788506f4fde696e879f96b9947bebaf",
-      "date": "2026-11-09T23:45:17Z"
+      "message": "Mini view follow-ups: manual/help keys, small-window prompt guard, docs",
+      "sha": "ffaff89",
+      "url": "https://github.com/todddube/claudeMon/commit/ffaff890310217a04ad840b57383384b1ddae89b",
+      "date": "2026-11-10T22:00:17Z"
     },
     {
       "repo": "claudeMon",
       "title": "claudeMon",
-      "message": "Add a VS Code workspace in claudeMon's own colours",
-      "sha": "4f28d23",
-      "url": "https://github.com/todddube/claudeMon/commit/4f28d23a410c611d171183b34448a09d6026dd00",
-      "date": "2026-11-09T23:42:58Z"
+      "message": "Screenshot of the VS Code workspace for the PR",
+      "sha": "d295fbf",
+      "url": "https://github.com/todddube/claudeMon/commit/d295fbf49788506f4fde696e879f96b9947bebaf",
+      "date": "2026-11-09T23:45:17Z"
     },
     {
       "repo": "huelights",
@@ -171,48 +171,6 @@
   ],
   "top": [
     {
-      "name": "C64-Projects",
-      "title": "C64 spritemove",
-      "tagline": "A Commodore 64 demo in 6502 assembly: raster bars, then up to 16 bouncing balls multiplexed through the VIC-II's eight hardware sprites.",
-      "description": "",
-      "platform": "Commodore 64",
-      "why": "Raster-bar overture, then up to 16 rolling Boing balls with real elastic collisions, flying through the open border. A raster IRQ multiplexes them over the VIC-II's eight sprites.",
-      "image": null,
-      "url": "https://github.com/todddube/C64-Projects/tree/main/spritemove",
-      "homepage": null,
-      "language": "Assembly",
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "open_issues": 0,
-      "created_at": "2024-01-28T20:23:46Z",
-      "last_commit": {
-        "date": "2026-10-24T14:33:49+00:00",
-        "message": "demos/Dust Tutorial - Spritro: cursor keys steer, Nightshift plays under the effects",
-        "sha": "a1ad75e",
-        "url": "https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b"
-      },
-      "days_since_commit": 17,
-      "status": "active",
-      "commits_30d": 11,
-      "activity": [
-        0,
-        0,
-        0,
-        0,
-        2,
-        8,
-        5,
-        5,
-        2,
-        9,
-        0,
-        0
-      ],
-      "release": null,
-      "built_with_claude": true
-    },
-    {
       "name": "claudeMon",
       "title": "claudeMon",
       "tagline": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
@@ -235,14 +193,14 @@
       "open_issues": 0,
       "created_at": "2026-11-08T12:50:20Z",
       "last_commit": {
-        "date": "2026-11-10T12:54:10+00:00",
-        "message": "Merge pull request #1 from todddube/joe/harden-tap-installer",
-        "sha": "fe82728",
-        "url": "https://github.com/todddube/claudeMon/commit/fe8272892516c9afd26eb378dea18d2f1803f18c"
+        "date": "2026-11-10T22:00:59+00:00",
+        "message": "Merge pull request #2 from todddube/mini-followups",
+        "sha": "815b5bb",
+        "url": "https://github.com/todddube/claudeMon/commit/815b5bb10d8301435041e25d864e100a440c3674"
       },
       "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 9,
+      "commits_30d": 11,
       "activity": [
         0,
         0,
@@ -255,10 +213,52 @@
         0,
         0,
         0,
-        9
+        11
       ],
       "release": null,
       "built_with_claude": false
+    },
+    {
+      "name": "C64-Projects",
+      "title": "C64 spritemove",
+      "tagline": "A Commodore 64 demo in 6502 assembly: raster bars, then up to 16 bouncing balls multiplexed through the VIC-II's eight hardware sprites.",
+      "description": "",
+      "platform": "Commodore 64",
+      "why": "Raster-bar overture, then up to 16 rolling Boing balls with real elastic collisions, flying through the open border. A raster IRQ multiplexes them over the VIC-II's eight sprites.",
+      "image": null,
+      "url": "https://github.com/todddube/C64-Projects/tree/main/spritemove",
+      "homepage": null,
+      "language": "Assembly",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2024-01-28T20:23:46Z",
+      "last_commit": {
+        "date": "2026-10-24T14:33:49+00:00",
+        "message": "demos/Dust Tutorial - Spritro: cursor keys steer, Nightshift plays under the effects",
+        "sha": "a1ad75e",
+        "url": "https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b"
+      },
+      "days_since_commit": 18,
+      "status": "active",
+      "commits_30d": 11,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        8,
+        5,
+        5,
+        2,
+        9,
+        0,
+        0
+      ],
+      "release": null,
+      "built_with_claude": true
     },
     {
       "name": "macOSMCP",
@@ -282,7 +282,7 @@
         "sha": "5a31bb5",
         "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
       },
-      "days_since_commit": 22,
+      "days_since_commit": 23,
       "status": "active",
       "commits_30d": 7,
       "activity": [
@@ -324,7 +324,7 @@
         "sha": "9ddb1e8",
         "url": "https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732"
       },
-      "days_since_commit": 9,
+      "days_since_commit": 10,
       "status": "active",
       "commits_30d": 6,
       "activity": [
@@ -368,7 +368,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 109,
+      "days_since_commit": 110,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -410,7 +410,7 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 37,
+      "days_since_commit": 38,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -452,7 +452,7 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 25,
+      "days_since_commit": 26,
       "status": "active",
       "commits_30d": 2,
       "activity": [
@@ -508,7 +508,7 @@
         "sha": "ed57d29",
         "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d"
       },
-      "days_since_commit": 18,
+      "days_since_commit": 19,
       "status": "active",
       "commits_30d": 5,
       "activity": [
@@ -556,7 +556,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 108,
+      "days_since_commit": 109,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -603,7 +603,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 106,
+      "days_since_commit": 107,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -650,11 +650,11 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 83,
+      "days_since_commit": 84,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        2,
+        0,
         0,
         0,
         0,
@@ -697,7 +697,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 274,
+      "days_since_commit": 275,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -741,7 +741,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 31,
+      "days_since_commit": 32,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -783,7 +783,7 @@
         "sha": "610c27a",
         "url": "https://github.com/todddube/wthrr_windows/commit/610c27ab4cd56d2014568885d17863b5b83796a0"
       },
-      "days_since_commit": 233,
+      "days_since_commit": 234,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -830,7 +830,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 360,
+      "days_since_commit": 361,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -872,7 +872,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 401,
+      "days_since_commit": 402,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -914,7 +914,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 498,
+      "days_since_commit": 499,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -956,7 +956,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 633,
+      "days_since_commit": 634,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -998,7 +998,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 918,
+      "days_since_commit": 919,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
