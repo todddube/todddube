@@ -150,21 +150,24 @@
       }
     },
     "2026-11-09": {
-      "commits": 4,
+      "commits": 41,
       "projects": 1,
-      "active_days": 2,
-      "claude_commits": 4,
+      "active_days": 3,
+      "claude_commits": 41,
       "top_project": {
         "title": "claudeMon",
-        "commits": 4
+        "commits": 41
       }
     },
     "2026-11-16": {
-      "commits": 0,
-      "projects": 0,
-      "active_days": 0,
-      "claude_commits": 0,
-      "top_project": null
+      "commits": 7,
+      "projects": 1,
+      "active_days": 1,
+      "claude_commits": 7,
+      "top_project": {
+        "title": "claudeMon",
+        "commits": 7
+      }
     }
   }
 }
