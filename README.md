@@ -10,7 +10,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 > I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
 
 <!-- UPDATED:START -->
-<sub>Updated Nov 18, 2026 from the GitHub API · 5 projects active in the last 30 days · WK 47: 7 commits</sub>
+<sub>Updated Nov 19, 2026 from the GitHub API · 4 projects active in the last 30 days · WK 47: 7 commits</sub>
 <!-- UPDATED:END -->
 
 ## Most active right now
@@ -42,13 +42,13 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 ## Latest commits
 
 <!-- ACTIVITY:START -->
-- **claudeMon** · [`9a7380a`](https://github.com/todddube/claudeMon/commit/9a7380a4f7d7a60705fd60fe2f0c6119f6c0740b) CI: no uv cache for the parity job <sub>yesterday</sub>
-- **claudeMon** · [`8de2b62`](https://github.com/todddube/claudeMon/commit/8de2b62c0e82bdf5577e66354fb68d18485e9eef) Tap fallback: advice that works, and the reason on the TUI line <sub>yesterday</sub>
-- **HueBar** · [`9ddb1e8`](https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732) Show build date and repository in About and the version tooltip <sub>17 days ago</sub>
-- **HueBar** · [`4bcec21`](https://github.com/todddube/huelights/commit/4bcec2120dda4d9189a4ce9be06d0bb913c7b15b) Close the popup after a period of inactivity <sub>18 days ago</sub>
-- **C64 spritemove** · [`a1ad75e`](https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b) demos/Dust Tutorial - Spritro: cursor keys steer, Nightshift plays under the effects <sub>25 days ago</sub>
-- **C64 spritemove** · [`da4534d`](https://github.com/todddube/C64-Projects/commit/da4534da5e2e9dacdd489d613198d6bd8f392410) demos/Dust Tutorial - Spritro: flame, rockets, asteroids, collisions and SFX <sub>25 days ago</sub>
-- **C64 Agent Kit** · [`ed57d29`](https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d) Document that the .prg is always named after the source file <sub>26 days ago</sub>
+- **claudeMon** · [`9a7380a`](https://github.com/todddube/claudeMon/commit/9a7380a4f7d7a60705fd60fe2f0c6119f6c0740b) CI: no uv cache for the parity job <sub>2 days ago</sub>
+- **claudeMon** · [`8de2b62`](https://github.com/todddube/claudeMon/commit/8de2b62c0e82bdf5577e66354fb68d18485e9eef) Tap fallback: advice that works, and the reason on the TUI line <sub>2 days ago</sub>
+- **HueBar** · [`9ddb1e8`](https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732) Show build date and repository in About and the version tooltip <sub>18 days ago</sub>
+- **HueBar** · [`4bcec21`](https://github.com/todddube/huelights/commit/4bcec2120dda4d9189a4ce9be06d0bb913c7b15b) Close the popup after a period of inactivity <sub>19 days ago</sub>
+- **C64 spritemove** · [`a1ad75e`](https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b) demos/Dust Tutorial - Spritro: cursor keys steer, Nightshift plays under the effects <sub>26 days ago</sub>
+- **C64 spritemove** · [`da4534d`](https://github.com/todddube/C64-Projects/commit/da4534da5e2e9dacdd489d613198d6bd8f392410) demos/Dust Tutorial - Spritro: flame, rockets, asteroids, collisions and SFX <sub>26 days ago</sub>
+- **C64 Agent Kit** · [`ed57d29`](https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d) Document that the .prg is always named after the source file <sub>27 days ago</sub>
 - **C64 Agent Kit** · [`cbd0b60`](https://github.com/todddube/c64-agent-kit/commit/cbd0b606448edf3aa39883d14906e2dee9e89daf) Include sunsided/6502-skills as a submodule and install its 6502-* skills <sub>1 mo ago</sub>
 <!-- ACTIVITY:END -->
 
