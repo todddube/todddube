@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-20T17:34:38+00:00",
+  "generated_at": "2026-11-21T16:37:50+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 19,
-    "active": 4,
-    "commits_30d": 82,
+    "active": 5,
+    "commits_30d": 89,
     "built_with_claude": 12
   },
   "week": {
@@ -12,13 +12,13 @@
     "label": "WK 47",
     "start": "2026-11-16",
     "end": "2026-11-22",
-    "today_index": 4,
-    "score": 9,
-    "projects": 1,
-    "active_days": 2,
-    "claude_commits": 9,
+    "today_index": 5,
+    "score": 16,
+    "projects": 2,
+    "active_days": 3,
+    "claude_commits": 16,
     "claude_pct": 100,
-    "streak": 1,
+    "streak": 2,
     "top_project": {
       "title": "claudeMon",
       "commits": 9
@@ -29,11 +29,12 @@
       0,
       0,
       2,
-      0,
+      7,
       0
     ],
     "languages": [
-      "Python"
+      "Python",
+      "Swift"
     ],
     "last_week": {
       "label": "WK 46",
@@ -99,11 +100,27 @@
       },
       {
         "start": "2026-11-16",
-        "score": 9
+        "score": 16
       }
     ]
   },
   "activity": [
+    {
+      "repo": "macOSMCP",
+      "title": "MacBridge",
+      "message": "Write richer repeats, several alerts and per-event time zones",
+      "sha": "616b9f6",
+      "url": "https://github.com/todddube/macOSMCP/commit/616b9f67d31b8a82a914c98a3fead6aa6839125a",
+      "date": "2026-11-21T13:28:22Z"
+    },
+    {
+      "repo": "macOSMCP",
+      "title": "MacBridge",
+      "message": "Cut menu-bar animation CPU ~10x; harden the bridge's accept loop",
+      "sha": "26a187f",
+      "url": "https://github.com/todddube/macOSMCP/commit/26a187f333fc718f8887feacd4c4a508986c8de9",
+      "date": "2026-11-21T13:11:44Z"
+    },
     {
       "repo": "claudeMon",
       "title": "claudeMon",
@@ -151,22 +168,6 @@
       "sha": "da4534d",
       "url": "https://github.com/todddube/C64-Projects/commit/da4534da5e2e9dacdd489d613198d6bd8f392410",
       "date": "2026-10-24T11:50:36Z"
-    },
-    {
-      "repo": "c64-agent-kit",
-      "title": "C64 Agent Kit",
-      "message": "Document that the .prg is always named after the source file",
-      "sha": "ed57d29",
-      "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d",
-      "date": "2026-10-23T15:19:25Z"
-    },
-    {
-      "repo": "c64-agent-kit",
-      "title": "C64 Agent Kit",
-      "message": "Include sunsided/6502-skills as a submodule and install its 6502-* skills",
-      "sha": "cbd0b60",
-      "url": "https://github.com/todddube/c64-agent-kit/commit/cbd0b606448edf3aa39883d14906e2dee9e89daf",
-      "date": "2026-10-18T22:10:06Z"
     }
   ],
   "top": [
@@ -198,7 +199,7 @@
         "sha": "6a4ac5f",
         "url": "https://github.com/todddube/claudeMon/commit/6a4ac5f6072b95e3ecc9113b1ec77365f0e03502"
       },
-      "days_since_commit": 0,
+      "days_since_commit": 1,
       "status": "active",
       "commits_30d": 66,
       "activity": [
@@ -240,22 +241,64 @@
         "sha": "a1ad75e",
         "url": "https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b"
       },
-      "days_since_commit": 27,
+      "days_since_commit": 28,
       "status": "active",
       "commits_30d": 9,
       "activity": [
         0,
         0,
         0,
-        2,
-        8,
         6,
         4,
-        5,
-        6,
+        9,
+        1,
+        11,
+        0,
         0,
         0,
         0
+      ],
+      "release": null,
+      "built_with_claude": true
+    },
+    {
+      "name": "macOSMCP",
+      "title": "MacBridge",
+      "tagline": "Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.",
+      "description": "Macos MCP for Apple Apps",
+      "platform": "macOS",
+      "why": "Calendar and Reminders for Claude Code and Claude Desktop. A menu-bar app and MCP server that runs entirely on your Mac, with no network.",
+      "image": null,
+      "url": "https://github.com/todddube/macOSMCP",
+      "homepage": null,
+      "language": "Swift",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 1,
+      "created_at": "2026-02-28T16:47:13Z",
+      "last_commit": {
+        "date": "2026-11-21T13:28:22+00:00",
+        "message": "Write richer repeats, several alerts and per-event time zones",
+        "sha": "616b9f6",
+        "url": "https://github.com/todddube/macOSMCP/commit/616b9f67d31b8a82a914c98a3fead6aa6839125a"
+      },
+      "days_since_commit": 0,
+      "status": "active",
+      "commits_30d": 7,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        2,
+        5,
+        0,
+        0,
+        0,
+        7
       ],
       "release": null,
       "built_with_claude": true
@@ -282,7 +325,7 @@
         "sha": "9ddb1e8",
         "url": "https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732"
       },
-      "days_since_commit": 19,
+      "days_since_commit": 20,
       "status": "active",
       "commits_30d": 6,
       "activity": [
@@ -294,59 +337,8 @@
         0,
         0,
         0,
-        0,
-        6,
-        0,
-        0
-      ],
-      "release": null,
-      "built_with_claude": true
-    },
-    {
-      "name": "c64-agent-kit",
-      "title": "C64 Agent Kit",
-      "tagline": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot and Gemini CLI.",
-      "description": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot, Gemini CLI.",
-      "platform": "Commodore 64",
-      "why": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE and Regenerator 2000, for Claude Code and friends.",
-      "image": null,
-      "url": "https://github.com/todddube/c64-agent-kit",
-      "homepage": null,
-      "language": "Python",
-      "topics": [
-        "6502",
-        "agent-skills",
-        "assembly",
-        "c64",
-        "claude-code",
-        "commodore-64",
-        "kickassembler",
-        "vice-emulator"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "open_issues": 0,
-      "created_at": "2026-10-18T13:12:32Z",
-      "last_commit": {
-        "date": "2026-10-23T15:19:25+00:00",
-        "message": "Document that the .prg is always named after the source file",
-        "sha": "ed57d29",
-        "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d"
-      },
-      "days_since_commit": 28,
-      "status": "active",
-      "commits_30d": 1,
-      "activity": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         5,
-        0,
-        0,
+        1,
         0,
         0
       ],
@@ -377,7 +369,7 @@
         "sha": "b371dd0",
         "url": "https://github.com/todddube/spacerunner/commit/b371dd01b03524d7227d9858a81eeb2a72137fda"
       },
-      "days_since_commit": 119,
+      "days_since_commit": 120,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -419,11 +411,11 @@
         "sha": "735ac1c",
         "url": "https://github.com/todddube/vstat_mac/commit/735ac1c58ff08165347b509f8b835f3d1a14af86"
       },
-      "days_since_commit": 47,
+      "days_since_commit": 48,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
-        3,
+        0,
         0,
         0,
         0,
@@ -461,7 +453,7 @@
         "sha": "1073150",
         "url": "https://github.com/todddube/wthrr_mac/commit/10731505348d5c617e2c9ec3001d0978ca596a59"
       },
-      "days_since_commit": 35,
+      "days_since_commit": 36,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -487,38 +479,47 @@
       "built_with_claude": true
     },
     {
-      "name": "macOSMCP",
-      "title": "MacBridge",
-      "tagline": "Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.",
-      "description": "Macos MCP for Apple Apps",
-      "platform": "macOS",
-      "why": "Calendar and Reminders for Claude Code and Claude Desktop. A menu-bar app and MCP server that runs entirely on your Mac, with no network.",
+      "name": "c64-agent-kit",
+      "title": "C64 Agent Kit",
+      "tagline": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot and Gemini CLI.",
+      "description": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE, Regenerator 2000. Works in Claude Code, Codex, Cursor, Copilot, Gemini CLI.",
+      "platform": "Commodore 64",
+      "why": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE and Regenerator 2000, for Claude Code and friends.",
       "image": null,
-      "url": "https://github.com/todddube/macOSMCP",
+      "url": "https://github.com/todddube/c64-agent-kit",
       "homepage": null,
-      "language": "Swift",
-      "topics": [],
+      "language": "Python",
+      "topics": [
+        "6502",
+        "agent-skills",
+        "assembly",
+        "c64",
+        "claude-code",
+        "commodore-64",
+        "kickassembler",
+        "vice-emulator"
+      ],
       "stars": 0,
       "forks": 0,
-      "open_issues": 1,
-      "created_at": "2026-02-28T16:47:13Z",
+      "open_issues": 0,
+      "created_at": "2026-10-18T13:12:32Z",
       "last_commit": {
-        "date": "2026-10-18T22:09:26+00:00",
-        "message": "Permission timeouts, Check for Updates, accessibility, CI, and BUILDING.md",
-        "sha": "5a31bb5",
-        "url": "https://github.com/todddube/macOSMCP/commit/5a31bb5cbe684c46ca8281a082032ac6466c7cd5"
+        "date": "2026-10-23T15:19:25+00:00",
+        "message": "Document that the .prg is always named after the source file",
+        "sha": "ed57d29",
+        "url": "https://github.com/todddube/c64-agent-kit/commit/ed57d297ded068ed26d4e2af30a2b7fa44b4c35d"
       },
-      "days_since_commit": 32,
-      "status": "recent",
-      "commits_30d": 0,
+      "days_since_commit": 29,
+      "status": "active",
+      "commits_30d": 1,
       "activity": [
         0,
         0,
         0,
         0,
         0,
-        5,
-        2,
+        0,
+        0,
         5,
         0,
         0,
@@ -556,7 +557,7 @@
         "sha": "60cf570",
         "url": "https://github.com/todddube/reviewAppPerms/commit/60cf5703c255c499851503faec2edee6e24630d0"
       },
-      "days_since_commit": 118,
+      "days_since_commit": 119,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -603,7 +604,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 116,
+      "days_since_commit": 117,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -650,7 +651,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 93,
+      "days_since_commit": 94,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -697,7 +698,7 @@
         "sha": "fa61de2",
         "url": "https://github.com/todddube/retrosvr/commit/fa61de29a516b66b7e60a35fd44018c45f423908"
       },
-      "days_since_commit": 284,
+      "days_since_commit": 285,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -741,7 +742,7 @@
         "sha": "ecc8341",
         "url": "https://github.com/todddube/python/commit/ecc834142c6674992eb86e2e5db786eb5301d2c4"
       },
-      "days_since_commit": 41,
+      "days_since_commit": 42,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -750,8 +751,8 @@
         0,
         0,
         0,
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -830,7 +831,7 @@
         "sha": "e5e8c8a",
         "url": "https://github.com/todddube/audio_spec/commit/e5e8c8ad3dd3c7b07fadc87ee04d8ef200af8935"
       },
-      "days_since_commit": 370,
+      "days_since_commit": 371,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -872,7 +873,7 @@
         "sha": "965dac8",
         "url": "https://github.com/todddube/agentic/commit/965dac8909e39197f30cb1e4fbef4b6460848fcb"
       },
-      "days_since_commit": 411,
+      "days_since_commit": 412,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -914,7 +915,7 @@
         "sha": "25c62da",
         "url": "https://github.com/todddube/claude/commit/25c62daab4c2239af586f14f11236a80cdc6ce5b"
       },
-      "days_since_commit": 508,
+      "days_since_commit": 509,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -956,7 +957,7 @@
         "sha": "3a6e961",
         "url": "https://github.com/todddube/docker/commit/3a6e961fa64a54757ea05ad1012969f5857a4232"
       },
-      "days_since_commit": 643,
+      "days_since_commit": 644,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -998,7 +999,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 928,
+      "days_since_commit": 929,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
