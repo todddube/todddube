@@ -10,7 +10,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 > I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
 
 <!-- UPDATED:START -->
-<sub>Updated Nov 25, 2026 from the GitHub API · 4 projects active in the last 30 days · WK 48: 2 commits</sub>
+<sub>Updated Nov 26, 2026 from the GitHub API · 5 projects active in the last 30 days · WK 48: 8 commits</sub>
 <!-- UPDATED:END -->
 
 ## Most active right now
@@ -20,8 +20,8 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 |---|---|---|
 | **[claudeMon](https://github.com/todddube/claudeMon)**<br><sub>A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.</sub> | 66 | `▁▁▁▁▁▁▁▁▁▂█▂` |
 | **[MacBridge](https://github.com/todddube/macOSMCP)**<br><sub>Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.</sub> | 8 | `▁▁▁▁▁▅▇▁▁▁▁█` |
+| **[Wlprz](https://github.com/todddube/Wlprz)**<br><sub></sub> | 6 | `▁▁▁▁▁▁▁▁▁▁▁█` |
 | **[HueBar](https://github.com/todddube/huelights)**<br><sub>A native macOS menu bar app for Philips Hue lights and bridge management.</sub> | 6 | `▁▁▁▁▁▁▁▁█▁▁▁` |
-| **[RetroSVR](https://github.com/todddube/retrosvr)**<br><sub>Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.</sub> | 1 | `▁▁▁▁▁▁▁▁▁▁▁█` |
 <!-- TOP:END -->
 
 ## Now building
@@ -37,19 +37,20 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 | **[ReviewAppPerms](https://github.com/todddube/reviewAppPerms)**<br><sub>macOS · Swift · built with Claude Code</sub> | Inspect, audit and revoke macOS privacy permissions. Reads both TCC databases and shows which apps can use your camera, microphone, files and screen. | [v1.0b](https://github.com/todddube/reviewAppPerms/releases/tag/v1.0b)<br><sub>committed 4 mo ago</sub> | `▁▁▁▁▁▁▁▁▁▁▁▁` |
 | **[Lunar Lander](https://github.com/todddube/lander)**<br><sub>Windows · macOS · C++ · built with Claude Code</sub> | The classic lander in C++17 for Windows and macOS: gravity, thrust and a fuel gauge between you and the surface. | [v1.0.2](https://github.com/todddube/lander/releases/tag/v1.0.2)<br><sub>committed 4 mo ago</sub> | `▁▁▁▁▁▁▁▁▁▁▁▁` |
 | **[Vibe Stats](https://github.com/todddube/vstat)**<br><sub>Browser · JavaScript · built with Claude Code</sub> | Browser extension for Chrome, Edge and Safari showing component-level status for the AI dev tools you rely on. | [v1.3.1](https://github.com/todddube/vstat/releases/tag/v1.3.1)<br><sub>committed 3 mo ago</sub> | `▁▁▁▁▁▁▁▁▁▁▁▁` |
+| **[RetroSVR](https://github.com/todddube/retrosvr)**<br><sub>Windows · Swift · built with Claude Code</sub> | Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels. | <sub>committed yesterday</sub> | `▁▁▁▁▁▁▁▁▁▁▁█`<br><sub>1 commits this month</sub> |
 <!-- FEATURED:END -->
 
 ## Latest commits
 
 <!-- ACTIVITY:START -->
-- **MacBridge** · [`42b4001`](https://github.com/todddube/macOSMCP/commit/42b400165c7b147e897c12a7e75ce5dd36e5e1c4) 1.9.0 build 10: close the delete prompt on hangup, new icon, README <sub>today</sub>
-- **RetroSVR** · [`45b5066`](https://github.com/todddube/retrosvr/commit/45b5066066ae5b84181b06fb09ac3060f46afba8) Add macOS port: Retro8Bit.saver and Retro 8-Bit app <sub>today</sub>
-- **MacBridge** · [`616b9f6`](https://github.com/todddube/macOSMCP/commit/616b9f67d31b8a82a914c98a3fead6aa6839125a) Write richer repeats, several alerts and per-event time zones <sub>4 days ago</sub>
-- **claudeMon** · [`ceb9e90`](https://github.com/todddube/claudeMon/commit/ceb9e9007bf7ecfefd6eb64e0e98d5e1e0e2e357) README: plugin install from a session, usage, the tap, update and remove <sub>5 days ago</sub>
-- **claudeMon** · [`902f584`](https://github.com/todddube/claudeMon/commit/902f5841809c73898e69291239fcd245058851c4) Claude Code plugin: /claudemon opens claudeMon in its own window <sub>5 days ago</sub>
-- **HueBar** · [`9ddb1e8`](https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732) Show build date and repository in About and the version tooltip <sub>24 days ago</sub>
-- **HueBar** · [`4bcec21`](https://github.com/todddube/huelights/commit/4bcec2120dda4d9189a4ce9be06d0bb913c7b15b) Close the popup after a period of inactivity <sub>25 days ago</sub>
-- **C64 spritemove** · [`a1ad75e`](https://github.com/todddube/C64-Projects/commit/a1ad75ee2a5d93798677f17f59b463447734c27b) demos/Dust Tutorial - Spritro: cursor keys steer, Nightshift plays under the effects <sub>1 mo ago</sub>
+- **Wlprz** · [`ace23b1`](https://github.com/todddube/Wlprz/commit/ace23b180eaae11acfe070217c693ff79f81598d) Render desktop scenes with a dedicated Metal pipeline: GPU 90% -> 29% <sub>today</sub>
+- **Wlprz** · [`7a615f4`](https://github.com/todddube/Wlprz/commit/7a615f415bf70de72bc1fdd62b2901acfae5acc9) Add MIT license <sub>today</sub>
+- **MacBridge** · [`42b4001`](https://github.com/todddube/macOSMCP/commit/42b400165c7b147e897c12a7e75ce5dd36e5e1c4) 1.9.0 build 10: close the delete prompt on hangup, new icon, README <sub>yesterday</sub>
+- **RetroSVR** · [`45b5066`](https://github.com/todddube/retrosvr/commit/45b5066066ae5b84181b06fb09ac3060f46afba8) Add macOS port: Retro8Bit.saver and Retro 8-Bit app <sub>yesterday</sub>
+- **MacBridge** · [`616b9f6`](https://github.com/todddube/macOSMCP/commit/616b9f67d31b8a82a914c98a3fead6aa6839125a) Write richer repeats, several alerts and per-event time zones <sub>5 days ago</sub>
+- **claudeMon** · [`ceb9e90`](https://github.com/todddube/claudeMon/commit/ceb9e9007bf7ecfefd6eb64e0e98d5e1e0e2e357) README: plugin install from a session, usage, the tap, update and remove <sub>6 days ago</sub>
+- **claudeMon** · [`902f584`](https://github.com/todddube/claudeMon/commit/902f5841809c73898e69291239fcd245058851c4) Claude Code plugin: /claudemon opens claudeMon in its own window <sub>6 days ago</sub>
+- **HueBar** · [`9ddb1e8`](https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732) Show build date and repository in About and the version tooltip <sub>25 days ago</sub>
 <!-- ACTIVITY:END -->
 
 ## Everything else

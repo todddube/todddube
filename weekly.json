@@ -170,13 +170,13 @@
       }
     },
     "2026-11-23": {
-      "commits": 2,
-      "projects": 2,
+      "commits": 8,
+      "projects": 3,
       "active_days": 1,
-      "claude_commits": 2,
+      "claude_commits": 8,
       "top_project": {
-        "title": "MacBridge",
-        "commits": 1
+        "title": "Wlprz",
+        "commits": 6
       }
     }
   }
