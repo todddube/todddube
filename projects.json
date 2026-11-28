@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-27T18:42:38+00:00",
+  "generated_at": "2026-11-28T10:40:15+00:00",
   "owner": "todddube",
   "totals": {
     "projects": 20,
     "active": 5,
-    "commits_30d": 87,
-    "built_with_claude": 13
+    "commits_30d": 82,
+    "built_with_claude": 12
   },
   "week": {
     "timezone": "America/New_York",
     "label": "WK 48",
     "start": "2026-11-23",
     "end": "2026-11-29",
-    "today_index": 4,
-    "score": 8,
-    "projects": 3,
-    "active_days": 1,
+    "today_index": 5,
+    "score": 9,
+    "projects": 4,
+    "active_days": 2,
     "claude_commits": 8,
-    "claude_pct": 100,
-    "streak": 0,
+    "claude_pct": 89,
+    "streak": 1,
     "top_project": {
       "title": "Wlprz",
       "commits": 6
@@ -29,7 +29,7 @@
       8,
       0,
       0,
-      0,
+      1,
       0
     ],
     "languages": [
@@ -83,7 +83,7 @@
       },
       {
         "start": "2026-10-26",
-        "score": 6
+        "score": 0
       },
       {
         "start": "2026-11-02",
@@ -99,11 +99,19 @@
       },
       {
         "start": "2026-11-23",
-        "score": 8
+        "score": 9
       }
     ]
   },
   "activity": [
+    {
+      "repo": "paratroopers-rebuild",
+      "title": "Paratroopers: Air Assault",
+      "message": "Progress update: v0.8.0",
+      "sha": "6a40077",
+      "url": "https://github.com/todddube/paratroopers-rebuild/commit/6a4007726f68afd0dbb201ba39e424e1159efa10",
+      "date": "2026-11-28T10:39:41Z"
+    },
     {
       "repo": "Wlprz",
       "title": "Wlprz",
@@ -159,24 +167,16 @@
       "sha": "902f584",
       "url": "https://github.com/todddube/claudeMon/commit/902f5841809c73898e69291239fcd245058851c4",
       "date": "2026-11-20T14:46:03Z"
-    },
-    {
-      "repo": "huelights",
-      "title": "HueBar",
-      "message": "Show build date and repository in About and the version tooltip",
-      "sha": "9ddb1e8",
-      "url": "https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732",
-      "date": "2026-11-01T14:31:44Z"
     }
   ],
   "top": [
     {
       "name": "claudeMon",
       "title": "claudeMon",
-      "tagline": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
+      "tagline": "Terminal task manager for Claude Code: token burn, limits forecast, subagents and prompt cache. Python stdlib only.",
       "description": "A btop-style terminal task manager for Claude Code: token burn, limits forecast, subagents, prompt cache. Python stdlib only.",
-      "platform": null,
-      "why": null,
+      "platform": "Terminal",
+      "why": "A btop-style task manager for Claude Code: watch token burn, forecast limits, and see subagents and prompt-cache hits live in the terminal.",
       "image": null,
       "url": "https://github.com/todddube/claudeMon",
       "homepage": null,
@@ -263,10 +263,10 @@
     {
       "name": "Wlprz",
       "title": "Wlprz",
-      "tagline": "",
+      "tagline": "Live wallpapers for macOS: video, images and GPU shader scenes on every display, from the menu bar.",
       "description": "",
-      "platform": null,
-      "why": null,
+      "platform": "macOS",
+      "why": "Live wallpapers for macOS: videos, images and interactive GPU shader scenes, per display, with playlists, schedules and battery-aware playback.",
       "image": null,
       "url": "https://github.com/todddube/Wlprz",
       "homepage": null,
@@ -282,7 +282,7 @@
         "sha": "ace23b1",
         "url": "https://github.com/todddube/Wlprz/commit/ace23b180eaae11acfe070217c693ff79f81598d"
       },
-      "days_since_commit": 1,
+      "days_since_commit": 2,
       "status": "active",
       "commits_30d": 6,
       "activity": [
@@ -303,30 +303,37 @@
       "built_with_claude": true
     },
     {
-      "name": "huelights",
-      "title": "HueBar",
-      "tagline": "A native macOS menu bar app for Philips Hue lights and bridge management.",
-      "description": "HueBar: a native macOS menu bar app for Philips Hue lights and bridge management",
-      "platform": "macOS",
-      "why": "A native macOS menu bar app for Philips Hue lights and bridge management.",
+      "name": "paratroopers-rebuild",
+      "title": "Paratroopers: Air Assault",
+      "tagline": "A labour-of-love Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault for modern iPhone and iPad. Progress log and showcase.",
+      "description": "Progress log and showcase for my Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault. Docs and progress only, no code.",
+      "platform": "iOS · iPadOS",
+      "why": "A 2010 iPhone classic that no longer runs on any current iPhone, rebuilt from scratch in Swift for today's iPhones and iPads. The progress log updates on every check-in.",
       "image": null,
-      "url": "https://github.com/todddube/huelights",
-      "homepage": null,
-      "language": "Swift",
-      "topics": [],
+      "url": "https://github.com/todddube/paratroopers-rebuild",
+      "homepage": "https://www.thedubes.com",
+      "language": null,
+      "topics": [
+        "game-preservation",
+        "ios",
+        "ipad",
+        "retro-gaming",
+        "spritekit",
+        "swift"
+      ],
       "stars": 0,
       "forks": 0,
       "open_issues": 0,
-      "created_at": "2026-10-30T20:49:32Z",
+      "created_at": "2026-11-28T10:39:14Z",
       "last_commit": {
-        "date": "2026-11-01T14:31:44+00:00",
-        "message": "Show build date and repository in About and the version tooltip",
-        "sha": "9ddb1e8",
-        "url": "https://github.com/todddube/huelights/commit/9ddb1e858dc4ed6ba524a723cf6d4df6bb1e2732"
+        "date": "2026-11-28T10:39:41+00:00",
+        "message": "Progress update: v0.8.0",
+        "sha": "6a40077",
+        "url": "https://github.com/todddube/paratroopers-rebuild/commit/6a4007726f68afd0dbb201ba39e424e1159efa10"
       },
-      "days_since_commit": 26,
+      "days_since_commit": 0,
       "status": "active",
-      "commits_30d": 6,
+      "commits_30d": 1,
       "activity": [
         0,
         0,
@@ -336,16 +343,58 @@
         0,
         0,
         0,
-        6,
         0,
         0,
-        0
+        0,
+        1
       ],
       "release": null,
-      "built_with_claude": true
+      "built_with_claude": false
     }
   ],
   "featured": [
+    {
+      "name": "retrosvr",
+      "title": "RetroSVR",
+      "tagline": "Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.",
+      "description": "Retro Screen Saver for Windows",
+      "platform": "Windows",
+      "why": null,
+      "image": null,
+      "url": "https://github.com/todddube/retrosvr",
+      "homepage": null,
+      "language": "Swift",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "created_at": "2026-01-31T15:38:23Z",
+      "last_commit": {
+        "date": "2026-11-25T13:45:01+00:00",
+        "message": "Add macOS port: Retro8Bit.saver and Retro 8-Bit app",
+        "sha": "45b5066",
+        "url": "https://github.com/todddube/retrosvr/commit/45b5066066ae5b84181b06fb09ac3060f46afba8"
+      },
+      "days_since_commit": 2,
+      "status": "active",
+      "commits_30d": 1,
+      "activity": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "release": null,
+      "built_with_claude": true
+    },
     {
       "name": "C64-Projects",
       "title": "C64 spritemove",
@@ -376,10 +425,10 @@
         0,
         2,
         8,
-        6,
-        4,
-        5,
-        6,
+        8,
+        2,
+        8,
+        3,
         0,
         0,
         0,
@@ -645,7 +694,7 @@
         "sha": "8dbf8fe",
         "url": "https://github.com/todddube/lander/commit/8dbf8fe4baa30d5b361774239aa234431c719dd8"
       },
-      "days_since_commit": 123,
+      "days_since_commit": 124,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
@@ -692,7 +741,7 @@
         "sha": "c134d88",
         "url": "https://github.com/todddube/vstat/commit/c134d88bfac4aa50e05c190f2a58d7cf287457e9"
       },
-      "days_since_commit": 100,
+      "days_since_commit": 101,
       "status": "recent",
       "commits_30d": 0,
       "activity": [
@@ -715,48 +764,6 @@
         "date": "2026-01-21T15:39:53Z",
         "url": "https://github.com/todddube/vstat/releases/tag/v1.3.1"
       },
-      "built_with_claude": true
-    },
-    {
-      "name": "retrosvr",
-      "title": "RetroSVR",
-      "tagline": "Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.",
-      "description": "Retro Screen Saver for Windows",
-      "platform": "Windows",
-      "why": null,
-      "image": null,
-      "url": "https://github.com/todddube/retrosvr",
-      "homepage": null,
-      "language": "Swift",
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "open_issues": 0,
-      "created_at": "2026-01-31T15:38:23Z",
-      "last_commit": {
-        "date": "2026-11-25T13:45:01+00:00",
-        "message": "Add macOS port: Retro8Bit.saver and Retro 8-Bit app",
-        "sha": "45b5066",
-        "url": "https://github.com/todddube/retrosvr/commit/45b5066066ae5b84181b06fb09ac3060f46afba8"
-      },
-      "days_since_commit": 2,
-      "status": "active",
-      "commits_30d": 1,
-      "activity": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      "release": null,
       "built_with_claude": true
     }
   ],
@@ -1040,7 +1047,7 @@
         "sha": "d457300",
         "url": "https://github.com/todddube/powershell/commit/d4573009b11cb359b32175635ff128f4e6493968"
       },
-      "days_since_commit": 935,
+      "days_since_commit": 936,
       "status": "quiet",
       "commits_30d": 0,
       "activity": [
