@@ -10,7 +10,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 > I'm Todd Dube, an AI/ML architect in Richmond, VA. I started out writing 6502 assembly on a Commodore 64, spent years in C# and .NET, and now build GenAI platforms by day. These projects are what I build on nights and weekends.
 
 <!-- UPDATED:START -->
-<sub>Updated Nov 28, 2026 from the GitHub API · 5 projects active in the last 30 days · WK 48: 9 commits</sub>
+<sub>Updated Nov 28, 2026 from the GitHub API · 5 projects active in the last 30 days · WK 48: 11 commits</sub>
 <!-- UPDATED:END -->
 
 ## Most active right now
@@ -21,7 +21,7 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 | **[claudeMon](https://github.com/todddube/claudeMon)**<br><sub>Terminal task manager for Claude Code: token burn, limits forecast, subagents and prompt cache. Python stdlib only.</sub> | 66 | `▁▁▁▁▁▁▁▁▁▂█▁` |
 | **[MacBridge](https://github.com/todddube/macOSMCP)**<br><sub>Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.</sub> | 8 | `▁▁▁▁▅▃▅▁▁▁▁█` |
 | **[Wlprz](https://github.com/todddube/Wlprz)**<br><sub>Live wallpapers for macOS: video, images and GPU shader scenes on every display, from the menu bar.</sub> | 6 | `▁▁▁▁▁▁▁▁▁▁▁█` |
-| **[Paratroopers: Air Assault](https://github.com/todddube/paratroopers-rebuild)**<br><sub>A labour-of-love Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault for modern iPhone and iPad. Progress log and showcase.</sub> | 1 | `▁▁▁▁▁▁▁▁▁▁▁█` |
+| **[Paratroopers: Air Assault](https://github.com/todddube/paratroopers-rebuild)**<br><sub>A labour-of-love Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault for modern iPhone and iPad. Progress log and showcase.</sub> | 3 | `▁▁▁▁▁▁▁▁▁▁▁█` |
 <!-- TOP:END -->
 
 ## Now building
@@ -43,14 +43,14 @@ macOS apps, Commodore 64 assembly, small games and tools for keeping an eye on A
 ## Latest commits
 
 <!-- ACTIVITY:START -->
-- **Paratroopers: Air Assault** · [`6a40077`](https://github.com/todddube/paratroopers-rebuild/commit/6a4007726f68afd0dbb201ba39e424e1159efa10) Progress update: v0.8.0 <sub>today</sub>
+- **Paratroopers: Air Assault** · [`84da380`](https://github.com/todddube/paratroopers-rebuild/commit/84da3801e717bcca2351479e3db038d662672680) Progress update: v0.8.0 <sub>today</sub>
+- **Paratroopers: Air Assault** · [`aed8198`](https://github.com/todddube/paratroopers-rebuild/commit/aed81980464fe1f2a398cd9458c33a982318b75e) Progress update: v0.8.0 <sub>today</sub>
 - **Wlprz** · [`ace23b1`](https://github.com/todddube/Wlprz/commit/ace23b180eaae11acfe070217c693ff79f81598d) Render desktop scenes with a dedicated Metal pipeline: GPU 90% -> 29% <sub>2 days ago</sub>
 - **Wlprz** · [`7a615f4`](https://github.com/todddube/Wlprz/commit/7a615f415bf70de72bc1fdd62b2901acfae5acc9) Add MIT license <sub>2 days ago</sub>
 - **MacBridge** · [`42b4001`](https://github.com/todddube/macOSMCP/commit/42b400165c7b147e897c12a7e75ce5dd36e5e1c4) 1.9.0 build 10: close the delete prompt on hangup, new icon, README <sub>2 days ago</sub>
 - **RetroSVR** · [`45b5066`](https://github.com/todddube/retrosvr/commit/45b5066066ae5b84181b06fb09ac3060f46afba8) Add macOS port: Retro8Bit.saver and Retro 8-Bit app <sub>2 days ago</sub>
 - **MacBridge** · [`616b9f6`](https://github.com/todddube/macOSMCP/commit/616b9f67d31b8a82a914c98a3fead6aa6839125a) Write richer repeats, several alerts and per-event time zones <sub>6 days ago</sub>
 - **claudeMon** · [`ceb9e90`](https://github.com/todddube/claudeMon/commit/ceb9e9007bf7ecfefd6eb64e0e98d5e1e0e2e357) README: plugin install from a session, usage, the tap, update and remove <sub>7 days ago</sub>
-- **claudeMon** · [`902f584`](https://github.com/todddube/claudeMon/commit/902f5841809c73898e69291239fcd245058851c4) Claude Code plugin: /claudemon opens claudeMon in its own window <sub>7 days ago</sub>
 <!-- ACTIVITY:END -->
 
 ## Everything else
