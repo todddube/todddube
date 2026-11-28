@@ -22,7 +22,8 @@
       "title": "Paratroopers: Air Assault",
       "why": "A 2010 iPhone classic that no longer runs on any current iPhone, rebuilt from scratch in Swift for today's iPhones and iPads. The progress log updates on every check-in.",
       "tagline": "A labour-of-love Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault for modern iPhone and iPad. Progress log and showcase.",
-      "platform": "iOS · iPadOS"
+      "platform": "iOS · iPadOS",
+      "image": "assets/screens/battle.jpg"
     },
     {
       "repo": "retrosvr",
