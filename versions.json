@@ -1,7 +1,12 @@
 {
   "_comment": "Site version history, newest first. Edited only by .github/scripts/release.py when a person (or Claude Code) changes the site by hand. The daily Actions run never touches this file.",
-  "current": "1.0.0",
+  "current": "1.1.0",
   "releases": [
+    {
+      "version": "1.1.0",
+      "date": "2026-11-28",
+      "notes": "New featured lineup: claudeMon, MacBridge, the Paratroopers: Air Assault rebuild, RetroSVR and Wlprz. HueBar removed."
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

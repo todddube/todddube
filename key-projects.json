@@ -4,6 +4,40 @@
   "_comment": "Curation for projects.json, the README, and www.thedubes.com. The most active repos (top_count of them, by commits in the last 30 days) become highlight tiles at the top; other featured repos follow, in this order; every other public, non-fork repo is listed automatically under 'Everything else'. Taglines and images are optional - the repo description is used when tagline is missing.",
   "featured": [
     {
+      "repo": "claudeMon",
+      "title": "claudeMon",
+      "why": "A btop-style task manager for Claude Code: watch token burn, forecast limits, and see subagents and prompt-cache hits live in the terminal.",
+      "tagline": "Terminal task manager for Claude Code: token burn, limits forecast, subagents and prompt cache. Python stdlib only.",
+      "platform": "Terminal"
+    },
+    {
+      "repo": "macOSMCP",
+      "title": "MacBridge",
+      "why": "Calendar and Reminders for Claude Code and Claude Desktop. A menu-bar app and MCP server that runs entirely on your Mac, with no network.",
+      "tagline": "Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.",
+      "platform": "macOS"
+    },
+    {
+      "repo": "paratroopers-rebuild",
+      "title": "Paratroopers: Air Assault",
+      "why": "A 2010 iPhone classic that no longer runs on any current iPhone, rebuilt from scratch in Swift for today's iPhones and iPads. The progress log updates on every check-in.",
+      "tagline": "A labour-of-love Swift rebuild of the 2010 iPhone game Paratroopers: Air Assault for modern iPhone and iPad. Progress log and showcase.",
+      "platform": "iOS · iPadOS"
+    },
+    {
+      "repo": "retrosvr",
+      "title": "RetroSVR",
+      "tagline": "Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.",
+      "platform": "Windows"
+    },
+    {
+      "repo": "Wlprz",
+      "title": "Wlprz",
+      "why": "Live wallpapers for macOS: videos, images and interactive GPU shader scenes, per display, with playlists, schedules and battery-aware playback.",
+      "tagline": "Live wallpapers for macOS: video, images and GPU shader scenes on every display, from the menu bar.",
+      "platform": "macOS"
+    },
+    {
       "repo": "C64-Projects",
       "title": "C64 spritemove",
       "why": "Raster-bar overture, then up to 16 rolling Boing balls with real elastic collisions, flying through the open border. A raster IRQ multiplexes them over the VIC-II's eight sprites.",
@@ -35,20 +69,6 @@
       "image": "images/Rain.png"
     },
     {
-      "repo": "macOSMCP",
-      "title": "MacBridge",
-      "why": "Calendar and Reminders for Claude Code and Claude Desktop. A menu-bar app and MCP server that runs entirely on your Mac, with no network.",
-      "tagline": "Free, open-source menu-bar app and MCP server giving Claude Code and Claude Desktop read and write access to Calendar and Reminders through EventKit.",
-      "platform": "macOS"
-    },
-    {
-      "repo": "huelights",
-      "title": "HueBar",
-      "why": "A native macOS menu bar app for Philips Hue lights and bridge management.",
-      "tagline": "A native macOS menu bar app for Philips Hue lights and bridge management.",
-      "platform": "macOS"
-    },
-    {
       "repo": "c64-agent-kit",
       "title": "C64 Agent Kit",
       "why": "Agent Skills for Commodore 64 6502 assembly: KickAssembler, VICE and Regenerator 2000, for Claude Code and friends.",
@@ -73,17 +93,15 @@
       "tagline": "Browser extension for Chrome, Edge and Safari showing component-level status for the AI dev tools you rely on.",
       "platform": "Browser",
       "image": "dist/Screenshot_1.jpg"
-    },
-    {
-      "repo": "retrosvr",
-      "title": "RetroSVR",
-      "tagline": "Windows screensaver of classic 8-bit demoscene effects: starfields, plasma and scrollers in chunky 4x pixels.",
-      "platform": "Windows"
     }
   ],
   "include_forks": [],
   "top_count": 4,
-  "exclude": ["todddube", "agentic_demo"],
+  "exclude": [
+    "todddube",
+    "agentic_demo",
+    "huelights"
+  ],
   "activity_items": 8,
   "activity_weeks": 12
 }
